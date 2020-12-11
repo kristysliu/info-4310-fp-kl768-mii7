@@ -38,8 +38,8 @@
                 .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
             const requestData = async function() {
-                const olympic_map = await d3.json('olympic_world_map.json');
-                // console.log(olympic_map)
+                const olympic_world_data = await d3.csv('athlete_events.csv');
+                console.log(olympic_world_data)
             }
             requestData();
         </script>
