@@ -42,6 +42,55 @@
       width: 1000px;
     }
 
+    .olympicsflexcontainermain{
+      height: 750px;
+    }
+
+    .olympicsflexcontainertoc{
+      margin: auto;
+      margin-top: -575px;
+      width: 990px;
+    }
+
+    .olympicsflexcontainer1,.olympicsflexcontainer2{
+      display: flex;
+      flex-direction: row;
+    }
+
+    .toc_textbox_r1{
+      height: 240px;
+      width: 240px;
+      border-radius: 50%;
+      /* background-color: rgba(38, 38, 38, 0.2); */
+      text-align: center;
+      margin: 45px;
+      display: flex;
+    }
+
+    .olympicsflexcontainer2{
+      margin-left:165px;
+      margin-top: -180px;
+    }
+
+    .toc_textbox_r2{
+      height: 240px;
+      width: 240px;
+      border-radius: 50%;
+      /* background-color: rgba(38, 38, 38, 0.2); */
+      text-align: center;
+      margin: 45px;
+      display: flex;
+    }
+
+    .toc_text{
+      text-decoration: none;
+      color: #2e2e2e;
+      font-weight: bold;
+      font-size: 15px;
+      margin: auto;
+      width: 200px;
+    }
+
     hr.solid {
       border-top: 3px solid #2e2e2e;
     }
@@ -192,9 +241,35 @@
 
 <body>
     <div id='p1'>
+      <!-- ********************************** -->
+      <!--         INTRO SECTION              -->
+      <!-- ********************************** -->
       <h1 class="websiteTitle">Olympics Tracker</h1>
       <h1 class="authorsTitle">By Marcella Imoisili & Kristy Liu</h1>
-      <img src="Images/olympics.png" alt="Olympics Logo" class="center">
+      <div class="olympicsflexcontainermain">
+        <img src="Images/olympics.png" alt="Olympics Logo" class="center">
+        <div class="olympicsflexcontainertoc">
+          <div class="olympicsflexcontainer1">
+            <div class="toc_textbox_r1">
+              <a href="#mapPanel" class="toc_text">1. How the Olympics Have Changed Since 1896</a>
+            </div>
+            <div class="toc_textbox_r1">
+              <a href="#mapPanel" class="toc_text">2. World Map of Olympics Results</a>
+            </div>
+            <div class="toc_textbox_r1">
+              <a href="#scatterplotPanel" class="toc_text">3. Athlete Profiles</a>
+            </div>
+          </div>
+          <div class="olympicsflexcontainer2">
+            <div class="toc_textbox_r2">
+              <a href="#savedAthletesTablePanel" class="toc_text">4. Saved Athletes</a>
+            </div>
+            <div class="toc_textbox_r2">
+              <a href="#scatterplotPanel" class="toc_text">5. Citations</a>
+            </div>
+          </div>
+        </div>
+      </div>
       <hr class="solid">
       <!-- ********************************** -->
       <!--         MAP VISUALIZATION          -->
