@@ -99,12 +99,22 @@
             color: #2e2e2e;
         }
         
+        #viz {
+            background-color: lightgrey;
+        }
+        
         #scatterplotPanel {
             background: #2e2e2e;
             position: absolute;
             left: 0;
             right: 0;
             color: white;
+        }
+        
+        #flexContainerMP_1 {
+            display: flex;
+            justify-content: center;
+            height: 160vh;
         }
         
         #flexContainerSP_1 {
@@ -296,7 +306,9 @@
         <!-- ********************************** -->
         <div id="mapPanel">
             <h1 class="sectionTitles">World Map of Olympics Results</h1>
-            <svg id='viz' height='600' width='800'></svg>
+            <div id="flexContainerMP_1">
+                <svg id='viz' height='65vh' width='85vw'></svg>
+            </div>
         </div>
 
         <!-- ********************************** -->
