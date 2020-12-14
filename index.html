@@ -99,22 +99,12 @@
             color: #2e2e2e;
         }
         
-        #viz {
-            background-color: lightgrey;
-        }
-        
         #scatterplotPanel {
             background: #2e2e2e;
             position: absolute;
             left: 0;
             right: 0;
             color: white;
-        }
-        
-        #flexContainerMP_1 {
-            display: flex;
-            justify-content: center;
-            height: 160vh;
         }
         
         #flexContainerSP_1 {
@@ -315,19 +305,29 @@
         <!--   SCATTERPLOT VISUALIZATION        -->
         <!-- ********************************** -->
         <div id="scatterplotPanel">
-            <<<<<<< HEAD <h1 class="sectionTitles">Athlete Profiles</h1>
-                <!-- Section 1: Scatterplot Filters Panel -->
-                <div id="flexContainerSP_1">
-                    <!-- Required Filters -->
-                    <div id="reqSPFilters">
-                        <h3>Required Filters:</h3>
-                        <div class="reqSPFilters_flexContainer">
-                            <div class="selectSportSP">
-                                <h4 class="filterTitlesSP">Sport</h4>
-                                <select id="selectSportSP"></select>
+            <h1 class="sectionTitles">Athlete Profiles</h1>
+            <!-- Section 1: Scatterplot Filters Panel -->
+            <div id="flexContainerSP_1">
+                <!-- Required Filters -->
+                <div id="reqSPFilters">
+                    <h3>Required Filters:</h3>
+                    <div class="reqSPFilters_flexContainer">
+                        <div class="radioSeasonSP">
+                            <h4 class="filterTitlesSP">Season</h4>
+                            <div class="radioSeasonSPflexcontainer">
+                                <input type="radio" id="summerSP" name="seasonSP" value="summer">
+                                <label for="summerSP">Summer</label><br>
+                                <input type="radio" id="winterSP" name="seasonSP" value="winter">
+                                <label for="winterSP">Winter</label><br>
                             </div>
-                            <div class="radioGenderSP">
-                                <h4 class="filterTitlesSP">Gender</h4>
+                        </div>
+                        <div class="selectSportSP">
+                            <h4 class="filterTitlesSP">Sport</h4>
+                            <select id="selectSportSP"></select>
+                        </div>
+                        <div class="radioGenderSP">
+                            <h4 class="filterTitlesSP">Gender</h4>
+                            <div class="radioGenderSPflexcontainer">
                                 <input type="radio" id="maleSP" name="genderSP" value="male">
                                 <label for="maleSP">Male</label><br>
                                 <input type="radio" id="femaleSP" name="genderSP" value="female">
@@ -340,8 +340,8 @@
                         <h3>Optional Filters:</h3>
                         <div class="optSPFilters_flexContainer">
                             <div class="optSPFilters_flex">
-                                <h4 class="filterTitlesSP">Country</h4>
-                                <select id="selectCountrySP"></select>
+                                <h4 class="filterTitlesSP"></h4>
+                                <select id="selectSP"></select>
                                 <h4 class="filterTitlesSP">Event</h4>
                                 <select id="selectEventSP"></select>
                             </div>
@@ -353,632 +353,511 @@
                                         <h4 class="filterTitlesSP">Silver</h4>
                                         <h4 class="filterTitlesSP">Bronze</h4>
                                     </div>
-                                    <div class="optSPFilters_flex_medals_selects">
-                                        <select id="selectGoldSP"></select><br>
-                                        <select id="selectSilverSP"></select><br>
-                                        <select id="selectBronzeSP"></select>
+                                    <!-- Scatterplot Legend -->
+                                    <div id="legendSP">
+                                        <svg id="scatterlegendsvg" height="100" width="800" style="margin-bottom: 20px; margin-left: 20px;"></svg>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="optSPFilters_flex">
-                                <h4 class="filterTitlesSP">Year</h4>
-                                <div class="sliderRange">
-                                    <div id="year-slider-range"></div>
-                                </div>
-                                <div class="sliderValue">
-                                    <p id="year-value-range"></p>
-                                </div>
-                                <h4 class="filterTitlesSP">Age</h4>
-                                <div class="sliderRange">
-                                    <div id="age-slider-range"></div>
-                                </div>
-                                <div class="sliderValue">
-                                    <p id="age-value-range"></p>
+                                <!-- Scatterplot Profile Panel -->
+                                <div id="profilePanelSP">
+                                    <svg id="profilePanelSPSVG" height="725" width="600" style="margin-top:5px; margin-bottom: 20px; margin-left: 20px;"></svg>
                                 </div>
                             </div>
-                            <div class="optSPFilters_flex">
-                                <h4 class="filterTitlesSP">Height</h4>
-                                <div class="sliderRange">
-                                    <div id="height-slider-range"></div>
-                                </div>
-                                <div class="sliderValue">
-                                    <p id="height-value-range"></p>
-                                </div>
-                                <h4 class="filterTitlesSP">Weight</h4>
-                                <div class="sliderRange">
-                                    <div id="weight-slider-range"></div>
-                                </div>
-                                <div class="sliderValue">
-                                    <p id="weight-value-range"></p>
-                                </div>
+
+                            <!-- ********************************** -->
+                            <!--    SAVED ATHLETES TABLE            -->
+                            <!-- ********************************** -->
+                            <div id="savedAthletesTablePanel">
+                                <table id="savedAthletesTable">
+                                    <thead>
+                                        <tr>
+                                            <th>Name</th>
+                                            <th></th>
+                                            <th>Sport</th>
+                                            <th>View</th>
+                                            <th>Remove</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody></tbody>
+                                </table>
                             </div>
                         </div>
-                        =======
-                        <h1 class="sectionTitles">Athlete Profiles</h1>
-                        <!-- Section 1: Scatterplot Filters Panel -->
-                        <div id="flexContainerSP_1">
-                            <!-- Required Filters -->
-                            <div id="reqSPFilters">
-                                <h3>Required Filters:</h3>
-                                <div class="reqSPFilters_flexContainer">
-                                    <div class="radioSeasonSP">
-                                        <h4 class="filterTitlesSP">Season</h4>
-                                        <div class="radioSeasonSPflexcontainer">
-                                            <input type="radio" id="summerSP" name="seasonSP" value="summer">
-                                            <label for="summerSP">Summer</label><br>
-                                            <input type="radio" id="winterSP" name="seasonSP" value="winter">
-                                            <label for="winterSP">Winter</label><br>
-                                        </div>
-                                    </div>
-                                    <div class="selectSportSP">
-                                        <h4 class="filterTitlesSP">Sport</h4>
-                                        <select id="selectSportSP"></select>
-                                    </div>
-                                    <div class="radioGenderSP">
-                                        <h4 class="filterTitlesSP">Gender</h4>
-                                        <div class="radioGenderSPflexcontainer">
-                                            <input type="radio" id="maleSP" name="genderSP" value="male">
-                                            <label for="maleSP">Male</label><br>
-                                            <input type="radio" id="femaleSP" name="genderSP" value="female">
-                                            <label for="femaleSP">Female</label><br>
-                                        </div>
-                                        >>>>>>> 7e0c38c726beb4440c7ef9723ef88b8440ea5887
-                                    </div>
-                                </div>
-                                <<<<<<< HEAD <!-- Generate Button: Update Scatterplot Based On Filters -->
-                                    <div class="generateButton">
-                                        <button type="button" id="generateButton">Generate</button>
-                                    </div>
-                                    <!-- Section 2: Scatterplot Graph and Profile Panel -->
-                                    <div id="flexContainerSP_2">
-                                        <!-- Scatterplot Graph Container -->
-                                        <div id="graphSP">
-                                            <!-- Scatterplot Graph -->
-                                            <div id="scatterplotGraph">
-                                                <svg id="scatterplotGraphSVG" height="600" width="800" style="margin-top:5px; margin-bottom: 20px; margin-left: 20px;"></svg> =======
-                                                <!-- Optional Filters -->
-                                                <div id="optSPFilters">
-                                                    <h3>Optional Filters:</h3>
-                                                    <div class="optSPFilters_flexContainer">
-                                                        <div class="optSPFilters_flex">
-                                                            <h4 class="filterTitlesSP"></h4>
-                                                            <select id="selectSP"></select>
-                                                            <h4 class="filterTitlesSP">Event</h4>
-                                                            <select id="selectEventSP"></select>
-                                                        </div>
-                                                        <div class="optSPFilters_flex">
-                                                            <h4 class="filterTitlesSP"># of Medals</h4>
-                                                            <div class="optSPFilters_flexContainer_medals">
-                                                                <div class="optSPFilters_flex_medals_titles">
-                                                                    <h4 class="filterTitlesSP">Gold</h4>
-                                                                    <h4 class="filterTitlesSP">Silver</h4>
-                                                                    <h4 class="filterTitlesSP">Bronze</h4>
-                                                                    >>>>>>> 7e0c38c726beb4440c7ef9723ef88b8440ea5887
-                                                                </div>
-                                                                <!-- Scatterplot Legend -->
-                                                                <div id="legendSP">
-                                                                    <svg id="scatterlegendsvg" height="100" width="800" style="margin-bottom: 20px; margin-left: 20px;"></svg>
-                                                                </div>
-                                                            </div>
-                                                            <!-- Scatterplot Profile Panel -->
-                                                            <div id="profilePanelSP">
-                                                                <svg id="profilePanelSPSVG" height="725" width="600" style="margin-top:5px; margin-bottom: 20px; margin-left: 20px;"></svg>
-                                                            </div>
-                                                        </div>
 
-                                                        <<<<<<< HEAD <!-- ********************************** -->
-                                                            <!--    SAVED ATHLETES TABLE            -->
-                                                            <!-- ********************************** -->
-                                                            <div id="savedAthletesTablePanel">
-                                                                <table id="savedAthletesTable">
-                                                                    <thead>
-                                                                        <tr>
-                                                                            <th>Name</th>
-                                                                            <th>Country</th>
-                                                                            <th>Sport</th>
-                                                                            <th>View</th>
-                                                                            <th>Remove</th>
-                                                                        </tr>
-                                                                    </thead>
-                                                                    <tbody></tbody>
-                                                                </table>
-                                                            </div>
-                                                            =======
-                                                            <!-- ********************************** -->
-                                                            <!--    SAVED ATHLETES TABLE            -->
-                                                            <!-- ********************************** -->
-                                                            <div id="savedAthletesTablePanel">
-                                                                <table id="savedAthletesTable">
-                                                                    <thead>
-                                                                        <tr>
-                                                                            <th>Name</th>
-                                                                            <th></th>
-                                                                            <th>Sport</th>
-                                                                            <th>View</th>
-                                                                            <th>Remove</th>
-                                                                        </tr>
-                                                                    </thead>
-                                                                    <tbody></tbody>
-                                                                </table>
-                                                            </div>
-                                                            >>>>>>> 7e0c38c726beb4440c7ef9723ef88b8440ea5887
-                                                    </div>
+                        <script>
+                            //python3 -m http.server
 
-                                                    <script>
-                                                        //python3 -m http.server
+                            /**************************************************
+                             **********        Map Visualization        ********
+                             **************************************************/
+                            const svg = d3.select('#viz');
+                            const width = svg.attr('width');
+                            const height = svg.attr('height');
 
-                                                        /**************************************************
-                                                         **********        Map Visualization        ********
-                                                         **************************************************/
-                                                        const svg = d3.select('#viz');
-                                                        const width = svg.attr('width');
-                                                        const height = svg.attr('height');
+                            const margin = {
+                                top: 20,
+                                right: 20,
+                                bottom: 20,
+                                left: 20
+                            };
 
-                                                        const margin = {
-                                                            top: 20,
-                                                            right: 20,
-                                                            bottom: 20,
-                                                            left: 20
-                                                        };
+                            const mapWidth = width - margin.left - margin.right;
+                            const mapHeight = height - margin.top - margin.bottom;
+                            const map = svg.append("g")
+                                .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-                                                        const mapWidth = width - margin.left - margin.right;
-                                                        const mapHeight = height - margin.top - margin.bottom;
-                                                        const map = svg.append("g")
-                                                            .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+                            const requestData = async function() {
+                                const olympic_world_data = await d3.csv('athlete_events.csv');
+                            }
 
-                                                        const requestData = async function() {
-                                                            const olympic_world_data = await d3.csv('athlete_events.csv');
-                                                        }
+                            /**************************************************
+                             *****        ScatterPlot Visualization        *****
+                             **************************************************/
 
-                                                        /**************************************************
-                                                         *****        ScatterPlot Visualization        *****
-                                                         **************************************************/
+                            const scatter = d3.select("svg#scatterplotGraphSVG");
+                            const scatterLeg = d3.select("svg#scatterlegendsvg");
 
-                                                        const scatter = d3.select("svg#scatterplotGraphSVG");
-                                                        const scatterLeg = d3.select("svg#scatterlegendsvg");
+                            const scatterwidth = scatter.attr("width");
+                            const scatterheight = scatter.attr("height");
+                            const scattermargin = {
+                                top: 10,
+                                right: 10,
+                                bottom: 50,
+                                left: 50
+                            };
 
-                                                        const scatterwidth = scatter.attr("width");
-                                                        const scatterheight = scatter.attr("height");
-                                                        const scattermargin = {
-                                                            top: 10,
-                                                            right: 10,
-                                                            bottom: 50,
-                                                            left: 50
-                                                        };
+                            const legWidth = scatterLeg.attr("width");
+                            const legHeight = scatterLeg.attr("height");
 
-                                                        const legWidth = scatterLeg.attr("width");
-                                                        const legHeight = scatterLeg.attr("height");
+                            const chartWidth = width - margin.left - margin.right;
+                            const chartHeight = height - margin.top - margin.bottom;
 
-                                                        const chartWidth = width - margin.left - margin.right;
-                                                        const chartHeight = height - margin.top - margin.bottom;
+                            let annotations = scatter.append("g")
+                                .attr("id", "annotations")
+                                .attr("class", "graph-svg-component2");
 
-                                                        let annotations = scatter.append("g")
-                                                            .attr("id", "annotations")
-                                                            .attr("class", "graph-svg-component2");
+                            let chartArea = scatter.append("g").attr("id", "points").attr("class", "graph-svg-component")
+                                .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-                                                        let chartArea = scatter.append("g").attr("id", "points").attr("class", "graph-svg-component")
-                                                            .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+                            let colorLegendGroup = scatterLeg.append('g')
+                                .attr("id", "colorLegendGroup");
 
-                                                        let colorLegendGroup = scatterLeg.append('g')
-                                                            .attr("id", "colorLegendGroup");
+                            const loadScatter = async function() {
+                                let scatterdata = await d3.csv('athlete_events.csv', d3.autoType)
+                                var allSport = []
+                                var allNationality = []
+                                var allYear = []
+                                var allAge = []
+                                var allWeight = []
+                                var allHeight = []
+                                var count = 0
+                                    //Data Issues
+                                scatterdata.forEach(d => {
+                                    for (i = 0; i < d['Sport'].length; i++) {
+                                        if (!allSport.includes(d['Sport'][i])) {
+                                            allSport.push(d['Sport'][i])
+                                        }
+                                    }
+                                    for (i = 0; i < d['NOC'].length; i++) {
+                                        if (d['NOC'] = "ISV") {
+                                            d['NOC'] = "USA";
+                                        }
+                                        if (!allNationality.includes(d['NOC'][i])) {
+                                            allNationality.push(d['NOC'][i])
+                                        }
+                                    }
+                                    if ((d["Weight"] = "NA") || (d["Height"] = "NA") || (d["Age"] = "NA")) {
+                                        // var array = [d["Weight"],d["Height"],d["Age"]];
+                                        // console.log(array)
+                                        count += 1
+                                        delete d; //not working
+                                    }
 
-                                                        const loadScatter = async function() {
-                                                            let scatterdata = await d3.csv('athlete_events.csv', d3.autoType)
-                                                            var allSport = []
-                                                            var allNationality = []
-                                                            var allYear = []
-                                                            var allAge = []
-                                                            var allWeight = []
-                                                            var allHeight = []
-                                                            var count = 0
-                                                                //Data Issues
-                                                            scatterdata.forEach(d => {
-                                                                for (i = 0; i < d['Sport'].length; i++) {
-                                                                    if (!allSport.includes(d['Sport'][i])) {
-                                                                        allSport.push(d['Sport'][i])
-                                                                    }
-                                                                }
-                                                                for (i = 0; i < d['NOC'].length; i++) {
-                                                                    if (d['NOC'] = "ISV") {
-                                                                        d['NOC'] = "USA";
-                                                                    }
-                                                                    if (!allNationality.includes(d['NOC'][i])) {
-                                                                        allNationality.push(d['NOC'][i])
-                                                                    }
-                                                                }
-                                                                if ((d["Weight"] = "NA") || (d["Height"] = "NA") || (d["Age"] = "NA")) {
-                                                                    // var array = [d["Weight"],d["Height"],d["Age"]];
-                                                                    // console.log(array)
-                                                                    count += 1
-                                                                    delete d; //not working
-                                                                }
+                                });
 
-                                                            });
+                                console.log(count)
+                                console.log(scatterdata.length)
 
-                                                            console.log(count)
-                                                            console.log(scatterdata.length)
+                                // // Filters - creating the drop-down array for each select
+                                // allGenres.sort();
+                                // allGenres.unshift("All Genres")
+                                // allLanguages.sort();
+                                // allLanguages.unshift("All Languages")
+                                // var allYears = ["All Decades", "1900 - 1909", "1910 - 1919", "1920 - 1929", "1930 - 1939", "1940 - 1949", "1950 - 1959", "1960 - 1969", "1970 - 1979", "1980 - 1989", "1990 - 1999", "2000 - 2009", "2010 - 2019", "2020 - 2029"]
+                                // var allStreaming = ["All Platforms", "Disney+", "Hulu", "Netflix", "Prime Video"]
 
-                                                            // // Filters - creating the drop-down array for each select
-                                                            // allGenres.sort();
-                                                            // allGenres.unshift("All Genres")
-                                                            // allLanguages.sort();
-                                                            // allLanguages.unshift("All Languages")
-                                                            // var allYears = ["All Decades", "1900 - 1909", "1910 - 1919", "1920 - 1929", "1930 - 1939", "1940 - 1949", "1950 - 1959", "1960 - 1969", "1970 - 1979", "1980 - 1989", "1990 - 1999", "2000 - 2009", "2010 - 2019", "2020 - 2029"]
-                                                            // var allStreaming = ["All Platforms", "Disney+", "Hulu", "Netflix", "Prime Video"]
+                                // // Initializing Filters
+                                // d3.select("#selectYear")
+                                //   .selectAll('myOptions')
+                                //  	.data(allYears)
+                                //   .enter()
+                                // 	.append('option')
+                                //   .text(function (d) { return d; })
+                                //   .attr("value", function (d) { return d; })
+                                //
+                                // d3.select("#selectGenre")
+                                //   .selectAll('myOptions')
+                                //  	.data(allGenres)
+                                //   .enter()
+                                // 	.append('option')
+                                //   .text(function (d) { return d; })
+                                //   .attr("value", function (d) { return d; })
+                                //
+                                // d3.select("#selectLanguage")
+                                //   .selectAll('myOptions')
+                                //  	.data(allLanguages)
+                                //   .enter()
+                                // 	.append('option')
+                                //   .text(function (d) { return d; })
+                                //   .attr("value", function (d) { return d; })
+                                //
+                                // d3.select("#selectStreaming")
+                                //   .selectAll('myOptions')
+                                //  	.data(allStreaming)
+                                //   .enter()
+                                // 	.append('option')
+                                //   .text(function (d) { return d; })
+                                //   .attr("value", function (d) { return d; })
+                                //
+                                // // Runs update function when any of the select drop-downs are changed
+                                // d3.select("#selectYear").on("change", function(d) { update() })
+                                // d3.select("#selectGenre").on("change", function(d) { update() })
+                                // d3.select("#selectLanguage").on("change", function(d) { update() })
+                                // d3.select("#selectStreaming").on("change", function(d) { update() })
+                                // // Runs reset function when reset button is clicked
+                                // d3.select("#resetbutton").on("click", function(d) { reset() })
 
-                                                            // // Initializing Filters
-                                                            // d3.select("#selectYear")
-                                                            //   .selectAll('myOptions')
-                                                            //  	.data(allYears)
-                                                            //   .enter()
-                                                            // 	.append('option')
-                                                            //   .text(function (d) { return d; })
-                                                            //   .attr("value", function (d) { return d; })
-                                                            //
-                                                            // d3.select("#selectGenre")
-                                                            //   .selectAll('myOptions')
-                                                            //  	.data(allGenres)
-                                                            //   .enter()
-                                                            // 	.append('option')
-                                                            //   .text(function (d) { return d; })
-                                                            //   .attr("value", function (d) { return d; })
-                                                            //
-                                                            // d3.select("#selectLanguage")
-                                                            //   .selectAll('myOptions')
-                                                            //  	.data(allLanguages)
-                                                            //   .enter()
-                                                            // 	.append('option')
-                                                            //   .text(function (d) { return d; })
-                                                            //   .attr("value", function (d) { return d; })
-                                                            //
-                                                            // d3.select("#selectStreaming")
-                                                            //   .selectAll('myOptions')
-                                                            //  	.data(allStreaming)
-                                                            //   .enter()
-                                                            // 	.append('option')
-                                                            //   .text(function (d) { return d; })
-                                                            //   .attr("value", function (d) { return d; })
-                                                            //
-                                                            // // Runs update function when any of the select drop-downs are changed
-                                                            // d3.select("#selectYear").on("change", function(d) { update() })
-                                                            // d3.select("#selectGenre").on("change", function(d) { update() })
-                                                            // d3.select("#selectLanguage").on("change", function(d) { update() })
-                                                            // d3.select("#selectStreaming").on("change", function(d) { update() })
-                                                            // // Runs reset function when reset button is clicked
-                                                            // d3.select("#resetbutton").on("click", function(d) { reset() })
+                                // //Deletes old points and replaces with new points that fit the criteria of the four filter select options
+                                // function update() {
+                                //   // Create new data with year selection
+                                //   var selectedYearOption = d3.select("#selectYear").property("value")
+                                //   var dataFilterInitial = data.map(function(d){
+                                //     if (d.Decade === selectedYearOption){
+                                //       return d;
+                                //     }
+                                //   })
+                                //   var dataFilter = dataFilterInitial.filter(function (d) {
+                                //     return d != null;
+                                //   });
+                                //
+                                //   if (selectedYearOption === "All Decades") {
+                                //     dataFilter = data;
+                                //   }
+                                //   // Update new data with genre selection
+                                //   var selectedGenreOption = d3.select("#selectGenre").property("value")
+                                //   var dataFilterInitial2 = dataFilter.map(function(d){
+                                //     for( i=0; i<d.Genres.length; i++) {
+                                //       if (d.Genres[i] === selectedGenreOption){
+                                //         return d;
+                                //       }
+                                //     }})
+                                //   var dataFilter2 = dataFilterInitial2.filter(function (d) {
+                                //     return d != null;
+                                //   });
+                                //   if (selectedGenreOption === "All Genres") {
+                                //     dataFilter2 = dataFilter;
+                                //   }
+                                //
+                                //   // Update new data with language selection
+                                //   var selectedLanguageOption = d3.select("#selectLanguage").property("value")
+                                //   var dataFilterInitial3 = dataFilter2.map(function(d){
+                                //     for( i=0; i<d.Language.length; i++) {
+                                //       if (d.Language[i] === selectedLanguageOption){
+                                //         return d;
+                                //       }
+                                //     }})
+                                //   var dataFilter3 = dataFilterInitial3.filter(function (d) {
+                                //     return d != null;
+                                //   });
+                                //   if (selectedLanguageOption === "All Languages") {
+                                //     dataFilter3 = dataFilter2;
+                                //   }
+                                //
+                                //   // Update new data with streaming platform selection
+                                //   var selectedStreamingOption = d3.select("#selectStreaming").property("value")
+                                //   var dataFilterInitial4 = dataFilter3.map(function(d){
+                                //       if (d[selectedStreamingOption] === 1){
+                                //         return d;
+                                //       }
+                                //   })
+                                //   var dataFilter4 = dataFilterInitial4.filter(function (d) {
+                                //     return d != null;
+                                //   });
+                                //   if (selectedStreamingOption === "All Platforms") {
+                                //     dataFilter4 = dataFilter3;
+                                //   }
+                                //
+                                //   chartArea.selectAll("circle.point").remove();
+                                //
+                                //   let circles = chartArea.selectAll("circle.point").data(dataFilter4)
+                                //     .join(enter => enter.append("circle")
+                                //       .attr("class", "point")
+                                //       .attr("opacity", 0.8)
+                                //     )
+                                //     .attr("cx", d => tomatoScale(d['Rotten_Tomatoes']))
+                                //     .attr("cy", d => imbdScale(d['IMDb']))
+                                //     .attr("r", 5)
+                                //     .attr("fill", function(d) {
+                                //              return yearColorScale(d.Decade);
+                                //            ;})
+                                //     .attr("label", d => d["Title"])
+                                //     .attr("genre", d => d["Genres"]);
+                                //
+                                //     circles.on("dblclick",function(d){
+                                //       var savedMovie = d.Title + " (" + d.Year + ")"
+                                //       updateWatchList(savedMovie)
+                                //     });
+                                //
+                                //     //Mouseovers
+                                //     circles.on("mouseover", function (d) {
+                                //       d3.select(this)
+                                //         .transition().duration(200)
+                                //         .attr("stroke", "black")
+                                //         .attr("stroke-width", 4)
+                                //         .attr("fill", lighten(yearColorScale(d['Decade'])));
+                                //         info.transition()
+                                //         info.html("<h2><b>"+"Movie Details: "+"</b></h2>"
+                                //         + "<p><b>"+"Title: "+"</b>"+d["Title"]+"</p>"
+                                //         +"<p><b>"+"Directors: "+"</b>"+d["Directors"]+"</p>"
+                                //         +"<p><b>"+"Year Released: "+"</b>"+d["Year"]+"</p>"
+                                //         +"<p><b>"+"Runtime (Min): "+"</b>"+d["Runtime"]+"</p>"
+                                //         +"<p><b>"+"IMDB Rating: "+"</b>"+d.IMDb+"</p>"
+                                //         +"<p><b>"+"Rotten Tomatoes: "+"</b>"+d.Rotten_Tomatoes+"</p>"
+                                //         +"<p><b>"+"Languages: "+"</b>"+d["Language"]+"</p>")
+                                //     });
+                                //
+                                //     // Mouseout Cleanup Effect
+                                //     circles.on("mouseout", function (d) {
+                                //       d3.select(this)
+                                //         .transition().duration(200)
+                                //         .attr("stroke", "")
+                                //         .attr("stroke-width", 1)
+                                //         .attr("fill", yearColorScale(d['Decade']));
+                                //         info.transition()
+                                //         info.html("<h3><em>"+"Hover over a point on the scatterplot to view specific information about a movie!"+"</em></h3>")
+                                //     });
+                                //
+                                //     let info = d3.select("#introPointInfo")
+                                //       .style("opacity", 0.95);
+                                // }
+                                //
+                                // //Resets all filters and displays all points
+                                // function reset(){
+                                //
+                                //   chartArea.selectAll("circle.point").remove();
+                                //
+                                //   let circles = chartArea.selectAll("circle.point").data(data)
+                                //     .join(enter => enter.append("circle")
+                                //       .attr("class", "point")
+                                //       .attr("opacity", 0.8)
+                                //     )
+                                //     .attr("cx", d => tomatoScale(d['Rotten_Tomatoes']))
+                                //     .attr("cy", d => imbdScale(d['IMDb']))
+                                //     .attr("r", 5)
+                                //     .attr("fill", function(d) {
+                                //              return yearColorScale(d.Decade);
+                                //            ;})
+                                //     .attr("label", d => d["Title"])
+                                //     .attr("genre", d => d["Genres"]);
+                                //
+                                //     var selections = document.getElementsByTagName('select');
+                                //     for (var i = 0; i < selections.length; i++)
+                                //     {
+                                //         selections[i].selectedIndex = 0;
+                                //     }
+                                //     //Mouseovers
+                                //     circles.on("mouseover", function (d) {
+                                //       d3.select(this)
+                                //         .transition().duration(200)
+                                //         .attr("stroke", "black")
+                                //         .attr("stroke-width", 4)
+                                //         .attr("fill", lighten(yearColorScale(d['Decade'])));
+                                //         info.transition()
+                                //         info.html("<h2><b>"+"Movie Details: "+"</b></h2>"
+                                //         + "<p><b>"+"Title: "+"</b>"+d["Title"]+"</p>"
+                                //         +"<p><b>"+"Directors: "+"</b>"+d["Directors"]+"</p>"
+                                //         +"<p><b>"+"Year Released: "+"</b>"+d["Year"]+"</p>"
+                                //         +"<p><b>"+"Runtime (Min): "+"</b>"+d["Runtime"]+"</p>"
+                                //         +"<p><b>"+"IMDB Rating: "+"</b>"+d.IMDb+"</p>"
+                                //         +"<p><b>"+"Rotten Tomatoes: "+"</b>"+d.Rotten_Tomatoes+"</p>"
+                                //         +"<p><b>"+"Languages: "+"</b>"+d["Language"]+"</p>")
+                                //     });
+                                //
+                                //     // Mouseout Cleanup Effect
+                                //     circles.on("mouseout", function (d) {
+                                //       d3.select(this)
+                                //         .transition().duration(200)
+                                //         .attr("stroke", "")
+                                //         .attr("stroke-width", 1)
+                                //         .attr("fill", yearColorScale(d['Decade']));
+                                //         info.transition()
+                                //         info.html("<h3><em>"+"Hover over a point on the scatterplot to view specific information about a movie!"+"</em></h3>")
+                                //     });
+                                //
+                                //     let info = d3.select("#introPointInfo")
+                                //       .style("opacity", 0.95);
+                                // }
+                                //
+                                // // Creating Scales
+                                // const imbdExtent = d3.extent(data, d => d['IMDb']);
+                                // const imbdScale = d3.scaleLinear().domain(imbdExtent).range([chartHeight, 0]);
+                                //
+                                // const tomatoExtent = d3.extent(data, d => d['Rotten_Tomatoes']);
+                                // const tomatoScale = d3.scaleLinear().domain(tomatoExtent).range([0, chartWidth]);
+                                //
+                                // const runtimeExtent = d3.extent(data, d => d['Runtime']);
+                                // const runtimeScale = d3.scaleLinear().domain(runtimeExtent).range([7, 260]);
+                                //
+                                // const yearColorScale = d3.scaleOrdinal().domain(
+                                //   ["1900 - 1909",
+                                //   "1910 - 1919",
+                                //   "1920 - 1929",
+                                //   "1930 - 1939",
+                                //   "1940 - 1949",
+                                //   "1950 - 1959",
+                                //   "1960 - 1969",
+                                //   "1970 - 1979",
+                                //   "1980 - 1989",
+                                //   "1990 - 1999",
+                                //   "2000 - 2009",
+                                //   "2010 - 2019",
+                                //   "2020 - 2029"])
+                                //   .range(["#04d630", "#5caeb9" , "#df4b4b", "#cb7e51", "#ff75e9","#9251cb",
+                                //   "#8c8c8c","#43a8e2","#c6c4ff","#124a4a","#bbba12","#51cba3","#515acb"]);
+                                //
+                                // // Y axis
+                                // let leftAxis = d3.axisLeft(imbdScale)
+                                //   .tickFormat(d3.format(""));
+                                // let leftGridlines = d3.axisLeft(imbdScale)
+                                //   .tickSize(-chartWidth)
+                                //   .tickFormat("")
+                                //
+                                // annotations.append("g")
+                                //   .attr("class", "y axis")
+                                //   .attr("transform", "translate(" + (margin.left) + "," + margin.top + ")")
+                                //   .call(leftAxis)
+                                // annotations.append("g")
+                                //   .attr("class", "y gridlines")
+                                //   .attr("transform", "translate(" + (margin.left) + "," + margin.top + ")")
+                                //   .call(leftGridlines);
+                                //
+                                // // X axis
+                                // let bottomAxis = d3.axisBottom(tomatoScale)
+                                //   .tickFormat(d3.format(""));
+                                // let bottomGridlines = d3.axisBottom(tomatoScale)
+                                //   .tickSize(-chartHeight)
+                                //   .tickFormat("")
+                                //
+                                // annotations.append("g")
+                                //   .attr("class", "x axis")
+                                //   .attr("transform", "translate(" + margin.left + "," + (chartHeight + margin.top) + ")")
+                                //   .call(bottomAxis);
+                                // annotations.append("g")
+                                //   .attr("class", "x gridlines")
+                                //   .attr("transform", "translate(" + margin.left + "," + (chartHeight + margin.top) + ")")
+                                //   .call(bottomGridlines);
+                                //
+                                // // Adding Axis Labels
+                                //
+                                // //Y Axis
+                                // annotations.append("text")
+                                //   .attr("class", "y label")
+                                //   .attr("text-anchor", "end")
+                                //   .attr("y", 3)
+                                //   .attr("x", -290)
+                                //   .attr("dy", "0.75em")
+                                //   .attr("transform", "rotate(-90)")
+                                //   .style("font-size", "20px")
+                                //   .text("IMDB Ranking (Rank 1-10)");
+                                //
+                                // //X Axis
+                                // annotations.append("text")
+                                //   .attr("class", "x label")
+                                //   .attr("text-anchor", "end")
+                                //   .attr("x", width - 250)
+                                //   .attr("y", height - 6)
+                                //   .style("font-size", "20px")
+                                //   .text("Rotten Tomatoes Rating (%)");
+                                //
+                                // // Circle Plotting
+                                // let circles = chartArea.selectAll("circle.point").data(data)
+                                //   .join(enter => enter.append("circle")
+                                //     .attr("class", "point")
+                                //     .attr("opacity", 0.8)
+                                //   )
+                                //   .attr("cx", d => tomatoScale(d['Rotten_Tomatoes']))
+                                //   .attr("cy", d => imbdScale(d['IMDb']))
+                                //   .attr("r", 5)
+                                //   .attr("fill", function(d) {
+                                //            return yearColorScale(d.Decade);
+                                //          ;})
+                                //   .attr("label", d => d["Title"])
+                                //   .attr("genre", d => d["Genres"]);
+                                //
+                                //   //Mouseovers
+                                //   circles.on("mouseover", function (d) {
+                                //     d3.select(this)
+                                //       .transition().duration(200)
+                                //       .attr("stroke", "black")
+                                //       .attr("stroke-width", 4)
+                                //       .attr("fill", lighten(yearColorScale(d['Decade'])));
+                                //       info.transition()
+                                //       info.html("<h2><b>"+"Movie Details: "+"</b></h2>"
+                                //       + "<p><b>"+"Title: "+"</b>"+d["Title"]+"</p>"
+                                //       +"<p><b>"+"Directors: "+"</b>"+d["Directors"]+"</p>"
+                                //       +"<p><b>"+"Year Released: "+"</b>"+d["Year"]+"</p>"
+                                //       +"<p><b>"+"Runtime (Min): "+"</b>"+d["Runtime"]+"</p>"
+                                //       +"<p><b>"+"IMDB Rating: "+"</b>"+d.IMDb+"</p>"
+                                //       +"<p><b>"+"Rotten Tomatoes: "+"</b>"+d.Rotten_Tomatoes+"</p>"
+                                //       +"<p><b>"+"Languages: "+"</b>"+d["Language"]+"</p>")
+                                //   });
+                                //
+                                //   // Mouseout Cleanup Effect
+                                //   circles.on("mouseout", function (d) {
+                                //     d3.select(this)
+                                //       .transition().duration(200)
+                                //       .attr("stroke", "")
+                                //       .attr("stroke-width", 1)
+                                //       .attr("fill", yearColorScale(d['Decade']));
+                                //       info.transition()
+                                //       info.html("<h3><em>"+"Hover over a point on the scatterplot to view specific information about a movie!"+"</em></h3>")
+                                //   });
+                                //
+                                //   let info = d3.select("#introPointInfo")
+                                //     .style("opacity", 0.95);
+                                //
+                                //   //Update Saved Movies
+                                //   circles.on("dblclick",function(d){
+                                //     var savedMovie = d.Title + " (" + d.Year + ")"
+                                //     updateWatchList(savedMovie)
+                                //   });
+                                //
+                                //   function updateWatchList(savedMovie){
+                                //       var watchList = d3.select("#watchList")
+                                //       savedAthleteList.push(savedMovie)
+                                //       watchList.data(savedAthleteList)
+                                //       .enter().append("g")
+                                //       .attr("class", "savedMovies");
+                                //       if (savedAthleteList.length == 1) {
+                                //         watchList.select("h3").remove()
+                                //         watchList.append("text")
+                                //              .html("<h2>Watch List:</h2>");
+                                //       }
+                                //       if (savedAthleteList.length < 9) {
+                                //         watchList.append("text")
+                                //              .attr("x", 20)
+                                //              .attr("y", 5)
+                                //              .style("text-anchor", "start")
+                                //              .html(savedMovie + "</br>");
+                                //       } else {
+                                //         alert("You can only save up to 8 movies.")
+                                //       }
+                                //     }
+                            }
 
-                                                            // //Deletes old points and replaces with new points that fit the criteria of the four filter select options
-                                                            // function update() {
-                                                            //   // Create new data with year selection
-                                                            //   var selectedYearOption = d3.select("#selectYear").property("value")
-                                                            //   var dataFilterInitial = data.map(function(d){
-                                                            //     if (d.Decade === selectedYearOption){
-                                                            //       return d;
-                                                            //     }
-                                                            //   })
-                                                            //   var dataFilter = dataFilterInitial.filter(function (d) {
-                                                            //     return d != null;
-                                                            //   });
-                                                            //
-                                                            //   if (selectedYearOption === "All Decades") {
-                                                            //     dataFilter = data;
-                                                            //   }
-                                                            //   // Update new data with genre selection
-                                                            //   var selectedGenreOption = d3.select("#selectGenre").property("value")
-                                                            //   var dataFilterInitial2 = dataFilter.map(function(d){
-                                                            //     for( i=0; i<d.Genres.length; i++) {
-                                                            //       if (d.Genres[i] === selectedGenreOption){
-                                                            //         return d;
-                                                            //       }
-                                                            //     }})
-                                                            //   var dataFilter2 = dataFilterInitial2.filter(function (d) {
-                                                            //     return d != null;
-                                                            //   });
-                                                            //   if (selectedGenreOption === "All Genres") {
-                                                            //     dataFilter2 = dataFilter;
-                                                            //   }
-                                                            //
-                                                            //   // Update new data with language selection
-                                                            //   var selectedLanguageOption = d3.select("#selectLanguage").property("value")
-                                                            //   var dataFilterInitial3 = dataFilter2.map(function(d){
-                                                            //     for( i=0; i<d.Language.length; i++) {
-                                                            //       if (d.Language[i] === selectedLanguageOption){
-                                                            //         return d;
-                                                            //       }
-                                                            //     }})
-                                                            //   var dataFilter3 = dataFilterInitial3.filter(function (d) {
-                                                            //     return d != null;
-                                                            //   });
-                                                            //   if (selectedLanguageOption === "All Languages") {
-                                                            //     dataFilter3 = dataFilter2;
-                                                            //   }
-                                                            //
-                                                            //   // Update new data with streaming platform selection
-                                                            //   var selectedStreamingOption = d3.select("#selectStreaming").property("value")
-                                                            //   var dataFilterInitial4 = dataFilter3.map(function(d){
-                                                            //       if (d[selectedStreamingOption] === 1){
-                                                            //         return d;
-                                                            //       }
-                                                            //   })
-                                                            //   var dataFilter4 = dataFilterInitial4.filter(function (d) {
-                                                            //     return d != null;
-                                                            //   });
-                                                            //   if (selectedStreamingOption === "All Platforms") {
-                                                            //     dataFilter4 = dataFilter3;
-                                                            //   }
-                                                            //
-                                                            //   chartArea.selectAll("circle.point").remove();
-                                                            //
-                                                            //   let circles = chartArea.selectAll("circle.point").data(dataFilter4)
-                                                            //     .join(enter => enter.append("circle")
-                                                            //       .attr("class", "point")
-                                                            //       .attr("opacity", 0.8)
-                                                            //     )
-                                                            //     .attr("cx", d => tomatoScale(d['Rotten_Tomatoes']))
-                                                            //     .attr("cy", d => imbdScale(d['IMDb']))
-                                                            //     .attr("r", 5)
-                                                            //     .attr("fill", function(d) {
-                                                            //              return yearColorScale(d.Decade);
-                                                            //            ;})
-                                                            //     .attr("label", d => d["Title"])
-                                                            //     .attr("genre", d => d["Genres"]);
-                                                            //
-                                                            //     circles.on("dblclick",function(d){
-                                                            //       var savedMovie = d.Title + " (" + d.Year + ")"
-                                                            //       updateWatchList(savedMovie)
-                                                            //     });
-                                                            //
-                                                            //     //Mouseovers
-                                                            //     circles.on("mouseover", function (d) {
-                                                            //       d3.select(this)
-                                                            //         .transition().duration(200)
-                                                            //         .attr("stroke", "black")
-                                                            //         .attr("stroke-width", 4)
-                                                            //         .attr("fill", lighten(yearColorScale(d['Decade'])));
-                                                            //         info.transition()
-                                                            //         info.html("<h2><b>"+"Movie Details: "+"</b></h2>"
-                                                            //         + "<p><b>"+"Title: "+"</b>"+d["Title"]+"</p>"
-                                                            //         +"<p><b>"+"Directors: "+"</b>"+d["Directors"]+"</p>"
-                                                            //         +"<p><b>"+"Year Released: "+"</b>"+d["Year"]+"</p>"
-                                                            //         +"<p><b>"+"Runtime (Min): "+"</b>"+d["Runtime"]+"</p>"
-                                                            //         +"<p><b>"+"IMDB Rating: "+"</b>"+d.IMDb+"</p>"
-                                                            //         +"<p><b>"+"Rotten Tomatoes: "+"</b>"+d.Rotten_Tomatoes+"</p>"
-                                                            //         +"<p><b>"+"Languages: "+"</b>"+d["Language"]+"</p>")
-                                                            //     });
-                                                            //
-                                                            //     // Mouseout Cleanup Effect
-                                                            //     circles.on("mouseout", function (d) {
-                                                            //       d3.select(this)
-                                                            //         .transition().duration(200)
-                                                            //         .attr("stroke", "")
-                                                            //         .attr("stroke-width", 1)
-                                                            //         .attr("fill", yearColorScale(d['Decade']));
-                                                            //         info.transition()
-                                                            //         info.html("<h3><em>"+"Hover over a point on the scatterplot to view specific information about a movie!"+"</em></h3>")
-                                                            //     });
-                                                            //
-                                                            //     let info = d3.select("#introPointInfo")
-                                                            //       .style("opacity", 0.95);
-                                                            // }
-                                                            //
-                                                            // //Resets all filters and displays all points
-                                                            // function reset(){
-                                                            //
-                                                            //   chartArea.selectAll("circle.point").remove();
-                                                            //
-                                                            //   let circles = chartArea.selectAll("circle.point").data(data)
-                                                            //     .join(enter => enter.append("circle")
-                                                            //       .attr("class", "point")
-                                                            //       .attr("opacity", 0.8)
-                                                            //     )
-                                                            //     .attr("cx", d => tomatoScale(d['Rotten_Tomatoes']))
-                                                            //     .attr("cy", d => imbdScale(d['IMDb']))
-                                                            //     .attr("r", 5)
-                                                            //     .attr("fill", function(d) {
-                                                            //              return yearColorScale(d.Decade);
-                                                            //            ;})
-                                                            //     .attr("label", d => d["Title"])
-                                                            //     .attr("genre", d => d["Genres"]);
-                                                            //
-                                                            //     var selections = document.getElementsByTagName('select');
-                                                            //     for (var i = 0; i < selections.length; i++)
-                                                            //     {
-                                                            //         selections[i].selectedIndex = 0;
-                                                            //     }
-                                                            //     //Mouseovers
-                                                            //     circles.on("mouseover", function (d) {
-                                                            //       d3.select(this)
-                                                            //         .transition().duration(200)
-                                                            //         .attr("stroke", "black")
-                                                            //         .attr("stroke-width", 4)
-                                                            //         .attr("fill", lighten(yearColorScale(d['Decade'])));
-                                                            //         info.transition()
-                                                            //         info.html("<h2><b>"+"Movie Details: "+"</b></h2>"
-                                                            //         + "<p><b>"+"Title: "+"</b>"+d["Title"]+"</p>"
-                                                            //         +"<p><b>"+"Directors: "+"</b>"+d["Directors"]+"</p>"
-                                                            //         +"<p><b>"+"Year Released: "+"</b>"+d["Year"]+"</p>"
-                                                            //         +"<p><b>"+"Runtime (Min): "+"</b>"+d["Runtime"]+"</p>"
-                                                            //         +"<p><b>"+"IMDB Rating: "+"</b>"+d.IMDb+"</p>"
-                                                            //         +"<p><b>"+"Rotten Tomatoes: "+"</b>"+d.Rotten_Tomatoes+"</p>"
-                                                            //         +"<p><b>"+"Languages: "+"</b>"+d["Language"]+"</p>")
-                                                            //     });
-                                                            //
-                                                            //     // Mouseout Cleanup Effect
-                                                            //     circles.on("mouseout", function (d) {
-                                                            //       d3.select(this)
-                                                            //         .transition().duration(200)
-                                                            //         .attr("stroke", "")
-                                                            //         .attr("stroke-width", 1)
-                                                            //         .attr("fill", yearColorScale(d['Decade']));
-                                                            //         info.transition()
-                                                            //         info.html("<h3><em>"+"Hover over a point on the scatterplot to view specific information about a movie!"+"</em></h3>")
-                                                            //     });
-                                                            //
-                                                            //     let info = d3.select("#introPointInfo")
-                                                            //       .style("opacity", 0.95);
-                                                            // }
-                                                            //
-                                                            // // Creating Scales
-                                                            // const imbdExtent = d3.extent(data, d => d['IMDb']);
-                                                            // const imbdScale = d3.scaleLinear().domain(imbdExtent).range([chartHeight, 0]);
-                                                            //
-                                                            // const tomatoExtent = d3.extent(data, d => d['Rotten_Tomatoes']);
-                                                            // const tomatoScale = d3.scaleLinear().domain(tomatoExtent).range([0, chartWidth]);
-                                                            //
-                                                            // const runtimeExtent = d3.extent(data, d => d['Runtime']);
-                                                            // const runtimeScale = d3.scaleLinear().domain(runtimeExtent).range([7, 260]);
-                                                            //
-                                                            // const yearColorScale = d3.scaleOrdinal().domain(
-                                                            //   ["1900 - 1909",
-                                                            //   "1910 - 1919",
-                                                            //   "1920 - 1929",
-                                                            //   "1930 - 1939",
-                                                            //   "1940 - 1949",
-                                                            //   "1950 - 1959",
-                                                            //   "1960 - 1969",
-                                                            //   "1970 - 1979",
-                                                            //   "1980 - 1989",
-                                                            //   "1990 - 1999",
-                                                            //   "2000 - 2009",
-                                                            //   "2010 - 2019",
-                                                            //   "2020 - 2029"])
-                                                            //   .range(["#04d630", "#5caeb9" , "#df4b4b", "#cb7e51", "#ff75e9","#9251cb",
-                                                            //   "#8c8c8c","#43a8e2","#c6c4ff","#124a4a","#bbba12","#51cba3","#515acb"]);
-                                                            //
-                                                            // // Y axis
-                                                            // let leftAxis = d3.axisLeft(imbdScale)
-                                                            //   .tickFormat(d3.format(""));
-                                                            // let leftGridlines = d3.axisLeft(imbdScale)
-                                                            //   .tickSize(-chartWidth)
-                                                            //   .tickFormat("")
-                                                            //
-                                                            // annotations.append("g")
-                                                            //   .attr("class", "y axis")
-                                                            //   .attr("transform", "translate(" + (margin.left) + "," + margin.top + ")")
-                                                            //   .call(leftAxis)
-                                                            // annotations.append("g")
-                                                            //   .attr("class", "y gridlines")
-                                                            //   .attr("transform", "translate(" + (margin.left) + "," + margin.top + ")")
-                                                            //   .call(leftGridlines);
-                                                            //
-                                                            // // X axis
-                                                            // let bottomAxis = d3.axisBottom(tomatoScale)
-                                                            //   .tickFormat(d3.format(""));
-                                                            // let bottomGridlines = d3.axisBottom(tomatoScale)
-                                                            //   .tickSize(-chartHeight)
-                                                            //   .tickFormat("")
-                                                            //
-                                                            // annotations.append("g")
-                                                            //   .attr("class", "x axis")
-                                                            //   .attr("transform", "translate(" + margin.left + "," + (chartHeight + margin.top) + ")")
-                                                            //   .call(bottomAxis);
-                                                            // annotations.append("g")
-                                                            //   .attr("class", "x gridlines")
-                                                            //   .attr("transform", "translate(" + margin.left + "," + (chartHeight + margin.top) + ")")
-                                                            //   .call(bottomGridlines);
-                                                            //
-                                                            // // Adding Axis Labels
-                                                            //
-                                                            // //Y Axis
-                                                            // annotations.append("text")
-                                                            //   .attr("class", "y label")
-                                                            //   .attr("text-anchor", "end")
-                                                            //   .attr("y", 3)
-                                                            //   .attr("x", -290)
-                                                            //   .attr("dy", "0.75em")
-                                                            //   .attr("transform", "rotate(-90)")
-                                                            //   .style("font-size", "20px")
-                                                            //   .text("IMDB Ranking (Rank 1-10)");
-                                                            //
-                                                            // //X Axis
-                                                            // annotations.append("text")
-                                                            //   .attr("class", "x label")
-                                                            //   .attr("text-anchor", "end")
-                                                            //   .attr("x", width - 250)
-                                                            //   .attr("y", height - 6)
-                                                            //   .style("font-size", "20px")
-                                                            //   .text("Rotten Tomatoes Rating (%)");
-                                                            //
-                                                            // // Circle Plotting
-                                                            // let circles = chartArea.selectAll("circle.point").data(data)
-                                                            //   .join(enter => enter.append("circle")
-                                                            //     .attr("class", "point")
-                                                            //     .attr("opacity", 0.8)
-                                                            //   )
-                                                            //   .attr("cx", d => tomatoScale(d['Rotten_Tomatoes']))
-                                                            //   .attr("cy", d => imbdScale(d['IMDb']))
-                                                            //   .attr("r", 5)
-                                                            //   .attr("fill", function(d) {
-                                                            //            return yearColorScale(d.Decade);
-                                                            //          ;})
-                                                            //   .attr("label", d => d["Title"])
-                                                            //   .attr("genre", d => d["Genres"]);
-                                                            //
-                                                            //   //Mouseovers
-                                                            //   circles.on("mouseover", function (d) {
-                                                            //     d3.select(this)
-                                                            //       .transition().duration(200)
-                                                            //       .attr("stroke", "black")
-                                                            //       .attr("stroke-width", 4)
-                                                            //       .attr("fill", lighten(yearColorScale(d['Decade'])));
-                                                            //       info.transition()
-                                                            //       info.html("<h2><b>"+"Movie Details: "+"</b></h2>"
-                                                            //       + "<p><b>"+"Title: "+"</b>"+d["Title"]+"</p>"
-                                                            //       +"<p><b>"+"Directors: "+"</b>"+d["Directors"]+"</p>"
-                                                            //       +"<p><b>"+"Year Released: "+"</b>"+d["Year"]+"</p>"
-                                                            //       +"<p><b>"+"Runtime (Min): "+"</b>"+d["Runtime"]+"</p>"
-                                                            //       +"<p><b>"+"IMDB Rating: "+"</b>"+d.IMDb+"</p>"
-                                                            //       +"<p><b>"+"Rotten Tomatoes: "+"</b>"+d.Rotten_Tomatoes+"</p>"
-                                                            //       +"<p><b>"+"Languages: "+"</b>"+d["Language"]+"</p>")
-                                                            //   });
-                                                            //
-                                                            //   // Mouseout Cleanup Effect
-                                                            //   circles.on("mouseout", function (d) {
-                                                            //     d3.select(this)
-                                                            //       .transition().duration(200)
-                                                            //       .attr("stroke", "")
-                                                            //       .attr("stroke-width", 1)
-                                                            //       .attr("fill", yearColorScale(d['Decade']));
-                                                            //       info.transition()
-                                                            //       info.html("<h3><em>"+"Hover over a point on the scatterplot to view specific information about a movie!"+"</em></h3>")
-                                                            //   });
-                                                            //
-                                                            //   let info = d3.select("#introPointInfo")
-                                                            //     .style("opacity", 0.95);
-                                                            //
-                                                            //   //Update Saved Movies
-                                                            //   circles.on("dblclick",function(d){
-                                                            //     var savedMovie = d.Title + " (" + d.Year + ")"
-                                                            //     updateWatchList(savedMovie)
-                                                            //   });
-                                                            //
-                                                            //   function updateWatchList(savedMovie){
-                                                            //       var watchList = d3.select("#watchList")
-                                                            //       savedAthleteList.push(savedMovie)
-                                                            //       watchList.data(savedAthleteList)
-                                                            //       .enter().append("g")
-                                                            //       .attr("class", "savedMovies");
-                                                            //       if (savedAthleteList.length == 1) {
-                                                            //         watchList.select("h3").remove()
-                                                            //         watchList.append("text")
-                                                            //              .html("<h2>Watch List:</h2>");
-                                                            //       }
-                                                            //       if (savedAthleteList.length < 9) {
-                                                            //         watchList.append("text")
-                                                            //              .attr("x", 20)
-                                                            //              .attr("y", 5)
-                                                            //              .style("text-anchor", "start")
-                                                            //              .html(savedMovie + "</br>");
-                                                            //       } else {
-                                                            //         alert("You can only save up to 8 movies.")
-                                                            //       }
-                                                            //     }
-                                                        }
-
-                                                        requestData();
-                                                        loadScatter();
-                                                    </script>
-                                                </div>
+                            requestData();
+                            loadScatter();
+                        </script>
+                    </div>
 </body>
 
 </html>
