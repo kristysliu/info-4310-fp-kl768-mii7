@@ -7,7 +7,7 @@
     <script src="https://unpkg.com/d3-simple-slider"></script>
     <script src="https://d3js.org/topojson.v2.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/d3-legend/2.25.6/d3-legend.min.js"></script>
-    <script src="https://d3js.org/d3.v4.js"></script>
+    <!-- <script src="https://d3js.org/d3.v4.js"></script> -->
     <script src="https://unpkg.com/topojson-client@3"></script>
 
     <title>INFO4310 Final Project</title>
@@ -593,46 +593,64 @@
              const legWidth = scatterLeg.attr("width");
              const legHeight = scatterLeg.attr("height");
 
-             const chartWidth = width - margin.left - margin.right;
-             const chartHeight = height - margin.top - margin.bottom;
+             const chartWidth = scatterwidth - scattermargin.left - scattermargin.right;
+             const chartHeight = scatterheight - scattermargin.top - scattermargin.bottom;
 
              let annotations = scatter.append("g")
                                  .attr("id", "annotations")
                                  .attr("class", "graph-svg-component2");
 
              let chartArea = scatter.append("g").attr("id", "points").attr("class", "graph-svg-component")
-               .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+               .attr("transform", "translate(" + scattermargin.left + "," + scattermargin.top + ")");
 
              let colorLegendGroup = scatterLeg.append('g')
                                  .attr("id", "colorLegendGroup");
 
              const loadScatter = async function () {
-               let scatterdataInitial = await d3.csv('athlete_events.csv', d3.autoType)
-               var allSport = []
-               var allNationality = []
-               var allEvent = []
-               var allYear = []
-               var allAge = []
-               var allWeight = []
-               var allHeight = []
+               // let scatterdata = await d3.csv('athlete_events_filtered.csv', d3.autoType)
+               // var allSport = []
+               // var allNationality = []
+               // var allEvent = []
+               // var allYear = []
+               // var allAge = []
+               // var allWeight = []
+               // var allHeight = []
                //Data Issues
-               let scatterdata = scatterdataInitial.filter(function(d){
-                   return ((d.Weight != "NA") && (d.Height != "NA") && (d.Age != "NA"))
-               });
+
+               //Not sure why this doesn't work anymore ? ? ?
+               // let scatterdataInitial = await d3.csv('athlete_events.csv', d3.autoType)
+               // let scatterdata = scatterdataInitial.filter(function(d){
+               //     return ((d.Weight != "NA") && (d.Height != "NA") && (d.Age != "NA"))
+               // });
 
                // NEW DATASET (by person no duplicates): ID, Sex, NOC, Sport, Team,
                // Weight, Height, Oldest age competed, Events array, # of olympics,
                // # of gold, silver, bronze medals, Success rate (# of medals/# of olympics),
                // Dictionary of events = {# of gold, # of silver, # of bronze, # of no medals, total # medals},
-               let scatterProfilesData = await d3.csv('athlete_profiles.csv', d3.autoType)
-               let scatterMedalsData = await d3.csv('athlete_medals.csv', d3.autoType)
+               var scatterProfilesData = await d3.csv('athlete_profiles.csv');
+               var scatterMedalsData = await d3.csv('athlete_medals.csv');
                scatterProfilesData.forEach(p => {
                  p["Events"] = [];
                  p["EventMedals"] = [];
                  p["TimesCompeted"] = 0;
                  p["NumberMedals"] = 0;
+                 p["topMedal"] = 0; //where 0 is no medals, 1 is bronze, 2 is silver, 3 is gold
                  scatterMedalsData.forEach(d => {
                    if(p.ID == d.ID){
+                     p["TimesCompeted"]+=1;
+
+                     if(p["topMedal"]<3){
+                       if(d.Medal == "Gold"){
+                         p["topMedal"]= 3;
+                       } else if(p["topMedal"]<2){
+                           if(d.Medal == "Silver"){
+                             p["topMedal"]= 2;
+                           }else if(d.Medal == "Bronze"){
+                             p["topMedal"]= 1;
+                           }
+                         }
+                     }
+
                        if(!(p["Events"].includes(d.Event))){
                          p["Events"].push(d.Event);
                          if(d["Medal"]=="NA"){
@@ -646,6 +664,7 @@
                                    }
                                  );
                            }else if(d["Medal"]=="Gold"){
+                             p["NumberMedals"] +=1;
                              p["EventMedals"].push(
                                      { "Event": d.Event,
                                      "Gold": 1,
@@ -656,6 +675,7 @@
                                      }
                                    );
                            }else if(d["Medal"]=="Silver"){
+                             p["NumberMedals"] +=1;
                              p["EventMedals"].push(
                                      { "Event": d.Event,
                                      "Gold": 0,
@@ -666,6 +686,7 @@
                                      }
                                    );
                            }else if(d["Medal"]=="Bronze"){
+                             p["NumberMedals"] +=1;
                              p["EventMedals"].push(
                                      { "Event": d.Event,
                                      "Gold": 0,
@@ -681,10 +702,13 @@
                            if(d["Medal"]=="NoMedals"){
                              p["EventMedals"][index]["NoMedals"] += 1;
                            } else if(d["Medal"]=="Gold"){
+                             p["NumberMedals"] +=1;
                              p["EventMedals"][index]["Gold"] += 1;
                            } else if(d["Medal"]=="Silver"){
+                             p["NumberMedals"] +=1;
                              p["EventMedals"][index]["Silver"] += 1;
                            } else if(d["Medal"]=="Bronze"){
+                             p["NumberMedals"] +=1;
                              p["EventMedals"][index]["Bronze"] += 1;
                            }
                          }
@@ -692,111 +716,105 @@
                  });
                });
 
-               scatterdata.forEach(d => {
-                 d['Weight'] = parseFloat(d['Weight']);
-                 d['Height'] = parseFloat(d['Height']);
-                 d['Age'] = parseFloat(d['Age']);
-                 d['Year'] = parseFloat(d['Year']);
-
-                 if (!allSport.includes(d['Sport'])){
-                   allSport.push(d['Sport'])
-                 }
-                 if(d['NOC']=="ISV"){
-                   d['NOC']="USA";
-                 }
-                 if (!allNationality.includes(d['NOC'])){
-                   allNationality.push(d['NOC'])
-                 }
-                 if (!allEvent.includes(d['Event'])){
-                   allEvent.push(d['Event'])
-                 }
-                 if (!allWeight.includes(d['Weight'])){
-                   allWeight.push(d['Weight'])
-                 }
-                 if (!allHeight.includes(d['Height'])){
-                   allHeight.push(d['Height'])
-                 }
-                 if (!allAge.includes(d['Age'])){
-                   allAge.push(d['Age'])
-                 }
-                 if (!allYear.includes(d['Year'])){
-                   allYear.push(d['Year'])
-                 }
-               });
-
-               allSport.sort();
-               allSport.unshift("Select Sport")
-               allNationality.sort();
-               allNationality.unshift("All Nationalities")
-               allEvent.sort();
-               allEvent.unshift("All Events")
-
-               var weightMax = Math.max.apply(Math, allWeight);
-                   weightMin = Math.min.apply(Math,allWeight);
-                   heightMax = Math.max.apply(Math, allHeight);
-                   heightMin =Math.min.apply(Math, allHeight)
-                   ageMax = Math.max.apply(Math, allAge);
-                   ageMin = Math.min.apply(Math,allAge);
-                   yearMax = Math.max.apply(Math, allYear);
-                   yearMin = Math.min.apply(Math,allYear);
-               // allWeight.sort(function(a,b) { return a - b;});
-               // allWeight.unshift("All Weights")
-               // allHeight.sort(function(a,b) { return a - b;});
-               // allHeight.unshift("All Heights")
-               // allAge.sort(function(a,b) { return a - b;});
-               // allAge.unshift("All Ages")
-
-               // Initializing Filters
-               d3.select("#selectSportSP")
-                 .selectAll('myOptions')
-                	.data(allSport)
-                 .enter()
-               	.append('option')
-                 .text(function (d) { return d; })
-                 .attr("value", function (d) { return d; })
-
-               d3.select("#selectNationalitySP")
-                 .selectAll('myOptions')
-                	.data(allNationality)
-                 .enter()
-               	.append('option')
-                 .text(function (d) { return d; })
-                 .attr("value", function (d) { return d; })
-
-               d3.select("#selectEventSP")
-                 .selectAll('myOptions')
-                	.data(allEvent)
-                 .enter()
-               	.append('option')
-                 .text(function (d) { return d; })
-                 .attr("value", function (d) { return d; })
-
-               d3.select("#selectGoldSP")
-                 .selectAll('myOptions')
-                	.data(["0","1","2",">3"])
-                 .enter()
-               	.append('option')
-                 .text(function (d) { return d; })
-                 .attr("value", function (d) { return d; })
-               d3.select("#selectSilverSP")
-                 .selectAll('myOptions')
-                 .data(["0","1","2",">3"])
-                 .enter()
-               	.append('option')
-                 .text(function (d) { return d; })
-                 .attr("value", function (d) { return d; })
-               d3.select("#selectBronzeSP")
-                 .selectAll('myOptions')
-                 .data(["0","1","2",">3"])
-                 .enter()
-               	.append('option')
-                 .text(function (d) { return d; })
-                 .attr("value", function (d) { return d; })
-
-               // Runs update function when any of the select drop-downs are changed
-               d3.select("#generateButtonSP").on("click", function(d) { updateSP() })
-               // Runs reset function when reset button is clicked
-               d3.select("#resetButtonSP").on("click", function(d) { resetSP() })
+               // scatterdata.forEach(d => {
+               //   d['Weight'] = parseFloat(d['Weight']);
+               //   d['Height'] = parseFloat(d['Height']);
+               //   d['Age'] = parseFloat(d['Age']);
+               //   d['Year'] = parseFloat(d['Year']);
+               //
+               //   if (!allSport.includes(d['Sport'])){
+               //     allSport.push(d['Sport'])
+               //   }
+               //   if(d['NOC']=="ISV"){
+               //     d['NOC']="USA";
+               //   }
+               //   if (!allNationality.includes(d['NOC'])){
+               //     allNationality.push(d['NOC'])
+               //   }
+               //   if (!allEvent.includes(d['Event'])){
+               //     allEvent.push(d['Event'])
+               //   }
+               //   if (!allWeight.includes(d['Weight'])){
+               //     allWeight.push(d['Weight'])
+               //   }
+               //   if (!allHeight.includes(d['Height'])){
+               //     allHeight.push(d['Height'])
+               //   }
+               //   if (!allAge.includes(d['Age'])){
+               //     allAge.push(d['Age'])
+               //   }
+               //   if (!allYear.includes(d['Year'])){
+               //     allYear.push(d['Year'])
+               //   }
+               // });
+               //
+               // allSport.sort();
+               // allSport.unshift("Select Sport")
+               // allNationality.sort();
+               // allNationality.unshift("All Nationalities")
+               // allEvent.sort();
+               // allEvent.unshift("All Events")
+               //
+               // var weightMax = Math.max.apply(Math, allWeight);
+               //     weightMin = Math.min.apply(Math,allWeight);
+               //     heightMax = Math.max.apply(Math, allHeight);
+               //     heightMin =Math.min.apply(Math, allHeight)
+               //     ageMax = Math.max.apply(Math, allAge);
+               //     ageMin = Math.min.apply(Math,allAge);
+               //     yearMax = Math.max.apply(Math, allYear);
+               //     yearMin = Math.min.apply(Math,allYear);
+               //
+               // // Initializing Filters
+               // d3.select("#selectSportSP")
+               //   .selectAll('myOptions')
+               //  	.data(allSport)
+               //   .enter()
+               // 	.append('option')
+               //   .text(function (d) { return d; })
+               //   .attr("value", function (d) { return d; })
+               //
+               // d3.select("#selectNationalitySP")
+               //   .selectAll('myOptions')
+               //  	.data(allNationality)
+               //   .enter()
+               // 	.append('option')
+               //   .text(function (d) { return d; })
+               //   .attr("value", function (d) { return d; })
+               //
+               // d3.select("#selectEventSP")
+               //   .selectAll('myOptions')
+               //  	.data(allEvent)
+               //   .enter()
+               // 	.append('option')
+               //   .text(function (d) { return d; })
+               //   .attr("value", function (d) { return d; })
+               //
+               // d3.select("#selectGoldSP")
+               //   .selectAll('myOptions')
+               //  	.data(["0","1","2",">3"])
+               //   .enter()
+               // 	.append('option')
+               //   .text(function (d) { return d; })
+               //   .attr("value", function (d) { return d; })
+               // d3.select("#selectSilverSP")
+               //   .selectAll('myOptions')
+               //   .data(["0","1","2",">3"])
+               //   .enter()
+               // 	.append('option')
+               //   .text(function (d) { return d; })
+               //   .attr("value", function (d) { return d; })
+               // d3.select("#selectBronzeSP")
+               //   .selectAll('myOptions')
+               //   .data(["0","1","2",">3"])
+               //   .enter()
+               // 	.append('option')
+               //   .text(function (d) { return d; })
+               //   .attr("value", function (d) { return d; })
+               //
+               // // Runs update function when any of the select drop-downs are changed
+               // d3.select("#generateButtonSP").on("click", function(d) { updateSP() })
+               // // Runs reset function when reset button is clicked
+               // d3.select("#resetButtonSP").on("click", function(d) { resetSP() })
 
                // //Deletes old points and replaces with new points that fit the criteria of the four filter select options
                // function updateSP() {
@@ -879,38 +897,6 @@
                //       updateWatchList(savedMovie)
                //     });
                //
-               //     //Mouseovers
-               //     circles.on("mouseover", function (d) {
-               //       d3.select(this)
-               //         .transition().duration(200)
-               //         .attr("stroke", "black")
-               //         .attr("stroke-width", 4)
-               //         .attr("fill", lighten(yearColorScale(d['Decade'])));
-               //         info.transition()
-               //         info.html("<h2><b>"+"Movie Details: "+"</b></h2>"
-               //         + "<p><b>"+"Title: "+"</b>"+d["Title"]+"</p>"
-               //         +"<p><b>"+"Directors: "+"</b>"+d["Directors"]+"</p>"
-               //         +"<p><b>"+"Year Released: "+"</b>"+d["Year"]+"</p>"
-               //         +"<p><b>"+"Runtime (Min): "+"</b>"+d["Runtime"]+"</p>"
-               //         +"<p><b>"+"IMDB Rating: "+"</b>"+d.IMDb+"</p>"
-               //         +"<p><b>"+"Rotten Tomatoes: "+"</b>"+d.Rotten_Tomatoes+"</p>"
-               //         +"<p><b>"+"Languages: "+"</b>"+d["Language"]+"</p>")
-               //     });
-               //
-               //     // Mouseout Cleanup Effect
-               //     circles.on("mouseout", function (d) {
-               //       d3.select(this)
-               //         .transition().duration(200)
-               //         .attr("stroke", "")
-               //         .attr("stroke-width", 1)
-               //         .attr("fill", yearColorScale(d['Decade']));
-               //         info.transition()
-               //         info.html("<h3><em>"+"Hover over a point on the scatterplot to view specific information about a movie!"+"</em></h3>")
-               //     });
-               //
-               //     let info = d3.select("#introPointInfo")
-               //       .style("opacity", 0.95);
-               // }
                //
                // //Resets all filters and displays all points
                // function resetSP(){
@@ -936,161 +922,97 @@
                //     {
                //         selections[i].selectedIndex = 0;
                //     }
-               //     //Mouseovers
-               //     circles.on("mouseover", function (d) {
-               //       d3.select(this)
-               //         .transition().duration(200)
-               //         .attr("stroke", "black")
-               //         .attr("stroke-width", 4)
-               //         .attr("fill", lighten(yearColorScale(d['Decade'])));
-               //         info.transition()
-               //         info.html("<h2><b>"+"Movie Details: "+"</b></h2>"
-               //         + "<p><b>"+"Title: "+"</b>"+d["Title"]+"</p>"
-               //         +"<p><b>"+"Directors: "+"</b>"+d["Directors"]+"</p>"
-               //         +"<p><b>"+"Year Released: "+"</b>"+d["Year"]+"</p>"
-               //         +"<p><b>"+"Runtime (Min): "+"</b>"+d["Runtime"]+"</p>"
-               //         +"<p><b>"+"IMDB Rating: "+"</b>"+d.IMDb+"</p>"
-               //         +"<p><b>"+"Rotten Tomatoes: "+"</b>"+d.Rotten_Tomatoes+"</p>"
-               //         +"<p><b>"+"Languages: "+"</b>"+d["Language"]+"</p>")
-               //     });
-               //
-               //     // Mouseout Cleanup Effect
-               //     circles.on("mouseout", function (d) {
-               //       d3.select(this)
-               //         .transition().duration(200)
-               //         .attr("stroke", "")
-               //         .attr("stroke-width", 1)
-               //         .attr("fill", yearColorScale(d['Decade']));
-               //         info.transition()
-               //         info.html("<h3><em>"+"Hover over a point on the scatterplot to view specific information about a movie!"+"</em></h3>")
-               //     });
-               //
-               //     let info = d3.select("#introPointInfo")
-               //       .style("opacity", 0.95);
                // }
                //
                // Creating Scales
-               const weightExtent = d3.extent(scatterdata, d => d['Weight']);
+               const weightExtent = d3.extent(scatterProfilesData, d => d['Weight']);
                const weightScale = d3.scaleLinear().domain(weightExtent).range([chartHeight, 0]);
 
-               const heightExtent = d3.extent(scatterdata, d => d['Height']);
+               const heightExtent = d3.extent(scatterProfilesData, d => d['Height']);
                const heightScale = d3.scaleLinear().domain(heightExtent).range([0, chartWidth]);
 
-               const medalsExtent = d3.extent(scatterdata, d => d['Medal']);
-               const medalsScale = d3.scaleLinear().domain(medalsExtent).range([0, 20]);
+               const medalsExtent = d3.extent(scatterProfilesData, d => d['NumberMedals']);
+               const medalsScale = d3.scaleLinear().domain(medalsExtent).range([3, 10]);
 
                const medalsColorScale = d3.scaleOrdinal().domain(
-                 ["Gold","Silver","Bronze","No Medals"])
+                 ["3","2","1","0"]) //where 0 is no medals, 1 is bronze, 2 is silver, 3 is gold
                  .range(["#e6c90d", "#e0dfd2" , "#c16e00", "#569daa"]);
 
                // Y axis
-               // let leftAxis = d3.axisLeft(imbdScale)
-               //   .tickFormat(d3.format(""));
-               // let leftGridlines = d3.axisLeft(imbdScale)
-               //   .tickSize(-chartWidth)
-               //   .tickFormat("")
-               //
-               // annotations.append("g")
-               //   .attr("class", "y axis")
-               //   .attr("transform", "translate(" + (margin.left) + "," + margin.top + ")")
-               //   .call(leftAxis)
-               // annotations.append("g")
-               //   .attr("class", "y gridlines")
-               //   .attr("transform", "translate(" + (margin.left) + "," + margin.top + ")")
-               //   .call(leftGridlines);
-               //
-               // // X axis
-               // let bottomAxis = d3.axisBottom(tomatoScale)
-               //   .tickFormat(d3.format(""));
-               // let bottomGridlines = d3.axisBottom(tomatoScale)
-               //   .tickSize(-chartHeight)
-               //   .tickFormat("")
-               //
-               // annotations.append("g")
-               //   .attr("class", "x axis")
-               //   .attr("transform", "translate(" + margin.left + "," + (chartHeight + margin.top) + ")")
-               //   .call(bottomAxis);
-               // annotations.append("g")
-               //   .attr("class", "x gridlines")
-               //   .attr("transform", "translate(" + margin.left + "," + (chartHeight + margin.top) + ")")
-               //   .call(bottomGridlines);
-               //
-               // // Adding Axis Labels
-               //
-               // //Y Axis
-               // annotations.append("text")
-               //   .attr("class", "y label")
-               //   .attr("text-anchor", "end")
-               //   .attr("y", 3)
-               //   .attr("x", -290)
-               //   .attr("dy", "0.75em")
-               //   .attr("transform", "rotate(-90)")
-               //   .style("font-size", "20px")
-               //   .text("IMDB Ranking (Rank 1-10)");
-               //
-               // //X Axis
-               // annotations.append("text")
-               //   .attr("class", "x label")
-               //   .attr("text-anchor", "end")
-               //   .attr("x", width - 250)
-               //   .attr("y", height - 6)
-               //   .style("font-size", "20px")
-               //   .text("Rotten Tomatoes Rating (%)");
-               //
-               // // Circle Plotting
-               // let circles = chartArea.selectAll("circle.point").data(data)
-               //   .join(enter => enter.append("circle")
-               //     .attr("class", "point")
-               //     .attr("opacity", 0.8)
-               //   )
-               //   .attr("cx", d => tomatoScale(d['Rotten_Tomatoes']))
-               //   .attr("cy", d => imbdScale(d['IMDb']))
-               //   .attr("r", 5)
-               //   .attr("fill", function(d) {
-               //            return yearColorScale(d.Decade);
-               //          ;})
-               //   .attr("label", d => d["Title"])
-               //   .attr("genre", d => d["Genres"]);
-               //
-               //   //Mouseovers
-               //   circles.on("mouseover", function (d) {
-               //     d3.select(this)
-               //       .transition().duration(200)
-               //       .attr("stroke", "black")
-               //       .attr("stroke-width", 4)
-               //       .attr("fill", lighten(yearColorScale(d['Decade'])));
-               //       info.transition()
-               //       info.html("<h2><b>"+"Movie Details: "+"</b></h2>"
-               //       + "<p><b>"+"Title: "+"</b>"+d["Title"]+"</p>"
-               //       +"<p><b>"+"Directors: "+"</b>"+d["Directors"]+"</p>"
-               //       +"<p><b>"+"Year Released: "+"</b>"+d["Year"]+"</p>"
-               //       +"<p><b>"+"Runtime (Min): "+"</b>"+d["Runtime"]+"</p>"
-               //       +"<p><b>"+"IMDB Rating: "+"</b>"+d.IMDb+"</p>"
-               //       +"<p><b>"+"Rotten Tomatoes: "+"</b>"+d.Rotten_Tomatoes+"</p>"
-               //       +"<p><b>"+"Languages: "+"</b>"+d["Language"]+"</p>")
-               //   });
-               //
-               //   // Mouseout Cleanup Effect
-               //   circles.on("mouseout", function (d) {
-               //     d3.select(this)
-               //       .transition().duration(200)
-               //       .attr("stroke", "")
-               //       .attr("stroke-width", 1)
-               //       .attr("fill", yearColorScale(d['Decade']));
-               //       info.transition()
-               //       info.html("<h3><em>"+"Hover over a point on the scatterplot to view specific information about a movie!"+"</em></h3>")
-               //   });
-               //
-               //   let info = d3.select("#introPointInfo")
-               //     .style("opacity", 0.95);
-               //
-               //   //Update Saved Movies
-               //   circles.on("dblclick",function(d){
-               //     var savedMovie = d.Title + " (" + d.Year + ")"
-               //     updateWatchList(savedMovie)
-               //   });
-               //
-               //   function updateWatchList(savedMovie){
+               let leftAxis = d3.axisLeft(heightScale)
+                 .tickFormat(d3.format(""));
+               let leftGridlines = d3.axisLeft(heightScale)
+                 .tickSize(-chartWidth)
+                 .tickFormat("")
+
+               annotations.append("g")
+                 .attr("class", "y axis")
+                 .attr("transform", "translate(" + (scattermargin.left) + "," + scattermargin.top + ")")
+                 .call(leftAxis)
+               annotations.append("g")
+                 .attr("class", "y gridlines")
+                 .attr("transform", "translate(" + (scattermargin.left) + "," + scattermargin.top + ")")
+                 .call(leftGridlines);
+
+               // X axis
+               let bottomAxis = d3.axisBottom(weightScale)
+                 .tickFormat(d3.format(""));
+               let bottomGridlines = d3.axisBottom(weightScale)
+                 .tickSize(-chartHeight)
+                 .tickFormat("")
+
+               annotations.append("g")
+                 .attr("class", "x axis")
+                 .attr("transform", "translate(" + scattermargin.left + "," + (chartHeight + scattermargin.top) + ")")
+                 .call(bottomAxis);
+               annotations.append("g")
+                 .attr("class", "x gridlines")
+                 .attr("transform", "translate(" + scattermargin.left + "," + (chartHeight + scattermargin.top) + ")")
+                 .call(bottomGridlines);
+
+               // Adding Axis Labels
+
+               //Y Axis
+               annotations.append("text")
+                 .attr("class", "y label")
+                 .attr("text-anchor", "end")
+                 .attr("y", 3)
+                 .attr("x", -290)
+                 .attr("dy", "0.75em")
+                 .attr("transform", "rotate(-90)")
+                 .style("font-size", "20px")
+                 .text("Height (cm)");
+
+               //X Axis
+               annotations.append("text")
+                 .attr("class", "x label")
+                 .attr("text-anchor", "end")
+                 .attr("x", width - 250)
+                 .attr("y", height - 6)
+                 .style("font-size", "20px")
+                 .text("Weight (kg)");
+
+               // Circle Plotting
+               let circles = chartArea.selectAll("circle.point").data(scatterProfilesData)
+                 .join(enter => enter.append("circle")
+                   .attr("class", "point")
+                   .attr("opacity", 0.8)
+                 )
+                 .attr("cx", d => weightScale(d['Weight']))
+                 .attr("cy", d => heightScale(d['Height']))
+                 .attr("r", d => medalsScale(d['NumberMedals']))
+                 .attr("fill", function(d) {
+                          return medalsColorScale(d.topMedal);
+                        ;});
+
+                 //Update Saved Movies
+                 circles.on("click",function(d){
+                   var clickedAthlete = d
+                   console.log(d)
+                   updateProfilePanel(clickedAthlete)
+                 });
+
+                 function updateProfilePanel(clickedAthlete){
                //       var watchList = d3.select("#watchList")
                //       savedAthleteList.push(savedMovie)
                //       watchList.data(savedAthleteList)
@@ -1110,7 +1032,7 @@
                //       } else {
                //         alert("You can only save up to 8 movies.")
                //       }
-               //     }
+                   }
                  }
 
              // requestData();
