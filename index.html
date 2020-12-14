@@ -7,375 +7,419 @@
     <script src="https://unpkg.com/d3-simple-slider"></script>
     <script src="https://d3js.org/topojson.v2.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/d3-legend/2.25.6/d3-legend.min.js"></script>
+    <script src="https://d3js.org/d3.v4.js"></script>
+    <script src="https://unpkg.com/topojson-client@3"></script>
 
     <title>INFO4310 Final Project</title>
 
     <style>
+        body {
+            font-family: monaco, Consolas, Lucida Console, monospace;
+            background: #f9f9f9;
+        }
 
-    body {
-      font-family: monaco,Consolas,Lucida Console,monospace;
-      background: #f9f9f9;
-    }
+        .sectionTitles {
+            font-size: 60px;
+            text-align: center;
+        }
 
-    .sectionTitles{
-      font-size: 60px;
-      text-align: center;
-    }
+        .websiteTitle {
+            font-size: 80px;
+            text-align: center;
+            color: #2e2e2e;
+        }
 
-    .websiteTitle{
-      font-size: 80px;
-      text-align: center;
-      color: #2e2e2e;
-    }
+        .authorsTitle {
+            font-size: 30px;
+            font-style: italic;
+            text-align: center;
+            color: #2e2e2e;
+        }
 
-    .authorsTitle{
-      font-size: 30px;
-      font-style: italic;
-      text-align: center;
-      color: #2e2e2e;
-    }
+        .center {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            width: 1000px;
+        }
 
-    .center{
-      display: block;
-      margin-left: auto;
-      margin-right: auto;
-      width: 1000px;
-    }
+        .olympicsflexcontainermain {
+            height: 750px;
+        }
 
-    .olympicsflexcontainermain{
-      height: 750px;
-    }
+        .olympicsflexcontainertoc {
+            margin: auto;
+            margin-top: -575px;
+            width: 990px;
+        }
 
-    .olympicsflexcontainertoc{
-      margin: auto;
-      margin-top: -575px;
-      width: 990px;
-    }
+        .olympicsflexcontainer1,
+        .olympicsflexcontainer2 {
+            display: flex;
+            flex-direction: row;
+        }
 
-    .olympicsflexcontainer1,.olympicsflexcontainer2{
-      display: flex;
-      flex-direction: row;
-    }
+        .toc_textbox_r1 {
+            height: 240px;
+            width: 240px;
+            border-radius: 50%;
+            /* background-color: rgba(38, 38, 38, 0.2); */
+            text-align: center;
+            margin: 45px;
+            display: flex;
+        }
 
-    .toc_textbox_r1{
-      height: 240px;
-      width: 240px;
-      border-radius: 50%;
-      /* background-color: rgba(38, 38, 38, 0.2); */
-      text-align: center;
-      margin: 45px;
-      display: flex;
-    }
+        .olympicsflexcontainer2 {
+            margin-left: 165px;
+            margin-top: -180px;
+        }
 
-    .olympicsflexcontainer2{
-      margin-left:165px;
-      margin-top: -180px;
-    }
+        .toc_textbox_r2 {
+            height: 240px;
+            width: 240px;
+            border-radius: 50%;
+            /* background-color: rgba(38, 38, 38, 0.2); */
+            text-align: center;
+            margin: 45px;
+            display: flex;
+        }
 
-    .toc_textbox_r2{
-      height: 240px;
-      width: 240px;
-      border-radius: 50%;
-      /* background-color: rgba(38, 38, 38, 0.2); */
-      text-align: center;
-      margin: 45px;
-      display: flex;
-    }
+        .toc_text {
+            text-decoration: none;
+            color: #2e2e2e;
+            font-weight: bold;
+            font-size: 15px;
+            margin: auto;
+            width: 200px;
+        }
 
-    .toc_text{
-      text-decoration: none;
-      color: #2e2e2e;
-      font-weight: bold;
-      font-size: 15px;
-      margin: auto;
-      width: 200px;
-    }
+        hr.solid {
+            border-top: 3px solid #2e2e2e;
+        }
 
-    hr.solid {
-      border-top: 3px solid #2e2e2e;
-    }
+        #mapPanel {
+            color: #2e2e2e;
+        }
 
-    #mapPanel{
-      color: #2e2e2e;
-    }
+        #viz {
+            background-color: lightgrey;
+        }
 
-    #scatterplotPanel {
-        background: #2e2e2e;
-        position:absolute;
-        left:0;
-        right:0;
-        color: white;
-    }
+        .boundary {
+            fill: #DEB887;
+            stroke: black;
+            stroke-width: 1px;
+        }
 
-    #flexContainerSP_1{
-      display: flex;
-      justify-content: center;
-      width: 1200px;
-      height: 270px;
-    	margin: 30px auto;
-      border: 1.5px solid lightgray;
-      background:rgba(255,255,255,0.1);
-      font-size: 12px;
-    }
+        #scatterplotPanel {
+            background: #2e2e2e;
+            position: absolute;
+            left: 0;
+            right: 0;
+            color: white;
+        }
 
-    #flexContainerSP_1 h3, #generateButtonSP, #resetButtonSP{
-        font-size: 15px;
-    }
+        #flexContainerMP_1 {
+            display: flex;
+            justify-content: center;
+            height: 130vh;
+        }
 
-    .filterButtonSPflexContainer{
-      display: flex;
-      flex-direction: row;
-    }
+        #map_svg {
+            border: 2px solid rgb(230, 238, 247);
+            background-color: rgb(230, 238, 247);
+        }
 
-    .filterTitlesSP{
-      font-size: 13px;
-    }
+        #flexContainerSP_1 {
+            display: flex;
+            justify-content: center;
+            width: 1200px;
+            height: 270px;
+            margin: 30px auto;
+            border: 1.5px solid lightgray;
+            background: rgba(255, 255, 255, 0.1);
+            font-size: 12px;
+        }
 
-    #reqSPFilters{
-      width: 200px;
-      padding: 10px;
-      padding-left: 30px;
-      text-align: left;
-    }
+        #flexContainerSP_1 h3,
+        #generateButton {
+            font-size: 15px;
+        }
 
-    #selectSportSP, #selectNationalitySP, #selectEventSP{
-      width: 150px;
-      height: 20px;
-    }
+        .filterTitlesSP {
+            font-size: 13px;
+        }
 
-    #selectGoldSP, #selectSilverSP, #selectBronzeSP{
-      width: 50px;
-      height: 20px;
-    }
+        #reqSPFilters {
+            width: 200px;
+            padding: 10px;
+            padding-left: 30px;
+            text-align: left;
+        }
 
-    #optSPFilters{
-      width: 900px;
-      padding: 10px;
-      padding-left: 30px;
-      text-align: left;
-      border-left: 1.5px solid lightgray;
-    }
+        #selectSportSP,
+        #selectNationalitySP,
+        #selectEventSP {
+            width: 150px;
+            height: 20px;
+        }
 
-    .radioGenderSPflexcontainer, .radioSeasonSPflexcontainer{
-      display: flex;
-      flex-direction: row;
-      margin-top: -10px;
-    }
+        #selectGoldSP,
+        #selectSilverSP,
+        #selectBronzeSP {
+            width: 50px;
+            height: 20px;
+        }
 
-    .radioGenderSPflexcontainer label, .radioSeasonSPflexcontainer label{
-      margin-left: 5px;
-      margin-right: 15px;
-      margin-top: 2px;
-    }
+        #optSPFilters {
+            width: 900px;
+            padding: 10px;
+            padding-left: 30px;
+            text-align: left;
+            border-left: 1.5px solid lightgray;
+        }
 
-    .reqSPFilters_flexContainer{
-      display: flex;
-      flex-direction: column;
-      margin-top: -15px;
-    }
+        .radioGenderSPflexcontainer,
+        .radioSeasonSPflexcontainer {
+            display: flex;
+            flex-direction: row;
+            margin-top: -10px;
+        }
 
-    .optSPFilters_flexContainer{
-      display: flex;
-      flex-direction: row;
-      margin-top: -15px;
-    }
+        .radioGenderSPflexcontainer label,
+        .radioSeasonSPflexcontainer label {
+            margin-left: 5px;
+            margin-right: 15px;
+            margin-top: 2px;
+        }
 
-    .optSPFilters_flex{
-      width: 25%;
-    }
+        .reqSPFilters_flexContainer {
+            display: flex;
+            flex-direction: column;
+            margin-top: -15px;
+        }
 
-    .optSPFilters_flexContainer_medals{
-      display: flex;
-      flex-direction: row;
-    }
+        .optSPFilters_flexContainer {
+            display: flex;
+            flex-direction: row;
+            margin-top: -15px;
+        }
 
-    .optSPFilters_flex_medals_titles{
-      margin-top: -15px;
-    }
+        .optSPFilters_flex {
+            width: 25%;
+        }
 
-    .optSPFilters_flex_medals_selects{
-      margin-top: -8px;
-    }
+        .optSPFilters_flexContainer_medals {
+            display: flex;
+            flex-direction: row;
+        }
 
-    .optSPFilters_flex_medals_titles h4{
-      margin-top: 19px;
-      margin-bottom: 19px;
-      margin-right: 10px;
-    }
+        .optSPFilters_flex_medals_titles {
+            margin-top: -15px;
+        }
 
-    .optSPFilters_flex_medals_selects select{
-      margin: 8px;
-    }
+        .optSPFilters_flex_medals_selects {
+            margin-top: -8px;
+        }
 
-    .generateButtonSP, .resetButtonSP{
-      text-align: center;
-      margin: auto;
-    }
+        .optSPFilters_flex_medals_titles h4 {
+            margin-top: 19px;
+            margin-bottom: 19px;
+            margin-right: 10px;
+        }
 
-    #generateButtonSP, #resetButtonSP{
-      font-family: monaco,Consolas,Lucida Console,monospace;
-      font-weight: bold;
-      background-color: #f9f9f9;
-      border: 1.5px solid lightgray;
-      padding: 5px;
-      padding-left: 20px;
-      padding-right: 20px;
-    }
+        .optSPFilters_flex_medals_selects select {
+            margin: 8px;
+        }
 
-    #flexContainerSP_2{
-      display: flex;
-      justify-content: center;
-    }
+        .generateButton {
+            text-align: center;
+        }
 
-    #graphSP, #profilePanelSP{
-      margin-top: 30px;
-      margin-bottom: 30px;
-      height: 700px;
-    }
+        #generateButton {
+            font-family: monaco, Consolas, Lucida Console, monospace;
+            font-weight: bold;
+            background-color: #f9f9f9;
+            border: 1.5px solid lightgray;
+            padding: 5px;
+            padding-left: 20px;
+            padding-right: 20px;
+        }
 
-    #scatterplotGraphSVG, #scatterlegendsvg{
-      background-color: rgba(255,255,255,0.1);
-    }
+        #flexContainerSP_2 {
+            display: flex;
+            justify-content: center;
+        }
 
-    #profilePanelSPSVG{
-      background-color: rgba(255,255,255,0.9);
-    }
+        #graphSP,
+        #profilePanelSP {
+            margin-top: 30px;
+            margin-bottom: 30px;
+            height: 700px;
+        }
 
-    #savedAthletesTablePanel{
-      margin-top: 100px;
-      padding: 20px;
-      height: 800px;
-    }
+        #scatterplotGraphSVG,
+        #scatterlegendsvg {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
 
-    #savedAthletesTable{
-      background-color: rgba(255,255,255,0.1);
-      border: 1.5px solid lightgray;
-      width: 1400px;
-      margin: auto;
-    }
+        #profilePanelSPSVG {
+            background-color: rgba(255, 255, 255, 0.9);
+        }
 
+        #savedAthletesTablePanel {
+            margin-top: 100px;
+            padding: 20px;
+            height: 800px;
+        }
+
+        #savedAthletesTable {
+            background-color: rgba(255, 255, 255, 0.1);
+            border: 1.5px solid lightgray;
+            width: 1400px;
+            margin: auto;
+        }
     </style>
 </head>
 
 <body>
     <div id='p1'>
-      <!-- ********************************** -->
-      <!--         INTRO SECTION              -->
-      <!-- ********************************** -->
-      <h1 class="websiteTitle">Olympics Tracker</h1>
-      <h1 class="authorsTitle">By Marcella Imoisili & Kristy Liu</h1>
-      <div class="olympicsflexcontainermain">
-        <img src="Images/olympics.png" alt="Olympics Logo" class="center">
-        <div class="olympicsflexcontainertoc">
-          <div class="olympicsflexcontainer1">
-            <div class="toc_textbox_r1">
-              <a href="#mapPanel" class="toc_text">1. How the Olympics Have Changed Since 1896</a>
+        <!-- ********************************** -->
+        <!--         INTRO SECTION              -->
+        <!-- ********************************** -->
+        <h1 class="websiteTitle">Olympics Tracker</h1>
+        <h1 class="authorsTitle">By Marcella Imoisili & Kristy Liu</h1>
+        <div class="olympicsflexcontainermain">
+            <img src="Images/olympics.png" alt="Olympics Logo" class="center">
+            <div class="olympicsflexcontainertoc">
+                <div class="olympicsflexcontainer1">
+                    <div class="toc_textbox_r1">
+                        <a href="#mapPanel" class="toc_text">1. How the Olympics Have Changed Since 1896</a>
+                    </div>
+                    <div class="toc_textbox_r1">
+                        <a href="#mapPanel" class="toc_text">2. World Map of Olympics Results</a>
+                    </div>
+                    <div class="toc_textbox_r1">
+                        <a href="#scatterplotPanel" class="toc_text">3. Athlete Profiles</a>
+                    </div>
+                </div>
+                <div class="olympicsflexcontainer2">
+                    <div class="toc_textbox_r2">
+                        <a href="#savedAthletesTablePanel" class="toc_text">4. Saved Athletes</a>
+                    </div>
+                    <div class="toc_textbox_r2">
+                        <a href="#scatterplotPanel" class="toc_text">5. Citations</a>
+                    </div>
+                </div>
             </div>
-            <div class="toc_textbox_r1">
-              <a href="#mapPanel" class="toc_text">2. World Map of Olympics Results</a>
-            </div>
-            <div class="toc_textbox_r1">
-              <a href="#scatterplotPanel" class="toc_text">3. Athlete Profiles</a>
-            </div>
-          </div>
-          <div class="olympicsflexcontainer2">
-            <div class="toc_textbox_r2">
-              <a href="#savedAthletesTablePanel" class="toc_text">4. Saved Athletes</a>
-            </div>
-            <div class="toc_textbox_r2">
-              <a href="#scatterplotPanel" class="toc_text">5. Citations</a>
-            </div>
-          </div>
         </div>
-      </div>
-      <hr class="solid">
-      <!-- ********************************** -->
-      <!--         MAP VISUALIZATION          -->
-      <!-- ********************************** -->
+        <hr class="solid">
+        <!-- ********************************** -->
+        <!--         MAP VISUALIZATION          -->
+        <!-- ********************************** -->
         <div id="mapPanel">
-          <h1 class="sectionTitles">World Map of Olympics Results</h1>
-          <svg id='viz' height='600' width='800'></svg>
+            <h1 class="sectionTitles">World Map of Olympics Results</h1>
+            <div id="flexContainerMP_1">
+                <!-- <div id='viz'></div> -->
+            </div>
         </div>
 
         <!-- ********************************** -->
         <!--   SCATTERPLOT VISUALIZATION        -->
         <!-- ********************************** -->
         <div id="scatterplotPanel">
-          <h1 class="sectionTitles">Athlete Profiles</h1>
-          <!-- Section 1: Scatterplot Filters Panel -->
-          <div id="flexContainerSP_1">
-          <!-- Required Filters -->
-            <div id="reqSPFilters">
-              <h3>Required Filters:</h3>
-              <div class="reqSPFilters_flexContainer">
-                <div class = "radioSeasonSP">
-                  <h4 class="filterTitlesSP">Season</h4>
-                  <div class = "radioSeasonSPflexcontainer">
-                    <input type="radio" id="summerSP" name="seasonSP" value="summer">
-                    <label for="summerSP">Summer</label><br>
-                    <input type="radio" id="winterSP" name="seasonSP" value="winter">
-                    <label for="winterSP">Winter</label><br>
-                  </div>
-                </div>
-                <div class = "selectSportSP">
-                  <h4 class="filterTitlesSP">Sport</h4>
-                  <select id="selectSportSP"></select>
-                </div>
-                <div class = "radioGenderSP">
-                  <h4 class="filterTitlesSP">Gender</h4>
-                  <div class = "radioGenderSPflexcontainer">
-                    <input type="radio" id="maleSP" name="genderSP" value="male">
-                    <label for="maleSP">Male</label><br>
-                    <input type="radio" id="femaleSP" name="genderSP" value="female">
-                    <label for="femaleSP">Female</label><br>
-                  </div>
-                </div>
-              </div>
-            </div>
-          <!-- Optional Filters -->
-            <div id="optSPFilters">
-              <h3>Optional Filters:</h3>
-              <div class="optSPFilters_flexContainer">
-                <div class="optSPFilters_flex">
-                  <h4 class="filterTitlesSP">Nationality</h4>
-                  <select id="selectNationalitySP"></select>
-                  <h4 class="filterTitlesSP">Event</h4>
-                  <select id="selectEventSP"></select>
-                </div>
-                <div class="optSPFilters_flex">
-                  <h4 class="filterTitlesSP"># of Medals</h4>
-                  <div class="optSPFilters_flexContainer_medals">
-                    <div class="optSPFilters_flex_medals_titles">
-                      <h4 class="filterTitlesSP">Gold</h4>
-                      <h4 class="filterTitlesSP">Silver</h4>
-                      <h4 class="filterTitlesSP">Bronze</h4>
+            <h1 class="sectionTitles">Athlete Profiles</h1>
+            <!-- Section 1: Scatterplot Filters Panel -->
+            <div id="flexContainerSP_1">
+                <!-- Required Filters -->
+                <div id="reqSPFilters">
+                    <h3>Required Filters:</h3>
+                    <div class="reqSPFilters_flexContainer">
+                        <div class="radioSeasonSP">
+                            <h4 class="filterTitlesSP">Season</h4>
+                            <div class="radioSeasonSPflexcontainer">
+                                <input type="radio" id="summerSP" name="seasonSP" value="summer">
+                                <label for="summerSP">Summer</label><br>
+                                <input type="radio" id="winterSP" name="seasonSP" value="winter">
+                                <label for="winterSP">Winter</label><br>
+                            </div>
+                        </div>
+                        <div class="selectSportSP">
+                            <h4 class="filterTitlesSP">Sport</h4>
+                            <select id="selectSportSP"></select>
+                        </div>
+                        <div class="radioGenderSP">
+                            <h4 class="filterTitlesSP">Gender</h4>
+                            <div class="radioGenderSPflexcontainer">
+                                <input type="radio" id="maleSP" name="genderSP" value="male">
+                                <label for="maleSP">Male</label><br>
+                                <input type="radio" id="femaleSP" name="genderSP" value="female">
+                                <label for="femaleSP">Female</label><br>
+                            </div>
+                        </div>
                     </div>
-                    <div class="optSPFilters_flex_medals_selects">
-                      <select id="selectGoldSP"></select><br>
-                      <select id="selectSilverSP"></select><br>
-                      <select id="selectBronzeSP"></select>
+                </div>
+                <!-- Optional Filters -->
+                <div id="optSPFilters">
+                    <h3>Optional Filters:</h3>
+                    <div class="optSPFilters_flexContainer">
+                        <div class="optSPFilters_flex">
+                            <h4 class="filterTitlesSP"></h4>
+                            <select id="selectSP"></select>
+                            <h4 class="filterTitlesSP">Event</h4>
+                            <select id="selectEventSP"></select>
+                        </div>
+                        <div class="optSPFilters_flex">
+                            <h4 class="filterTitlesSP"># of Medals</h4>
+                            <div class="optSPFilters_flexContainer_medals">
+                                <div class="optSPFilters_flex_medals_titles">
+                                    <h4 class="filterTitlesSP">Gold</h4>
+                                    <h4 class="filterTitlesSP">Silver</h4>
+                                    <h4 class="filterTitlesSP">Bronze</h4>
+                                </div>
+                                <div class="optSPFilters_flex_medals_selects">
+                                    <select id="selectGoldSP"></select><br>
+                                    <select id="selectSilverSP"></select><br>
+                                    <select id="selectBronzeSP"></select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="optSPFilters_flex">
+                            <h4 class="filterTitlesSP">Year</h4>
+                            <div class="sliderRange">
+                                <div id="year-slider-range"></div>
+                            </div>
+                            <div class="sliderValue">
+                                <p id="year-value-range"></p>
+                            </div>
+                            <h4 class="filterTitlesSP">Age</h4>
+                            <div class="sliderRange">
+                                <div id="age-slider-range"></div>
+                            </div>
+                            <div class="sliderValue">
+                                <p id="age-value-range"></p>
+                            </div>
+                        </div>
+                        <div class="optSPFilters_flex">
+                            <h4 class="filterTitlesSP">Height</h4>
+                            <div class="sliderRange">
+                                <div id="height-slider-range"></div>
+                            </div>
+                            <div class="sliderValue">
+                                <p id="height-value-range"></p>
+                            </div>
+                            <h4 class="filterTitlesSP">Weight</h4>
+                            <div class="sliderRange">
+                                <div id="weight-slider-range"></div>
+                            </div>
+                            <div class="sliderValue">
+                                <p id="weight-value-range"></p>
+                            </div>
+                        </div>
                     </div>
-                  </div>
                 </div>
-                <div class="optSPFilters_flex">
-                  <h4 class="filterTitlesSP">Year</h4>
-                  <div class="sliderRange"><div id="year-slider-range"></div></div>
-                  <div class="sliderValue"><p id="year-value-range"></p></div>
-                  <h4 class="filterTitlesSP">Age</h4>
-                  <div class="sliderRange"><div id="age-slider-range"></div></div>
-                  <div class="sliderValue"><p id="age-value-range"></p></div>
-                </div>
-                <div class="optSPFilters_flex">
-                  <h4 class="filterTitlesSP">Height</h4>
-                  <div class="sliderRange"><div id="height-slider-range"></div></div>
-                  <div class="sliderValue"><p id="height-value-range"></p></div>
-                  <h4 class="filterTitlesSP">Weight</h4>
-                  <div class="sliderRange"><div id="weight-slider-range"></div></div>
-                  <div class="sliderValue"><p id="weight-value-range"></p></div>
-                </div>
-              </div>
             </div>
-          </div>
+
           <!-- Generate Button: Update Scatterplot Based On Filters -->
           <div class = "filterButtonSPflexContainer">
             <div class="generateButtonSP">
@@ -402,56 +446,139 @@
             <div id="profilePanelSP">
               <svg id="profilePanelSPSVG" height="725" width="600" style="margin-top:5px; margin-bottom: 20px; margin-left: 20px;"></svg>
             </div>
-          </div>
-
-          <!-- ********************************** -->
-          <!--    SAVED ATHLETES TABLE            -->
-          <!-- ********************************** -->
-          <div id="savedAthletesTablePanel">
-              <table id="savedAthletesTable">
-                  <thead>
-                      <tr>
-                          <th>Name</th>
-                          <th></th>
-                          <th>Sport</th>
-                          <th>View</th>
-                          <th>Remove</th>
-                      </tr>
-                  </thead>
-                  <tbody></tbody>
-              </table>
-          </div>
         </div>
 
         <script>
             //python3 -m http.server
 
             /**************************************************
-            **********        Map Visualization        ********
-            **************************************************/
-            const svg = d3.select('#viz');
-            const width = svg.attr('width');
-            const height = svg.attr('height');
+             **********        Map Visualization        ********
+             **************************************************/
+            // const svg = d3.select('#viz');
+            // const width = svg.attr('width');
+            // const height = svg.attr('height');
 
-            const margin = {
-                top: 20,
-                right: 20,
-                bottom: 20,
-                left: 20
-            };
+            // const margin = {
+            //     top: 20,
+            //     right: 20,
+            //     bottom: 20,
+            //     left: 20
+            // };
 
-            const mapWidth = width - margin.left - margin.right;
-            const mapHeight = height - margin.top - margin.bottom;
-            const map = svg.append("g")
-                .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+            // const mapWidth = width - margin.left - margin.right;
+            // const mapHeight = height - margin.top - margin.bottom;
+            // const map = svg.append("g")
+            //     .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-            const requestData = async function() {
-                const olympic_world_data = await d3.csv('athlete_events.csv');
+            // const requestData = async function() {
+            //     const olympic_world_data = await d3.csv('athlete_events.csv');
+            //     const world = await d3.json('countries-110m.json');
+            //     console.log(olympic_world_data)
+            //     console.log(world)
+            //         //Create Map
+            // }
+
+            var width = 950,
+                height = 550;
+
+            var initX;
+            var mouseClicked = false;
+            var s = 1;
+            var rotated = 90;
+
+            //need to store this because on zoom end, using mousewheel, mouse position is NAN
+            var mouse;
+
+            var projection = d3.geoMercator()
+                .scale(153)
+                .translate([width / 2, height / 1.5])
+                .rotate([rotated, 0, 0]); //center on USA
+
+            var path = d3.geoPath().projection(projection);
+
+            var zoom = d3.zoom()
+                .scaleExtent([1, 10])
+                .on("zoom", zoomed)
+                .on("end", zoomended);
+
+            var map = d3.select("#flexContainerMP_1").append("svg")
+                .attr("width", width)
+                .attr("height", height)
+                .attr("id", "map_svg")
+                .on("wheel", function() {
+                    //zoomend needs mouse coords
+                    initX = d3.mouse(this)[0];
+                })
+                .on("mousedown", function() {
+                    //only if scale === 1
+                    if (s !== 1) return;
+                    initX = d3.mouse(this)[0];
+                    mouseClicked = true;
+                })
+                .call(zoom);
+
+            var g = map.append("g");
+
+
+            function rotateMap(endX) {
+                projection.rotate([rotated + (endX - initX) * 360 / (s * width), 0, 0]);
+                g.selectAll('path').attr('d', path);
             }
 
+            function zoomended() {
+                if (s !== 1) return;
+                //rotated = rotated + ((d3.mouse(this)[0] - initX) * 360 / (s * width));
+                rotated = rotated + ((mouse[0] - initX) * 360 / (s * width));
+                mouseClicked = false;
+            }
+
+            function zoomed() {
+                var t = [d3.event.transform.x, d3.event.transform.y];
+                s = d3.event.transform.k;
+                var h = 0;
+
+                t[0] = Math.min(
+                    (width / height) * (s - 1),
+                    Math.max(width * (1 - s), t[0])
+                );
+
+                t[1] = Math.min(
+                    h * (s - 1) + h * s,
+                    Math.max(height * (1 - s) - h * s, t[1])
+                );
+
+                g.attr("transform", "translate(" + t + ")scale(" + s + ")");
+
+                //adjust the stroke width based on zoom level
+                d3.selectAll(".boundary").style("stroke-width", 1 / s);
+
+                mouse = d3.mouse(this);
+
+                if (s === 1 && mouseClicked) {
+                    //rotateMap(d3.mouse(this)[0]);
+                    rotateMap(mouse[0]);
+                    return;
+                }
+
+            }
+
+
+            d3.json("https://unpkg.com/world-atlas@1/world/110m.json", function(error, world) {
+                if (error) return console.error(error);
+
+                //countries
+                g.append("g")
+                    .attr("class", "boundary")
+                    .selectAll("boundary")
+                    .data(topojson.feature(world, world.objects.countries).features)
+                    .enter().append("path")
+                    .attr("d", path);
+
+            });
+
             /**************************************************
-            *****        ScatterPlot Visualization        *****
-            **************************************************/
+             *****        ScatterPlot Visualization        *****
+             **************************************************/
 
             const scatter = d3.select("svg#scatterplotGraphSVG");
             const scatterLeg = d3.select("svg#scatterlegendsvg");
@@ -459,24 +586,24 @@
             const scatterwidth = scatter.attr("width");
             const scatterheight = scatter.attr("height");
             const scattermargin = {
-              top: 10,
-              right: 10,
-              bottom: 50,
-              left: 50
+                top: 10,
+                right: 10,
+                bottom: 50,
+                left: 50
             };
 
             const legWidth = scatterLeg.attr("width");
             const legHeight = scatterLeg.attr("height");
 
-            const chartWidth = width - margin.left - margin.right;
-            const chartHeight = height - margin.top - margin.bottom;
+            const chartWidth = width - scattermargin.left - scattermargin.right;
+            const chartHeight = height - scattermargin.top - scattermargin.bottom;
 
             let annotations = scatter.append("g")
-                                .attr("id", "annotations")
-                                .attr("class", "graph-svg-component2");
+                .attr("id", "annotations")
+                .attr("class", "graph-svg-component2");
 
             let chartArea = scatter.append("g").attr("id", "points").attr("class", "graph-svg-component")
-              .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+                .attr("transform", "translate(" + scattermargin.left + "," + scattermargin.top + ")");
 
             let colorLegendGroup = scatterLeg.append('g')
                                 .attr("id", "colorLegendGroup");
@@ -1181,7 +1308,7 @@
               //     }
                 }
 
-            requestData();
+            // requestData();
             loadScatter();
         </script>
     </div>
