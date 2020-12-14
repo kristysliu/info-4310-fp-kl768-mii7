@@ -11,382 +11,416 @@
     <title>INFO4310 Final Project</title>
 
     <style>
-
-    body {
-      font-family: monaco,Consolas,Lucida Console,monospace;
-      background: #f9f9f9;
-    }
-
-    .sectionTitles{
-      font-size: 60px;
-      text-align: center;
-    }
-
-    .websiteTitle{
-      font-size: 80px;
-      text-align: center;
-      color: #2e2e2e;
-    }
-
-    .authorsTitle{
-      font-size: 30px;
-      font-style: italic;
-      text-align: center;
-      color: #2e2e2e;
-    }
-
-    .center{
-      display: block;
-      margin-left: auto;
-      margin-right: auto;
-      width: 1000px;
-    }
-
-    .olympicsflexcontainermain{
-      height: 750px;
-    }
-
-    .olympicsflexcontainertoc{
-      margin: auto;
-      margin-top: -575px;
-      width: 990px;
-    }
-
-    .olympicsflexcontainer1,.olympicsflexcontainer2{
-      display: flex;
-      flex-direction: row;
-    }
-
-    .toc_textbox_r1{
-      height: 240px;
-      width: 240px;
-      border-radius: 50%;
-      /* background-color: rgba(38, 38, 38, 0.2); */
-      text-align: center;
-      margin: 45px;
-      display: flex;
-    }
-
-    .olympicsflexcontainer2{
-      margin-left:165px;
-      margin-top: -180px;
-    }
-
-    .toc_textbox_r2{
-      height: 240px;
-      width: 240px;
-      border-radius: 50%;
-      /* background-color: rgba(38, 38, 38, 0.2); */
-      text-align: center;
-      margin: 45px;
-      display: flex;
-    }
-
-    .toc_text{
-      text-decoration: none;
-      color: #2e2e2e;
-      font-weight: bold;
-      font-size: 15px;
-      margin: auto;
-      width: 200px;
-    }
-
-    hr.solid {
-      border-top: 3px solid #2e2e2e;
-    }
-
-    #mapPanel{
-      color: #2e2e2e;
-    }
-
-    #scatterplotPanel {
-        background: #2e2e2e;
-        position:absolute;
-        left:0;
-        right:0;
-        color: white;
-    }
-
-    #flexContainerSP_1{
-      display: flex;
-      justify-content: center;
-      width: 1200px;
-      height: 250px;
-    	margin: 30px auto;
-      border: 1.5px solid lightgray;
-      background:rgba(255,255,255,0.1);
-      font-size: 12px;
-    }
-
-    #flexContainerSP_1 h3, #generateButton{
-        font-size: 15px;
-    }
-
-    .filterTitlesSP{
-      font-size: 13px;
-    }
-
-    #reqSPFilters{
-      width: 200px;
-      padding: 10px;
-      padding-left: 30px;
-      text-align: left;
-    }
-
-    #selectSportSP, #selectCountrySP, #selectEventSP{
-      width: 150px;
-      height: 20px;
-    }
-
-    #selectGoldSP, #selectSilverSP, #selectBronzeSP{
-      width: 50px;
-      height: 20px;
-    }
-
-    #optSPFilters{
-      width: 900px;
-      padding: 10px;
-      padding-left: 30px;
-      text-align: left;
-      border-left: 1.5px solid lightgray;
-    }
-
-    .reqSPFilters_flexContainer{
-      display: flex;
-      flex-direction: column;
-      margin-top: -15px;
-    }
-
-    .optSPFilters_flexContainer{
-      display: flex;
-      flex-direction: row;
-      margin-top: -15px;
-    }
-
-    .optSPFilters_flex{
-      width: 25%;
-    }
-
-    .optSPFilters_flexContainer_medals{
-      display: flex;
-      flex-direction: row;
-    }
-
-    .optSPFilters_flex_medals_titles{
-      margin-top: -15px;
-    }
-
-    .optSPFilters_flex_medals_selects{
-      margin-top: -8px;
-    }
-
-    .optSPFilters_flex_medals_titles h4{
-      margin-top: 19px;
-      margin-bottom: 19px;
-      margin-right: 10px;
-    }
-
-    .optSPFilters_flex_medals_selects select{
-      margin: 8px;
-    }
-
-    .generateButton{
-      text-align: center;
-    }
-
-    #generateButton{
-      font-family: monaco,Consolas,Lucida Console,monospace;
-      font-weight: bold;
-      background-color: #f9f9f9;
-      border: 1.5px solid lightgray;
-      padding: 5px;
-      padding-left: 20px;
-      padding-right: 20px;
-    }
-
-    #flexContainerSP_2{
-      display: flex;
-      justify-content: center;
-    }
-
-    #graphSP, #profilePanelSP{
-      margin-top: 30px;
-      margin-bottom: 30px;
-      height: 700px;
-    }
-
-    #scatterplotGraphSVG, #scatterlegendsvg{
-      background-color: rgba(255,255,255,0.1);
-    }
-
-    #profilePanelSPSVG{
-      background-color: rgba(255,255,255,0.9);
-    }
-
-    #savedAthletesTablePanel{
-      margin-top: 100px;
-      padding: 20px;
-      height: 800px;
-    }
-
-    #savedAthletesTable{
-      background-color: rgba(255,255,255,0.1);
-      border: 1.5px solid lightgray;
-      width: 1400px;
-      margin: auto;
-    }
-
+        body {
+            font-family: monaco, Consolas, Lucida Console, monospace;
+            background: #f9f9f9;
+        }
+        
+        .sectionTitles {
+            font-size: 60px;
+            text-align: center;
+        }
+        
+        .websiteTitle {
+            font-size: 80px;
+            text-align: center;
+            color: #2e2e2e;
+        }
+        
+        .authorsTitle {
+            font-size: 30px;
+            font-style: italic;
+            text-align: center;
+            color: #2e2e2e;
+        }
+        
+        .center {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            width: 1000px;
+        }
+        
+        .olympicsflexcontainermain {
+            height: 750px;
+        }
+        
+        .olympicsflexcontainertoc {
+            margin: auto;
+            margin-top: -575px;
+            width: 990px;
+        }
+        
+        .olympicsflexcontainer1,
+        .olympicsflexcontainer2 {
+            display: flex;
+            flex-direction: row;
+        }
+        
+        .toc_textbox_r1 {
+            height: 240px;
+            width: 240px;
+            border-radius: 50%;
+            /* background-color: rgba(38, 38, 38, 0.2); */
+            text-align: center;
+            margin: 45px;
+            display: flex;
+        }
+        
+        .olympicsflexcontainer2 {
+            margin-left: 165px;
+            margin-top: -180px;
+        }
+        
+        .toc_textbox_r2 {
+            height: 240px;
+            width: 240px;
+            border-radius: 50%;
+            /* background-color: rgba(38, 38, 38, 0.2); */
+            text-align: center;
+            margin: 45px;
+            display: flex;
+        }
+        
+        .toc_text {
+            text-decoration: none;
+            color: #2e2e2e;
+            font-weight: bold;
+            font-size: 15px;
+            margin: auto;
+            width: 200px;
+        }
+        
+        hr.solid {
+            border-top: 3px solid #2e2e2e;
+        }
+        
+        #mapPanel {
+            color: #2e2e2e;
+        }
+        
+        #viz {
+            background-color: lightgrey;
+        }
+        
+        #scatterplotPanel {
+            background: #2e2e2e;
+            position: absolute;
+            left: 0;
+            right: 0;
+            color: white;
+        }
+        
+        #flexContainerMP_1 {
+            display: flex;
+            justify-content: center;
+            height: 160vh;
+        }
+        
+        #flexContainerSP_1 {
+            display: flex;
+            justify-content: center;
+            width: 1200px;
+            height: 250px;
+            margin: 30px auto;
+            border: 1.5px solid lightgray;
+            background: rgba(255, 255, 255, 0.1);
+            font-size: 12px;
+        }
+        
+        #flexContainerSP_1 h3,
+        #generateButton {
+            font-size: 15px;
+        }
+        
+        .filterTitlesSP {
+            font-size: 13px;
+        }
+        
+        #reqSPFilters {
+            width: 200px;
+            padding: 10px;
+            padding-left: 30px;
+            text-align: left;
+        }
+        
+        #selectSportSP,
+        #selectCountrySP,
+        #selectEventSP {
+            width: 150px;
+            height: 20px;
+        }
+        
+        #selectGoldSP,
+        #selectSilverSP,
+        #selectBronzeSP {
+            width: 50px;
+            height: 20px;
+        }
+        
+        #optSPFilters {
+            width: 900px;
+            padding: 10px;
+            padding-left: 30px;
+            text-align: left;
+            border-left: 1.5px solid lightgray;
+        }
+        
+        .reqSPFilters_flexContainer {
+            display: flex;
+            flex-direction: column;
+            margin-top: -15px;
+        }
+        
+        .optSPFilters_flexContainer {
+            display: flex;
+            flex-direction: row;
+            margin-top: -15px;
+        }
+        
+        .optSPFilters_flex {
+            width: 25%;
+        }
+        
+        .optSPFilters_flexContainer_medals {
+            display: flex;
+            flex-direction: row;
+        }
+        
+        .optSPFilters_flex_medals_titles {
+            margin-top: -15px;
+        }
+        
+        .optSPFilters_flex_medals_selects {
+            margin-top: -8px;
+        }
+        
+        .optSPFilters_flex_medals_titles h4 {
+            margin-top: 19px;
+            margin-bottom: 19px;
+            margin-right: 10px;
+        }
+        
+        .optSPFilters_flex_medals_selects select {
+            margin: 8px;
+        }
+        
+        .generateButton {
+            text-align: center;
+        }
+        
+        #generateButton {
+            font-family: monaco, Consolas, Lucida Console, monospace;
+            font-weight: bold;
+            background-color: #f9f9f9;
+            border: 1.5px solid lightgray;
+            padding: 5px;
+            padding-left: 20px;
+            padding-right: 20px;
+        }
+        
+        #flexContainerSP_2 {
+            display: flex;
+            justify-content: center;
+        }
+        
+        #graphSP,
+        #profilePanelSP {
+            margin-top: 30px;
+            margin-bottom: 30px;
+            height: 700px;
+        }
+        
+        #scatterplotGraphSVG,
+        #scatterlegendsvg {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+        
+        #profilePanelSPSVG {
+            background-color: rgba(255, 255, 255, 0.9);
+        }
+        
+        #savedAthletesTablePanel {
+            margin-top: 100px;
+            padding: 20px;
+            height: 800px;
+        }
+        
+        #savedAthletesTable {
+            background-color: rgba(255, 255, 255, 0.1);
+            border: 1.5px solid lightgray;
+            width: 1400px;
+            margin: auto;
+        }
     </style>
 </head>
 
 <body>
     <div id='p1'>
-      <!-- ********************************** -->
-      <!--         INTRO SECTION              -->
-      <!-- ********************************** -->
-      <h1 class="websiteTitle">Olympics Tracker</h1>
-      <h1 class="authorsTitle">By Marcella Imoisili & Kristy Liu</h1>
-      <div class="olympicsflexcontainermain">
-        <img src="Images/olympics.png" alt="Olympics Logo" class="center">
-        <div class="olympicsflexcontainertoc">
-          <div class="olympicsflexcontainer1">
-            <div class="toc_textbox_r1">
-              <a href="#mapPanel" class="toc_text">1. How the Olympics Have Changed Since 1896</a>
+        <!-- ********************************** -->
+        <!--         INTRO SECTION              -->
+        <!-- ********************************** -->
+        <h1 class="websiteTitle">Olympics Tracker</h1>
+        <h1 class="authorsTitle">By Marcella Imoisili & Kristy Liu</h1>
+        <div class="olympicsflexcontainermain">
+            <img src="Images/olympics.png" alt="Olympics Logo" class="center">
+            <div class="olympicsflexcontainertoc">
+                <div class="olympicsflexcontainer1">
+                    <div class="toc_textbox_r1">
+                        <a href="#mapPanel" class="toc_text">1. How the Olympics Have Changed Since 1896</a>
+                    </div>
+                    <div class="toc_textbox_r1">
+                        <a href="#mapPanel" class="toc_text">2. World Map of Olympics Results</a>
+                    </div>
+                    <div class="toc_textbox_r1">
+                        <a href="#scatterplotPanel" class="toc_text">3. Athlete Profiles</a>
+                    </div>
+                </div>
+                <div class="olympicsflexcontainer2">
+                    <div class="toc_textbox_r2">
+                        <a href="#savedAthletesTablePanel" class="toc_text">4. Saved Athletes</a>
+                    </div>
+                    <div class="toc_textbox_r2">
+                        <a href="#scatterplotPanel" class="toc_text">5. Citations</a>
+                    </div>
+                </div>
             </div>
-            <div class="toc_textbox_r1">
-              <a href="#mapPanel" class="toc_text">2. World Map of Olympics Results</a>
-            </div>
-            <div class="toc_textbox_r1">
-              <a href="#scatterplotPanel" class="toc_text">3. Athlete Profiles</a>
-            </div>
-          </div>
-          <div class="olympicsflexcontainer2">
-            <div class="toc_textbox_r2">
-              <a href="#savedAthletesTablePanel" class="toc_text">4. Saved Athletes</a>
-            </div>
-            <div class="toc_textbox_r2">
-              <a href="#scatterplotPanel" class="toc_text">5. Citations</a>
-            </div>
-          </div>
         </div>
-      </div>
-      <hr class="solid">
-      <!-- ********************************** -->
-      <!--         MAP VISUALIZATION          -->
-      <!-- ********************************** -->
+        <hr class="solid">
+        <!-- ********************************** -->
+        <!--         MAP VISUALIZATION          -->
+        <!-- ********************************** -->
         <div id="mapPanel">
-          <h1 class="sectionTitles">World Map of Olympics Results</h1>
-          <svg id='viz' height='600' width='800'></svg>
+            <h1 class="sectionTitles">World Map of Olympics Results</h1>
+            <div id="flexContainerMP_1">
+                <svg id='viz' height='60vh' width='85vw'></svg>
+            </div>
         </div>
 
         <!-- ********************************** -->
         <!--   SCATTERPLOT VISUALIZATION        -->
         <!-- ********************************** -->
         <div id="scatterplotPanel">
-          <h1 class="sectionTitles">Athlete Profiles</h1>
-          <!-- Section 1: Scatterplot Filters Panel -->
-          <div id="flexContainerSP_1">
-          <!-- Required Filters -->
-            <div id="reqSPFilters">
-              <h3>Required Filters:</h3>
-              <div class="reqSPFilters_flexContainer">
-                <div class = "selectSportSP">
-                  <h4 class="filterTitlesSP">Sport</h4>
-                  <select id="selectSportSP"></select>
-                </div>
-                <div class = "radioGenderSP">
-                  <h4 class="filterTitlesSP">Gender</h4>
-                  <input type="radio" id="maleSP" name="genderSP" value="male">
-                  <label for="maleSP">Male</label><br>
-                  <input type="radio" id="femaleSP" name="genderSP" value="female">
-                  <label for="femaleSP">Female</label><br>
-                </div>
-              </div>
-            </div>
-          <!-- Optional Filters -->
-            <div id="optSPFilters">
-              <h3>Optional Filters:</h3>
-              <div class="optSPFilters_flexContainer">
-                <div class="optSPFilters_flex">
-                  <h4 class="filterTitlesSP">Country</h4>
-                  <select id="selectCountrySP"></select>
-                  <h4 class="filterTitlesSP">Event</h4>
-                  <select id="selectEventSP"></select>
-                </div>
-                <div class="optSPFilters_flex">
-                  <h4 class="filterTitlesSP"># of Medals</h4>
-                  <div class="optSPFilters_flexContainer_medals">
-                    <div class="optSPFilters_flex_medals_titles">
-                      <h4 class="filterTitlesSP">Gold</h4>
-                      <h4 class="filterTitlesSP">Silver</h4>
-                      <h4 class="filterTitlesSP">Bronze</h4>
+            <h1 class="sectionTitles">Athlete Profiles</h1>
+            <!-- Section 1: Scatterplot Filters Panel -->
+            <div id="flexContainerSP_1">
+                <!-- Required Filters -->
+                <div id="reqSPFilters">
+                    <h3>Required Filters:</h3>
+                    <div class="reqSPFilters_flexContainer">
+                        <div class="selectSportSP">
+                            <h4 class="filterTitlesSP">Sport</h4>
+                            <select id="selectSportSP"></select>
+                        </div>
+                        <div class="radioGenderSP">
+                            <h4 class="filterTitlesSP">Gender</h4>
+                            <input type="radio" id="maleSP" name="genderSP" value="male">
+                            <label for="maleSP">Male</label><br>
+                            <input type="radio" id="femaleSP" name="genderSP" value="female">
+                            <label for="femaleSP">Female</label><br>
+                        </div>
                     </div>
-                    <div class="optSPFilters_flex_medals_selects">
-                      <select id="selectGoldSP"></select><br>
-                      <select id="selectSilverSP"></select><br>
-                      <select id="selectBronzeSP"></select>
+                </div>
+                <!-- Optional Filters -->
+                <div id="optSPFilters">
+                    <h3>Optional Filters:</h3>
+                    <div class="optSPFilters_flexContainer">
+                        <div class="optSPFilters_flex">
+                            <h4 class="filterTitlesSP">Country</h4>
+                            <select id="selectCountrySP"></select>
+                            <h4 class="filterTitlesSP">Event</h4>
+                            <select id="selectEventSP"></select>
+                        </div>
+                        <div class="optSPFilters_flex">
+                            <h4 class="filterTitlesSP"># of Medals</h4>
+                            <div class="optSPFilters_flexContainer_medals">
+                                <div class="optSPFilters_flex_medals_titles">
+                                    <h4 class="filterTitlesSP">Gold</h4>
+                                    <h4 class="filterTitlesSP">Silver</h4>
+                                    <h4 class="filterTitlesSP">Bronze</h4>
+                                </div>
+                                <div class="optSPFilters_flex_medals_selects">
+                                    <select id="selectGoldSP"></select><br>
+                                    <select id="selectSilverSP"></select><br>
+                                    <select id="selectBronzeSP"></select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="optSPFilters_flex">
+                            <h4 class="filterTitlesSP">Year</h4>
+                            <div class="sliderRange">
+                                <div id="year-slider-range"></div>
+                            </div>
+                            <div class="sliderValue">
+                                <p id="year-value-range"></p>
+                            </div>
+                            <h4 class="filterTitlesSP">Age</h4>
+                            <div class="sliderRange">
+                                <div id="age-slider-range"></div>
+                            </div>
+                            <div class="sliderValue">
+                                <p id="age-value-range"></p>
+                            </div>
+                        </div>
+                        <div class="optSPFilters_flex">
+                            <h4 class="filterTitlesSP">Height</h4>
+                            <div class="sliderRange">
+                                <div id="height-slider-range"></div>
+                            </div>
+                            <div class="sliderValue">
+                                <p id="height-value-range"></p>
+                            </div>
+                            <h4 class="filterTitlesSP">Weight</h4>
+                            <div class="sliderRange">
+                                <div id="weight-slider-range"></div>
+                            </div>
+                            <div class="sliderValue">
+                                <p id="weight-value-range"></p>
+                            </div>
+                        </div>
                     </div>
-                  </div>
                 </div>
-                <div class="optSPFilters_flex">
-                  <h4 class="filterTitlesSP">Year</h4>
-                  <div class="sliderRange"><div id="year-slider-range"></div></div>
-                  <div class="sliderValue"><p id="year-value-range"></p></div>
-                  <h4 class="filterTitlesSP">Age</h4>
-                  <div class="sliderRange"><div id="age-slider-range"></div></div>
-                  <div class="sliderValue"><p id="age-value-range"></p></div>
+            </div>
+            <!-- Generate Button: Update Scatterplot Based On Filters -->
+            <div class="generateButton">
+                <button type="button" id="generateButton">Generate</button>
+            </div>
+            <!-- Section 2: Scatterplot Graph and Profile Panel -->
+            <div id="flexContainerSP_2">
+                <!-- Scatterplot Graph Container -->
+                <div id="graphSP">
+                    <!-- Scatterplot Graph -->
+                    <div id="scatterplotGraph">
+                        <svg id="scatterplotGraphSVG" height="600" width="800" style="margin-top:5px; margin-bottom: 20px; margin-left: 20px;"></svg>
+                    </div>
+                    <!-- Scatterplot Legend -->
+                    <div id="legendSP">
+                        <svg id="scatterlegendsvg" height="100" width="800" style="margin-bottom: 20px; margin-left: 20px;"></svg>
+                    </div>
                 </div>
-                <div class="optSPFilters_flex">
-                  <h4 class="filterTitlesSP">Height</h4>
-                  <div class="sliderRange"><div id="height-slider-range"></div></div>
-                  <div class="sliderValue"><p id="height-value-range"></p></div>
-                  <h4 class="filterTitlesSP">Weight</h4>
-                  <div class="sliderRange"><div id="weight-slider-range"></div></div>
-                  <div class="sliderValue"><p id="weight-value-range"></p></div>
+                <!-- Scatterplot Profile Panel -->
+                <div id="profilePanelSP">
+                    <svg id="profilePanelSPSVG" height="725" width="600" style="margin-top:5px; margin-bottom: 20px; margin-left: 20px;"></svg>
                 </div>
-              </div>
             </div>
-          </div>
-          <!-- Generate Button: Update Scatterplot Based On Filters -->
-          <div class="generateButton">
-              <button type="button" id="generateButton">Generate</button>
-          </div>
-          <!-- Section 2: Scatterplot Graph and Profile Panel -->
-          <div id="flexContainerSP_2">
-          <!-- Scatterplot Graph Container -->
-            <div id="graphSP">
-              <!-- Scatterplot Graph -->
-              <div id = "scatterplotGraph">
-                <svg id="scatterplotGraphSVG" height="600" width="800" style="margin-top:5px; margin-bottom: 20px; margin-left: 20px;"></svg>
-              </div>
-              <!-- Scatterplot Legend -->
-              <div id="legendSP">
-                <svg id="scatterlegendsvg" height="100" width="800" style="margin-bottom: 20px; margin-left: 20px;"></svg>
-              </div>
-            </div>
-          <!-- Scatterplot Profile Panel -->
-            <div id="profilePanelSP">
-              <svg id="profilePanelSPSVG" height="725" width="600" style="margin-top:5px; margin-bottom: 20px; margin-left: 20px;"></svg>
-            </div>
-          </div>
 
-          <!-- ********************************** -->
-          <!--    SAVED ATHLETES TABLE            -->
-          <!-- ********************************** -->
-          <div id="savedAthletesTablePanel">
-              <table id="savedAthletesTable">
-                  <thead>
-                      <tr>
-                          <th>Name</th>
-                          <th>Country</th>
-                          <th>Sport</th>
-                          <th>View</th>
-                          <th>Remove</th>
-                      </tr>
-                  </thead>
-                  <tbody></tbody>
-              </table>
-          </div>
+            <!-- ********************************** -->
+            <!--    SAVED ATHLETES TABLE            -->
+            <!-- ********************************** -->
+            <div id="savedAthletesTablePanel">
+                <table id="savedAthletesTable">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Country</th>
+                            <th>Sport</th>
+                            <th>View</th>
+                            <th>Remove</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </div>
         </div>
 
         <script>
