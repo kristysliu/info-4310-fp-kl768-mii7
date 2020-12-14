@@ -296,9 +296,7 @@
         <!-- ********************************** -->
         <div id="mapPanel">
             <h1 class="sectionTitles">World Map of Olympics Results</h1>
-            <div id="flexContainerMP_1">
-                <svg id='viz' height='60vh' width='85vw'></svg>
-            </div>
+            <svg id='viz' height='600' width='800'></svg>
         </div>
 
         <!-- ********************************** -->
@@ -336,7 +334,6 @@
                         </div>
                     </div>
                 </div>
-
                 <!-- Optional Filters -->
                 <div id="optSPFilters">
                     <h3>Optional Filters:</h3>
@@ -355,21 +352,71 @@
                                     <h4 class="filterTitlesSP">Silver</h4>
                                     <h4 class="filterTitlesSP">Bronze</h4>
                                 </div>
+                                <div class="optSPFilters_flex_medals_selects">
+                                    <select id="selectGoldSP"></select><br>
+                                    <select id="selectSilverSP"></select><br>
+                                    <select id="selectBronzeSP"></select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="optSPFilters_flex">
+                            <h4 class="filterTitlesSP">Year</h4>
+                            <div class="sliderRange">
+                                <div id="year-slider-range"></div>
+                            </div>
+                            <div class="sliderValue">
+                                <p id="year-value-range"></p>
+                            </div>
+                            <h4 class="filterTitlesSP">Age</h4>
+                            <div class="sliderRange">
+                                <div id="age-slider-range"></div>
+                            </div>
+                            <div class="sliderValue">
+                                <p id="age-value-range"></p>
+                            </div>
+                        </div>
+                        <div class="optSPFilters_flex">
+                            <h4 class="filterTitlesSP">Height</h4>
+                            <div class="sliderRange">
+                                <div id="height-slider-range"></div>
+                            </div>
+                            <div class="sliderValue">
+                                <p id="height-value-range"></p>
+                            </div>
+                            <h4 class="filterTitlesSP">Weight</h4>
+                            <div class="sliderRange">
+                                <div id="weight-slider-range"></div>
+                            </div>
+                            <div class="sliderValue">
+                                <p id="weight-value-range"></p>
                             </div>
                         </div>
                     </div>
                 </div>
-
-                <!-- Scatterplot Legend -->
-                <div id="legendSP">
-                    <svg id="scatterlegendsvg" height="100" width="800" style="margin-bottom: 20px; margin-left: 20px;"></svg>
+            </div>
+            <!-- Generate Button: Update Scatterplot Based On Filters -->
+            <div class="generateButton">
+                <button type="button" id="generateButton">Generate</button>
+            </div>
+            <!-- Section 2: Scatterplot Graph and Profile Panel -->
+            <div id="flexContainerSP_2">
+                <!-- Scatterplot Graph Container -->
+                <div id="graphSP">
+                    <!-- Scatterplot Graph -->
+                    <div id="scatterplotGraph">
+                        <svg id="scatterplotGraphSVG" height="600" width="800" style="margin-top:5px; margin-bottom: 20px; margin-left: 20px;"></svg>
+                    </div>
+                    <!-- Scatterplot Legend -->
+                    <div id="legendSP">
+                        <svg id="scatterlegendsvg" height="100" width="800" style="margin-bottom: 20px; margin-left: 20px;"></svg>
+                    </div>
                 </div>
-
                 <!-- Scatterplot Profile Panel -->
                 <div id="profilePanelSP">
                     <svg id="profilePanelSPSVG" height="725" width="600" style="margin-top:5px; margin-bottom: 20px; margin-left: 20px;"></svg>
                 </div>
             </div>
+
             <!-- ********************************** -->
             <!--    SAVED ATHLETES TABLE            -->
             <!-- ********************************** -->
@@ -859,6 +906,7 @@
                 //       }
                 //     }
             }
+
             requestData();
             loadScatter();
         </script>
