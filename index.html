@@ -14,266 +14,284 @@
 
     <style>
         body {
-          font-family: monaco,Consolas,Lucida Console,monospace;
-          background: #f9f9f9;
+            font-family: monaco, Consolas, Lucida Console, monospace;
+            background: #f9f9f9;
         }
-
-        .sectionTitles{
-          font-size: 60px;
-          text-align: center;
+        
+        .sectionTitles {
+            font-size: 60px;
+            text-align: center;
         }
-
-        .websiteTitle{
-          font-size: 80px;
-          text-align: center;
-          color: #2e2e2e;
+        
+        .websiteTitle {
+            font-size: 80px;
+            text-align: center;
+            color: #2e2e2e;
         }
-
-        .authorsTitle{
-          font-size: 30px;
-          font-style: italic;
-          text-align: center;
-          color: #2e2e2e;
+        
+        .authorsTitle {
+            font-size: 30px;
+            font-style: italic;
+            text-align: center;
+            color: #2e2e2e;
         }
-
-        .center{
-          display: block;
-          margin-left: auto;
-          margin-right: auto;
-          width: 1000px;
+        
+        .center {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            width: 1000px;
         }
-
-        .olympicsflexcontainermain{
-          height: 750px;
+        
+        .olympicsflexcontainermain {
+            height: 750px;
         }
-
-        .olympicsflexcontainertoc{
-          margin: auto;
-          margin-top: -575px;
-          width: 990px;
+        
+        .olympicsflexcontainertoc {
+            margin: auto;
+            margin-top: -575px;
+            width: 990px;
         }
-
-        .olympicsflexcontainer1,.olympicsflexcontainer2{
-          display: flex;
-          flex-direction: row;
+        
+        .olympicsflexcontainer1,
+        .olympicsflexcontainer2 {
+            display: flex;
+            flex-direction: row;
         }
-
-        .toc_textbox_r1{
-          height: 240px;
-          width: 240px;
-          border-radius: 50%;
-          /* background-color: rgba(38, 38, 38, 0.2); */
-          text-align: center;
-          margin: 45px;
-          display: flex;
+        
+        .toc_textbox_r1 {
+            height: 240px;
+            width: 240px;
+            border-radius: 50%;
+            /* background-color: rgba(38, 38, 38, 0.2); */
+            text-align: center;
+            margin: 45px;
+            display: flex;
         }
-
-        .olympicsflexcontainer2{
-          margin-left:165px;
-          margin-top: -180px;
+        
+        .olympicsflexcontainer2 {
+            margin-left: 165px;
+            margin-top: -180px;
         }
-
-        .toc_textbox_r2{
-          height: 240px;
-          width: 240px;
-          border-radius: 50%;
-          /* background-color: rgba(38, 38, 38, 0.2); */
-          text-align: center;
-          margin: 45px;
-          display: flex;
+        
+        .toc_textbox_r2 {
+            height: 240px;
+            width: 240px;
+            border-radius: 50%;
+            /* background-color: rgba(38, 38, 38, 0.2); */
+            text-align: center;
+            margin: 45px;
+            display: flex;
         }
-
-        .toc_text{
-          text-decoration: none;
-          color: #2e2e2e;
-          font-weight: bold;
-          font-size: 15px;
-          margin: auto;
-          width: 200px;
+        
+        .toc_text {
+            text-decoration: none;
+            color: #2e2e2e;
+            font-weight: bold;
+            font-size: 15px;
+            margin: auto;
+            width: 200px;
         }
-
+        
         hr.solid {
-          border-top: 3px solid #2e2e2e;
+            border-top: 3px solid #2e2e2e;
         }
-
-        #mapPanel{
-          color: #2e2e2e;
+        
+        #mapPanel {
+            color: #2e2e2e;
         }
-
+        
         #scatterplotPanel {
             background: #2e2e2e;
-            position:absolute;
-            left:0;
-            right:0;
+            position: absolute;
+            left: 0;
+            right: 0;
             color: white;
         }
-
-        #flexContainerSP_1{
-          display: flex;
-          justify-content: center;
-          width: 1200px;
-          height: 270px;
-          margin: 30px auto;
-          border: 1.5px solid lightgray;
-          background:rgba(255,255,255,0.1);
-          font-size: 12px;
+        
+        #flexContainerSP_1 {
+            display: flex;
+            justify-content: center;
+            width: 1200px;
+            height: 270px;
+            margin: 30px auto;
+            border: 1.5px solid lightgray;
+            background: rgba(255, 255, 255, 0.1);
+            font-size: 12px;
         }
-
-        #flexContainerSP_1 h3, #generateButtonSP, #resetButtonSP{
+        
+        #flexContainerSP_1 h3,
+        #generateButtonSP,
+        #resetButtonSP {
             font-size: 15px;
         }
-
-        .filterButtonSPflexContainer{
-          display: flex;
-          flex-direction: row;
+        
+        .filterButtonSPflexContainer {
+            display: flex;
+            flex-direction: row;
         }
-
-        .filterTitlesSP{
-          font-size: 13px;
+        
+        .filterTitlesSP {
+            font-size: 13px;
         }
-
-        #reqSPFilters{
-          width: 200px;
-          padding: 10px;
-          padding-left: 30px;
-          text-align: left;
+        
+        #reqSPFilters {
+            width: 200px;
+            padding: 10px;
+            padding-left: 30px;
+            text-align: left;
         }
-
-        #selectSportSP, #selectNationalitySP, #selectEventSP{
-          width: 150px;
-          height: 20px;
+        
+        #selectSportSP,
+        #selectNationalitySP,
+        #selectEventSP {
+            width: 150px;
+            height: 20px;
         }
-
-        #selectGoldSP, #selectSilverSP, #selectBronzeSP{
-          width: 50px;
-          height: 20px;
+        
+        #selectGoldSP,
+        #selectSilverSP,
+        #selectBronzeSP {
+            width: 50px;
+            height: 20px;
         }
-
-        #optSPFilters{
-          width: 900px;
-          padding: 10px;
-          padding-left: 30px;
-          text-align: left;
-          border-left: 1.5px solid lightgray;
+        
+        #optSPFilters {
+            width: 900px;
+            padding: 10px;
+            padding-left: 30px;
+            text-align: left;
+            border-left: 1.5px solid lightgray;
         }
-
-        .radioGenderSPflexcontainer, .radioSeasonSPflexcontainer{
-          display: flex;
-          flex-direction: row;
-          margin-top: -10px;
+        
+        .radioGenderSPflexcontainer,
+        .radioSeasonSPflexcontainer {
+            display: flex;
+            flex-direction: row;
+            margin-top: -10px;
         }
-
-        .radioGenderSPflexcontainer label, .radioSeasonSPflexcontainer label{
-          margin-left: 5px;
-          margin-right: 15px;
-          margin-top: 2px;
+        
+        .radioGenderSPflexcontainer label,
+        .radioSeasonSPflexcontainer label {
+            margin-left: 5px;
+            margin-right: 15px;
+            margin-top: 2px;
         }
-
-        .reqSPFilters_flexContainer{
-          display: flex;
-          flex-direction: column;
-          margin-top: -15px;
+        
+        .reqSPFilters_flexContainer {
+            display: flex;
+            flex-direction: column;
+            margin-top: -15px;
         }
-
-        .optSPFilters_flexContainer{
-          display: flex;
-          flex-direction: row;
-          margin-top: -15px;
+        
+        .optSPFilters_flexContainer {
+            display: flex;
+            flex-direction: row;
+            margin-top: -15px;
         }
-
-        .optSPFilters_flex{
-          width: 25%;
+        
+        .optSPFilters_flex {
+            width: 25%;
         }
-
-        .optSPFilters_flexContainer_medals{
-          display: flex;
-          flex-direction: row;
+        
+        .optSPFilters_flexContainer_medals {
+            display: flex;
+            flex-direction: row;
         }
-
-        .optSPFilters_flex_medals_titles{
-          margin-top: -15px;
+        
+        .optSPFilters_flex_medals_titles {
+            margin-top: -15px;
         }
-
-        .optSPFilters_flex_medals_selects{
-          margin-top: -8px;
+        
+        .optSPFilters_flex_medals_selects {
+            margin-top: -8px;
         }
-
-        .optSPFilters_flex_medals_titles h4{
-          margin-top: 19px;
-          margin-bottom: 19px;
-          margin-right: 10px;
+        
+        .optSPFilters_flex_medals_titles h4 {
+            margin-top: 19px;
+            margin-bottom: 19px;
+            margin-right: 10px;
         }
-
-        .optSPFilters_flex_medals_selects select{
-          margin: 8px;
+        
+        .optSPFilters_flex_medals_selects select {
+            margin: 8px;
         }
-
-        .generateButtonSP, .resetButtonSP{
-          text-align: center;
-          margin: auto;
+        
+        .generateButtonSP,
+        .resetButtonSP {
+            text-align: center;
+            margin: auto;
         }
-
-        #generateButtonSP, #resetButtonSP{
-          font-family: monaco,Consolas,Lucida Console,monospace;
-          font-weight: bold;
-          background-color: #f9f9f9;
-          border: 1.5px solid lightgray;
-          padding: 5px;
-          padding-left: 20px;
-          padding-right: 20px;
+        
+        #generateButtonSP,
+        #resetButtonSP {
+            font-family: monaco, Consolas, Lucida Console, monospace;
+            font-weight: bold;
+            background-color: #f9f9f9;
+            border: 1.5px solid lightgray;
+            padding: 5px;
+            padding-left: 20px;
+            padding-right: 20px;
         }
-
-        #flexContainerSP_2{
-          display: flex;
-          justify-content: center;
+        
+        #flexContainerSP_2 {
+            display: flex;
+            justify-content: center;
         }
-
-        #graphSP, #profilePanelSP{
-          margin-top: 30px;
-          margin-bottom: 30px;
-          height: 700px;
+        
+        #graphSP,
+        #profilePanelSP {
+            margin-top: 30px;
+            margin-bottom: 30px;
+            height: 700px;
         }
-
-        #scatterplotGraphSVG, #scatterlegendsvg{
-          background-color: rgba(255,255,255,0.1);
+        
+        #scatterplotGraphSVG,
+        #scatterlegendsvg {
+            background-color: rgba(255, 255, 255, 0.1);
         }
-
-        #profilePanelSPSVG{
-          background-color: rgba(255,255,255,0.9);
+        
+        #profilePanelSPSVG {
+            background-color: rgba(255, 255, 255, 0.9);
         }
-
-        #savedAthletesTablePanel{
-          margin-top: 100px;
-          padding: 20px;
-          height: 800px;
+        
+        #savedAthletesTablePanel {
+            margin-top: 100px;
+            padding: 20px;
+            height: 800px;
         }
-
-        #savedAthletesTable{
-          background-color: rgba(255,255,255,0.1);
-          border: 1.5px solid lightgray;
-          width: 1400px;
-          margin: auto;
+        
+        #savedAthletesTable {
+            background-color: rgba(255, 255, 255, 0.1);
+            border: 1.5px solid lightgray;
+            width: 1400px;
+            margin: auto;
         }
-
+        
         #viz {
-            background-color: lightgrey;
+            height: 130vh;
         }
-
+        
         .boundary {
             fill: #DEB887;
             stroke: black;
             stroke-width: 1px;
         }
-
+        
         #flexContainerMP_1 {
             display: flex;
             justify-content: center;
-            height: 130vh;
         }
-
+        
         #map_svg {
             border: 2px solid rgb(230, 238, 247);
             background-color: rgb(230, 238, 247);
+        }
+        
+        #timeline {
+            text-align: center;
+            position: relative;
+            /* top: 600px; */
         }
     </style>
 </head>
@@ -315,8 +333,13 @@
         <!-- ********************************** -->
         <div id="mapPanel">
             <h1 class="sectionTitles">World Map of Olympics Results</h1>
-            <div id="flexContainerMP_1">
-                <!-- <div id='viz'></div> -->
+            <div id='viz'>
+                <div id="flexContainerMP_1">
+                </div>
+                <div id="timeline">
+                    <input id="timeslide" type="range" min="0" max="11" value="0" step="1" /><br>
+                    <span id="range">1896</span>
+                </div>
             </div>
         </div>
 
@@ -324,126 +347,142 @@
         <!--   SCATTERPLOT VISUALIZATION        -->
         <!-- ********************************** -->
         <div id="scatterplotPanel">
-          <h1 class="sectionTitles">Athlete Profiles</h1>
-          <!-- Section 1: Scatterplot Filters Panel -->
-          <div id="flexContainerSP_1">
-          <!-- Required Filters -->
-            <div id="reqSPFilters">
-              <h3>Required Filters:</h3>
-              <div class="reqSPFilters_flexContainer">
-                <div class = "radioSeasonSP">
-                  <h4 class="filterTitlesSP">Season</h4>
-                  <div class = "radioSeasonSPflexcontainer">
-                    <input type="radio" id="summerSP" name="seasonSP" value="summer">
-                    <label for="summerSP">Summer</label><br>
-                    <input type="radio" id="winterSP" name="seasonSP" value="winter">
-                    <label for="winterSP">Winter</label><br>
-                  </div>
-                </div>
-                <div class = "selectSportSP">
-                  <h4 class="filterTitlesSP">Sport</h4>
-                  <select id="selectSportSP"></select>
-                </div>
-                <div class = "radioGenderSP">
-                  <h4 class="filterTitlesSP">Gender</h4>
-                  <div class = "radioGenderSPflexcontainer">
-                    <input type="radio" id="maleSP" name="genderSP" value="male">
-                    <label for="maleSP">Male</label><br>
-                    <input type="radio" id="femaleSP" name="genderSP" value="female">
-                    <label for="femaleSP">Female</label><br>
-                  </div>
-                </div>
-              </div>
-            </div>
-          <!-- Optional Filters -->
-            <div id="optSPFilters">
-              <h3>Optional Filters:</h3>
-              <div class="optSPFilters_flexContainer">
-                <div class="optSPFilters_flex">
-                  <h4 class="filterTitlesSP">Nationality</h4>
-                  <select id="selectNationalitySP"></select>
-                  <h4 class="filterTitlesSP">Event</h4>
-                  <select id="selectEventSP"></select>
-                </div>
-                <div class="optSPFilters_flex">
-                  <h4 class="filterTitlesSP"># of Medals</h4>
-                  <div class="optSPFilters_flexContainer_medals">
-                    <div class="optSPFilters_flex_medals_titles">
-                      <h4 class="filterTitlesSP">Gold</h4>
-                      <h4 class="filterTitlesSP">Silver</h4>
-                      <h4 class="filterTitlesSP">Bronze</h4>
+            <h1 class="sectionTitles">Athlete Profiles</h1>
+            <!-- Section 1: Scatterplot Filters Panel -->
+            <div id="flexContainerSP_1">
+                <!-- Required Filters -->
+                <div id="reqSPFilters">
+                    <h3>Required Filters:</h3>
+                    <div class="reqSPFilters_flexContainer">
+                        <div class="radioSeasonSP">
+                            <h4 class="filterTitlesSP">Season</h4>
+                            <div class="radioSeasonSPflexcontainer">
+                                <input type="radio" id="summerSP" name="seasonSP" value="summer">
+                                <label for="summerSP">Summer</label><br>
+                                <input type="radio" id="winterSP" name="seasonSP" value="winter">
+                                <label for="winterSP">Winter</label><br>
+                            </div>
+                        </div>
+                        <div class="selectSportSP">
+                            <h4 class="filterTitlesSP">Sport</h4>
+                            <select id="selectSportSP"></select>
+                        </div>
+                        <div class="radioGenderSP">
+                            <h4 class="filterTitlesSP">Gender</h4>
+                            <div class="radioGenderSPflexcontainer">
+                                <input type="radio" id="maleSP" name="genderSP" value="male">
+                                <label for="maleSP">Male</label><br>
+                                <input type="radio" id="femaleSP" name="genderSP" value="female">
+                                <label for="femaleSP">Female</label><br>
+                            </div>
+                        </div>
                     </div>
-                    <div class="optSPFilters_flex_medals_selects">
-                      <select id="selectGoldSP"></select><br>
-                      <select id="selectSilverSP"></select><br>
-                      <select id="selectBronzeSP"></select>
+                </div>
+                <!-- Optional Filters -->
+                <div id="optSPFilters">
+                    <h3>Optional Filters:</h3>
+                    <div class="optSPFilters_flexContainer">
+                        <div class="optSPFilters_flex">
+                            <h4 class="filterTitlesSP">Nationality</h4>
+                            <select id="selectNationalitySP"></select>
+                            <h4 class="filterTitlesSP">Event</h4>
+                            <select id="selectEventSP"></select>
+                        </div>
+                        <div class="optSPFilters_flex">
+                            <h4 class="filterTitlesSP"># of Medals</h4>
+                            <div class="optSPFilters_flexContainer_medals">
+                                <div class="optSPFilters_flex_medals_titles">
+                                    <h4 class="filterTitlesSP">Gold</h4>
+                                    <h4 class="filterTitlesSP">Silver</h4>
+                                    <h4 class="filterTitlesSP">Bronze</h4>
+                                </div>
+                                <div class="optSPFilters_flex_medals_selects">
+                                    <select id="selectGoldSP"></select><br>
+                                    <select id="selectSilverSP"></select><br>
+                                    <select id="selectBronzeSP"></select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="optSPFilters_flex">
+                            <h4 class="filterTitlesSP">Year</h4>
+                            <div class="sliderRange">
+                                <div id="year-slider-range"></div>
+                            </div>
+                            <div class="sliderValue">
+                                <p id="year-value-range"></p>
+                            </div>
+                            <h4 class="filterTitlesSP">Age</h4>
+                            <div class="sliderRange">
+                                <div id="age-slider-range"></div>
+                            </div>
+                            <div class="sliderValue">
+                                <p id="age-value-range"></p>
+                            </div>
+                        </div>
+                        <div class="optSPFilters_flex">
+                            <h4 class="filterTitlesSP">Height</h4>
+                            <div class="sliderRange">
+                                <div id="height-slider-range"></div>
+                            </div>
+                            <div class="sliderValue">
+                                <p id="height-value-range"></p>
+                            </div>
+                            <h4 class="filterTitlesSP">Weight</h4>
+                            <div class="sliderRange">
+                                <div id="weight-slider-range"></div>
+                            </div>
+                            <div class="sliderValue">
+                                <p id="weight-value-range"></p>
+                            </div>
+                        </div>
                     </div>
-                  </div>
                 </div>
-                <div class="optSPFilters_flex">
-                  <h4 class="filterTitlesSP">Year</h4>
-                  <div class="sliderRange"><div id="year-slider-range"></div></div>
-                  <div class="sliderValue"><p id="year-value-range"></p></div>
-                  <h4 class="filterTitlesSP">Age</h4>
-                  <div class="sliderRange"><div id="age-slider-range"></div></div>
-                  <div class="sliderValue"><p id="age-value-range"></p></div>
+            </div>
+            <!-- Generate Button: Update Scatterplot Based On Filters -->
+            <div class="filterButtonSPflexContainer">
+                <div class="generateButtonSP">
+                    <button type="button" id="generateButtonSP">Generate</button>
                 </div>
-                <div class="optSPFilters_flex">
-                  <h4 class="filterTitlesSP">Height</h4>
-                  <div class="sliderRange"><div id="height-slider-range"></div></div>
-                  <div class="sliderValue"><p id="height-value-range"></p></div>
-                  <h4 class="filterTitlesSP">Weight</h4>
-                  <div class="sliderRange"><div id="weight-slider-range"></div></div>
-                  <div class="sliderValue"><p id="weight-value-range"></p></div>
+                <div class="resetButtonSP">
+                    <button type="button" id="resetButtonSP">Reset</button>
                 </div>
-              </div>
             </div>
-          </div>
-          <!-- Generate Button: Update Scatterplot Based On Filters -->
-          <div class = "filterButtonSPflexContainer">
-            <div class="generateButtonSP">
-                <button type="button" id="generateButtonSP">Generate</button>
+            <!-- Section 2: Scatterplot Graph and Profile Panel -->
+            <div id="flexContainerSP_2">
+                <!-- Scatterplot Graph Container -->
+                <div id="graphSP">
+                    <!-- Scatterplot Graph -->
+                    <div id="scatterplotGraph">
+                        <svg id="scatterplotGraphSVG" height="600" width="800" style="margin-top:5px; margin-bottom: 20px; margin-left: 20px;"></svg>
+                    </div>
+                    <!-- Scatterplot Legend -->
+                    <div id="legendSP">
+                        <svg id="scatterlegendsvg" height="100" width="800" style="margin-bottom: 20px; margin-left: 20px;"></svg>
+                    </div>
+                </div>
+                <!-- Scatterplot Profile Panel -->
+                <div id="profilePanelSP">
+                    <svg id="profilePanelSPSVG" height="725" width="600" style="margin-top:5px; margin-bottom: 20px; margin-left: 20px;"></svg>
+                </div>
             </div>
-            <div class="resetButtonSP">
-                <button type="button" id="resetButtonSP">Reset</button>
-            </div>
-          </div>
-          <!-- Section 2: Scatterplot Graph and Profile Panel -->
-          <div id="flexContainerSP_2">
-          <!-- Scatterplot Graph Container -->
-            <div id="graphSP">
-              <!-- Scatterplot Graph -->
-              <div id = "scatterplotGraph">
-                <svg id="scatterplotGraphSVG" height="600" width="800" style="margin-top:5px; margin-bottom: 20px; margin-left: 20px;"></svg>
-              </div>
-              <!-- Scatterplot Legend -->
-              <div id="legendSP">
-                <svg id="scatterlegendsvg" height="100" width="800" style="margin-bottom: 20px; margin-left: 20px;"></svg>
-              </div>
-            </div>
-          <!-- Scatterplot Profile Panel -->
-            <div id="profilePanelSP">
-              <svg id="profilePanelSPSVG" height="725" width="600" style="margin-top:5px; margin-bottom: 20px; margin-left: 20px;"></svg>
-            </div>
-          </div>
 
-          <!-- ********************************** -->
-          <!--    SAVED ATHLETES TABLE            -->
-          <!-- ********************************** -->
-          <div id="savedAthletesTablePanel">
-              <table id="savedAthletesTable">
-                  <thead>
-                      <tr>
-                          <th>Name</th>
-                          <th></th>
-                          <th>Sport</th>
-                          <th>View</th>
-                          <th>Remove</th>
-                      </tr>
-                  </thead>
-                  <tbody></tbody>
-              </table>
-          </div>
+            <!-- ********************************** -->
+            <!--    SAVED ATHLETES TABLE            -->
+            <!-- ********************************** -->
+            <div id="savedAthletesTablePanel">
+                <table id="savedAthletesTable">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th></th>
+                            <th>Sport</th>
+                            <th>View</th>
+                            <th>Remove</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </div>
         </div>
 
         <script>
@@ -517,7 +556,6 @@
 
             var g = map.append("g");
 
-
             function rotateMap(endX) {
                 projection.rotate([rotated + (endX - initX) * 360 / (s * width), 0, 0]);
                 g.selectAll('path').attr('d', path);
@@ -578,543 +616,569 @@
              *****        ScatterPlot Visualization        *****
              **************************************************/
 
-             const scatter = d3.select("svg#scatterplotGraphSVG");
-             const scatterLeg = d3.select("svg#scatterlegendsvg");
+            const scatter = d3.select("svg#scatterplotGraphSVG");
+            const scatterLeg = d3.select("svg#scatterlegendsvg");
 
-             const scatterwidth = scatter.attr("width");
-             const scatterheight = scatter.attr("height");
-             const scattermargin = {
-               top: 10,
-               right: 10,
-               bottom: 50,
-               left: 50
-             };
+            const scatterwidth = scatter.attr("width");
+            const scatterheight = scatter.attr("height");
+            const scattermargin = {
+                top: 10,
+                right: 10,
+                bottom: 50,
+                left: 50
+            };
 
-             const legWidth = scatterLeg.attr("width");
-             const legHeight = scatterLeg.attr("height");
+            const legWidth = scatterLeg.attr("width");
+            const legHeight = scatterLeg.attr("height");
 
-             const chartWidth = width - margin.left - margin.right;
-             const chartHeight = height - margin.top - margin.bottom;
+            const chartWidth = width - margin.left - margin.right;
+            const chartHeight = height - margin.top - margin.bottom;
 
-             let annotations = scatter.append("g")
-                                 .attr("id", "annotations")
-                                 .attr("class", "graph-svg-component2");
+            let annotations = scatter.append("g")
+                .attr("id", "annotations")
+                .attr("class", "graph-svg-component2");
 
-             let chartArea = scatter.append("g").attr("id", "points").attr("class", "graph-svg-component")
-               .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+            let chartArea = scatter.append("g").attr("id", "points").attr("class", "graph-svg-component")
+                .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-             let colorLegendGroup = scatterLeg.append('g')
-                                 .attr("id", "colorLegendGroup");
+            let colorLegendGroup = scatterLeg.append('g')
+                .attr("id", "colorLegendGroup");
 
-             const loadScatter = async function () {
-               let scatterdataInitial = await d3.csv('athlete_events.csv', d3.autoType)
-               var allSport = []
-               var allNationality = []
-               var allEvent = []
-               var allYear = []
-               var allAge = []
-               var allWeight = []
-               var allHeight = []
-               //Data Issues
-               let scatterdata = scatterdataInitial.filter(function(d){
-                   return ((d.Weight != "NA") && (d.Height != "NA") && (d.Age != "NA"))
-               });
+            const loadScatter = async function() {
+                let scatterdataInitial = await d3.csv('athlete_events.csv', d3.autoType)
+                var allSport = []
+                var allNationality = []
+                var allEvent = []
+                var allYear = []
+                var allAge = []
+                var allWeight = []
+                var allHeight = []
+                    //Data Issues
+                let scatterdata = scatterdataInitial.filter(function(d) {
+                    return ((d.Weight != "NA") && (d.Height != "NA") && (d.Age != "NA"))
+                });
 
-               // NEW DATASET (by person no duplicates): ID, Sex, NOC, Sport, Team,
-               // Weight, Height, Oldest age competed, Events array, # of olympics,
-               // # of gold, silver, bronze medals, Success rate (# of medals/# of olympics),
-               // Dictionary of events = {# of gold, # of silver, # of bronze, # of no medals, total # medals},
-               let scatterProfilesData = await d3.csv('athlete_profiles.csv', d3.autoType)
-               let scatterMedalsData = await d3.csv('athlete_medals.csv', d3.autoType)
-               scatterProfilesData.forEach(p => {
-                 p["Events"] = [];
-                 p["EventMedals"] = [];
-                 p["TimesCompeted"] = 0;
-                 p["NumberMedals"] = 0;
-                 scatterMedalsData.forEach(d => {
-                   if(p.ID == d.ID){
-                       if(!(p["Events"].includes(d.Event))){
-                         p["Events"].push(d.Event);
-                         if(d["Medal"]=="NA"){
-                           p["EventMedals"].push(
-                                   { "Event": d.Event,
-                                   "Gold": 0,
-                                   "Silver": 0,
-                                   "Bronze": 0,
-                                   "NoMedals": 1,
-                                   "Total": 1
-                                   }
-                                 );
-                           }else if(d["Medal"]=="Gold"){
-                             p["EventMedals"].push(
-                                     { "Event": d.Event,
-                                     "Gold": 1,
-                                     "Silver": 0,
-                                     "Bronze": 0,
-                                     "NoMedals": 0,
-                                     "Total": 1
-                                     }
-                                   );
-                           }else if(d["Medal"]=="Silver"){
-                             p["EventMedals"].push(
-                                     { "Event": d.Event,
-                                     "Gold": 0,
-                                     "Silver": 1,
-                                     "Bronze": 0,
-                                     "NoMedals": 0,
-                                     "Total": 1
-                                     }
-                                   );
-                           }else if(d["Medal"]=="Bronze"){
-                             p["EventMedals"].push(
-                                     { "Event": d.Event,
-                                     "Gold": 0,
-                                     "Silver": 0,
-                                     "Bronze": 1,
-                                     "NoMedals": 0,
-                                     "Total": 1
-                                     }
-                                   );
-                               }
-                         }else{
-                           var index = p["EventMedals"].map(function(o) { return o.Event; }).indexOf(d.Event);
-                           if(d["Medal"]=="NoMedals"){
-                             p["EventMedals"][index]["NoMedals"] += 1;
-                           } else if(d["Medal"]=="Gold"){
-                             p["EventMedals"][index]["Gold"] += 1;
-                           } else if(d["Medal"]=="Silver"){
-                             p["EventMedals"][index]["Silver"] += 1;
-                           } else if(d["Medal"]=="Bronze"){
-                             p["EventMedals"][index]["Bronze"] += 1;
-                           }
-                         }
-                       }
-                 });
-               });
+                // NEW DATASET (by person no duplicates): ID, Sex, NOC, Sport, Team,
+                // Weight, Height, Oldest age competed, Events array, # of olympics,
+                // # of gold, silver, bronze medals, Success rate (# of medals/# of olympics),
+                // Dictionary of events = {# of gold, # of silver, # of bronze, # of no medals, total # medals},
+                let scatterProfilesData = await d3.csv('athlete_profiles.csv', d3.autoType)
+                let scatterMedalsData = await d3.csv('athlete_medals.csv', d3.autoType)
+                scatterProfilesData.forEach(p => {
+                    p["Events"] = [];
+                    p["EventMedals"] = [];
+                    p["TimesCompeted"] = 0;
+                    p["NumberMedals"] = 0;
+                    scatterMedalsData.forEach(d => {
+                        if (p.ID == d.ID) {
+                            if (!(p["Events"].includes(d.Event))) {
+                                p["Events"].push(d.Event);
+                                if (d["Medal"] == "NA") {
+                                    p["EventMedals"].push({
+                                        "Event": d.Event,
+                                        "Gold": 0,
+                                        "Silver": 0,
+                                        "Bronze": 0,
+                                        "NoMedals": 1,
+                                        "Total": 1
+                                    });
+                                } else if (d["Medal"] == "Gold") {
+                                    p["EventMedals"].push({
+                                        "Event": d.Event,
+                                        "Gold": 1,
+                                        "Silver": 0,
+                                        "Bronze": 0,
+                                        "NoMedals": 0,
+                                        "Total": 1
+                                    });
+                                } else if (d["Medal"] == "Silver") {
+                                    p["EventMedals"].push({
+                                        "Event": d.Event,
+                                        "Gold": 0,
+                                        "Silver": 1,
+                                        "Bronze": 0,
+                                        "NoMedals": 0,
+                                        "Total": 1
+                                    });
+                                } else if (d["Medal"] == "Bronze") {
+                                    p["EventMedals"].push({
+                                        "Event": d.Event,
+                                        "Gold": 0,
+                                        "Silver": 0,
+                                        "Bronze": 1,
+                                        "NoMedals": 0,
+                                        "Total": 1
+                                    });
+                                }
+                            } else {
+                                var index = p["EventMedals"].map(function(o) {
+                                    return o.Event;
+                                }).indexOf(d.Event);
+                                if (d["Medal"] == "NoMedals") {
+                                    p["EventMedals"][index]["NoMedals"] += 1;
+                                } else if (d["Medal"] == "Gold") {
+                                    p["EventMedals"][index]["Gold"] += 1;
+                                } else if (d["Medal"] == "Silver") {
+                                    p["EventMedals"][index]["Silver"] += 1;
+                                } else if (d["Medal"] == "Bronze") {
+                                    p["EventMedals"][index]["Bronze"] += 1;
+                                }
+                            }
+                        }
+                    });
+                });
 
-               scatterdata.forEach(d => {
-                 d['Weight'] = parseFloat(d['Weight']);
-                 d['Height'] = parseFloat(d['Height']);
-                 d['Age'] = parseFloat(d['Age']);
-                 d['Year'] = parseFloat(d['Year']);
+                scatterdata.forEach(d => {
+                    d['Weight'] = parseFloat(d['Weight']);
+                    d['Height'] = parseFloat(d['Height']);
+                    d['Age'] = parseFloat(d['Age']);
+                    d['Year'] = parseFloat(d['Year']);
 
-                 if (!allSport.includes(d['Sport'])){
-                   allSport.push(d['Sport'])
-                 }
-                 if(d['NOC']=="ISV"){
-                   d['NOC']="USA";
-                 }
-                 if (!allNationality.includes(d['NOC'])){
-                   allNationality.push(d['NOC'])
-                 }
-                 if (!allEvent.includes(d['Event'])){
-                   allEvent.push(d['Event'])
-                 }
-                 if (!allWeight.includes(d['Weight'])){
-                   allWeight.push(d['Weight'])
-                 }
-                 if (!allHeight.includes(d['Height'])){
-                   allHeight.push(d['Height'])
-                 }
-                 if (!allAge.includes(d['Age'])){
-                   allAge.push(d['Age'])
-                 }
-                 if (!allYear.includes(d['Year'])){
-                   allYear.push(d['Year'])
-                 }
-               });
+                    if (!allSport.includes(d['Sport'])) {
+                        allSport.push(d['Sport'])
+                    }
+                    if (d['NOC'] == "ISV") {
+                        d['NOC'] = "USA";
+                    }
+                    if (!allNationality.includes(d['NOC'])) {
+                        allNationality.push(d['NOC'])
+                    }
+                    if (!allEvent.includes(d['Event'])) {
+                        allEvent.push(d['Event'])
+                    }
+                    if (!allWeight.includes(d['Weight'])) {
+                        allWeight.push(d['Weight'])
+                    }
+                    if (!allHeight.includes(d['Height'])) {
+                        allHeight.push(d['Height'])
+                    }
+                    if (!allAge.includes(d['Age'])) {
+                        allAge.push(d['Age'])
+                    }
+                    if (!allYear.includes(d['Year'])) {
+                        allYear.push(d['Year'])
+                    }
+                });
 
-               allSport.sort();
-               allSport.unshift("Select Sport")
-               allNationality.sort();
-               allNationality.unshift("All Nationalities")
-               allEvent.sort();
-               allEvent.unshift("All Events")
+                allSport.sort();
+                allSport.unshift("Select Sport")
+                allNationality.sort();
+                allNationality.unshift("All Nationalities")
+                allEvent.sort();
+                allEvent.unshift("All Events")
 
-               var weightMax = Math.max.apply(Math, allWeight);
-                   weightMin = Math.min.apply(Math,allWeight);
-                   heightMax = Math.max.apply(Math, allHeight);
-                   heightMin =Math.min.apply(Math, allHeight)
-                   ageMax = Math.max.apply(Math, allAge);
-                   ageMin = Math.min.apply(Math,allAge);
-                   yearMax = Math.max.apply(Math, allYear);
-                   yearMin = Math.min.apply(Math,allYear);
-               // allWeight.sort(function(a,b) { return a - b;});
-               // allWeight.unshift("All Weights")
-               // allHeight.sort(function(a,b) { return a - b;});
-               // allHeight.unshift("All Heights")
-               // allAge.sort(function(a,b) { return a - b;});
-               // allAge.unshift("All Ages")
+                var weightMax = Math.max.apply(Math, allWeight);
+                weightMin = Math.min.apply(Math, allWeight);
+                heightMax = Math.max.apply(Math, allHeight);
+                heightMin = Math.min.apply(Math, allHeight)
+                ageMax = Math.max.apply(Math, allAge);
+                ageMin = Math.min.apply(Math, allAge);
+                yearMax = Math.max.apply(Math, allYear);
+                yearMin = Math.min.apply(Math, allYear);
+                // allWeight.sort(function(a,b) { return a - b;});
+                // allWeight.unshift("All Weights")
+                // allHeight.sort(function(a,b) { return a - b;});
+                // allHeight.unshift("All Heights")
+                // allAge.sort(function(a,b) { return a - b;});
+                // allAge.unshift("All Ages")
 
-               // Initializing Filters
-               d3.select("#selectSportSP")
-                 .selectAll('myOptions')
-                	.data(allSport)
-                 .enter()
-               	.append('option')
-                 .text(function (d) { return d; })
-                 .attr("value", function (d) { return d; })
+                // Initializing Filters
+                d3.select("#selectSportSP")
+                    .selectAll('myOptions')
+                    .data(allSport)
+                    .enter()
+                    .append('option')
+                    .text(function(d) {
+                        return d;
+                    })
+                    .attr("value", function(d) {
+                        return d;
+                    })
 
-               d3.select("#selectNationalitySP")
-                 .selectAll('myOptions')
-                	.data(allNationality)
-                 .enter()
-               	.append('option')
-                 .text(function (d) { return d; })
-                 .attr("value", function (d) { return d; })
+                d3.select("#selectNationalitySP")
+                    .selectAll('myOptions')
+                    .data(allNationality)
+                    .enter()
+                    .append('option')
+                    .text(function(d) {
+                        return d;
+                    })
+                    .attr("value", function(d) {
+                        return d;
+                    })
 
-               d3.select("#selectEventSP")
-                 .selectAll('myOptions')
-                	.data(allEvent)
-                 .enter()
-               	.append('option')
-                 .text(function (d) { return d; })
-                 .attr("value", function (d) { return d; })
+                d3.select("#selectEventSP")
+                    .selectAll('myOptions')
+                    .data(allEvent)
+                    .enter()
+                    .append('option')
+                    .text(function(d) {
+                        return d;
+                    })
+                    .attr("value", function(d) {
+                        return d;
+                    })
 
-               d3.select("#selectGoldSP")
-                 .selectAll('myOptions')
-                	.data(["0","1","2",">3"])
-                 .enter()
-               	.append('option')
-                 .text(function (d) { return d; })
-                 .attr("value", function (d) { return d; })
-               d3.select("#selectSilverSP")
-                 .selectAll('myOptions')
-                 .data(["0","1","2",">3"])
-                 .enter()
-               	.append('option')
-                 .text(function (d) { return d; })
-                 .attr("value", function (d) { return d; })
-               d3.select("#selectBronzeSP")
-                 .selectAll('myOptions')
-                 .data(["0","1","2",">3"])
-                 .enter()
-               	.append('option')
-                 .text(function (d) { return d; })
-                 .attr("value", function (d) { return d; })
+                d3.select("#selectGoldSP")
+                    .selectAll('myOptions')
+                    .data(["0", "1", "2", ">3"])
+                    .enter()
+                    .append('option')
+                    .text(function(d) {
+                        return d;
+                    })
+                    .attr("value", function(d) {
+                        return d;
+                    })
+                d3.select("#selectSilverSP")
+                    .selectAll('myOptions')
+                    .data(["0", "1", "2", ">3"])
+                    .enter()
+                    .append('option')
+                    .text(function(d) {
+                        return d;
+                    })
+                    .attr("value", function(d) {
+                        return d;
+                    })
+                d3.select("#selectBronzeSP")
+                    .selectAll('myOptions')
+                    .data(["0", "1", "2", ">3"])
+                    .enter()
+                    .append('option')
+                    .text(function(d) {
+                        return d;
+                    })
+                    .attr("value", function(d) {
+                        return d;
+                    })
 
-               // Runs update function when any of the select drop-downs are changed
-               d3.select("#generateButtonSP").on("click", function(d) { updateSP() })
-               // Runs reset function when reset button is clicked
-               d3.select("#resetButtonSP").on("click", function(d) { resetSP() })
+                // Runs update function when any of the select drop-downs are changed
+                d3.select("#generateButtonSP").on("click", function(d) {
+                        updateSP()
+                    })
+                    // Runs reset function when reset button is clicked
+                d3.select("#resetButtonSP").on("click", function(d) {
+                    resetSP()
+                })
 
-               // //Deletes old points and replaces with new points that fit the criteria of the four filter select options
-               // function updateSP() {
-               //   // Create new data with year selection
-               //   var selectedYearOption = d3.select("#selectYear").property("value")
-               //   var dataFilterInitial = data.map(function(d){
-               //     if (d.Decade === selectedYearOption){
-               //       return d;
-               //     }
-               //   })
-               //   var dataFilter = dataFilterInitial.filter(function (d) {
-               //     return d != null;
-               //   });
-               //
-               //   if (selectedYearOption === "All Decades") {
-               //     dataFilter = data;
-               //   }
-               //   // Update new data with genre selection
-               //   var selectedGenreOption = d3.select("#selectGenre").property("value")
-               //   var dataFilterInitial2 = dataFilter.map(function(d){
-               //     for( i=0; i<d.Genres.length; i++) {
-               //       if (d.Genres[i] === selectedGenreOption){
-               //         return d;
-               //       }
-               //     }})
-               //   var dataFilter2 = dataFilterInitial2.filter(function (d) {
-               //     return d != null;
-               //   });
-               //   if (selectedGenreOption === "All Genres") {
-               //     dataFilter2 = dataFilter;
-               //   }
-               //
-               //   // Update new data with language selection
-               //   var selectedLanguageOption = d3.select("#selectLanguage").property("value")
-               //   var dataFilterInitial3 = dataFilter2.map(function(d){
-               //     for( i=0; i<d.Language.length; i++) {
-               //       if (d.Language[i] === selectedLanguageOption){
-               //         return d;
-               //       }
-               //     }})
-               //   var dataFilter3 = dataFilterInitial3.filter(function (d) {
-               //     return d != null;
-               //   });
-               //   if (selectedLanguageOption === "All Languages") {
-               //     dataFilter3 = dataFilter2;
-               //   }
-               //
-               //   // Update new data with streaming platform selection
-               //   var selectedStreamingOption = d3.select("#selectStreaming").property("value")
-               //   var dataFilterInitial4 = dataFilter3.map(function(d){
-               //       if (d[selectedStreamingOption] === 1){
-               //         return d;
-               //       }
-               //   })
-               //   var dataFilter4 = dataFilterInitial4.filter(function (d) {
-               //     return d != null;
-               //   });
-               //   if (selectedStreamingOption === "All Platforms") {
-               //     dataFilter4 = dataFilter3;
-               //   }
-               //
-               //   chartArea.selectAll("circle.point").remove();
-               //
-               //   let circles = chartArea.selectAll("circle.point").data(dataFilter4)
-               //     .join(enter => enter.append("circle")
-               //       .attr("class", "point")
-               //       .attr("opacity", 0.8)
-               //     )
-               //     .attr("cx", d => tomatoScale(d['Rotten_Tomatoes']))
-               //     .attr("cy", d => imbdScale(d['IMDb']))
-               //     .attr("r", 5)
-               //     .attr("fill", function(d) {
-               //              return yearColorScale(d.Decade);
-               //            ;})
-               //     .attr("label", d => d["Title"])
-               //     .attr("genre", d => d["Genres"]);
-               //
-               //     circles.on("dblclick",function(d){
-               //       var savedMovie = d.Title + " (" + d.Year + ")"
-               //       updateWatchList(savedMovie)
-               //     });
-               //
-               //     //Mouseovers
-               //     circles.on("mouseover", function (d) {
-               //       d3.select(this)
-               //         .transition().duration(200)
-               //         .attr("stroke", "black")
-               //         .attr("stroke-width", 4)
-               //         .attr("fill", lighten(yearColorScale(d['Decade'])));
-               //         info.transition()
-               //         info.html("<h2><b>"+"Movie Details: "+"</b></h2>"
-               //         + "<p><b>"+"Title: "+"</b>"+d["Title"]+"</p>"
-               //         +"<p><b>"+"Directors: "+"</b>"+d["Directors"]+"</p>"
-               //         +"<p><b>"+"Year Released: "+"</b>"+d["Year"]+"</p>"
-               //         +"<p><b>"+"Runtime (Min): "+"</b>"+d["Runtime"]+"</p>"
-               //         +"<p><b>"+"IMDB Rating: "+"</b>"+d.IMDb+"</p>"
-               //         +"<p><b>"+"Rotten Tomatoes: "+"</b>"+d.Rotten_Tomatoes+"</p>"
-               //         +"<p><b>"+"Languages: "+"</b>"+d["Language"]+"</p>")
-               //     });
-               //
-               //     // Mouseout Cleanup Effect
-               //     circles.on("mouseout", function (d) {
-               //       d3.select(this)
-               //         .transition().duration(200)
-               //         .attr("stroke", "")
-               //         .attr("stroke-width", 1)
-               //         .attr("fill", yearColorScale(d['Decade']));
-               //         info.transition()
-               //         info.html("<h3><em>"+"Hover over a point on the scatterplot to view specific information about a movie!"+"</em></h3>")
-               //     });
-               //
-               //     let info = d3.select("#introPointInfo")
-               //       .style("opacity", 0.95);
-               // }
-               //
-               // //Resets all filters and displays all points
-               // function resetSP(){
-               //
-               //   chartArea.selectAll("circle.point").remove();
-               //
-               //   let circles = chartArea.selectAll("circle.point").data(data)
-               //     .join(enter => enter.append("circle")
-               //       .attr("class", "point")
-               //       .attr("opacity", 0.8)
-               //     )
-               //     .attr("cx", d => tomatoScale(d['Rotten_Tomatoes']))
-               //     .attr("cy", d => imbdScale(d['IMDb']))
-               //     .attr("r", 5)
-               //     .attr("fill", function(d) {
-               //              return yearColorScale(d.Decade);
-               //            ;})
-               //     .attr("label", d => d["Title"])
-               //     .attr("genre", d => d["Genres"]);
-               //
-               //     var selections = document.getElementsByTagName('select');
-               //     for (var i = 0; i < selections.length; i++)
-               //     {
-               //         selections[i].selectedIndex = 0;
-               //     }
-               //     //Mouseovers
-               //     circles.on("mouseover", function (d) {
-               //       d3.select(this)
-               //         .transition().duration(200)
-               //         .attr("stroke", "black")
-               //         .attr("stroke-width", 4)
-               //         .attr("fill", lighten(yearColorScale(d['Decade'])));
-               //         info.transition()
-               //         info.html("<h2><b>"+"Movie Details: "+"</b></h2>"
-               //         + "<p><b>"+"Title: "+"</b>"+d["Title"]+"</p>"
-               //         +"<p><b>"+"Directors: "+"</b>"+d["Directors"]+"</p>"
-               //         +"<p><b>"+"Year Released: "+"</b>"+d["Year"]+"</p>"
-               //         +"<p><b>"+"Runtime (Min): "+"</b>"+d["Runtime"]+"</p>"
-               //         +"<p><b>"+"IMDB Rating: "+"</b>"+d.IMDb+"</p>"
-               //         +"<p><b>"+"Rotten Tomatoes: "+"</b>"+d.Rotten_Tomatoes+"</p>"
-               //         +"<p><b>"+"Languages: "+"</b>"+d["Language"]+"</p>")
-               //     });
-               //
-               //     // Mouseout Cleanup Effect
-               //     circles.on("mouseout", function (d) {
-               //       d3.select(this)
-               //         .transition().duration(200)
-               //         .attr("stroke", "")
-               //         .attr("stroke-width", 1)
-               //         .attr("fill", yearColorScale(d['Decade']));
-               //         info.transition()
-               //         info.html("<h3><em>"+"Hover over a point on the scatterplot to view specific information about a movie!"+"</em></h3>")
-               //     });
-               //
-               //     let info = d3.select("#introPointInfo")
-               //       .style("opacity", 0.95);
-               // }
-               //
-               // Creating Scales
-               const weightExtent = d3.extent(scatterdata, d => d['Weight']);
-               const weightScale = d3.scaleLinear().domain(weightExtent).range([chartHeight, 0]);
+                // //Deletes old points and replaces with new points that fit the criteria of the four filter select options
+                // function updateSP() {
+                //   // Create new data with year selection
+                //   var selectedYearOption = d3.select("#selectYear").property("value")
+                //   var dataFilterInitial = data.map(function(d){
+                //     if (d.Decade === selectedYearOption){
+                //       return d;
+                //     }
+                //   })
+                //   var dataFilter = dataFilterInitial.filter(function (d) {
+                //     return d != null;
+                //   });
+                //
+                //   if (selectedYearOption === "All Decades") {
+                //     dataFilter = data;
+                //   }
+                //   // Update new data with genre selection
+                //   var selectedGenreOption = d3.select("#selectGenre").property("value")
+                //   var dataFilterInitial2 = dataFilter.map(function(d){
+                //     for( i=0; i<d.Genres.length; i++) {
+                //       if (d.Genres[i] === selectedGenreOption){
+                //         return d;
+                //       }
+                //     }})
+                //   var dataFilter2 = dataFilterInitial2.filter(function (d) {
+                //     return d != null;
+                //   });
+                //   if (selectedGenreOption === "All Genres") {
+                //     dataFilter2 = dataFilter;
+                //   }
+                //
+                //   // Update new data with language selection
+                //   var selectedLanguageOption = d3.select("#selectLanguage").property("value")
+                //   var dataFilterInitial3 = dataFilter2.map(function(d){
+                //     for( i=0; i<d.Language.length; i++) {
+                //       if (d.Language[i] === selectedLanguageOption){
+                //         return d;
+                //       }
+                //     }})
+                //   var dataFilter3 = dataFilterInitial3.filter(function (d) {
+                //     return d != null;
+                //   });
+                //   if (selectedLanguageOption === "All Languages") {
+                //     dataFilter3 = dataFilter2;
+                //   }
+                //
+                //   // Update new data with streaming platform selection
+                //   var selectedStreamingOption = d3.select("#selectStreaming").property("value")
+                //   var dataFilterInitial4 = dataFilter3.map(function(d){
+                //       if (d[selectedStreamingOption] === 1){
+                //         return d;
+                //       }
+                //   })
+                //   var dataFilter4 = dataFilterInitial4.filter(function (d) {
+                //     return d != null;
+                //   });
+                //   if (selectedStreamingOption === "All Platforms") {
+                //     dataFilter4 = dataFilter3;
+                //   }
+                //
+                //   chartArea.selectAll("circle.point").remove();
+                //
+                //   let circles = chartArea.selectAll("circle.point").data(dataFilter4)
+                //     .join(enter => enter.append("circle")
+                //       .attr("class", "point")
+                //       .attr("opacity", 0.8)
+                //     )
+                //     .attr("cx", d => tomatoScale(d['Rotten_Tomatoes']))
+                //     .attr("cy", d => imbdScale(d['IMDb']))
+                //     .attr("r", 5)
+                //     .attr("fill", function(d) {
+                //              return yearColorScale(d.Decade);
+                //            ;})
+                //     .attr("label", d => d["Title"])
+                //     .attr("genre", d => d["Genres"]);
+                //
+                //     circles.on("dblclick",function(d){
+                //       var savedMovie = d.Title + " (" + d.Year + ")"
+                //       updateWatchList(savedMovie)
+                //     });
+                //
+                //     //Mouseovers
+                //     circles.on("mouseover", function (d) {
+                //       d3.select(this)
+                //         .transition().duration(200)
+                //         .attr("stroke", "black")
+                //         .attr("stroke-width", 4)
+                //         .attr("fill", lighten(yearColorScale(d['Decade'])));
+                //         info.transition()
+                //         info.html("<h2><b>"+"Movie Details: "+"</b></h2>"
+                //         + "<p><b>"+"Title: "+"</b>"+d["Title"]+"</p>"
+                //         +"<p><b>"+"Directors: "+"</b>"+d["Directors"]+"</p>"
+                //         +"<p><b>"+"Year Released: "+"</b>"+d["Year"]+"</p>"
+                //         +"<p><b>"+"Runtime (Min): "+"</b>"+d["Runtime"]+"</p>"
+                //         +"<p><b>"+"IMDB Rating: "+"</b>"+d.IMDb+"</p>"
+                //         +"<p><b>"+"Rotten Tomatoes: "+"</b>"+d.Rotten_Tomatoes+"</p>"
+                //         +"<p><b>"+"Languages: "+"</b>"+d["Language"]+"</p>")
+                //     });
+                //
+                //     // Mouseout Cleanup Effect
+                //     circles.on("mouseout", function (d) {
+                //       d3.select(this)
+                //         .transition().duration(200)
+                //         .attr("stroke", "")
+                //         .attr("stroke-width", 1)
+                //         .attr("fill", yearColorScale(d['Decade']));
+                //         info.transition()
+                //         info.html("<h3><em>"+"Hover over a point on the scatterplot to view specific information about a movie!"+"</em></h3>")
+                //     });
+                //
+                //     let info = d3.select("#introPointInfo")
+                //       .style("opacity", 0.95);
+                // }
+                //
+                // //Resets all filters and displays all points
+                // function resetSP(){
+                //
+                //   chartArea.selectAll("circle.point").remove();
+                //
+                //   let circles = chartArea.selectAll("circle.point").data(data)
+                //     .join(enter => enter.append("circle")
+                //       .attr("class", "point")
+                //       .attr("opacity", 0.8)
+                //     )
+                //     .attr("cx", d => tomatoScale(d['Rotten_Tomatoes']))
+                //     .attr("cy", d => imbdScale(d['IMDb']))
+                //     .attr("r", 5)
+                //     .attr("fill", function(d) {
+                //              return yearColorScale(d.Decade);
+                //            ;})
+                //     .attr("label", d => d["Title"])
+                //     .attr("genre", d => d["Genres"]);
+                //
+                //     var selections = document.getElementsByTagName('select');
+                //     for (var i = 0; i < selections.length; i++)
+                //     {
+                //         selections[i].selectedIndex = 0;
+                //     }
+                //     //Mouseovers
+                //     circles.on("mouseover", function (d) {
+                //       d3.select(this)
+                //         .transition().duration(200)
+                //         .attr("stroke", "black")
+                //         .attr("stroke-width", 4)
+                //         .attr("fill", lighten(yearColorScale(d['Decade'])));
+                //         info.transition()
+                //         info.html("<h2><b>"+"Movie Details: "+"</b></h2>"
+                //         + "<p><b>"+"Title: "+"</b>"+d["Title"]+"</p>"
+                //         +"<p><b>"+"Directors: "+"</b>"+d["Directors"]+"</p>"
+                //         +"<p><b>"+"Year Released: "+"</b>"+d["Year"]+"</p>"
+                //         +"<p><b>"+"Runtime (Min): "+"</b>"+d["Runtime"]+"</p>"
+                //         +"<p><b>"+"IMDB Rating: "+"</b>"+d.IMDb+"</p>"
+                //         +"<p><b>"+"Rotten Tomatoes: "+"</b>"+d.Rotten_Tomatoes+"</p>"
+                //         +"<p><b>"+"Languages: "+"</b>"+d["Language"]+"</p>")
+                //     });
+                //
+                //     // Mouseout Cleanup Effect
+                //     circles.on("mouseout", function (d) {
+                //       d3.select(this)
+                //         .transition().duration(200)
+                //         .attr("stroke", "")
+                //         .attr("stroke-width", 1)
+                //         .attr("fill", yearColorScale(d['Decade']));
+                //         info.transition()
+                //         info.html("<h3><em>"+"Hover over a point on the scatterplot to view specific information about a movie!"+"</em></h3>")
+                //     });
+                //
+                //     let info = d3.select("#introPointInfo")
+                //       .style("opacity", 0.95);
+                // }
+                //
+                // Creating Scales
+                const weightExtent = d3.extent(scatterdata, d => d['Weight']);
+                const weightScale = d3.scaleLinear().domain(weightExtent).range([chartHeight, 0]);
 
-               const heightExtent = d3.extent(scatterdata, d => d['Height']);
-               const heightScale = d3.scaleLinear().domain(heightExtent).range([0, chartWidth]);
+                const heightExtent = d3.extent(scatterdata, d => d['Height']);
+                const heightScale = d3.scaleLinear().domain(heightExtent).range([0, chartWidth]);
 
-               const medalsExtent = d3.extent(scatterdata, d => d['Medal']);
-               const medalsScale = d3.scaleLinear().domain(medalsExtent).range([0, 20]);
+                const medalsExtent = d3.extent(scatterdata, d => d['Medal']);
+                const medalsScale = d3.scaleLinear().domain(medalsExtent).range([0, 20]);
 
-               const medalsColorScale = d3.scaleOrdinal().domain(
-                 ["Gold","Silver","Bronze","No Medals"])
-                 .range(["#e6c90d", "#e0dfd2" , "#c16e00", "#569daa"]);
+                const medalsColorScale = d3.scaleOrdinal().domain(
+                        ["Gold", "Silver", "Bronze", "No Medals"])
+                    .range(["#e6c90d", "#e0dfd2", "#c16e00", "#569daa"]);
 
-               // Y axis
-               // let leftAxis = d3.axisLeft(imbdScale)
-               //   .tickFormat(d3.format(""));
-               // let leftGridlines = d3.axisLeft(imbdScale)
-               //   .tickSize(-chartWidth)
-               //   .tickFormat("")
-               //
-               // annotations.append("g")
-               //   .attr("class", "y axis")
-               //   .attr("transform", "translate(" + (margin.left) + "," + margin.top + ")")
-               //   .call(leftAxis)
-               // annotations.append("g")
-               //   .attr("class", "y gridlines")
-               //   .attr("transform", "translate(" + (margin.left) + "," + margin.top + ")")
-               //   .call(leftGridlines);
-               //
-               // // X axis
-               // let bottomAxis = d3.axisBottom(tomatoScale)
-               //   .tickFormat(d3.format(""));
-               // let bottomGridlines = d3.axisBottom(tomatoScale)
-               //   .tickSize(-chartHeight)
-               //   .tickFormat("")
-               //
-               // annotations.append("g")
-               //   .attr("class", "x axis")
-               //   .attr("transform", "translate(" + margin.left + "," + (chartHeight + margin.top) + ")")
-               //   .call(bottomAxis);
-               // annotations.append("g")
-               //   .attr("class", "x gridlines")
-               //   .attr("transform", "translate(" + margin.left + "," + (chartHeight + margin.top) + ")")
-               //   .call(bottomGridlines);
-               //
-               // // Adding Axis Labels
-               //
-               // //Y Axis
-               // annotations.append("text")
-               //   .attr("class", "y label")
-               //   .attr("text-anchor", "end")
-               //   .attr("y", 3)
-               //   .attr("x", -290)
-               //   .attr("dy", "0.75em")
-               //   .attr("transform", "rotate(-90)")
-               //   .style("font-size", "20px")
-               //   .text("IMDB Ranking (Rank 1-10)");
-               //
-               // //X Axis
-               // annotations.append("text")
-               //   .attr("class", "x label")
-               //   .attr("text-anchor", "end")
-               //   .attr("x", width - 250)
-               //   .attr("y", height - 6)
-               //   .style("font-size", "20px")
-               //   .text("Rotten Tomatoes Rating (%)");
-               //
-               // // Circle Plotting
-               // let circles = chartArea.selectAll("circle.point").data(data)
-               //   .join(enter => enter.append("circle")
-               //     .attr("class", "point")
-               //     .attr("opacity", 0.8)
-               //   )
-               //   .attr("cx", d => tomatoScale(d['Rotten_Tomatoes']))
-               //   .attr("cy", d => imbdScale(d['IMDb']))
-               //   .attr("r", 5)
-               //   .attr("fill", function(d) {
-               //            return yearColorScale(d.Decade);
-               //          ;})
-               //   .attr("label", d => d["Title"])
-               //   .attr("genre", d => d["Genres"]);
-               //
-               //   //Mouseovers
-               //   circles.on("mouseover", function (d) {
-               //     d3.select(this)
-               //       .transition().duration(200)
-               //       .attr("stroke", "black")
-               //       .attr("stroke-width", 4)
-               //       .attr("fill", lighten(yearColorScale(d['Decade'])));
-               //       info.transition()
-               //       info.html("<h2><b>"+"Movie Details: "+"</b></h2>"
-               //       + "<p><b>"+"Title: "+"</b>"+d["Title"]+"</p>"
-               //       +"<p><b>"+"Directors: "+"</b>"+d["Directors"]+"</p>"
-               //       +"<p><b>"+"Year Released: "+"</b>"+d["Year"]+"</p>"
-               //       +"<p><b>"+"Runtime (Min): "+"</b>"+d["Runtime"]+"</p>"
-               //       +"<p><b>"+"IMDB Rating: "+"</b>"+d.IMDb+"</p>"
-               //       +"<p><b>"+"Rotten Tomatoes: "+"</b>"+d.Rotten_Tomatoes+"</p>"
-               //       +"<p><b>"+"Languages: "+"</b>"+d["Language"]+"</p>")
-               //   });
-               //
-               //   // Mouseout Cleanup Effect
-               //   circles.on("mouseout", function (d) {
-               //     d3.select(this)
-               //       .transition().duration(200)
-               //       .attr("stroke", "")
-               //       .attr("stroke-width", 1)
-               //       .attr("fill", yearColorScale(d['Decade']));
-               //       info.transition()
-               //       info.html("<h3><em>"+"Hover over a point on the scatterplot to view specific information about a movie!"+"</em></h3>")
-               //   });
-               //
-               //   let info = d3.select("#introPointInfo")
-               //     .style("opacity", 0.95);
-               //
-               //   //Update Saved Movies
-               //   circles.on("dblclick",function(d){
-               //     var savedMovie = d.Title + " (" + d.Year + ")"
-               //     updateWatchList(savedMovie)
-               //   });
-               //
-               //   function updateWatchList(savedMovie){
-               //       var watchList = d3.select("#watchList")
-               //       savedAthleteList.push(savedMovie)
-               //       watchList.data(savedAthleteList)
-               //       .enter().append("g")
-               //       .attr("class", "savedMovies");
-               //       if (savedAthleteList.length == 1) {
-               //         watchList.select("h3").remove()
-               //         watchList.append("text")
-               //              .html("<h2>Watch List:</h2>");
-               //       }
-               //       if (savedAthleteList.length < 9) {
-               //         watchList.append("text")
-               //              .attr("x", 20)
-               //              .attr("y", 5)
-               //              .style("text-anchor", "start")
-               //              .html(savedMovie + "</br>");
-               //       } else {
-               //         alert("You can only save up to 8 movies.")
-               //       }
-               //     }
-                 }
+                // Y axis
+                // let leftAxis = d3.axisLeft(imbdScale)
+                //   .tickFormat(d3.format(""));
+                // let leftGridlines = d3.axisLeft(imbdScale)
+                //   .tickSize(-chartWidth)
+                //   .tickFormat("")
+                //
+                // annotations.append("g")
+                //   .attr("class", "y axis")
+                //   .attr("transform", "translate(" + (margin.left) + "," + margin.top + ")")
+                //   .call(leftAxis)
+                // annotations.append("g")
+                //   .attr("class", "y gridlines")
+                //   .attr("transform", "translate(" + (margin.left) + "," + margin.top + ")")
+                //   .call(leftGridlines);
+                //
+                // // X axis
+                // let bottomAxis = d3.axisBottom(tomatoScale)
+                //   .tickFormat(d3.format(""));
+                // let bottomGridlines = d3.axisBottom(tomatoScale)
+                //   .tickSize(-chartHeight)
+                //   .tickFormat("")
+                //
+                // annotations.append("g")
+                //   .attr("class", "x axis")
+                //   .attr("transform", "translate(" + margin.left + "," + (chartHeight + margin.top) + ")")
+                //   .call(bottomAxis);
+                // annotations.append("g")
+                //   .attr("class", "x gridlines")
+                //   .attr("transform", "translate(" + margin.left + "," + (chartHeight + margin.top) + ")")
+                //   .call(bottomGridlines);
+                //
+                // // Adding Axis Labels
+                //
+                // //Y Axis
+                // annotations.append("text")
+                //   .attr("class", "y label")
+                //   .attr("text-anchor", "end")
+                //   .attr("y", 3)
+                //   .attr("x", -290)
+                //   .attr("dy", "0.75em")
+                //   .attr("transform", "rotate(-90)")
+                //   .style("font-size", "20px")
+                //   .text("IMDB Ranking (Rank 1-10)");
+                //
+                // //X Axis
+                // annotations.append("text")
+                //   .attr("class", "x label")
+                //   .attr("text-anchor", "end")
+                //   .attr("x", width - 250)
+                //   .attr("y", height - 6)
+                //   .style("font-size", "20px")
+                //   .text("Rotten Tomatoes Rating (%)");
+                //
+                // // Circle Plotting
+                // let circles = chartArea.selectAll("circle.point").data(data)
+                //   .join(enter => enter.append("circle")
+                //     .attr("class", "point")
+                //     .attr("opacity", 0.8)
+                //   )
+                //   .attr("cx", d => tomatoScale(d['Rotten_Tomatoes']))
+                //   .attr("cy", d => imbdScale(d['IMDb']))
+                //   .attr("r", 5)
+                //   .attr("fill", function(d) {
+                //            return yearColorScale(d.Decade);
+                //          ;})
+                //   .attr("label", d => d["Title"])
+                //   .attr("genre", d => d["Genres"]);
+                //
+                //   //Mouseovers
+                //   circles.on("mouseover", function (d) {
+                //     d3.select(this)
+                //       .transition().duration(200)
+                //       .attr("stroke", "black")
+                //       .attr("stroke-width", 4)
+                //       .attr("fill", lighten(yearColorScale(d['Decade'])));
+                //       info.transition()
+                //       info.html("<h2><b>"+"Movie Details: "+"</b></h2>"
+                //       + "<p><b>"+"Title: "+"</b>"+d["Title"]+"</p>"
+                //       +"<p><b>"+"Directors: "+"</b>"+d["Directors"]+"</p>"
+                //       +"<p><b>"+"Year Released: "+"</b>"+d["Year"]+"</p>"
+                //       +"<p><b>"+"Runtime (Min): "+"</b>"+d["Runtime"]+"</p>"
+                //       +"<p><b>"+"IMDB Rating: "+"</b>"+d.IMDb+"</p>"
+                //       +"<p><b>"+"Rotten Tomatoes: "+"</b>"+d.Rotten_Tomatoes+"</p>"
+                //       +"<p><b>"+"Languages: "+"</b>"+d["Language"]+"</p>")
+                //   });
+                //
+                //   // Mouseout Cleanup Effect
+                //   circles.on("mouseout", function (d) {
+                //     d3.select(this)
+                //       .transition().duration(200)
+                //       .attr("stroke", "")
+                //       .attr("stroke-width", 1)
+                //       .attr("fill", yearColorScale(d['Decade']));
+                //       info.transition()
+                //       info.html("<h3><em>"+"Hover over a point on the scatterplot to view specific information about a movie!"+"</em></h3>")
+                //   });
+                //
+                //   let info = d3.select("#introPointInfo")
+                //     .style("opacity", 0.95);
+                //
+                //   //Update Saved Movies
+                //   circles.on("dblclick",function(d){
+                //     var savedMovie = d.Title + " (" + d.Year + ")"
+                //     updateWatchList(savedMovie)
+                //   });
+                //
+                //   function updateWatchList(savedMovie){
+                //       var watchList = d3.select("#watchList")
+                //       savedAthleteList.push(savedMovie)
+                //       watchList.data(savedAthleteList)
+                //       .enter().append("g")
+                //       .attr("class", "savedMovies");
+                //       if (savedAthleteList.length == 1) {
+                //         watchList.select("h3").remove()
+                //         watchList.append("text")
+                //              .html("<h2>Watch List:</h2>");
+                //       }
+                //       if (savedAthleteList.length < 9) {
+                //         watchList.append("text")
+                //              .attr("x", 20)
+                //              .attr("y", 5)
+                //              .style("text-anchor", "start")
+                //              .html(savedMovie + "</br>");
+                //       } else {
+                //         alert("You can only save up to 8 movies.")
+                //       }
+                //     }
+            }
 
-             // requestData();
-             loadScatter();
+            // requestData();
+            loadScatter();
         </script>
     </div>
 </body>
