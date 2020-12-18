@@ -3,12 +3,10 @@
 
 <head>
     <meta charset='UTF-8'>
-    <script src="https://d3js.org/d3.v5.min.js"></script>
+    <script src="https://d3js.org/d3.v6.min.js"></script>
     <script src="https://unpkg.com/d3-simple-slider"></script>
-    <script src="https://d3js.org/topojson.v2.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/d3-legend/2.25.6/d3-legend.min.js"></script>
-    <!-- <script src="https://d3js.org/d3.v4.js"></script> -->
-    <script src="https://unpkg.com/topojson-client@3"></script>
+    <script src="https://unpkg.com/topojson@3"></script>
 
     <title>INFO4310 Final Project</title>
 
@@ -99,6 +97,7 @@
 
         #mapPanel {
             color: #2e2e2e;
+            padding-bottom: 2vh;
         }
 
         #scatterplotPanel {
@@ -131,7 +130,8 @@
             flex-direction: row;
         }
 
-        .filterTitlesSP {
+        .filterTitlesSP,
+        .filterTitlesMP {
             font-size: 13px;
         }
 
@@ -143,8 +143,10 @@
         }
 
         #selectSportSP,
+        #selectSportMP,
         #selectNationalitySP,
-        #selectEventSP {
+        #selectEventSP,
+        #selectEventMP {
             width: 150px;
             height: 20px;
         }
@@ -270,6 +272,8 @@
 
         #viz {
             height: 130vh;
+            text-align: center;
+            margin-bottom: 5vh;
         }
 
         .boundary {
@@ -294,11 +298,83 @@
             /* top: 600px; */
         }
 
+        #optMapFilters {
+            width: 600px;
+            height: 250px;
+            text-align: center;
+            border: 1px solid #000;
+            display: inline-block;
+            margin-top: 5vh;
+            background-color: rgb(238, 238, 238);
+        }
+
+        .optMapFilters_flexContainer {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-around;
+        }
+
+        #map_opt_title {
+            border-bottom: 1px solid #000;
+        }
+
+        #map_opt_title_div {
+            width: 14vw;
+            display: inline-block;
+        }
+
+        .optMPFilters_flexContainer_medals {
+            display: flex;
+            flex-direction: row;
+            text-align: left;
+            font-size: 13px;
+        }
+
+        #selectGoldMP,
+        #selectSilverMP,
+        #selectBronzeMP,
+        #summerMP,
+        #winterMP {
+            width: 40px;
+            height: 20px;
+        }
+
+        .radioSeasonMP {
+            text-align: left;
+            font-size: 13px;
+        }
+
+        .row {
+            display: -ms-flexbox;
+            display: flex;
+            -ms-flex-wrap: wrap;
+            flex-wrap: wrap;
+            /* margin-right: -15px; */
+            margin-left: -15px
+        }
+
+        .align-items-center {
+            -ms-flex-align: center!important;
+            align-items: center!important
+        }
+
+        .col-sm,
+        .col-sm-2 {
+            position: relative;
+            width: 100%;
+            min-height: 1px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .time_year {
+            padding-top: 5px;
+            font-size: 13px;
+        }
         /* .xlabel, .ylabel{
           font-size: 13px;
           color: white;
         } */
-
     </style>
 </head>
 
@@ -342,9 +418,50 @@
             <div id='viz'>
                 <div id="flexContainerMP_1">
                 </div>
-                <div id="timeline">
-                    <input id="timeslide" type="range" min="0" max="11" value="0" step="1" /><br>
-                    <span id="range">1896</span>
+                <!-- <div id="timeline"> -->
+                <div class="row align-items-center">
+                    <div class="col-sm">
+                        <div id="slider-time"></div>
+                        <h3 class="time_year">Year</h3>
+                    </div>
+                    <div class="col-sm-2">
+                        <p id="value-time"></p>
+                    </div>
+                </div>
+                <!-- <input id="timeslide" type="range" min="0" max="15" value="0" step="1" /><br>
+                    <span id="range">1896</span> -->
+                <!-- </div> -->
+
+                <!-- Optional Filters -->
+                <div id="optMapFilters">
+                    <div id="map_opt_title_div">
+                        <h3 id="map_opt_title">Optional Filters</h3>
+                    </div>
+                    <div class="optMapFilters_flexContainer">
+
+                        <div class="selectSportMP">
+                            <h4 class="filterTitlesMP">Sport</h4>
+                            <select id="selectSportMP"></select>
+                            <h4 class="filterTitlesMP">Event</h4>
+                            <select id="selectEventMP"></select>
+                        </div>
+
+                        <div class="optMPFilters_flexContainer_medals">
+                            <div class="optMPFilters_flex_medals_titles">
+                                <h4 class="filterTitlesMP"># of Medals</h4>
+                                <input type="checkbox" id="selectGoldMP" name="selectGoldMP" value="Gold">Gold<br>
+                                <input type="checkbox" id="selectSilverMP" name="selectSilverMP" value="Silver">Silver<br>
+                                <input type="checkbox" id="selectBronzeMP" name="selectBronzeMP" value="Bronze">Bronze <br>
+
+                            </div>
+                        </div>
+
+                        <div class="radioSeasonMP">
+                            <h4 class="filterTitlesMP">Season</h4>
+                            <input type="checkbox" id="summerMP" name="seasonMP" value="summer">Summer<br>
+                            <input type="checkbox" id="winterMP" name="seasonMP" value="winter">Winter<br>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -497,126 +614,114 @@
             /**************************************************
              **********        Map Visualization        ********
              **************************************************/
-            // const svg = d3.select('#viz');
-            // const width = svg.attr('width');
-            // const height = svg.attr('height');
 
-            // const margin = {
-            //     top: 20,
-            //     right: 20,
-            //     bottom: 20,
-            //     left: 20
-            // };
-
-            // const mapWidth = width - margin.left - margin.right;
-            // const mapHeight = height - margin.top - margin.bottom;
-            // const map = svg.append("g")
-            //     .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
-
-            // const requestData = async function() {
-            //     const olympic_world_data = await d3.csv('athlete_events.csv');
-            //     const world = await d3.json('countries-110m.json');
-            //     console.log(olympic_world_data)
-            //     console.log(world)
-            //         //Create Map
-            // }
-
+            //Map
             var width = 950,
                 height = 550;
-
-            var initX;
-            var mouseClicked = false;
-            var s = 1;
-            var rotated = 90;
-
-            //need to store this because on zoom end, using mousewheel, mouse position is NAN
-            var mouse;
 
             var projection = d3.geoMercator()
                 .scale(153)
                 .translate([width / 2, height / 1.5])
-                .rotate([rotated, 0, 0]); //center on USA
 
             var path = d3.geoPath().projection(projection);
 
-            var zoom = d3.zoom()
-                .scaleExtent([1, 10])
-                .on("zoom", zoomed)
-                .on("end", zoomended);
 
             var map = d3.select("#flexContainerMP_1").append("svg")
                 .attr("width", width)
                 .attr("height", height)
-                .attr("id", "map_svg")
-                .on("wheel", function() {
-                    //zoomend needs mouse coords
-                    initX = d3.mouse(this)[0];
-                })
-                .on("mousedown", function() {
-                    //only if scale === 1
-                    if (s !== 1) return;
-                    initX = d3.mouse(this)[0];
-                    mouseClicked = true;
-                })
-                .call(zoom);
+                .attr("id", "map_svg");
 
-            var g = map.append("g");
+            var g = map.append("g").attr("class", "boundary");
 
-            function rotateMap(endX) {
-                projection.rotate([rotated + (endX - initX) * 360 / (s * width), 0, 0]);
-                g.selectAll('path').attr('d', path);
-            }
+            d3.json("countries-110m.json").then(function(topology) {
 
-            function zoomended() {
-                if (s !== 1) return;
-                //rotated = rotated + ((d3.mouse(this)[0] - initX) * 360 / (s * width));
-                rotated = rotated + ((mouse[0] - initX) * 360 / (s * width));
-                mouseClicked = false;
-            }
-
-            function zoomed() {
-                var t = [d3.event.transform.x, d3.event.transform.y];
-                s = d3.event.transform.k;
-                var h = 0;
-
-                t[0] = Math.min(
-                    (width / height) * (s - 1),
-                    Math.max(width * (1 - s), t[0])
-                );
-
-                t[1] = Math.min(
-                    h * (s - 1) + h * s,
-                    Math.max(height * (1 - s) - h * s, t[1])
-                );
-
-                g.attr("transform", "translate(" + t + ")scale(" + s + ")");
-
-                //adjust the stroke width based on zoom level
-                d3.selectAll(".boundary").style("stroke-width", 1 / s);
-
-                mouse = d3.mouse(this);
-
-                if (s === 1 && mouseClicked) {
-                    //rotateMap(d3.mouse(this)[0]);
-                    rotateMap(mouse[0]);
-                    return;
-                }
-
-            }
-
-
-            d3.json("https://unpkg.com/world-atlas@1/world/110m.json", function(error, world) {
-                if (error) return console.error(error);
-
-                //countries
-                g.append("g")
-                    .attr("class", "boundary")
-                    .selectAll("boundary")
-                    .data(topojson.feature(world, world.objects.countries).features)
+                g.selectAll("path")
+                    .data(topojson.feature(topology, topology.objects.countries).features)
                     .enter().append("path")
                     .attr("d", path);
 
             });
+
+            // Year inspired by: https://bl.ocks.org/johnwalley/e1d256b81e51da68f7feb632a53c3518
+            var dataTime = d3.range(0, 16).map(function(d) {
+                return new Date(1896 + (8 * d), 10, 3);
+            });
+
+            var sliderTime = d3
+                .sliderBottom()
+                .min(d3.min(dataTime))
+                .max(d3.max(dataTime))
+                .step(1000 * 60 * 60 * 24 * 365 * 8)
+                .width(900)
+                .tickFormat(d3.timeFormat('%Y'))
+                .tickValues(dataTime)
+                .default(new Date(1896, 10, 3))
+                .on('onchange', val => {
+                    d3.select('p#value-time').text(d3.timeFormat('%Y')(val));
+                });
+
+            var gTime = d3
+                .select('div#slider-time')
+                .append('svg')
+                .attr('width', 950)
+                .attr('height', 100)
+                .append('g')
+                .attr('transform', 'translate(30,30)');
+
+            gTime.call(sliderTime);
+
+            d3.select('p#value-time').text(d3.timeFormat('%Y')(sliderTime.value()));
+
+            const requestData = async function() {
+                let map_data = await d3.csv('athlete_events_filtered.csv', d3.autoType)
+                console.log(map_data)
+
+
+                var world_dict = {};
+
+                //country {
+                //Year1 {
+                //Gold: 5
+                //Silver: 4
+                //Bronze: 2
+                //}
+
+                //Year2 {
+                //Gold: 5
+                //Silver: 4
+                //Bronze: 2
+                //}
+                //}
+
+                //USA {
+                //1896 {
+                //Gold: 5
+                //Silver: 4
+                //Bronze: 2
+                //}
+                //2016 {
+                //Gold: 5
+                //Silver: 4
+                //Bronze: 2
+                //}
+                //}
+
+                map_data.forEach(d => {
+                    if (!world_dict.hasOwnProperty(d["NOC"])) {
+                        world_dict[d["NOC"]] = {};
+                    }
+
+                    if (!world_dict[d["NOC"]].hasOwnProperty(d["Year"])) {
+                        world_dict[d["NOC"]][d["Year"]] = {};
+                    }
+
+
+                });
+
+                console.log(world_dict);
+
+            }
+
 
             /**************************************************
              *****        ScatterPlot Visualization        *****
