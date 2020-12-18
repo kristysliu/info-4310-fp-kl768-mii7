@@ -97,6 +97,7 @@
         
         #mapPanel {
             color: #2e2e2e;
+            padding-bottom: 2vh;
         }
         
         #scatterplotPanel {
@@ -641,7 +642,7 @@
 
             });
 
-            // Year
+            // Year inspired by: https://bl.ocks.org/johnwalley/e1d256b81e51da68f7feb632a53c3518
             var dataTime = d3.range(0, 16).map(function(d) {
                 return new Date(1896 + (8 * d), 10, 3);
             });
@@ -670,6 +671,57 @@
             gTime.call(sliderTime);
 
             d3.select('p#value-time').text(d3.timeFormat('%Y')(sliderTime.value()));
+
+            const requestData = async function() {
+                let map_data = await d3.csv('athlete_events_filtered.csv', d3.autoType)
+                console.log(map_data)
+
+
+                var world_dict = {};
+
+                //country {
+                //Year1 { 
+                //Gold: 5
+                //Silver: 4
+                //Bronze: 2
+                //}
+
+                //Year2 { 
+                //Gold: 5
+                //Silver: 4
+                //Bronze: 2
+                //}
+                //}
+
+                //USA { 
+                //1896 { 
+                //Gold: 5
+                //Silver: 4
+                //Bronze: 2
+                //}
+                //2016 { 
+                //Gold: 5
+                //Silver: 4
+                //Bronze: 2
+                //}
+                //}
+
+                map_data.forEach(d => {
+                    if (!world_dict.hasOwnProperty(d["NOC"])) {
+                        world_dict[d["NOC"]] = {};
+                    }
+
+                    if (!world_dict[d["NOC"]].hasOwnProperty(d["Year"])) {
+                        world_dict[d["NOC"]][d["Year"]] = {};
+                    }
+
+
+                });
+
+                console.log(world_dict);
+
+            }
+
 
             /**************************************************
              *****        ScatterPlot Visualization        *****
@@ -1166,8 +1218,7 @@
                 // //       }
                 //     }
             }
-
-            // requestData();
+            requestData();
             loadScatter();
         </script>
     </div>
