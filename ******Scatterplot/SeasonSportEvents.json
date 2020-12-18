@@ -1,0 +1,2882 @@
+[
+  {
+    "Event": "Alpine Skiing Men's Combined",
+    "Season": "Winter",
+    "Sport": "Alpine Skiing"
+  },
+  {
+    "Event": "Alpine Skiing Men's Downhill",
+    "Season": "Winter",
+    "Sport": "Alpine Skiing"
+  },
+  {
+    "Event": "Alpine Skiing Men's Giant Slalom",
+    "Season": "Winter",
+    "Sport": "Alpine Skiing"
+  },
+  {
+    "Event": "Alpine Skiing Men's Slalom",
+    "Season": "Winter",
+    "Sport": "Alpine Skiing"
+  },
+  {
+    "Event": "Alpine Skiing Men's Super G",
+    "Season": "Winter",
+    "Sport": "Alpine Skiing"
+  },
+  {
+    "Event": "Alpine Skiing Women's Combined",
+    "Season": "Winter",
+    "Sport": "Alpine Skiing"
+  },
+  {
+    "Event": "Alpine Skiing Women's Downhill",
+    "Season": "Winter",
+    "Sport": "Alpine Skiing"
+  },
+  {
+    "Event": "Alpine Skiing Women's Giant Slalom",
+    "Season": "Winter",
+    "Sport": "Alpine Skiing"
+  },
+  {
+    "Event": "Alpine Skiing Women's Slalom",
+    "Season": "Winter",
+    "Sport": "Alpine Skiing"
+  },
+  {
+    "Event": "Alpine Skiing Women's Super G",
+    "Season": "Winter",
+    "Sport": "Alpine Skiing"
+  },
+  {
+    "Event": "Archery Men's Individual",
+    "Season": "Summer",
+    "Sport": "Archery"
+  },
+  {
+    "Event": "Archery Men's Team",
+    "Season": "Summer",
+    "Sport": "Archery"
+  },
+  {
+    "Event": "Archery Women's Individual",
+    "Season": "Summer",
+    "Sport": "Archery"
+  },
+  {
+    "Event": "Archery Women's Team",
+    "Season": "Summer",
+    "Sport": "Archery"
+  },
+  {
+    "Event": "Art Competitions Mixed Architecture, Architectural Designs",
+    "Season": "Summer",
+    "Sport": "Art Competitions"
+  },
+  {
+    "Event": "Art Competitions Mixed Literature",
+    "Season": "Summer",
+    "Sport": "Art Competitions"
+  },
+  {
+    "Event": "Art Competitions Mixed Literature, Unknown Event",
+    "Season": "Summer",
+    "Sport": "Art Competitions"
+  },
+  {
+    "Event": "Art Competitions Mixed Painting, Paintings",
+    "Season": "Summer",
+    "Sport": "Art Competitions"
+  },
+  {
+    "Event": "Art Competitions Mixed Painting, Unknown Event",
+    "Season": "Summer",
+    "Sport": "Art Competitions"
+  },
+  {
+    "Event": "Art Competitions Mixed Sculpturing",
+    "Season": "Summer",
+    "Sport": "Art Competitions"
+  },
+  {
+    "Event": "Athletics Men's 1,500 metres",
+    "Season": "Summer",
+    "Sport": "Athletics"
+  },
+  {
+    "Event": "Athletics Men's 1,500 metres Walk",
+    "Season": "Summer",
+    "Sport": "Athletics"
+  },
+  {
+    "Event": "Athletics Men's 1,600 metres Medley Relay",
+    "Season": "Summer",
+    "Sport": "Athletics"
+  },
+  {
+    "Event": "Athletics Men's 10 kilometres Walk",
+    "Season": "Summer",
+    "Sport": "Athletics"
+  },
+  {
+    "Event": "Athletics Men's 10 mile Walk",
+    "Season": "Summer",
+    "Sport": "Athletics"
+  },
+  {
+    "Event": "Athletics Men's 10,000 metres",
+    "Season": "Summer",
+    "Sport": "Athletics"
+  },
+  {
+    "Event": "Athletics Men's 100 metres",
+    "Season": "Summer",
+    "Sport": "Athletics"
+  },
+  {
+    "Event": "Athletics Men's 110 metres Hurdles",
+    "Season": "Summer",
+    "Sport": "Athletics"
+  },
+  {
+    "Event": "Athletics Men's 2,500 metres Steeplechase",
+    "Season": "Summer",
+    "Sport": "Athletics"
+  },
+  {
+    "Event": "Athletics Men's 2,590 metres Steeplechase",
+    "Season": "Summer",
+    "Sport": "Athletics"
+  },
+  {
+    "Event": "Athletics Men's 20 kilometres Walk",
+    "Season": "Summer",
+    "Sport": "Athletics"
+  },
+  {
+    "Event": "Athletics Men's 200 metres",
+    "Season": "Summer",
+    "Sport": "Athletics"
+  },
+  {
+    "Event": "Athletics Men's 200 metres Hurdles",
+    "Season": "Summer",
+    "Sport": "Athletics"
+  },
+  {
+    "Event": "Athletics Men's 3 mile, Team",
+    "Season": "Summer",
+    "Sport": "Athletics"
+  },
+  {
+    "Event": "Athletics Men's 3,000 metres Steeplechase",
+    "Season": "Summer",
+    "Sport": "Athletics"
+  },
+  {
+    "Event": "Athletics Men's 3,000 metres Walk",
+    "Season": "Summer",
+    "Sport": "Athletics"
+  },
+  {
+    "Event": "Athletics Men's 3,000 metres, Team",
+    "Season": "Summer",
+    "Sport": "Athletics"
+  },
+  {
+    "Event": "Athletics Men's 3,200 metres Steeplechase",
+    "Season": "Summer",
+    "Sport": "Athletics"
+  },
+  {
+    "Event": "Athletics Men's 3,500 metres Walk",
+    "Season": "Summer",
+    "Sport": "Athletics"
+  },
+  {
+    "Event": "Athletics Men's 4 mile, Team",
+    "Season": "Summer",
+    "Sport": "Athletics"
+  },
+  {
+    "Event": "Athletics Men's 4 x 100 metres Relay",
+    "Season": "Summer",
+    "Sport": "Athletics"
+  },
+  {
+    "Event": "Athletics Men's 4 x 400 metres Relay",
+    "Season": "Summer",
+    "Sport": "Athletics"
+  },
+  {
+    "Event": "Athletics Men's 4,000 metres Steeplechase",
+    "Season": "Summer",
+    "Sport": "Athletics"
+  },
+  {
+    "Event": "Athletics Men's 400 metres",
+    "Season": "Summer",
+    "Sport": "Athletics"
+  },
+  {
+    "Event": "Athletics Men's 400 metres Hurdles",
+    "Season": "Summer",
+    "Sport": "Athletics"
+  },
+  {
+    "Event": "Athletics Men's 5 mile",
+    "Season": "Summer",
+    "Sport": "Athletics"
+  },
+  {
+    "Event": "Athletics Men's 5,000 metres",
+    "Season": "Summer",
+    "Sport": "Athletics"
+  },
+  {
+    "Event": "Athletics Men's 5,000 metres, Team",
+    "Season": "Summer",
+    "Sport": "Athletics"
+  },
+  {
+    "Event": "Athletics Men's 50 kilometres Walk",
+    "Season": "Summer",
+    "Sport": "Athletics"
+  },
+  {
+    "Event": "Athletics Men's 56-pound Weight Throw",
+    "Season": "Summer",
+    "Sport": "Athletics"
+  },
+  {
+    "Event": "Athletics Men's 60 metres",
+    "Season": "Summer",
+    "Sport": "Athletics"
+  },
+  {
+    "Event": "Athletics Men's 800 metres",
+    "Season": "Summer",
+    "Sport": "Athletics"
+  },
+  {
+    "Event": "Athletics Men's All-Around Championship",
+    "Season": "Summer",
+    "Sport": "Athletics"
+  },
+  {
+    "Event": "Athletics Men's Cross-Country, Individual",
+    "Season": "Summer",
+    "Sport": "Athletics"
+  },
+  {
+    "Event": "Athletics Men's Cross-Country, Team",
+    "Season": "Summer",
+    "Sport": "Athletics"
+  },
+  {
+    "Event": "Athletics Men's Decathlon",
+    "Season": "Summer",
+    "Sport": "Athletics"
+  },
+  {
+    "Event": "Athletics Men's Discus Throw",
+    "Season": "Summer",
+    "Sport": "Athletics"
+  },
+  {
+    "Event": "Athletics Men's Discus Throw, Both Hands",
+    "Season": "Summer",
+    "Sport": "Athletics"
+  },
+  {
+    "Event": "Athletics Men's Discus Throw, Greek Style",
+    "Season": "Summer",
+    "Sport": "Athletics"
+  },
+  {
+    "Event": "Athletics Men's Hammer Throw",
+    "Season": "Summer",
+    "Sport": "Athletics"
+  },
+  {
+    "Event": "Athletics Men's High Jump",
+    "Season": "Summer",
+    "Sport": "Athletics"
+  },
+  {
+    "Event": "Athletics Men's Javelin Throw",
+    "Season": "Summer",
+    "Sport": "Athletics"
+  },
+  {
+    "Event": "Athletics Men's Javelin Throw, Both Hands",
+    "Season": "Summer",
+    "Sport": "Athletics"
+  },
+  {
+    "Event": "Athletics Men's Javelin Throw, Freestyle",
+    "Season": "Summer",
+    "Sport": "Athletics"
+  },
+  {
+    "Event": "Athletics Men's Long Jump",
+    "Season": "Summer",
+    "Sport": "Athletics"
+  },
+  {
+    "Event": "Athletics Men's Marathon",
+    "Season": "Summer",
+    "Sport": "Athletics"
+  },
+  {
+    "Event": "Athletics Men's Pentathlon",
+    "Season": "Summer",
+    "Sport": "Athletics"
+  },
+  {
+    "Event": "Athletics Men's Pentathlon (Ancient)",
+    "Season": "Summer",
+    "Sport": "Athletics"
+  },
+  {
+    "Event": "Athletics Men's Pole Vault",
+    "Season": "Summer",
+    "Sport": "Athletics"
+  },
+  {
+    "Event": "Athletics Men's Shot Put",
+    "Season": "Summer",
+    "Sport": "Athletics"
+  },
+  {
+    "Event": "Athletics Men's Shot Put, Both Hands",
+    "Season": "Summer",
+    "Sport": "Athletics"
+  },
+  {
+    "Event": "Athletics Men's Standing High Jump",
+    "Season": "Summer",
+    "Sport": "Athletics"
+  },
+  {
+    "Event": "Athletics Men's Standing Long Jump",
+    "Season": "Summer",
+    "Sport": "Athletics"
+  },
+  {
+    "Event": "Athletics Men's Standing Triple Jump",
+    "Season": "Summer",
+    "Sport": "Athletics"
+  },
+  {
+    "Event": "Athletics Men's Stone Throw",
+    "Season": "Summer",
+    "Sport": "Athletics"
+  },
+  {
+    "Event": "Athletics Men's Triple Jump",
+    "Season": "Summer",
+    "Sport": "Athletics"
+  },
+  {
+    "Event": "Athletics Women's 1,500 metres",
+    "Season": "Summer",
+    "Sport": "Athletics"
+  },
+  {
+    "Event": "Athletics Women's 10 kilometres Walk",
+    "Season": "Summer",
+    "Sport": "Athletics"
+  },
+  {
+    "Event": "Athletics Women's 10,000 metres",
+    "Season": "Summer",
+    "Sport": "Athletics"
+  },
+  {
+    "Event": "Athletics Women's 100 metres",
+    "Season": "Summer",
+    "Sport": "Athletics"
+  },
+  {
+    "Event": "Athletics Women's 100 metres Hurdles",
+    "Season": "Summer",
+    "Sport": "Athletics"
+  },
+  {
+    "Event": "Athletics Women's 20 kilometres Walk",
+    "Season": "Summer",
+    "Sport": "Athletics"
+  },
+  {
+    "Event": "Athletics Women's 200 metres",
+    "Season": "Summer",
+    "Sport": "Athletics"
+  },
+  {
+    "Event": "Athletics Women's 3,000 metres",
+    "Season": "Summer",
+    "Sport": "Athletics"
+  },
+  {
+    "Event": "Athletics Women's 3,000 metres Steeplechase",
+    "Season": "Summer",
+    "Sport": "Athletics"
+  },
+  {
+    "Event": "Athletics Women's 4 x 100 metres Relay",
+    "Season": "Summer",
+    "Sport": "Athletics"
+  },
+  {
+    "Event": "Athletics Women's 4 x 400 metres Relay",
+    "Season": "Summer",
+    "Sport": "Athletics"
+  },
+  {
+    "Event": "Athletics Women's 400 metres",
+    "Season": "Summer",
+    "Sport": "Athletics"
+  },
+  {
+    "Event": "Athletics Women's 400 metres Hurdles",
+    "Season": "Summer",
+    "Sport": "Athletics"
+  },
+  {
+    "Event": "Athletics Women's 5,000 metres",
+    "Season": "Summer",
+    "Sport": "Athletics"
+  },
+  {
+    "Event": "Athletics Women's 80 metres Hurdles",
+    "Season": "Summer",
+    "Sport": "Athletics"
+  },
+  {
+    "Event": "Athletics Women's 800 metres",
+    "Season": "Summer",
+    "Sport": "Athletics"
+  },
+  {
+    "Event": "Athletics Women's Discus Throw",
+    "Season": "Summer",
+    "Sport": "Athletics"
+  },
+  {
+    "Event": "Athletics Women's Hammer Throw",
+    "Season": "Summer",
+    "Sport": "Athletics"
+  },
+  {
+    "Event": "Athletics Women's Heptathlon",
+    "Season": "Summer",
+    "Sport": "Athletics"
+  },
+  {
+    "Event": "Athletics Women's High Jump",
+    "Season": "Summer",
+    "Sport": "Athletics"
+  },
+  {
+    "Event": "Athletics Women's Javelin Throw",
+    "Season": "Summer",
+    "Sport": "Athletics"
+  },
+  {
+    "Event": "Athletics Women's Long Jump",
+    "Season": "Summer",
+    "Sport": "Athletics"
+  },
+  {
+    "Event": "Athletics Women's Marathon",
+    "Season": "Summer",
+    "Sport": "Athletics"
+  },
+  {
+    "Event": "Athletics Women's Pentathlon",
+    "Season": "Summer",
+    "Sport": "Athletics"
+  },
+  {
+    "Event": "Athletics Women's Pole Vault",
+    "Season": "Summer",
+    "Sport": "Athletics"
+  },
+  {
+    "Event": "Athletics Women's Shot Put",
+    "Season": "Summer",
+    "Sport": "Athletics"
+  },
+  {
+    "Event": "Athletics Women's Triple Jump",
+    "Season": "Summer",
+    "Sport": "Athletics"
+  },
+  {
+    "Event": "Badminton Men's Doubles",
+    "Season": "Summer",
+    "Sport": "Badminton"
+  },
+  {
+    "Event": "Badminton Men's Singles",
+    "Season": "Summer",
+    "Sport": "Badminton"
+  },
+  {
+    "Event": "Badminton Mixed Doubles",
+    "Season": "Summer",
+    "Sport": "Badminton"
+  },
+  {
+    "Event": "Badminton Women's Doubles",
+    "Season": "Summer",
+    "Sport": "Badminton"
+  },
+  {
+    "Event": "Badminton Women's Singles",
+    "Season": "Summer",
+    "Sport": "Badminton"
+  },
+  {
+    "Event": "Baseball Men's Baseball",
+    "Season": "Summer",
+    "Sport": "Baseball"
+  },
+  {
+    "Event": "Basketball Men's Basketball",
+    "Season": "Summer",
+    "Sport": "Basketball"
+  },
+  {
+    "Event": "Basketball Women's Basketball",
+    "Season": "Summer",
+    "Sport": "Basketball"
+  },
+  {
+    "Event": "Beach Volleyball Men's Beach Volleyball",
+    "Season": "Summer",
+    "Sport": "Beach Volleyball"
+  },
+  {
+    "Event": "Beach Volleyball Women's Beach Volleyball",
+    "Season": "Summer",
+    "Sport": "Beach Volleyball"
+  },
+  {
+    "Event": "Biathlon Men's 10 kilometres Sprint",
+    "Season": "Winter",
+    "Sport": "Biathlon"
+  },
+  {
+    "Event": "Biathlon Men's 12.5 kilometres Pursuit",
+    "Season": "Winter",
+    "Sport": "Biathlon"
+  },
+  {
+    "Event": "Biathlon Men's 15 kilometres Mass Start",
+    "Season": "Winter",
+    "Sport": "Biathlon"
+  },
+  {
+    "Event": "Biathlon Men's 20 kilometres",
+    "Season": "Winter",
+    "Sport": "Biathlon"
+  },
+  {
+    "Event": "Biathlon Men's 4 x 7.5 kilometres Relay",
+    "Season": "Winter",
+    "Sport": "Biathlon"
+  },
+  {
+    "Event": "Biathlon Mixed 2 x 6 kilometres and 2 x 7.5 kilometres Relay",
+    "Season": "Winter",
+    "Sport": "Biathlon"
+  },
+  {
+    "Event": "Biathlon Women's 10 kilometres Pursuit",
+    "Season": "Winter",
+    "Sport": "Biathlon"
+  },
+  {
+    "Event": "Biathlon Women's 12.5 kilometres Mass Start",
+    "Season": "Winter",
+    "Sport": "Biathlon"
+  },
+  {
+    "Event": "Biathlon Women's 15 kilometres",
+    "Season": "Winter",
+    "Sport": "Biathlon"
+  },
+  {
+    "Event": "Biathlon Women's 3 x 7.5 kilometres Relay",
+    "Season": "Winter",
+    "Sport": "Biathlon"
+  },
+  {
+    "Event": "Biathlon Women's 4 x 6 kilometres Relay",
+    "Season": "Winter",
+    "Sport": "Biathlon"
+  },
+  {
+    "Event": "Biathlon Women's 4 x 7.5 kilometres Relay",
+    "Season": "Winter",
+    "Sport": "Biathlon"
+  },
+  {
+    "Event": "Biathlon Women's 7.5 kilometres Sprint",
+    "Season": "Winter",
+    "Sport": "Biathlon"
+  },
+  {
+    "Event": "Bobsleigh Men's Four",
+    "Season": "Winter",
+    "Sport": "Bobsleigh"
+  },
+  {
+    "Event": "Bobsleigh Men's Four/Five",
+    "Season": "Winter",
+    "Sport": "Bobsleigh"
+  },
+  {
+    "Event": "Bobsleigh Men's Two",
+    "Season": "Winter",
+    "Sport": "Bobsleigh"
+  },
+  {
+    "Event": "Bobsleigh Women's Two",
+    "Season": "Winter",
+    "Sport": "Bobsleigh"
+  },
+  {
+    "Event": "Boxing Men's Bantamweight",
+    "Season": "Summer",
+    "Sport": "Boxing"
+  },
+  {
+    "Event": "Boxing Men's Featherweight",
+    "Season": "Summer",
+    "Sport": "Boxing"
+  },
+  {
+    "Event": "Boxing Men's Flyweight",
+    "Season": "Summer",
+    "Sport": "Boxing"
+  },
+  {
+    "Event": "Boxing Men's Heavyweight",
+    "Season": "Summer",
+    "Sport": "Boxing"
+  },
+  {
+    "Event": "Boxing Men's Light-Flyweight",
+    "Season": "Summer",
+    "Sport": "Boxing"
+  },
+  {
+    "Event": "Boxing Men's Light-Heavyweight",
+    "Season": "Summer",
+    "Sport": "Boxing"
+  },
+  {
+    "Event": "Boxing Men's Light-Middleweight",
+    "Season": "Summer",
+    "Sport": "Boxing"
+  },
+  {
+    "Event": "Boxing Men's Light-Welterweight",
+    "Season": "Summer",
+    "Sport": "Boxing"
+  },
+  {
+    "Event": "Boxing Men's Lightweight",
+    "Season": "Summer",
+    "Sport": "Boxing"
+  },
+  {
+    "Event": "Boxing Men's Middleweight",
+    "Season": "Summer",
+    "Sport": "Boxing"
+  },
+  {
+    "Event": "Boxing Men's Super-Heavyweight",
+    "Season": "Summer",
+    "Sport": "Boxing"
+  },
+  {
+    "Event": "Boxing Men's Welterweight",
+    "Season": "Summer",
+    "Sport": "Boxing"
+  },
+  {
+    "Event": "Boxing Women's Flyweight",
+    "Season": "Summer",
+    "Sport": "Boxing"
+  },
+  {
+    "Event": "Boxing Women's Lightweight",
+    "Season": "Summer",
+    "Sport": "Boxing"
+  },
+  {
+    "Event": "Boxing Women's Middleweight",
+    "Season": "Summer",
+    "Sport": "Boxing"
+  },
+  {
+    "Event": "Canoeing Men's Canadian Doubles, 1,000 metres",
+    "Season": "Summer",
+    "Sport": "Canoeing"
+  },
+  {
+    "Event": "Canoeing Men's Canadian Doubles, 10,000 metres",
+    "Season": "Summer",
+    "Sport": "Canoeing"
+  },
+  {
+    "Event": "Canoeing Men's Canadian Doubles, 500 metres",
+    "Season": "Summer",
+    "Sport": "Canoeing"
+  },
+  {
+    "Event": "Canoeing Men's Canadian Doubles, Slalom",
+    "Season": "Summer",
+    "Sport": "Canoeing"
+  },
+  {
+    "Event": "Canoeing Men's Canadian Singles, 1,000 metres",
+    "Season": "Summer",
+    "Sport": "Canoeing"
+  },
+  {
+    "Event": "Canoeing Men's Canadian Singles, 10,000 metres",
+    "Season": "Summer",
+    "Sport": "Canoeing"
+  },
+  {
+    "Event": "Canoeing Men's Canadian Singles, 200 metres",
+    "Season": "Summer",
+    "Sport": "Canoeing"
+  },
+  {
+    "Event": "Canoeing Men's Canadian Singles, 500 metres",
+    "Season": "Summer",
+    "Sport": "Canoeing"
+  },
+  {
+    "Event": "Canoeing Men's Canadian Singles, Slalom",
+    "Season": "Summer",
+    "Sport": "Canoeing"
+  },
+  {
+    "Event": "Canoeing Men's Folding Kayak Singles, 10 kilometres",
+    "Season": "Summer",
+    "Sport": "Canoeing"
+  },
+  {
+    "Event": "Canoeing Men's Kayak Doubles, 1,000 metres",
+    "Season": "Summer",
+    "Sport": "Canoeing"
+  },
+  {
+    "Event": "Canoeing Men's Kayak Doubles, 10,000 metres",
+    "Season": "Summer",
+    "Sport": "Canoeing"
+  },
+  {
+    "Event": "Canoeing Men's Kayak Doubles, 200 metres",
+    "Season": "Summer",
+    "Sport": "Canoeing"
+  },
+  {
+    "Event": "Canoeing Men's Kayak Doubles, 500 metres",
+    "Season": "Summer",
+    "Sport": "Canoeing"
+  },
+  {
+    "Event": "Canoeing Men's Kayak Fours, 1,000 metres",
+    "Season": "Summer",
+    "Sport": "Canoeing"
+  },
+  {
+    "Event": "Canoeing Men's Kayak Relay 4 x 500 metres",
+    "Season": "Summer",
+    "Sport": "Canoeing"
+  },
+  {
+    "Event": "Canoeing Men's Kayak Singles, 1,000 metres",
+    "Season": "Summer",
+    "Sport": "Canoeing"
+  },
+  {
+    "Event": "Canoeing Men's Kayak Singles, 10,000 metres",
+    "Season": "Summer",
+    "Sport": "Canoeing"
+  },
+  {
+    "Event": "Canoeing Men's Kayak Singles, 200 metres",
+    "Season": "Summer",
+    "Sport": "Canoeing"
+  },
+  {
+    "Event": "Canoeing Men's Kayak Singles, 500 metres",
+    "Season": "Summer",
+    "Sport": "Canoeing"
+  },
+  {
+    "Event": "Canoeing Men's Kayak Singles, Slalom",
+    "Season": "Summer",
+    "Sport": "Canoeing"
+  },
+  {
+    "Event": "Canoeing Women's Kayak Doubles, 500 metres",
+    "Season": "Summer",
+    "Sport": "Canoeing"
+  },
+  {
+    "Event": "Canoeing Women's Kayak Fours, 500 metres",
+    "Season": "Summer",
+    "Sport": "Canoeing"
+  },
+  {
+    "Event": "Canoeing Women's Kayak Singles, 200 metres",
+    "Season": "Summer",
+    "Sport": "Canoeing"
+  },
+  {
+    "Event": "Canoeing Women's Kayak Singles, 500 metres",
+    "Season": "Summer",
+    "Sport": "Canoeing"
+  },
+  {
+    "Event": "Canoeing Women's Kayak Singles, Slalom",
+    "Season": "Summer",
+    "Sport": "Canoeing"
+  },
+  {
+    "Event": "Cross Country Skiing Men's 10 kilometres",
+    "Season": "Winter",
+    "Sport": "Cross Country Skiing"
+  },
+  {
+    "Event": "Cross Country Skiing Men's 10/10 kilometres Pursuit",
+    "Season": "Winter",
+    "Sport": "Cross Country Skiing"
+  },
+  {
+    "Event": "Cross Country Skiing Men's 10/15 kilometres Pursuit",
+    "Season": "Winter",
+    "Sport": "Cross Country Skiing"
+  },
+  {
+    "Event": "Cross Country Skiing Men's 15 kilometres",
+    "Season": "Winter",
+    "Sport": "Cross Country Skiing"
+  },
+  {
+    "Event": "Cross Country Skiing Men's 18 kilometres",
+    "Season": "Winter",
+    "Sport": "Cross Country Skiing"
+  },
+  {
+    "Event": "Cross Country Skiing Men's 30 kilometres",
+    "Season": "Winter",
+    "Sport": "Cross Country Skiing"
+  },
+  {
+    "Event": "Cross Country Skiing Men's 30 km Skiathlon",
+    "Season": "Winter",
+    "Sport": "Cross Country Skiing"
+  },
+  {
+    "Event": "Cross Country Skiing Men's 4 x 10 kilometres Relay",
+    "Season": "Winter",
+    "Sport": "Cross Country Skiing"
+  },
+  {
+    "Event": "Cross Country Skiing Men's 50 kilometres",
+    "Season": "Winter",
+    "Sport": "Cross Country Skiing"
+  },
+  {
+    "Event": "Cross Country Skiing Men's Sprint",
+    "Season": "Winter",
+    "Sport": "Cross Country Skiing"
+  },
+  {
+    "Event": "Cross Country Skiing Men's Team Sprint",
+    "Season": "Winter",
+    "Sport": "Cross Country Skiing"
+  },
+  {
+    "Event": "Cross Country Skiing Women's 10 kilometres",
+    "Season": "Winter",
+    "Sport": "Cross Country Skiing"
+  },
+  {
+    "Event": "Cross Country Skiing Women's 15 kilometres",
+    "Season": "Winter",
+    "Sport": "Cross Country Skiing"
+  },
+  {
+    "Event": "Cross Country Skiing Women's 15 km Skiathlon",
+    "Season": "Winter",
+    "Sport": "Cross Country Skiing"
+  },
+  {
+    "Event": "Cross Country Skiing Women's 20 kilometres",
+    "Season": "Winter",
+    "Sport": "Cross Country Skiing"
+  },
+  {
+    "Event": "Cross Country Skiing Women's 3 x 5 kilometres Relay",
+    "Season": "Winter",
+    "Sport": "Cross Country Skiing"
+  },
+  {
+    "Event": "Cross Country Skiing Women's 30 kilometres",
+    "Season": "Winter",
+    "Sport": "Cross Country Skiing"
+  },
+  {
+    "Event": "Cross Country Skiing Women's 4 x 5 kilometres Relay",
+    "Season": "Winter",
+    "Sport": "Cross Country Skiing"
+  },
+  {
+    "Event": "Cross Country Skiing Women's 5 kilometres",
+    "Season": "Winter",
+    "Sport": "Cross Country Skiing"
+  },
+  {
+    "Event": "Cross Country Skiing Women's 5/10 kilometres Pursuit",
+    "Season": "Winter",
+    "Sport": "Cross Country Skiing"
+  },
+  {
+    "Event": "Cross Country Skiing Women's 5/5 kilometres Pursuit",
+    "Season": "Winter",
+    "Sport": "Cross Country Skiing"
+  },
+  {
+    "Event": "Cross Country Skiing Women's Sprint",
+    "Season": "Winter",
+    "Sport": "Cross Country Skiing"
+  },
+  {
+    "Event": "Cross Country Skiing Women's Team Sprint",
+    "Season": "Winter",
+    "Sport": "Cross Country Skiing"
+  },
+  {
+    "Event": "Curling Men's Curling",
+    "Season": "Winter",
+    "Sport": "Curling"
+  },
+  {
+    "Event": "Curling Women's Curling",
+    "Season": "Winter",
+    "Sport": "Curling"
+  },
+  {
+    "Event": "Cycling Men's 1,000 metres Time Trial",
+    "Season": "Summer",
+    "Sport": "Cycling"
+  },
+  {
+    "Event": "Cycling Men's 100 kilometres Team Time Trial",
+    "Season": "Summer",
+    "Sport": "Cycling"
+  },
+  {
+    "Event": "Cycling Men's 20 kilometres",
+    "Season": "Summer",
+    "Sport": "Cycling"
+  },
+  {
+    "Event": "Cycling Men's 333 metres Time Trial",
+    "Season": "Summer",
+    "Sport": "Cycling"
+  },
+  {
+    "Event": "Cycling Men's 5,000 metres",
+    "Season": "Summer",
+    "Sport": "Cycling"
+  },
+  {
+    "Event": "Cycling Men's 50 kilometres",
+    "Season": "Summer",
+    "Sport": "Cycling"
+  },
+  {
+    "Event": "Cycling Men's BMX",
+    "Season": "Summer",
+    "Sport": "Cycling"
+  },
+  {
+    "Event": "Cycling Men's Individual Pursuit, 4,000 metres",
+    "Season": "Summer",
+    "Sport": "Cycling"
+  },
+  {
+    "Event": "Cycling Men's Individual Time Trial",
+    "Season": "Summer",
+    "Sport": "Cycling"
+  },
+  {
+    "Event": "Cycling Men's Keirin",
+    "Season": "Summer",
+    "Sport": "Cycling"
+  },
+  {
+    "Event": "Cycling Men's Madison",
+    "Season": "Summer",
+    "Sport": "Cycling"
+  },
+  {
+    "Event": "Cycling Men's Mountainbike, Cross-Country",
+    "Season": "Summer",
+    "Sport": "Cycling"
+  },
+  {
+    "Event": "Cycling Men's Omnium",
+    "Season": "Summer",
+    "Sport": "Cycling"
+  },
+  {
+    "Event": "Cycling Men's Points Race",
+    "Season": "Summer",
+    "Sport": "Cycling"
+  },
+  {
+    "Event": "Cycling Men's Road Race, Individual",
+    "Season": "Summer",
+    "Sport": "Cycling"
+  },
+  {
+    "Event": "Cycling Men's Road Race, Team",
+    "Season": "Summer",
+    "Sport": "Cycling"
+  },
+  {
+    "Event": "Cycling Men's Sprint",
+    "Season": "Summer",
+    "Sport": "Cycling"
+  },
+  {
+    "Event": "Cycling Men's Tandem Sprint, 2,000 metres",
+    "Season": "Summer",
+    "Sport": "Cycling"
+  },
+  {
+    "Event": "Cycling Men's Team Pursuit, 1,980 yards",
+    "Season": "Summer",
+    "Sport": "Cycling"
+  },
+  {
+    "Event": "Cycling Men's Team Pursuit, 4,000 metres",
+    "Season": "Summer",
+    "Sport": "Cycling"
+  },
+  {
+    "Event": "Cycling Men's Team Sprint",
+    "Season": "Summer",
+    "Sport": "Cycling"
+  },
+  {
+    "Event": "Cycling Women's 500 metres Time Trial",
+    "Season": "Summer",
+    "Sport": "Cycling"
+  },
+  {
+    "Event": "Cycling Women's BMX",
+    "Season": "Summer",
+    "Sport": "Cycling"
+  },
+  {
+    "Event": "Cycling Women's Individual Pursuit, 3,000 metres",
+    "Season": "Summer",
+    "Sport": "Cycling"
+  },
+  {
+    "Event": "Cycling Women's Individual Time Trial",
+    "Season": "Summer",
+    "Sport": "Cycling"
+  },
+  {
+    "Event": "Cycling Women's Keirin",
+    "Season": "Summer",
+    "Sport": "Cycling"
+  },
+  {
+    "Event": "Cycling Women's Mountainbike, Cross-Country",
+    "Season": "Summer",
+    "Sport": "Cycling"
+  },
+  {
+    "Event": "Cycling Women's Omnium",
+    "Season": "Summer",
+    "Sport": "Cycling"
+  },
+  {
+    "Event": "Cycling Women's Points Race",
+    "Season": "Summer",
+    "Sport": "Cycling"
+  },
+  {
+    "Event": "Cycling Women's Road Race, Individual",
+    "Season": "Summer",
+    "Sport": "Cycling"
+  },
+  {
+    "Event": "Cycling Women's Sprint",
+    "Season": "Summer",
+    "Sport": "Cycling"
+  },
+  {
+    "Event": "Cycling Women's Team Pursuit",
+    "Season": "Summer",
+    "Sport": "Cycling"
+  },
+  {
+    "Event": "Cycling Women's Team Sprint",
+    "Season": "Summer",
+    "Sport": "Cycling"
+  },
+  {
+    "Event": "Diving Men's Plain High",
+    "Season": "Summer",
+    "Sport": "Diving"
+  },
+  {
+    "Event": "Diving Men's Platform",
+    "Season": "Summer",
+    "Sport": "Diving"
+  },
+  {
+    "Event": "Diving Men's Springboard",
+    "Season": "Summer",
+    "Sport": "Diving"
+  },
+  {
+    "Event": "Diving Men's Synchronized Platform",
+    "Season": "Summer",
+    "Sport": "Diving"
+  },
+  {
+    "Event": "Diving Men's Synchronized Springboard",
+    "Season": "Summer",
+    "Sport": "Diving"
+  },
+  {
+    "Event": "Diving Women's Platform",
+    "Season": "Summer",
+    "Sport": "Diving"
+  },
+  {
+    "Event": "Diving Women's Springboard",
+    "Season": "Summer",
+    "Sport": "Diving"
+  },
+  {
+    "Event": "Diving Women's Synchronized Platform",
+    "Season": "Summer",
+    "Sport": "Diving"
+  },
+  {
+    "Event": "Diving Women's Synchronized Springboard",
+    "Season": "Summer",
+    "Sport": "Diving"
+  },
+  {
+    "Event": "Equestrianism Men's Dressage, Individual",
+    "Season": "Summer",
+    "Sport": "Equestrianism"
+  },
+  {
+    "Event": "Equestrianism Men's Dressage, Team",
+    "Season": "Summer",
+    "Sport": "Equestrianism"
+  },
+  {
+    "Event": "Equestrianism Men's Jumping, Individual",
+    "Season": "Summer",
+    "Sport": "Equestrianism"
+  },
+  {
+    "Event": "Equestrianism Men's Jumping, Team",
+    "Season": "Summer",
+    "Sport": "Equestrianism"
+  },
+  {
+    "Event": "Equestrianism Men's Three-Day Event, Individual",
+    "Season": "Summer",
+    "Sport": "Equestrianism"
+  },
+  {
+    "Event": "Equestrianism Men's Three-Day Event, Team",
+    "Season": "Summer",
+    "Sport": "Equestrianism"
+  },
+  {
+    "Event": "Equestrianism Mixed Dressage, Individual",
+    "Season": "Summer",
+    "Sport": "Equestrianism"
+  },
+  {
+    "Event": "Equestrianism Mixed Dressage, Team",
+    "Season": "Summer",
+    "Sport": "Equestrianism"
+  },
+  {
+    "Event": "Equestrianism Mixed Jumping, Individual",
+    "Season": "Summer",
+    "Sport": "Equestrianism"
+  },
+  {
+    "Event": "Equestrianism Mixed Jumping, Team",
+    "Season": "Summer",
+    "Sport": "Equestrianism"
+  },
+  {
+    "Event": "Equestrianism Mixed Three-Day Event, Individual",
+    "Season": "Summer",
+    "Sport": "Equestrianism"
+  },
+  {
+    "Event": "Equestrianism Mixed Three-Day Event, Team",
+    "Season": "Summer",
+    "Sport": "Equestrianism"
+  },
+  {
+    "Event": "Fencing Men's epee, Individual",
+    "Season": "Summer",
+    "Sport": "Fencing"
+  },
+  {
+    "Event": "Fencing Men's epee, Team",
+    "Season": "Summer",
+    "Sport": "Fencing"
+  },
+  {
+    "Event": "Fencing Men's Foil, Individual",
+    "Season": "Summer",
+    "Sport": "Fencing"
+  },
+  {
+    "Event": "Fencing Men's Foil, Team",
+    "Season": "Summer",
+    "Sport": "Fencing"
+  },
+  {
+    "Event": "Fencing Men's Sabre, Individual",
+    "Season": "Summer",
+    "Sport": "Fencing"
+  },
+  {
+    "Event": "Fencing Men's Sabre, Team",
+    "Season": "Summer",
+    "Sport": "Fencing"
+  },
+  {
+    "Event": "Fencing Women's epee, Individual",
+    "Season": "Summer",
+    "Sport": "Fencing"
+  },
+  {
+    "Event": "Fencing Women's epee, Team",
+    "Season": "Summer",
+    "Sport": "Fencing"
+  },
+  {
+    "Event": "Fencing Women's Foil, Individual",
+    "Season": "Summer",
+    "Sport": "Fencing"
+  },
+  {
+    "Event": "Fencing Women's Foil, Team",
+    "Season": "Summer",
+    "Sport": "Fencing"
+  },
+  {
+    "Event": "Fencing Women's Sabre, Individual",
+    "Season": "Summer",
+    "Sport": "Fencing"
+  },
+  {
+    "Event": "Fencing Women's Sabre, Team",
+    "Season": "Summer",
+    "Sport": "Fencing"
+  },
+  {
+    "Event": "Figure Skating Men's Singles",
+    "Season": "Winter",
+    "Sport": "Figure Skating"
+  },
+  {
+    "Event": "Figure Skating Mixed Ice Dancing",
+    "Season": "Winter",
+    "Sport": "Figure Skating"
+  },
+  {
+    "Event": "Figure Skating Mixed Pairs",
+    "Season": "Winter",
+    "Sport": "Figure Skating"
+  },
+  {
+    "Event": "Figure Skating Mixed Team",
+    "Season": "Winter",
+    "Sport": "Figure Skating"
+  },
+  {
+    "Event": "Figure Skating Women's Singles",
+    "Season": "Winter",
+    "Sport": "Figure Skating"
+  },
+  {
+    "Event": "Football Men's Football",
+    "Season": "Summer",
+    "Sport": "Football"
+  },
+  {
+    "Event": "Football Women's Football",
+    "Season": "Summer",
+    "Sport": "Football"
+  },
+  {
+    "Event": "Freestyle Skiing Men's Aerials",
+    "Season": "Winter",
+    "Sport": "Freestyle Skiing"
+  },
+  {
+    "Event": "Freestyle Skiing Men's Halfpipe",
+    "Season": "Winter",
+    "Sport": "Freestyle Skiing"
+  },
+  {
+    "Event": "Freestyle Skiing Men's Moguls",
+    "Season": "Winter",
+    "Sport": "Freestyle Skiing"
+  },
+  {
+    "Event": "Freestyle Skiing Men's Ski Cross",
+    "Season": "Winter",
+    "Sport": "Freestyle Skiing"
+  },
+  {
+    "Event": "Freestyle Skiing Men's Slopestyle",
+    "Season": "Winter",
+    "Sport": "Freestyle Skiing"
+  },
+  {
+    "Event": "Freestyle Skiing Women's Aerials",
+    "Season": "Winter",
+    "Sport": "Freestyle Skiing"
+  },
+  {
+    "Event": "Freestyle Skiing Women's Halfpipe",
+    "Season": "Winter",
+    "Sport": "Freestyle Skiing"
+  },
+  {
+    "Event": "Freestyle Skiing Women's Moguls",
+    "Season": "Winter",
+    "Sport": "Freestyle Skiing"
+  },
+  {
+    "Event": "Freestyle Skiing Women's Ski Cross",
+    "Season": "Winter",
+    "Sport": "Freestyle Skiing"
+  },
+  {
+    "Event": "Freestyle Skiing Women's Slopestyle",
+    "Season": "Winter",
+    "Sport": "Freestyle Skiing"
+  },
+  {
+    "Event": "Golf Men's Individual",
+    "Season": "Summer",
+    "Sport": "Golf"
+  },
+  {
+    "Event": "Golf Women's Individual",
+    "Season": "Summer",
+    "Sport": "Golf"
+  },
+  {
+    "Event": "Gymnastics Men's Floor Exercise",
+    "Season": "Summer",
+    "Sport": "Gymnastics"
+  },
+  {
+    "Event": "Gymnastics Men's Horizontal Bar",
+    "Season": "Summer",
+    "Sport": "Gymnastics"
+  },
+  {
+    "Event": "Gymnastics Men's Horizontal Bar, Teams",
+    "Season": "Summer",
+    "Sport": "Gymnastics"
+  },
+  {
+    "Event": "Gymnastics Men's Horse Vault",
+    "Season": "Summer",
+    "Sport": "Gymnastics"
+  },
+  {
+    "Event": "Gymnastics Men's Individual All-Around",
+    "Season": "Summer",
+    "Sport": "Gymnastics"
+  },
+  {
+    "Event": "Gymnastics Men's Individual All-Around, 5 Events",
+    "Season": "Summer",
+    "Sport": "Gymnastics"
+  },
+  {
+    "Event": "Gymnastics Men's Individual All-Around, Apparatus Work",
+    "Season": "Summer",
+    "Sport": "Gymnastics"
+  },
+  {
+    "Event": "Gymnastics Men's Individual All-Around, Field Sports",
+    "Season": "Summer",
+    "Sport": "Gymnastics"
+  },
+  {
+    "Event": "Gymnastics Men's Parallel Bars",
+    "Season": "Summer",
+    "Sport": "Gymnastics"
+  },
+  {
+    "Event": "Gymnastics Men's Parallel Bars, Teams",
+    "Season": "Summer",
+    "Sport": "Gymnastics"
+  },
+  {
+    "Event": "Gymnastics Men's Pommelled Horse",
+    "Season": "Summer",
+    "Sport": "Gymnastics"
+  },
+  {
+    "Event": "Gymnastics Men's Rings",
+    "Season": "Summer",
+    "Sport": "Gymnastics"
+  },
+  {
+    "Event": "Gymnastics Men's Rope Climbing",
+    "Season": "Summer",
+    "Sport": "Gymnastics"
+  },
+  {
+    "Event": "Gymnastics Men's Team All-Around",
+    "Season": "Summer",
+    "Sport": "Gymnastics"
+  },
+  {
+    "Event": "Gymnastics Men's Team All-Around, Swedish System",
+    "Season": "Summer",
+    "Sport": "Gymnastics"
+  },
+  {
+    "Event": "Gymnastics Women's Balance Beam",
+    "Season": "Summer",
+    "Sport": "Gymnastics"
+  },
+  {
+    "Event": "Gymnastics Women's Floor Exercise",
+    "Season": "Summer",
+    "Sport": "Gymnastics"
+  },
+  {
+    "Event": "Gymnastics Women's Horse Vault",
+    "Season": "Summer",
+    "Sport": "Gymnastics"
+  },
+  {
+    "Event": "Gymnastics Women's Individual All-Around",
+    "Season": "Summer",
+    "Sport": "Gymnastics"
+  },
+  {
+    "Event": "Gymnastics Women's Team All-Around",
+    "Season": "Summer",
+    "Sport": "Gymnastics"
+  },
+  {
+    "Event": "Gymnastics Women's Team Portable Apparatus",
+    "Season": "Summer",
+    "Sport": "Gymnastics"
+  },
+  {
+    "Event": "Gymnastics Women's Uneven Bars",
+    "Season": "Summer",
+    "Sport": "Gymnastics"
+  },
+  {
+    "Event": "Handball Men's Handball",
+    "Season": "Summer",
+    "Sport": "Handball"
+  },
+  {
+    "Event": "Handball Women's Handball",
+    "Season": "Summer",
+    "Sport": "Handball"
+  },
+  {
+    "Event": "Hockey Men's Hockey",
+    "Season": "Summer",
+    "Sport": "Hockey"
+  },
+  {
+    "Event": "Hockey Women's Hockey",
+    "Season": "Summer",
+    "Sport": "Hockey"
+  },
+  {
+    "Event": "Ice Hockey Men's Ice Hockey",
+    "Season": "Winter",
+    "Sport": "Ice Hockey"
+  },
+  {
+    "Event": "Ice Hockey Women's Ice Hockey",
+    "Season": "Winter",
+    "Sport": "Ice Hockey"
+  },
+  {
+    "Event": "Judo Men's Extra-Lightweight",
+    "Season": "Summer",
+    "Sport": "Judo"
+  },
+  {
+    "Event": "Judo Men's Half-Heavyweight",
+    "Season": "Summer",
+    "Sport": "Judo"
+  },
+  {
+    "Event": "Judo Men's Half-Lightweight",
+    "Season": "Summer",
+    "Sport": "Judo"
+  },
+  {
+    "Event": "Judo Men's Half-Middleweight",
+    "Season": "Summer",
+    "Sport": "Judo"
+  },
+  {
+    "Event": "Judo Men's Heavyweight",
+    "Season": "Summer",
+    "Sport": "Judo"
+  },
+  {
+    "Event": "Judo Men's Lightweight",
+    "Season": "Summer",
+    "Sport": "Judo"
+  },
+  {
+    "Event": "Judo Men's Middleweight",
+    "Season": "Summer",
+    "Sport": "Judo"
+  },
+  {
+    "Event": "Judo Men's Open Class",
+    "Season": "Summer",
+    "Sport": "Judo"
+  },
+  {
+    "Event": "Judo Women's Extra-Lightweight",
+    "Season": "Summer",
+    "Sport": "Judo"
+  },
+  {
+    "Event": "Judo Women's Half-Heavyweight",
+    "Season": "Summer",
+    "Sport": "Judo"
+  },
+  {
+    "Event": "Judo Women's Half-Lightweight",
+    "Season": "Summer",
+    "Sport": "Judo"
+  },
+  {
+    "Event": "Judo Women's Half-Middleweight",
+    "Season": "Summer",
+    "Sport": "Judo"
+  },
+  {
+    "Event": "Judo Women's Heavyweight",
+    "Season": "Summer",
+    "Sport": "Judo"
+  },
+  {
+    "Event": "Judo Women's Lightweight",
+    "Season": "Summer",
+    "Sport": "Judo"
+  },
+  {
+    "Event": "Judo Women's Middleweight",
+    "Season": "Summer",
+    "Sport": "Judo"
+  },
+  {
+    "Event": "Lacrosse Men's Lacrosse",
+    "Season": "Summer",
+    "Sport": "Lacrosse"
+  },
+  {
+    "Event": "Luge Men's Singles",
+    "Season": "Winter",
+    "Sport": "Luge"
+  },
+  {
+    "Event": "Luge Mixed (Men)'s Doubles",
+    "Season": "Winter",
+    "Sport": "Luge"
+  },
+  {
+    "Event": "Luge Mixed Team Relay",
+    "Season": "Winter",
+    "Sport": "Luge"
+  },
+  {
+    "Event": "Luge Women's Singles",
+    "Season": "Winter",
+    "Sport": "Luge"
+  },
+  {
+    "Event": "Modern Pentathlon Men's Individual",
+    "Season": "Summer",
+    "Sport": "Modern Pentathlon"
+  },
+  {
+    "Event": "Modern Pentathlon Men's Team",
+    "Season": "Summer",
+    "Sport": "Modern Pentathlon"
+  },
+  {
+    "Event": "Modern Pentathlon Women's Individual",
+    "Season": "Summer",
+    "Sport": "Modern Pentathlon"
+  },
+  {
+    "Event": "Nordic Combined Men's Individual",
+    "Season": "Winter",
+    "Sport": "Nordic Combined"
+  },
+  {
+    "Event": "Nordic Combined Men's Large Hill / 10 km, Individual",
+    "Season": "Winter",
+    "Sport": "Nordic Combined"
+  },
+  {
+    "Event": "Nordic Combined Men's Normal Hill / 10 km, Individual",
+    "Season": "Winter",
+    "Sport": "Nordic Combined"
+  },
+  {
+    "Event": "Nordic Combined Men's Sprint",
+    "Season": "Winter",
+    "Sport": "Nordic Combined"
+  },
+  {
+    "Event": "Nordic Combined Men's Team",
+    "Season": "Winter",
+    "Sport": "Nordic Combined"
+  },
+  {
+    "Event": "Rhythmic Gymnastics Women's Group",
+    "Season": "Summer",
+    "Sport": "Rhythmic Gymnastics"
+  },
+  {
+    "Event": "Rhythmic Gymnastics Women's Individual",
+    "Season": "Summer",
+    "Sport": "Rhythmic Gymnastics"
+  },
+  {
+    "Event": "Rowing Men's Coxed Eights",
+    "Season": "Summer",
+    "Sport": "Rowing"
+  },
+  {
+    "Event": "Rowing Men's Coxed Fours",
+    "Season": "Summer",
+    "Sport": "Rowing"
+  },
+  {
+    "Event": "Rowing Men's Coxed Pairs",
+    "Season": "Summer",
+    "Sport": "Rowing"
+  },
+  {
+    "Event": "Rowing Men's Coxless Fours",
+    "Season": "Summer",
+    "Sport": "Rowing"
+  },
+  {
+    "Event": "Rowing Men's Coxless Pairs",
+    "Season": "Summer",
+    "Sport": "Rowing"
+  },
+  {
+    "Event": "Rowing Men's Double Sculls",
+    "Season": "Summer",
+    "Sport": "Rowing"
+  },
+  {
+    "Event": "Rowing Men's Lightweight Coxless Fours",
+    "Season": "Summer",
+    "Sport": "Rowing"
+  },
+  {
+    "Event": "Rowing Men's Lightweight Double Sculls",
+    "Season": "Summer",
+    "Sport": "Rowing"
+  },
+  {
+    "Event": "Rowing Men's Quadruple Sculls",
+    "Season": "Summer",
+    "Sport": "Rowing"
+  },
+  {
+    "Event": "Rowing Men's Single Sculls",
+    "Season": "Summer",
+    "Sport": "Rowing"
+  },
+  {
+    "Event": "Rowing Women's Coxed Eights",
+    "Season": "Summer",
+    "Sport": "Rowing"
+  },
+  {
+    "Event": "Rowing Women's Coxed Fours",
+    "Season": "Summer",
+    "Sport": "Rowing"
+  },
+  {
+    "Event": "Rowing Women's Coxed Quadruple Sculls",
+    "Season": "Summer",
+    "Sport": "Rowing"
+  },
+  {
+    "Event": "Rowing Women's Coxless Fours",
+    "Season": "Summer",
+    "Sport": "Rowing"
+  },
+  {
+    "Event": "Rowing Women's Coxless Pairs",
+    "Season": "Summer",
+    "Sport": "Rowing"
+  },
+  {
+    "Event": "Rowing Women's Double Sculls",
+    "Season": "Summer",
+    "Sport": "Rowing"
+  },
+  {
+    "Event": "Rowing Women's Lightweight Double Sculls",
+    "Season": "Summer",
+    "Sport": "Rowing"
+  },
+  {
+    "Event": "Rowing Women's Quadruple Sculls",
+    "Season": "Summer",
+    "Sport": "Rowing"
+  },
+  {
+    "Event": "Rowing Women's Single Sculls",
+    "Season": "Summer",
+    "Sport": "Rowing"
+  },
+  {
+    "Event": "Rugby Men's Rugby",
+    "Season": "Summer",
+    "Sport": "Rugby"
+  },
+  {
+    "Event": "Rugby Sevens Men's Rugby Sevens",
+    "Season": "Summer",
+    "Sport": "Rugby Sevens"
+  },
+  {
+    "Event": "Rugby Sevens Women's Rugby Sevens",
+    "Season": "Summer",
+    "Sport": "Rugby Sevens"
+  },
+  {
+    "Event": "Sailing Men's One Person Dinghy",
+    "Season": "Summer",
+    "Sport": "Sailing"
+  },
+  {
+    "Event": "Sailing Men's One Person Heavyweight Dinghy",
+    "Season": "Summer",
+    "Sport": "Sailing"
+  },
+  {
+    "Event": "Sailing Men's Skiff",
+    "Season": "Summer",
+    "Sport": "Sailing"
+  },
+  {
+    "Event": "Sailing Men's Two Person Dinghy",
+    "Season": "Summer",
+    "Sport": "Sailing"
+  },
+  {
+    "Event": "Sailing Men's Two Person Keelboat",
+    "Season": "Summer",
+    "Sport": "Sailing"
+  },
+  {
+    "Event": "Sailing Men's Windsurfer",
+    "Season": "Summer",
+    "Sport": "Sailing"
+  },
+  {
+    "Event": "Sailing Mixed 5.5 metres",
+    "Season": "Summer",
+    "Sport": "Sailing"
+  },
+  {
+    "Event": "Sailing Mixed 6 metres",
+    "Season": "Summer",
+    "Sport": "Sailing"
+  },
+  {
+    "Event": "Sailing Mixed 6.5 metres",
+    "Season": "Summer",
+    "Sport": "Sailing"
+  },
+  {
+    "Event": "Sailing Mixed Multihull",
+    "Season": "Summer",
+    "Sport": "Sailing"
+  },
+  {
+    "Event": "Sailing Mixed One Person Dinghy",
+    "Season": "Summer",
+    "Sport": "Sailing"
+  },
+  {
+    "Event": "Sailing Mixed Skiff",
+    "Season": "Summer",
+    "Sport": "Sailing"
+  },
+  {
+    "Event": "Sailing Mixed Three Person Keelboat",
+    "Season": "Summer",
+    "Sport": "Sailing"
+  },
+  {
+    "Event": "Sailing Mixed Two Person Dinghy",
+    "Season": "Summer",
+    "Sport": "Sailing"
+  },
+  {
+    "Event": "Sailing Mixed Two Person Heavyweight Dinghy",
+    "Season": "Summer",
+    "Sport": "Sailing"
+  },
+  {
+    "Event": "Sailing Mixed Two Person Keelboat",
+    "Season": "Summer",
+    "Sport": "Sailing"
+  },
+  {
+    "Event": "Sailing Mixed Windsurfer",
+    "Season": "Summer",
+    "Sport": "Sailing"
+  },
+  {
+    "Event": "Sailing Women's One Person Dinghy",
+    "Season": "Summer",
+    "Sport": "Sailing"
+  },
+  {
+    "Event": "Sailing Women's Skiff",
+    "Season": "Summer",
+    "Sport": "Sailing"
+  },
+  {
+    "Event": "Sailing Women's Three Person Keelboat",
+    "Season": "Summer",
+    "Sport": "Sailing"
+  },
+  {
+    "Event": "Sailing Women's Two Person Dinghy",
+    "Season": "Summer",
+    "Sport": "Sailing"
+  },
+  {
+    "Event": "Sailing Women's Windsurfer",
+    "Season": "Summer",
+    "Sport": "Sailing"
+  },
+  {
+    "Event": "Shooting Men's Air Pistol, 10 metres",
+    "Season": "Summer",
+    "Sport": "Shooting"
+  },
+  {
+    "Event": "Shooting Men's Air Rifle, 10 metres",
+    "Season": "Summer",
+    "Sport": "Shooting"
+  },
+  {
+    "Event": "Shooting Men's Double Trap",
+    "Season": "Summer",
+    "Sport": "Shooting"
+  },
+  {
+    "Event": "Shooting Men's Free Pistol, 50 metres",
+    "Season": "Summer",
+    "Sport": "Shooting"
+  },
+  {
+    "Event": "Shooting Men's Free Rifle, Three Positions, 300 metres",
+    "Season": "Summer",
+    "Sport": "Shooting"
+  },
+  {
+    "Event": "Shooting Men's Rapid-Fire Pistol, 25 metres",
+    "Season": "Summer",
+    "Sport": "Shooting"
+  },
+  {
+    "Event": "Shooting Men's Running Target, 10 metres",
+    "Season": "Summer",
+    "Sport": "Shooting"
+  },
+  {
+    "Event": "Shooting Men's Running Target, 50 metres",
+    "Season": "Summer",
+    "Sport": "Shooting"
+  },
+  {
+    "Event": "Shooting Men's Skeet",
+    "Season": "Summer",
+    "Sport": "Shooting"
+  },
+  {
+    "Event": "Shooting Men's Small-Bore Rifle, Prone, 50 metres",
+    "Season": "Summer",
+    "Sport": "Shooting"
+  },
+  {
+    "Event": "Shooting Men's Small-Bore Rifle, Three Positions, 50 metres",
+    "Season": "Summer",
+    "Sport": "Shooting"
+  },
+  {
+    "Event": "Shooting Men's Trap",
+    "Season": "Summer",
+    "Sport": "Shooting"
+  },
+  {
+    "Event": "Shooting Men's Trap, Team",
+    "Season": "Summer",
+    "Sport": "Shooting"
+  },
+  {
+    "Event": "Shooting Mixed Free Pistol, 50 metres",
+    "Season": "Summer",
+    "Sport": "Shooting"
+  },
+  {
+    "Event": "Shooting Mixed Free Rifle, Three Positions, 300 metres",
+    "Season": "Summer",
+    "Sport": "Shooting"
+  },
+  {
+    "Event": "Shooting Mixed Rapid-Fire Pistol, 25 metres",
+    "Season": "Summer",
+    "Sport": "Shooting"
+  },
+  {
+    "Event": "Shooting Mixed Running Target, 50 metres",
+    "Season": "Summer",
+    "Sport": "Shooting"
+  },
+  {
+    "Event": "Shooting Mixed Skeet",
+    "Season": "Summer",
+    "Sport": "Shooting"
+  },
+  {
+    "Event": "Shooting Mixed Small-Bore Rifle, Prone, 50 metres",
+    "Season": "Summer",
+    "Sport": "Shooting"
+  },
+  {
+    "Event": "Shooting Mixed Small-Bore Rifle, Three Positions, 50 metres",
+    "Season": "Summer",
+    "Sport": "Shooting"
+  },
+  {
+    "Event": "Shooting Mixed Trap",
+    "Season": "Summer",
+    "Sport": "Shooting"
+  },
+  {
+    "Event": "Shooting Women's Air Pistol, 10 metres",
+    "Season": "Summer",
+    "Sport": "Shooting"
+  },
+  {
+    "Event": "Shooting Women's Air Rifle, 10 metres",
+    "Season": "Summer",
+    "Sport": "Shooting"
+  },
+  {
+    "Event": "Shooting Women's Double Trap",
+    "Season": "Summer",
+    "Sport": "Shooting"
+  },
+  {
+    "Event": "Shooting Women's Skeet",
+    "Season": "Summer",
+    "Sport": "Shooting"
+  },
+  {
+    "Event": "Shooting Women's Small-Bore Rifle, Three Positions, 50 metres",
+    "Season": "Summer",
+    "Sport": "Shooting"
+  },
+  {
+    "Event": "Shooting Women's Sporting Pistol, 25 metres",
+    "Season": "Summer",
+    "Sport": "Shooting"
+  },
+  {
+    "Event": "Shooting Women's Trap",
+    "Season": "Summer",
+    "Sport": "Shooting"
+  },
+  {
+    "Event": "Short Track Speed Skating Men's 1,000 metres",
+    "Season": "Winter",
+    "Sport": "Short Track Speed Skating"
+  },
+  {
+    "Event": "Short Track Speed Skating Men's 1,500 metres",
+    "Season": "Winter",
+    "Sport": "Short Track Speed Skating"
+  },
+  {
+    "Event": "Short Track Speed Skating Men's 5,000 metres Relay",
+    "Season": "Winter",
+    "Sport": "Short Track Speed Skating"
+  },
+  {
+    "Event": "Short Track Speed Skating Men's 500 metres",
+    "Season": "Winter",
+    "Sport": "Short Track Speed Skating"
+  },
+  {
+    "Event": "Short Track Speed Skating Women's 1,000 metres",
+    "Season": "Winter",
+    "Sport": "Short Track Speed Skating"
+  },
+  {
+    "Event": "Short Track Speed Skating Women's 1,500 metres",
+    "Season": "Winter",
+    "Sport": "Short Track Speed Skating"
+  },
+  {
+    "Event": "Short Track Speed Skating Women's 3,000 metres Relay",
+    "Season": "Winter",
+    "Sport": "Short Track Speed Skating"
+  },
+  {
+    "Event": "Short Track Speed Skating Women's 500 metres",
+    "Season": "Winter",
+    "Sport": "Short Track Speed Skating"
+  },
+  {
+    "Event": "Skeleton Men's Skeleton",
+    "Season": "Winter",
+    "Sport": "Skeleton"
+  },
+  {
+    "Event": "Skeleton Women's Skeleton",
+    "Season": "Winter",
+    "Sport": "Skeleton"
+  },
+  {
+    "Event": "Ski Jumping Men's Large Hill, Individual",
+    "Season": "Winter",
+    "Sport": "Ski Jumping"
+  },
+  {
+    "Event": "Ski Jumping Men's Large Hill, Team",
+    "Season": "Winter",
+    "Sport": "Ski Jumping"
+  },
+  {
+    "Event": "Ski Jumping Men's Normal Hill, Individual",
+    "Season": "Winter",
+    "Sport": "Ski Jumping"
+  },
+  {
+    "Event": "Ski Jumping Women's Normal Hill, Individual",
+    "Season": "Winter",
+    "Sport": "Ski Jumping"
+  },
+  {
+    "Event": "Snowboarding Men's Boardercross",
+    "Season": "Winter",
+    "Sport": "Snowboarding"
+  },
+  {
+    "Event": "Snowboarding Men's Giant Slalom",
+    "Season": "Winter",
+    "Sport": "Snowboarding"
+  },
+  {
+    "Event": "Snowboarding Men's Halfpipe",
+    "Season": "Winter",
+    "Sport": "Snowboarding"
+  },
+  {
+    "Event": "Snowboarding Men's Parallel Giant Slalom",
+    "Season": "Winter",
+    "Sport": "Snowboarding"
+  },
+  {
+    "Event": "Snowboarding Men's Parallel Slalom",
+    "Season": "Winter",
+    "Sport": "Snowboarding"
+  },
+  {
+    "Event": "Snowboarding Men's Slopestyle",
+    "Season": "Winter",
+    "Sport": "Snowboarding"
+  },
+  {
+    "Event": "Snowboarding Women's Boardercross",
+    "Season": "Winter",
+    "Sport": "Snowboarding"
+  },
+  {
+    "Event": "Snowboarding Women's Giant Slalom",
+    "Season": "Winter",
+    "Sport": "Snowboarding"
+  },
+  {
+    "Event": "Snowboarding Women's Halfpipe",
+    "Season": "Winter",
+    "Sport": "Snowboarding"
+  },
+  {
+    "Event": "Snowboarding Women's Parallel Giant Slalom",
+    "Season": "Winter",
+    "Sport": "Snowboarding"
+  },
+  {
+    "Event": "Snowboarding Women's Parallel Slalom",
+    "Season": "Winter",
+    "Sport": "Snowboarding"
+  },
+  {
+    "Event": "Snowboarding Women's Slopestyle",
+    "Season": "Winter",
+    "Sport": "Snowboarding"
+  },
+  {
+    "Event": "Softball Women's Softball",
+    "Season": "Summer",
+    "Sport": "Softball"
+  },
+  {
+    "Event": "Speed Skating Men's 1,000 metres",
+    "Season": "Winter",
+    "Sport": "Speed Skating"
+  },
+  {
+    "Event": "Speed Skating Men's 1,500 metres",
+    "Season": "Winter",
+    "Sport": "Speed Skating"
+  },
+  {
+    "Event": "Speed Skating Men's 10,000 metres",
+    "Season": "Winter",
+    "Sport": "Speed Skating"
+  },
+  {
+    "Event": "Speed Skating Men's 5,000 metres",
+    "Season": "Winter",
+    "Sport": "Speed Skating"
+  },
+  {
+    "Event": "Speed Skating Men's 500 metres",
+    "Season": "Winter",
+    "Sport": "Speed Skating"
+  },
+  {
+    "Event": "Speed Skating Men's Allround",
+    "Season": "Winter",
+    "Sport": "Speed Skating"
+  },
+  {
+    "Event": "Speed Skating Men's Team Pursuit (8 laps)",
+    "Season": "Winter",
+    "Sport": "Speed Skating"
+  },
+  {
+    "Event": "Speed Skating Women's 1,000 metres",
+    "Season": "Winter",
+    "Sport": "Speed Skating"
+  },
+  {
+    "Event": "Speed Skating Women's 1,500 metres",
+    "Season": "Winter",
+    "Sport": "Speed Skating"
+  },
+  {
+    "Event": "Speed Skating Women's 3,000 metres",
+    "Season": "Winter",
+    "Sport": "Speed Skating"
+  },
+  {
+    "Event": "Speed Skating Women's 5,000 metres",
+    "Season": "Winter",
+    "Sport": "Speed Skating"
+  },
+  {
+    "Event": "Speed Skating Women's 500 metres",
+    "Season": "Winter",
+    "Sport": "Speed Skating"
+  },
+  {
+    "Event": "Speed Skating Women's Team Pursuit (6 laps)",
+    "Season": "Winter",
+    "Sport": "Speed Skating"
+  },
+  {
+    "Event": "Swimming Men's 1,000 metres Freestyle",
+    "Season": "Summer",
+    "Sport": "Swimming"
+  },
+  {
+    "Event": "Swimming Men's 1,500 metres Freestyle",
+    "Season": "Summer",
+    "Sport": "Swimming"
+  },
+  {
+    "Event": "Swimming Men's 10 kilometres Open Water",
+    "Season": "Summer",
+    "Sport": "Swimming"
+  },
+  {
+    "Event": "Swimming Men's 100 metres Backstroke",
+    "Season": "Summer",
+    "Sport": "Swimming"
+  },
+  {
+    "Event": "Swimming Men's 100 metres Breaststroke",
+    "Season": "Summer",
+    "Sport": "Swimming"
+  },
+  {
+    "Event": "Swimming Men's 100 metres Butterfly",
+    "Season": "Summer",
+    "Sport": "Swimming"
+  },
+  {
+    "Event": "Swimming Men's 100 metres Freestyle",
+    "Season": "Summer",
+    "Sport": "Swimming"
+  },
+  {
+    "Event": "Swimming Men's 100 yard Freestyle",
+    "Season": "Summer",
+    "Sport": "Swimming"
+  },
+  {
+    "Event": "Swimming Men's 200 metres Backstroke",
+    "Season": "Summer",
+    "Sport": "Swimming"
+  },
+  {
+    "Event": "Swimming Men's 200 metres Breaststroke",
+    "Season": "Summer",
+    "Sport": "Swimming"
+  },
+  {
+    "Event": "Swimming Men's 200 metres Butterfly",
+    "Season": "Summer",
+    "Sport": "Swimming"
+  },
+  {
+    "Event": "Swimming Men's 200 metres Freestyle",
+    "Season": "Summer",
+    "Sport": "Swimming"
+  },
+  {
+    "Event": "Swimming Men's 200 metres Individual Medley",
+    "Season": "Summer",
+    "Sport": "Swimming"
+  },
+  {
+    "Event": "Swimming Men's 220 yard Freestyle",
+    "Season": "Summer",
+    "Sport": "Swimming"
+  },
+  {
+    "Event": "Swimming Men's 4 x 100 metres Freestyle Relay",
+    "Season": "Summer",
+    "Sport": "Swimming"
+  },
+  {
+    "Event": "Swimming Men's 4 x 100 metres Medley Relay",
+    "Season": "Summer",
+    "Sport": "Swimming"
+  },
+  {
+    "Event": "Swimming Men's 4 x 200 metres Freestyle Relay",
+    "Season": "Summer",
+    "Sport": "Swimming"
+  },
+  {
+    "Event": "Swimming Men's 4 x 250 metres Freestyle Relay",
+    "Season": "Summer",
+    "Sport": "Swimming"
+  },
+  {
+    "Event": "Swimming Men's 4 x 50 Yard Freestyle Relay",
+    "Season": "Summer",
+    "Sport": "Swimming"
+  },
+  {
+    "Event": "Swimming Men's 4,000 metres Freestyle",
+    "Season": "Summer",
+    "Sport": "Swimming"
+  },
+  {
+    "Event": "Swimming Men's 400 metres Freestyle",
+    "Season": "Summer",
+    "Sport": "Swimming"
+  },
+  {
+    "Event": "Swimming Men's 400 metres Individual Medley",
+    "Season": "Summer",
+    "Sport": "Swimming"
+  },
+  {
+    "Event": "Swimming Men's 440 yard Freestyle",
+    "Season": "Summer",
+    "Sport": "Swimming"
+  },
+  {
+    "Event": "Swimming Men's 50 metres Freestyle",
+    "Season": "Summer",
+    "Sport": "Swimming"
+  },
+  {
+    "Event": "Swimming Men's 50 yard Freestyle",
+    "Season": "Summer",
+    "Sport": "Swimming"
+  },
+  {
+    "Event": "Swimming Men's One Mile Freestyle",
+    "Season": "Summer",
+    "Sport": "Swimming"
+  },
+  {
+    "Event": "Swimming Women's 10 kilometres Open Water",
+    "Season": "Summer",
+    "Sport": "Swimming"
+  },
+  {
+    "Event": "Swimming Women's 100 metres Backstroke",
+    "Season": "Summer",
+    "Sport": "Swimming"
+  },
+  {
+    "Event": "Swimming Women's 100 metres Breaststroke",
+    "Season": "Summer",
+    "Sport": "Swimming"
+  },
+  {
+    "Event": "Swimming Women's 100 metres Butterfly",
+    "Season": "Summer",
+    "Sport": "Swimming"
+  },
+  {
+    "Event": "Swimming Women's 100 metres Freestyle",
+    "Season": "Summer",
+    "Sport": "Swimming"
+  },
+  {
+    "Event": "Swimming Women's 200 metres Backstroke",
+    "Season": "Summer",
+    "Sport": "Swimming"
+  },
+  {
+    "Event": "Swimming Women's 200 metres Breaststroke",
+    "Season": "Summer",
+    "Sport": "Swimming"
+  },
+  {
+    "Event": "Swimming Women's 200 metres Butterfly",
+    "Season": "Summer",
+    "Sport": "Swimming"
+  },
+  {
+    "Event": "Swimming Women's 200 metres Freestyle",
+    "Season": "Summer",
+    "Sport": "Swimming"
+  },
+  {
+    "Event": "Swimming Women's 200 metres Individual Medley",
+    "Season": "Summer",
+    "Sport": "Swimming"
+  },
+  {
+    "Event": "Swimming Women's 4 x 100 metres Freestyle Relay",
+    "Season": "Summer",
+    "Sport": "Swimming"
+  },
+  {
+    "Event": "Swimming Women's 4 x 100 metres Medley Relay",
+    "Season": "Summer",
+    "Sport": "Swimming"
+  },
+  {
+    "Event": "Swimming Women's 4 x 200 metres Freestyle Relay",
+    "Season": "Summer",
+    "Sport": "Swimming"
+  },
+  {
+    "Event": "Swimming Women's 400 metres Freestyle",
+    "Season": "Summer",
+    "Sport": "Swimming"
+  },
+  {
+    "Event": "Swimming Women's 400 metres Individual Medley",
+    "Season": "Summer",
+    "Sport": "Swimming"
+  },
+  {
+    "Event": "Swimming Women's 50 metres Freestyle",
+    "Season": "Summer",
+    "Sport": "Swimming"
+  },
+  {
+    "Event": "Swimming Women's 800 metres Freestyle",
+    "Season": "Summer",
+    "Sport": "Swimming"
+  },
+  {
+    "Event": "Synchronized Swimming Women's Duet",
+    "Season": "Summer",
+    "Sport": "Synchronized Swimming"
+  },
+  {
+    "Event": "Synchronized Swimming Women's Solo",
+    "Season": "Summer",
+    "Sport": "Synchronized Swimming"
+  },
+  {
+    "Event": "Synchronized Swimming Women's Team",
+    "Season": "Summer",
+    "Sport": "Synchronized Swimming"
+  },
+  {
+    "Event": "Table Tennis Men's Doubles",
+    "Season": "Summer",
+    "Sport": "Table Tennis"
+  },
+  {
+    "Event": "Table Tennis Men's Singles",
+    "Season": "Summer",
+    "Sport": "Table Tennis"
+  },
+  {
+    "Event": "Table Tennis Men's Team",
+    "Season": "Summer",
+    "Sport": "Table Tennis"
+  },
+  {
+    "Event": "Table Tennis Women's Doubles",
+    "Season": "Summer",
+    "Sport": "Table Tennis"
+  },
+  {
+    "Event": "Table Tennis Women's Singles",
+    "Season": "Summer",
+    "Sport": "Table Tennis"
+  },
+  {
+    "Event": "Table Tennis Women's Team",
+    "Season": "Summer",
+    "Sport": "Table Tennis"
+  },
+  {
+    "Event": "Taekwondo Men's Featherweight",
+    "Season": "Summer",
+    "Sport": "Taekwondo"
+  },
+  {
+    "Event": "Taekwondo Men's Flyweight",
+    "Season": "Summer",
+    "Sport": "Taekwondo"
+  },
+  {
+    "Event": "Taekwondo Men's Heavyweight",
+    "Season": "Summer",
+    "Sport": "Taekwondo"
+  },
+  {
+    "Event": "Taekwondo Men's Welterweight",
+    "Season": "Summer",
+    "Sport": "Taekwondo"
+  },
+  {
+    "Event": "Taekwondo Women's Featherweight",
+    "Season": "Summer",
+    "Sport": "Taekwondo"
+  },
+  {
+    "Event": "Taekwondo Women's Flyweight",
+    "Season": "Summer",
+    "Sport": "Taekwondo"
+  },
+  {
+    "Event": "Taekwondo Women's Heavyweight",
+    "Season": "Summer",
+    "Sport": "Taekwondo"
+  },
+  {
+    "Event": "Taekwondo Women's Welterweight",
+    "Season": "Summer",
+    "Sport": "Taekwondo"
+  },
+  {
+    "Event": "Tennis Men's Doubles",
+    "Season": "Summer",
+    "Sport": "Tennis"
+  },
+  {
+    "Event": "Tennis Men's Singles",
+    "Season": "Summer",
+    "Sport": "Tennis"
+  },
+  {
+    "Event": "Tennis Men's Singles, Covered Courts",
+    "Season": "Summer",
+    "Sport": "Tennis"
+  },
+  {
+    "Event": "Tennis Mixed Doubles",
+    "Season": "Summer",
+    "Sport": "Tennis"
+  },
+  {
+    "Event": "Tennis Women's Doubles",
+    "Season": "Summer",
+    "Sport": "Tennis"
+  },
+  {
+    "Event": "Tennis Women's Singles",
+    "Season": "Summer",
+    "Sport": "Tennis"
+  },
+  {
+    "Event": "Trampolining Men's Individual",
+    "Season": "Summer",
+    "Sport": "Trampolining"
+  },
+  {
+    "Event": "Trampolining Women's Individual",
+    "Season": "Summer",
+    "Sport": "Trampolining"
+  },
+  {
+    "Event": "Triathlon Men's Olympic Distance",
+    "Season": "Summer",
+    "Sport": "Triathlon"
+  },
+  {
+    "Event": "Triathlon Women's Olympic Distance",
+    "Season": "Summer",
+    "Sport": "Triathlon"
+  },
+  {
+    "Event": "Tug-Of-War Men's Tug-Of-War",
+    "Season": "Summer",
+    "Sport": "Tug-Of-War"
+  },
+  {
+    "Event": "Volleyball Men's Volleyball",
+    "Season": "Summer",
+    "Sport": "Volleyball"
+  },
+  {
+    "Event": "Volleyball Women's Volleyball",
+    "Season": "Summer",
+    "Sport": "Volleyball"
+  },
+  {
+    "Event": "Water Polo Men's Water Polo",
+    "Season": "Summer",
+    "Sport": "Water Polo"
+  },
+  {
+    "Event": "Water Polo Women's Water Polo",
+    "Season": "Summer",
+    "Sport": "Water Polo"
+  },
+  {
+    "Event": "Weightlifting Men's All-Around Dumbbell Contest",
+    "Season": "Summer",
+    "Sport": "Weightlifting"
+  },
+  {
+    "Event": "Weightlifting Men's Bantamweight",
+    "Season": "Summer",
+    "Sport": "Weightlifting"
+  },
+  {
+    "Event": "Weightlifting Men's Featherweight",
+    "Season": "Summer",
+    "Sport": "Weightlifting"
+  },
+  {
+    "Event": "Weightlifting Men's Flyweight",
+    "Season": "Summer",
+    "Sport": "Weightlifting"
+  },
+  {
+    "Event": "Weightlifting Men's Heavyweight",
+    "Season": "Summer",
+    "Sport": "Weightlifting"
+  },
+  {
+    "Event": "Weightlifting Men's Heavyweight I",
+    "Season": "Summer",
+    "Sport": "Weightlifting"
+  },
+  {
+    "Event": "Weightlifting Men's Heavyweight II",
+    "Season": "Summer",
+    "Sport": "Weightlifting"
+  },
+  {
+    "Event": "Weightlifting Men's Light-Heavyweight",
+    "Season": "Summer",
+    "Sport": "Weightlifting"
+  },
+  {
+    "Event": "Weightlifting Men's Lightweight",
+    "Season": "Summer",
+    "Sport": "Weightlifting"
+  },
+  {
+    "Event": "Weightlifting Men's Middle-Heavyweight",
+    "Season": "Summer",
+    "Sport": "Weightlifting"
+  },
+  {
+    "Event": "Weightlifting Men's Middleweight",
+    "Season": "Summer",
+    "Sport": "Weightlifting"
+  },
+  {
+    "Event": "Weightlifting Men's Super-Heavyweight",
+    "Season": "Summer",
+    "Sport": "Weightlifting"
+  },
+  {
+    "Event": "Weightlifting Men's Unlimited, One Hand",
+    "Season": "Summer",
+    "Sport": "Weightlifting"
+  },
+  {
+    "Event": "Weightlifting Men's Unlimited, Two Hands",
+    "Season": "Summer",
+    "Sport": "Weightlifting"
+  },
+  {
+    "Event": "Weightlifting Women's Featherweight",
+    "Season": "Summer",
+    "Sport": "Weightlifting"
+  },
+  {
+    "Event": "Weightlifting Women's Flyweight",
+    "Season": "Summer",
+    "Sport": "Weightlifting"
+  },
+  {
+    "Event": "Weightlifting Women's Heavyweight",
+    "Season": "Summer",
+    "Sport": "Weightlifting"
+  },
+  {
+    "Event": "Weightlifting Women's Light-Heavyweight",
+    "Season": "Summer",
+    "Sport": "Weightlifting"
+  },
+  {
+    "Event": "Weightlifting Women's Lightweight",
+    "Season": "Summer",
+    "Sport": "Weightlifting"
+  },
+  {
+    "Event": "Weightlifting Women's Middleweight",
+    "Season": "Summer",
+    "Sport": "Weightlifting"
+  },
+  {
+    "Event": "Weightlifting Women's Super-Heavyweight",
+    "Season": "Summer",
+    "Sport": "Weightlifting"
+  },
+  {
+    "Event": "Wrestling Men's All-Around, Greco-Roman",
+    "Season": "Summer",
+    "Sport": "Wrestling"
+  },
+  {
+    "Event": "Wrestling Men's Bantamweight, Freestyle",
+    "Season": "Summer",
+    "Sport": "Wrestling"
+  },
+  {
+    "Event": "Wrestling Men's Bantamweight, Greco-Roman",
+    "Season": "Summer",
+    "Sport": "Wrestling"
+  },
+  {
+    "Event": "Wrestling Men's Featherweight, Freestyle",
+    "Season": "Summer",
+    "Sport": "Wrestling"
+  },
+  {
+    "Event": "Wrestling Men's Featherweight, Greco-Roman",
+    "Season": "Summer",
+    "Sport": "Wrestling"
+  },
+  {
+    "Event": "Wrestling Men's Flyweight, Freestyle",
+    "Season": "Summer",
+    "Sport": "Wrestling"
+  },
+  {
+    "Event": "Wrestling Men's Flyweight, Greco-Roman",
+    "Season": "Summer",
+    "Sport": "Wrestling"
+  },
+  {
+    "Event": "Wrestling Men's Heavyweight, Freestyle",
+    "Season": "Summer",
+    "Sport": "Wrestling"
+  },
+  {
+    "Event": "Wrestling Men's Heavyweight, Greco-Roman",
+    "Season": "Summer",
+    "Sport": "Wrestling"
+  },
+  {
+    "Event": "Wrestling Men's Light-Flyweight, Freestyle",
+    "Season": "Summer",
+    "Sport": "Wrestling"
+  },
+  {
+    "Event": "Wrestling Men's Light-Flyweight, Greco-Roman",
+    "Season": "Summer",
+    "Sport": "Wrestling"
+  },
+  {
+    "Event": "Wrestling Men's Light-Heavyweight, Freestyle",
+    "Season": "Summer",
+    "Sport": "Wrestling"
+  },
+  {
+    "Event": "Wrestling Men's Light-Heavyweight, Greco-Roman",
+    "Season": "Summer",
+    "Sport": "Wrestling"
+  },
+  {
+    "Event": "Wrestling Men's Lightweight, Freestyle",
+    "Season": "Summer",
+    "Sport": "Wrestling"
+  },
+  {
+    "Event": "Wrestling Men's Lightweight, Greco-Roman",
+    "Season": "Summer",
+    "Sport": "Wrestling"
+  },
+  {
+    "Event": "Wrestling Men's Middleweight A, Greco-Roman",
+    "Season": "Summer",
+    "Sport": "Wrestling"
+  },
+  {
+    "Event": "Wrestling Men's Middleweight, Freestyle",
+    "Season": "Summer",
+    "Sport": "Wrestling"
+  },
+  {
+    "Event": "Wrestling Men's Middleweight, Greco-Roman",
+    "Season": "Summer",
+    "Sport": "Wrestling"
+  },
+  {
+    "Event": "Wrestling Men's Super-Heavyweight, Freestyle",
+    "Season": "Summer",
+    "Sport": "Wrestling"
+  },
+  {
+    "Event": "Wrestling Men's Super-Heavyweight, Greco-Roman",
+    "Season": "Summer",
+    "Sport": "Wrestling"
+  },
+  {
+    "Event": "Wrestling Men's Unlimited Class, Greco-Roman",
+    "Season": "Summer",
+    "Sport": "Wrestling"
+  },
+  {
+    "Event": "Wrestling Men's Welterweight, Freestyle",
+    "Season": "Summer",
+    "Sport": "Wrestling"
+  },
+  {
+    "Event": "Wrestling Men's Welterweight, Greco-Roman",
+    "Season": "Summer",
+    "Sport": "Wrestling"
+  },
+  {
+    "Event": "Wrestling Women's Featherweight, Freestyle",
+    "Season": "Summer",
+    "Sport": "Wrestling"
+  },
+  {
+    "Event": "Wrestling Women's Flyweight, Freestyle",
+    "Season": "Summer",
+    "Sport": "Wrestling"
+  },
+  {
+    "Event": "Wrestling Women's Heavyweight, Freestyle",
+    "Season": "Summer",
+    "Sport": "Wrestling"
+  },
+  {
+    "Event": "Wrestling Women's Light-Heavyweight, Freestyle",
+    "Season": "Summer",
+    "Sport": "Wrestling"
+  },
+  {
+    "Event": "Wrestling Women's Lightweight, Freestyle",
+    "Season": "Summer",
+    "Sport": "Wrestling"
+  },
+  {
+    "Event": "Wrestling Women's Middleweight, Freestyle",
+    "Season": "Summer",
+    "Sport": "Wrestling"
+  }
+]

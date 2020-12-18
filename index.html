@@ -672,6 +672,29 @@
                // # of gold, silver, bronze medals, Success rate (# of medals/# of olympics),
                // Dictionary of events = {# of gold, # of silver, # of bronze, # of no medals, total # medals},
 
+               var scatterProfilesData = await d3.csv('athlete_profiles.csv');
+               var scatterMedalsData = await d3.csv('athlete_medals.csv');
+               let scatterMedalsOnlyData = scatterMedalsData.filter(function(d){
+                 return ((d.Medal)!= "NA")
+               });
+               let scatterNoMedalsData = scatterMedalsData.filter(function(d){
+                 return ((d.Medal)== "NA")
+               });
+               var listofMedalistID = []
+               var listofNoMedalistID = []
+               scatterMedalsOnlyData.forEach(p => {
+                 if(!(listofMedalistID.includes(p.ID))){
+                   listofMedalistID.push(p.ID)
+                 }
+               });
+               scatterNoMedalsData.forEach(p => {
+                 if(!(listofNoMedalistID.includes(p.ID))){
+                   listofNoMedalistID.push(p.ID)
+                 }
+               });
+               console.log(listofMedalistID)
+               console.log(listofNoMedalistID)
+
                // var scatterProfilesData = await d3.csv('athlete_profiles.csv');
                // var scatterMedalsData = await d3.csv('athlete_medals.csv');
                // scatterProfilesData.forEach(p => {
