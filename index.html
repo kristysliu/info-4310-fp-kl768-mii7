@@ -151,13 +151,8 @@
         }
         
         #selectGoldSP,
-        #selectGoldMP,
         #selectSilverSP,
-        #selectSilverMP,
-        #selectBronzeSP,
-        #selectBronzeMP,
-        #summerMP,
-        #winterMP {
+        #selectBronzeSP {
             width: 50px;
             height: 20px;
         }
@@ -277,6 +272,7 @@
         #viz {
             height: 130vh;
             text-align: center;
+            margin-bottom: 5vh;
         }
         
         .boundary {
@@ -326,6 +322,30 @@
         #map_opt_title_div {
             width: 14vw;
             display: inline-block;
+        }
+        /* .optMPFilters_flex_medals_titles {
+            text-align: left;
+        } */
+        
+        .optMPFilters_flexContainer_medals {
+            display: flex;
+            flex-direction: row;
+            text-align: left;
+            font-size: 13px;
+        }
+        
+        #selectGoldMP,
+        #selectSilverMP,
+        #selectBronzeMP,
+        #summerMP,
+        #winterMP {
+            width: 40px;
+            height: 20px;
+        }
+        
+        .radioSeasonMP {
+            text-align: left;
+            font-size: 13px;
         }
         /* .xlabel, .ylabel{
           font-size: 13px;
@@ -393,31 +413,21 @@
                             <select id="selectEventMP"></select>
                         </div>
 
-                        <div class="optSPFilters_flexContainer_medals">
-                            <div class="optSPFilters_flex_medals_titles">
+                        <div class="optMPFilters_flexContainer_medals">
+                            <div class="optMPFilters_flex_medals_titles">
 
                                 <h4 class="filterTitlesMP"># of Medals</h4>
-
-                                <label for="selectGoldMP" class="filterTitlesMP">Gold</label>
-                                <input type="checkbox" id="selectGoldMP" name="selectGoldMP" value="Gold"><br>
-
-                                <label for="selectSilverMP" class="filterTitlesMP">Silver</label>
-                                <input type="checkbox" id="selectSilverMP" name="selectSilverMP" value="Silver"><br>
-
-                                <label for="selectBronzeMP" class="filterTitlesMP">Bronze</label>
-                                <input type="checkbox" id="selectBronzeMP" name="selectBronzeMP" value="Bronze">
+                                <input type="checkbox" id="selectGoldMP" name="selectGoldMP" value="Gold">Gold<br>
+                                <input type="checkbox" id="selectSilverMP" name="selectSilverMP" value="Silver">Silver<br>
+                                <input type="checkbox" id="selectBronzeMP" name="selectBronzeMP" value="Bronze">Bronze <br>
 
                             </div>
                         </div>
 
-                        <div class="radioSeasonSP">
+                        <div class="radioSeasonMP">
                             <h4 class="filterTitlesMP">Season</h4>
-                            <div class="optSPFilters_flex_medals_titles">
-                                <label for="summerMP" class="filterTitlesMP">Summer</label>
-                                <input type="checkbox" id="summerMP" name="seasonMP" value="summer"><br>
-                                <label for="winterMP" class="filterTitlesMP">Winter</label>
-                                <input type="checkbox" id="winterMP" name="seasonMP" value="winter">
-                            </div>
+                            <input type="checkbox" id="summerMP" name="seasonMP" value="summer">Summer<br>
+                            <input type="checkbox" id="winterMP" name="seasonMP" value="winter">Winter<br>
                         </div>
                     </div>
                 </div>
