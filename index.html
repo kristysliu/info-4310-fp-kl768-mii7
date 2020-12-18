@@ -101,7 +101,7 @@
         }
 
         #scatterplotPanel {
-            background: #2e2e2e;
+            background: #14284a;
             position: absolute;
             left: 0;
             right: 0;
@@ -111,8 +111,8 @@
         #flexContainerSP_1 {
             display: flex;
             justify-content: center;
-            width: 1200px;
-            height: 270px;
+            width: 890px;
+            height: 275px;
             margin: 30px auto;
             border: 1.5px solid lightgray;
             background: rgba(255, 255, 255, 0.1);
@@ -121,7 +121,7 @@
 
         #flexContainerSP_1 h3,
         #generateButtonSP,
-        #resetButtonSP {
+        #resetButtonSP,#errorTextSP {
             font-size: 15px;
         }
 
@@ -130,36 +130,39 @@
             flex-direction: row;
         }
 
-        .filterTitlesSP,
-        .filterTitlesMP {
+        .filterTitlesSP {
             font-size: 13px;
         }
 
         #reqSPFilters {
-            width: 200px;
+            width: 250px;
             padding: 10px;
             padding-left: 30px;
             text-align: left;
         }
 
         #selectSportSP,
-        #selectSportMP,
         #selectNationalitySP,
-        #selectEventSP,
-        #selectEventMP {
-            width: 150px;
+        #selectEventSP {
+            width: 175px;
             height: 20px;
         }
 
-        #selectGoldSP,
-        #selectSilverSP,
-        #selectBronzeSP {
-            width: 50px;
-            height: 20px;
+        .checkboxMedalsFlexContainer{
+          display: flex;
+          flex-direction: row;
+          margin-top: -2px;
+          margin-left: -2px;
         }
+
+        /* .checkboxMedalsFlexContainer label {
+          margin-left: 5px;
+          margin-right: 15px;
+          margin-top: 2px;
+        } */
 
         #optSPFilters {
-            width: 900px;
+            width: 600px;
             padding: 10px;
             padding-left: 30px;
             text-align: left;
@@ -170,7 +173,7 @@
         .radioSeasonSPflexcontainer {
             display: flex;
             flex-direction: row;
-            margin-top: -10px;
+            height: 17px;
         }
 
         .radioGenderSPflexcontainer label,
@@ -178,6 +181,144 @@
             margin-left: 5px;
             margin-right: 15px;
             margin-top: 2px;
+        }
+
+        /* Styling for Scatterplot radio button filters */
+        .radioSPStyling{
+          display: block;
+          position: relative;
+          padding-left: 25px;
+          margin-bottom: 12px;
+          cursor: pointer;
+          font-size: 13px;
+          font-family: monaco, Consolas, Lucida Console, monospace;
+          -webkit-user-select: none;
+          -moz-user-select: none;
+          -ms-user-select: none;
+          user-select: none;
+        }
+
+        .radioSPStyling input {
+          margin-left: 10px;
+          opacity: 0;
+          cursor: pointer;
+          height: 0;
+          width: 0;
+        }
+
+        .radioSPStyling:hover input ~ .radioDot {
+          background-color: #d9f1ff;
+        }
+
+        .radioSPStyling input:checked ~ .radioDot {
+          background-color: #2081c7;
+        }
+
+        .radioDot {
+          position: absolute;
+          top: 0;
+          left: 0;
+          height: 20px;
+          width: 20px;
+          margin-top: -2px;
+          margin-left: -3px;
+          background-color: #a3d9f7;
+          border-radius: 50%;
+        }
+
+        .radioDot:after {
+          content: "";
+          position: absolute;
+          display: none;
+        }
+
+        .radioSPStyling input:checked ~ .radioDot:after {
+          display: block;
+        }
+
+        .radioSPStyling .radioDot:after {
+          top: 6px;
+          left: 6px;
+          width: 8px;
+          height: 8px;
+          border-radius: 50%;
+          background: white;
+        }
+        /* Styling for Scatterplot checkbox filters */
+        .checkboxSPStyling{
+          display: block;
+          position: relative;
+          padding-left: 25px;
+          margin-bottom: 12px;
+          cursor: pointer;
+          font-size: 13px;
+          font-family: monaco, Consolas, Lucida Console, monospace;
+          -webkit-user-select: none;
+          -moz-user-select: none;
+          -ms-user-select: none;
+          user-select: none;
+        }
+
+        .checkboxSPStyling input {
+          margin-left: 10px;
+          opacity: 0;
+          cursor: pointer;
+          height: 0;
+          width: 0;
+        }
+
+        .checkboxSPStyling:hover input ~ .checkmark {
+          background-color: #d9f1ff;
+        }
+
+        .checkboxSPStyling input:checked ~ .checkmark {
+          background-color: #2081c7;
+        }
+
+        .checkmark {
+          position: absolute;
+          top: 0;
+          left: 0;
+          height: 15px;
+          width: 15px;
+          background-color: #a3d9f7;
+        }
+
+        .checkmark:after {
+          content: "";
+          position: absolute;
+          display: none;
+        }
+
+        .checkboxSPStyling input:checked ~ .checkmark:after {
+          display: block;
+        }
+
+        .checkboxSPStyling .checkmark:after {
+          left: 4px;
+          top: 0px;
+          width: 5px;
+          height: 10px;
+          border: solid white;
+          border-width: 0 3px 3px 0;
+          -webkit-transform: rotate(45deg);
+          -ms-transform: rotate(45deg);
+          transform: rotate(45deg);
+        }
+        /* Styling for Scatterplot dropdown filters */
+        #selectSportSP, #selectNationalitySP, #selectEventSP {
+          font-family: monaco, Consolas, Lucida Console, monospace;
+          stroke: none;
+          background-color: #2081c7;
+          color: white;
+          border:0px;
+          outline:0px;
+          border-radius: 5px;
+          padding: 0 1em;
+        }
+
+        .reqSPFilters_flexContainer label{
+          font-size: 13px;
         }
 
         .reqSPFilters_flexContainer {
@@ -192,37 +333,45 @@
             margin-top: -15px;
         }
 
-        .optSPFilters_flex {
-            width: 25%;
+        .optSPFilters_flex_section1 {
+            width: 200px;
         }
 
-        .optSPFilters_flexContainer_medals {
-            display: flex;
-            flex-direction: row;
+        .optSPFilters_flex_section2, .optSPFilters_flex_section3{
+            width: 200px;
         }
 
-        .optSPFilters_flex_medals_titles {
-            margin-top: -15px;
+        .optSPFilters_flexContainer select, .reqSPFilters_flexContainer select{
+          margin-top: -5px;
         }
 
-        .optSPFilters_flex_medals_selects {
-            margin-top: -8px;
+        .optSPSilderContainers{
+          height: 90px;;
         }
 
-        .optSPFilters_flex_medals_titles h4 {
-            margin-top: 19px;
-            margin-bottom: 19px;
-            margin-right: 10px;
+        .sliderRange{
+          margin-left: -10px;
+          margin-top: -25px;
         }
 
-        .optSPFilters_flex_medals_selects select {
-            margin: 8px;
+        .sliderRange text{
+          fill: white;
+          font-size: 12px;
+          font-family: monaco, Consolas, Lucida Console, monospace;
         }
 
         .generateButtonSP,
-        .resetButtonSP {
+        .resetButtonSP, #errorTextSP {
             text-align: center;
             margin: auto;
+        }
+
+        #errorTextSP {
+          font-style: italic;
+          font-weight: bold;
+          color: #af2323;
+          width: 400px;
+          opacity: 0%;
         }
 
         #generateButtonSP,
@@ -245,17 +394,80 @@
         #profilePanelSP {
             margin-top: 30px;
             margin-bottom: 30px;
+            margin-right: 30px;
             height: 700px;
         }
 
-        #scatterplotGraphSVG,
-        #scatterlegendsvg {
-            background-color: rgba(255, 255, 255, 0.1);
+        #graphSP, #legendSP{
+          width: 800px;
         }
 
-        #profilePanelSPSVG {
-            background-color: rgba(255, 255, 255, 0.9);
+        #profilePanelSP{
+          width: 600px;
+          padding-bottom: 20px;
         }
+
+        #profilePanelSPflexContainer{
+          display: flex;
+          flex-direction: row;
+        }
+
+        #profilePanelSPIntroStatsContainer{
+          height: 250px;
+          width: 300px;
+          padding-top: 20px;
+          padding-left: 20px;
+        }
+
+        #profilePanelSPIntroStats p{
+          margin: 0;
+          font-size: 15px;
+          padding-bottom: 5px;
+        }
+
+        #profilePanelSPIntro h4{
+          margin: 0;
+          font-size: 18px;
+          font-weight: bold;
+          padding-bottom: 5px;
+        }
+
+        #profilePanelSPIntro{
+          padding-bottom: 20px;
+        }
+
+        #profilePanelSPPhysicalTraits{
+          height: 250px;
+          width: 300px;
+        }
+
+        #profilePanelSPTraitsText{
+          text-align: center;
+          width: 140px;
+          padding-left: 160px;
+        }
+
+        #profilePanelSPTraitsIcon{
+          text-align: right;
+          padding-right: 30px;
+        }
+
+        #profilePanelSPTraitsText h4, #profilePanelSPTraitsText p{
+          font-size: 13px;
+          margin: 0;
+        }
+
+        /* #scatterlegendsvg {
+            background-color: rgba(255, 255, 255, 0.1);
+        } */
+
+        .y.axis text, .x.axis text {
+          font-size: 13px;
+        }
+
+        /* #profilePanelSPSVG {
+            padding-left: 20px;
+        } */
 
         #savedAthletesTablePanel {
             margin-top: 100px;
@@ -475,88 +687,95 @@
             <div id="flexContainerSP_1">
                 <!-- Required Filters -->
                 <div id="reqSPFilters">
-                    <h3>Required Filters:</h3>
+                    <h3><b>Required Filters:</b></h3>
                     <div class="reqSPFilters_flexContainer">
                         <div class="radioSeasonSP">
                             <h4 class="filterTitlesSP">Season</h4>
                             <div class="radioSeasonSPflexcontainer">
-                                <input type="radio" id="summerSP" name="seasonSP" value="summer">
-                                <label for="summerSP">Summer</label><br>
-                                <input type="radio" id="winterSP" name="seasonSP" value="winter">
-                                <label for="winterSP">Winter</label><br>
+                              <label class = "radioSPStyling" for="summerSP">Summer
+                                <input type="radio" id="summerSP" name="seasonSP" value="Summer">
+                                <span class="radioDot"></span>
+                              </label><br>
+                              <label class = "radioSPStyling" for="winterSP">Winter
+                                <input type="radio" id="winterSP" name="seasonSP" value="Winter">
+                                <span class="radioDot"></span>
+                              </label><br>
                             </div>
                         </div>
                         <div class="selectSportSP">
                             <h4 class="filterTitlesSP">Sport</h4>
-                            <select id="selectSportSP"></select>
+                            <select name="selectSportSP" id="selectSportSP">
+                              <option selected="selected">Select Sport</option>
+                            </select>
                         </div>
                         <div class="radioGenderSP">
                             <h4 class="filterTitlesSP">Gender</h4>
                             <div class="radioGenderSPflexcontainer">
-                                <input type="radio" id="maleSP" name="genderSP" value="male">
-                                <label for="maleSP">Male</label><br>
-                                <input type="radio" id="femaleSP" name="genderSP" value="female">
-                                <label for="femaleSP">Female</label><br>
+                              <label class = "radioSPStyling" for="maleSP">Male
+                                <input type="radio" id="maleSP" name="genderSP" value="M">
+                                <span class="radioDot"></span>
+                              </label><br>
+                              <label class = "radioSPStyling" for="femaleSP">Female
+                                <input type="radio" id="femaleSP" name="genderSP" value="F">
+                                <span class="radioDot"></span>
+                              </label><br>
                             </div>
                         </div>
                     </div>
                 </div>
                 <!-- Optional Filters -->
                 <div id="optSPFilters">
-                    <h3>Optional Filters:</h3>
+                    <h3><b>Optional Filters:</b></h3>
                     <div class="optSPFilters_flexContainer">
-                        <div class="optSPFilters_flex">
+                        <div class="optSPFilters_flex_section1">
                             <h4 class="filterTitlesSP">Nationality</h4>
                             <select id="selectNationalitySP"></select>
                             <h4 class="filterTitlesSP">Event</h4>
                             <select id="selectEventSP"></select>
-                        </div>
-                        <div class="optSPFilters_flex">
                             <h4 class="filterTitlesSP"># of Medals</h4>
-                            <div class="optSPFilters_flexContainer_medals">
-                                <div class="optSPFilters_flex_medals_titles">
-                                    <h4 class="filterTitlesSP">Gold</h4>
-                                    <h4 class="filterTitlesSP">Silver</h4>
-                                    <h4 class="filterTitlesSP">Bronze</h4>
-                                </div>
-                                <div class="optSPFilters_flex_medals_selects">
-                                    <select id="selectGoldSP"></select><br>
-                                    <select id="selectSilverSP"></select><br>
-                                    <select id="selectBronzeSP"></select>
-                                </div>
+                            <div class = "checkboxMedalsFlexContainer">
+                                <label class = "checkboxSPStyling" for="medalsOne">1+
+                                  <input type="checkbox" id="medalsOne" name="medalsOne" value="1" checked>
+                                  <span class="checkmark"></span>
+                                </label><br>
+                                <label class = "checkboxSPStyling" for="medalsTwo">2+
+                                  <input type="checkbox" id="medalsTwo" name="medalsTwo" value="2" checked>
+                                  <span class="checkmark"></span>
+                                </label><br>
+                                <label class = "checkboxSPStyling" for="medalsThree">3+
+                                  <input type="checkbox" id="medalsThree" name="medalsThree" value="3" checked>
+                                  <span class="checkmark"></span>
+                                </label><br>
+                              <!-- <select id="selectTotalMedalSP"></select> -->
                             </div>
                         </div>
-                        <div class="optSPFilters_flex">
+                        <div class="optSPFilters_flex_section2">
+                          <div class="optSPSilderContainers">
                             <h4 class="filterTitlesSP">Year</h4>
                             <div class="sliderRange">
                                 <div id="year-slider-range"></div>
                             </div>
-                            <div class="sliderValue">
-                                <p id="year-value-range"></p>
-                            </div>
-                            <h4 class="filterTitlesSP">Age</h4>
-                            <div class="sliderRange">
-                                <div id="age-slider-range"></div>
-                            </div>
-                            <div class="sliderValue">
-                                <p id="age-value-range"></p>
-                            </div>
+                          </div>
+                          <div class="optSPSilderContainers">
+                              <h4 class="filterTitlesSP">Age</h4>
+                              <div class="sliderRange">
+                                  <div id="age-slider-range"></div>
+                              </div>
+                          </div>
                         </div>
-                        <div class="optSPFilters_flex">
+                        <div class="optSPFilters_flex_section3">
+                          <div class="optSPSilderContainers">
                             <h4 class="filterTitlesSP">Height</h4>
                             <div class="sliderRange">
                                 <div id="height-slider-range"></div>
                             </div>
-                            <div class="sliderValue">
-                                <p id="height-value-range"></p>
-                            </div>
+                          </div>
+                          <div class="optSPSilderContainers">
                             <h4 class="filterTitlesSP">Weight</h4>
                             <div class="sliderRange">
                                 <div id="weight-slider-range"></div>
                             </div>
-                            <div class="sliderValue">
-                                <p id="weight-value-range"></p>
-                            </div>
+                          </div>
                         </div>
                     </div>
                 </div>
@@ -565,6 +784,9 @@
             <div class="filterButtonSPflexContainer">
                 <div class="generateButtonSP">
                     <button type="button" id="generateButtonSP">Generate</button>
+                </div>
+                <div id="errorTextSP">
+                    <p>Please fill out all required filters.</p>
                 </div>
                 <div class="resetButtonSP">
                     <button type="button" id="resetButtonSP">Reset</button>
@@ -576,16 +798,26 @@
                 <div id="graphSP">
                     <!-- Scatterplot Graph -->
                     <div id="scatterplotGraph">
-                        <svg id="scatterplotGraphSVG" height="600" width="800" style="margin-top:5px; margin-bottom: 20px; margin-left: 20px;"></svg>
+                        <svg id="scatterplotGraphSVG" height="600" width="800"></svg>
                     </div>
                     <!-- Scatterplot Legend -->
                     <div id="legendSP">
-                        <svg id="scatterlegendsvg" height="100" width="800" style="margin-bottom: 20px; margin-left: 20px;"></svg>
+                        <svg id="scatterlegendsvg" height="100" width="800"></svg>
                     </div>
                 </div>
                 <!-- Scatterplot Profile Panel -->
                 <div id="profilePanelSP">
-                    <svg id="profilePanelSPSVG" height="725" width="600" style="margin-top:5px; margin-bottom: 20px; margin-left: 20px;"></svg>
+                  <div id="profilePanelSPflexContainer">
+                    <div id="profilePanelSPIntroStatsContainer">
+                      <div id="profilePanelSPIntro"></div>
+                      <div id="profilePanelSPIntroStats"></div>
+                    </div>
+                    <div id="profilePanelSPPhysicalTraits">
+                      <div id="profilePanelSPTraitsIcon"></div>
+                      <div id="profilePanelSPTraitsText"></div>
+                    </div>
+                  </div>
+                    <svg id="profilePanelSPSVG" height="450" width="500"></svg>
                 </div>
             </div>
 
@@ -735,483 +967,836 @@
              const scattermargin = {
                top: 10,
                right: 10,
-               bottom: 50,
-               left: 50
+               bottom: 60,
+               left: 60
              };
 
              const legWidth = scatterLeg.attr("width");
              const legHeight = scatterLeg.attr("height");
 
-             const chartWidth = scatterwidth - scattermargin.left - scattermargin.right;
-             const chartHeight = scatterheight - scattermargin.top - scattermargin.bottom;
+             const widthSP = scatterwidth - scattermargin.left - scattermargin.right;
+             const heightSP = scatterheight - scattermargin.top - scattermargin.bottom;
 
              let annotations = scatter.append("g")
                                  .attr("id", "annotations")
-                                 .attr("class", "graph-svg-component2");
+                                 .attr("class", "annotationsSP");
 
-             let chartArea = scatter.append("g").attr("id", "points").attr("class", "graph-svg-component")
+             let areaSP = scatter.append("g").attr("id", "points").attr("class", "pointsSP")
                .attr("transform", "translate(" + scattermargin.left + "," + scattermargin.top + ")");
 
              let colorLegendGroup = scatterLeg.append('g')
                                  .attr("id", "colorLegendGroup");
 
+           // **************************************************************************************************************
+
              const loadScatter = async function () {
-               let scatterdata = await d3.csv('athlete_events_filtered.csv', d3.autoType)
-               var allSport = []
-               var allNationality = []
-               var allEvent = []
-               var allYear = []
-               var allAge = []
-               var allWeight = []
-               var allHeight = []
-               //Data Issues
+               var medalistProfileData = await d3.json('medalist_profiles.json');
+               var medalistEventsData = await d3.json('medalist_events.json');
+               const eventsDataSP = await d3.json('SeasonSportEvents.json');
 
-               //Not sure why this doesn't work anymore ? ? ?
-               // let scatterdataInitial = await d3.csv('athlete_events.csv', d3.autoType)
-               // let scatterdata = scatterdataInitial.filter(function(d){
-               //     return ((d.Weight != "NA") && (d.Height != "NA") && (d.Age != "NA"))
-               // });
-
-               // NEW DATASET (by person no duplicates): ID, Sex, NOC, Sport, Team,
-               // Weight, Height, Oldest age competed, Events array, # of olympics,
-               // # of gold, silver, bronze medals, Success rate (# of medals/# of olympics),
-               // Dictionary of events = {# of gold, # of silver, # of bronze, # of no medals, total # medals},
-
-               var scatterProfilesData = await d3.csv('athlete_profiles.csv');
-               var scatterMedalsData = await d3.csv('athlete_medals.csv');
-               let scatterMedalsOnlyData = scatterMedalsData.filter(function(d){
-                 return ((d.Medal)!= "NA")
-               });
-               let scatterNoMedalsData = scatterMedalsData.filter(function(d){
-                 return ((d.Medal)== "NA")
-               });
-               var listofMedalistID = []
-               var listofNoMedalistID = []
-               scatterMedalsOnlyData.forEach(p => {
-                 if(!(listofMedalistID.includes(p.ID))){
-                   listofMedalistID.push(p.ID)
-                 }
-               });
-               scatterNoMedalsData.forEach(p => {
-                 if(!(listofNoMedalistID.includes(p.ID))){
-                   listofNoMedalistID.push(p.ID)
-                 }
-               });
-               console.log(listofMedalistID)
-               console.log(listofNoMedalistID)
-
-               // var scatterProfilesData = await d3.csv('athlete_profiles.csv');
-               // var scatterMedalsData = await d3.csv('athlete_medals.csv');
-               // scatterProfilesData.forEach(p => {
-               //   p["Events"] = [];
-               //   p["EventMedals"] = [];
-               //   p["TimesCompeted"] = 0;
-               //   p["NumberMedals"] = 0;
-               //   p["topMedal"] = 0; //where 0 is no medals, 1 is bronze, 2 is silver, 3 is gold
-               //   scatterMedalsData.forEach(d => {
-               //     if(p.ID == d.ID){
-               //       p["TimesCompeted"]+=1;
-               //
-               //       if(p["topMedal"]<3){
-               //         if(d.Medal == "Gold"){
-               //           p["topMedal"]= 3;
-               //         } else if(p["topMedal"]<2){
-               //             if(d.Medal == "Silver"){
-               //               p["topMedal"]= 2;
-               //             }else if(d.Medal == "Bronze"){
-               //               p["topMedal"]= 1;
-               //             }
-               //           }
-               //       }
-               //
-               //         if(!(p["Events"].includes(d.Event))){
-               //           p["Events"].push(d.Event);
-               //           if(d["Medal"]=="NA"){
-               //             p["EventMedals"].push(
-               //                     { "Event": d.Event,
-               //                     "Gold": 0,
-               //                     "Silver": 0,
-               //                     "Bronze": 0,
-               //                     "NoMedals": 1,
-               //                     "Total": 1
-               //                     }
-               //                   );
-               //             }else if(d["Medal"]=="Gold"){
-               //               p["NumberMedals"] +=1;
-               //               p["EventMedals"].push(
-               //                       { "Event": d.Event,
-               //                       "Gold": 1,
-               //                       "Silver": 0,
-               //                       "Bronze": 0,
-               //                       "NoMedals": 0,
-               //                       "Total": 1
-               //                       }
-               //                     );
-               //             }else if(d["Medal"]=="Silver"){
-               //               p["NumberMedals"] +=1;
-               //               p["EventMedals"].push(
-               //                       { "Event": d.Event,
-               //                       "Gold": 0,
-               //                       "Silver": 1,
-               //                       "Bronze": 0,
-               //                       "NoMedals": 0,
-               //                       "Total": 1
-               //                       }
-               //                     );
-               //             }else if(d["Medal"]=="Bronze"){
-               //               p["NumberMedals"] +=1;
-               //               p["EventMedals"].push(
-               //                       { "Event": d.Event,
-               //                       "Gold": 0,
-               //                       "Silver": 0,
-               //                       "Bronze": 1,
-               //                       "NoMedals": 0,
-               //                       "Total": 1
-               //                       }
-               //                     );
-               //                 }
-               //           }else{
-               //             var index = p["EventMedals"].map(function(o) { return o.Event; }).indexOf(d.Event);
-               //             if(d["Medal"]=="NoMedals"){
-               //               p["EventMedals"][index]["NoMedals"] += 1;
-               //             } else if(d["Medal"]=="Gold"){
-               //               p["NumberMedals"] +=1;
-               //               p["EventMedals"][index]["Gold"] += 1;
-               //             } else if(d["Medal"]=="Silver"){
-               //               p["NumberMedals"] +=1;
-               //               p["EventMedals"][index]["Silver"] += 1;
-               //             } else if(d["Medal"]=="Bronze"){
-               //               p["NumberMedals"] +=1;
-               //               p["EventMedals"][index]["Bronze"] += 1;
-               //             }
-               //           }
-               //         }
-               //   });
-               // });
-
-               scatterdata.forEach(d => {
-                 d['Weight'] = parseFloat(d['Weight']);
-                 d['Height'] = parseFloat(d['Height']);
-                 d['Age'] = parseFloat(d['Age']);
-                 d['Year'] = parseFloat(d['Year']);
-
-                 if (!allSport.includes(d['Sport'])){
-                   allSport.push(d['Sport'])
-                 }
-                 if(d['NOC']=="ISV"){
-                   d['NOC']="USA";
-                 }
-                 if (!allNationality.includes(d['NOC'])){
-                   allNationality.push(d['NOC'])
-                 }
-                 if (!allEvent.includes(d['Event'])){
-                   allEvent.push(d['Event'])
-                 }
-                 if (!allWeight.includes(d['Weight'])){
-                   allWeight.push(d['Weight'])
-                 }
-                 if (!allHeight.includes(d['Height'])){
-                   allHeight.push(d['Height'])
-                 }
-                 if (!allAge.includes(d['Age'])){
-                   allAge.push(d['Age'])
-                 }
-                 if (!allYear.includes(d['Year'])){
-                   allYear.push(d['Year'])
+               eventsDataSP.forEach(d => {
+                 //Make a New Column eventGender Based on Event Name Text
+                  //Make Event Name Text Shorter
+                 if(d.Event.match(/Women's/) != null){
+                   d["eventGender"] = "F";
+                   d["Event"] = d.Event.split("men's ").pop().trim();
+                 }else if(d.Event.match(/Men's/) != null){
+                   d["eventGender"] = "M";
+                   d["Event"] = d.Event.split("Men's ").pop().trim();
+                 }else{
+                   d["eventGender"] = "Mixed";
+                   d["Event"] = "Mixed " + d.Event.split('Mixed ').pop().trim();
                  }
                });
 
-               allSport.sort();
-               allSport.unshift("Select Sport")
-               allNationality.sort();
-               allNationality.unshift("All Nationalities")
-               allEvent.sort();
-               allEvent.unshift("All Events")
+                //Create new dictionary for medalistEventsData to reduce data loading times
+                var medalistEventsDataDict = {}
+                medalistEventsData.forEach(d => {
+                  if(d.ID in medalistEventsDataDict){
+                    medalistEventsDataDict[d.ID].push(d)
+                  }else{
+                    medalistEventsDataDict[d.ID] = []
+                    medalistEventsDataDict[d.ID].push(d)
+                  }
+                  if(d.Event.match(/Mixed/) != null){
+                    d["Event"] = "Mixed " + d.Event.split('Mixed ').pop().trim();
+                  } else if(d.Event.match(/men's/) != null){
+                    d["Event"] = d.Event.split("men's ").pop().trim();
+                  }else{
+                    d["Event"] = d.Event.split("Men's ").pop().trim();
+                  }
+                })
 
-               var weightMax = Math.max.apply(Math, allWeight);
-                   weightMin = Math.min.apply(Math,allWeight);
-                   heightMax = Math.max.apply(Math, allHeight);
-                   heightMin =Math.min.apply(Math, allHeight)
-                   ageMax = Math.max.apply(Math, allAge);
-                   ageMin = Math.min.apply(Math,allAge);
-                   yearMax = Math.max.apply(Math, allYear);
-                   yearMin = Math.min.apply(Math,allYear);
+                //Create new dictionary to merge events dictionary with athlete profiles array based on ID
+                medalistProfileData.forEach(p => {
+                  p["Events"] = [];
+                  p["EventMedals"] = [];
+                  p["YearsCompeted"] = [];
+                  p["TotalOlympicEvents"] = 0;
+                  p["TotalOlympicMedals"] = 0;
+                  medalistEventsDataDict[p.medalistID].forEach (d => {
+                    if(p.medalistID == d.ID){
+                      p["TotalOlympicEvents"]+=1;
+                      if(!(p["YearsCompeted"].includes(d.Year))){
+                        p["YearsCompeted"].push(d.Year)
+                      }
+                      if(!(p["Events"].includes(d.Event))){
+                        p["Events"].push(d.Event);
+                        if(d["Medal"]=="NA"){
+                          p["EventMedals"].push(
+                                  { "Event": d.Event,
+                                  "Gold": 0,
+                                  "Silver": 0,
+                                  "Bronze": 0,
+                                  "NoMedals": 1
+                                  });
+                          }else if(d["Medal"]=="Gold"){
+                            p["EventMedals"].push(
+                                    { "Event": d.Event,
+                                    "Gold": 1,
+                                    "Silver": 0,
+                                    "Bronze": 0,
+                                    "NoMedals": 0
+                                  });
+                          }else if(d["Medal"]=="Silver"){
+                            p["EventMedals"].push(
+                                    { "Event": d.Event,
+                                    "Gold": 0,
+                                    "Silver": 1,
+                                    "Bronze": 0,
+                                    "NoMedals": 0
+                                  });
+                          }else if(d["Medal"]=="Bronze"){
+                            p["EventMedals"].push(
+                                    { "Event": d.Event,
+                                    "Gold": 0,
+                                    "Silver": 0,
+                                    "Bronze": 1,
+                                    "NoMedals": 0
+                                  });
+                          }
+                        }else{
+                            var indexEventMedal = p["EventMedals"].map(function(o) { return o.Event; }).indexOf(d.Event);
+                            if(d["Medal"]=="NoMedals"){
+                              p["EventMedals"][indexEventMedal]["NoMedals"] += 1;
+                            } else if(d["Medal"]=="Gold"){
+                              p["EventMedals"][indexEventMedal]["Gold"] += 1;
+                            } else if(d["Medal"]=="Silver"){
+                              p["EventMedals"][indexEventMedal]["Silver"] += 1;
+                            } else if(d["Medal"]=="Bronze"){
+                              p["EventMedals"][indexEventMedal]["Bronze"] += 1;
+                            }
+                          }
+                      }
+                    });
+                    for (event in p.EventMedals){
+                      for (numMedals in p.EventMedals[event]){
+                        if((numMedals != "NoMedals") && (numMedals != "Event")){
+                          p["TotalOlympicMedals"] += p.EventMedals[event][numMedals]
+                        }
+                      }
+                    }
+                });
 
-               // Initializing Filters
-               d3.select("#selectSportSP")
-                 .selectAll('myOptions')
-                	.data(allSport)
-                 .enter()
-               	.append('option')
-                 .text(function (d) { return d; })
-                 .attr("value", function (d) { return d; })
+                // Updating Drop Down Options
+                var allSport = []
+                var allNationality = []
+                var allEvent = []
+                medalistProfileData.forEach(d => {
+                  if (!allSport.includes(d['Sport'])){
+                    allSport.push(d['Sport'])
+                  }
+                  if (!allEvent.includes(d['Event'])){
+                    allEvent.push(d['Event'])
+                  }
+                  if (!allNationality.includes(d['NOC'])){
+                    allNationality.push(d['NOC'])
+                  }
+                });
+                  d3.select("#selectSportSP")
+                    .selectAll('myOptions')
+                     .data(allSport)
+                    .enter()
+                   .append('option')
+                    .text(function (d) { return d; })
+                    .attr("value", function (d) { return d; })
 
-               d3.select("#selectNationalitySP")
-                 .selectAll('myOptions')
-                	.data(allNationality)
-                 .enter()
-               	.append('option')
-                 .text(function (d) { return d; })
-                 .attr("value", function (d) { return d; })
+                  d3.select("#selectNationalitySP")
+                    .selectAll('myOptions')
+                     .data(allNationality)
+                    .enter()
+                   .append('option')
+                    .text(function (d) { return d; })
+                    .attr("value", function (d) { return d; })
 
-               d3.select("#selectEventSP")
-                 .selectAll('myOptions')
-                	.data(allEvent)
-                 .enter()
-               	.append('option')
-                 .text(function (d) { return d; })
-                 .attr("value", function (d) { return d; })
+                  d3.select("#selectEventSP")
+                    .selectAll('myOptions')
+                     .data(allEvent)
+                    .enter()
+                   .append('option')
+                    .text(function (d) { return d; })
+                    .attr("value", function (d) { return d; })
 
-               d3.select("#selectGoldSP")
-                 .selectAll('myOptions')
-                	.data(["0","1","2",">3"])
-                 .enter()
-               	.append('option')
-                 .text(function (d) { return d; })
-                 .attr("value", function (d) { return d; })
-               d3.select("#selectSilverSP")
-                 .selectAll('myOptions')
-                 .data(["0","1","2",">3"])
-                 .enter()
-               	.append('option')
-                 .text(function (d) { return d; })
-                 .attr("value", function (d) { return d; })
-               d3.select("#selectBronzeSP")
-                 .selectAll('myOptions')
-                 .data(["0","1","2",">3"])
-                 .enter()
-               	.append('option')
-                 .text(function (d) { return d; })
-                 .attr("value", function (d) { return d; })
+                    allSport.sort();
+                    allSport.unshift("Select Sport")
+                    allNationality.sort();
+                    allNationality.unshift("All Nationalities")
+                    allEvent.sort();
+                    allEvent.unshift("All Events")
 
-               // Runs update function when any of the select drop-downs are changed
-               d3.select("#generateButtonSP").on("click", function(d) { updateSP() })
-               // Runs reset function when reset button is clicked
-               d3.select("#resetButtonSP").on("click", function(d) { resetSP() })
+                    var weightMax = Math.max.apply(Math, medalistProfileData.map(function (d) { return d.Weight; }))
+                        weightMin = Math.min.apply(Math,medalistProfileData.map(function (d) { return d.Weight; }))
+                        heightMax = Math.max.apply(Math, medalistProfileData.map(function (d) { return d.Height; }))
+                        heightMin =Math.min.apply(Math, medalistProfileData.map(function (d) { return d.Height; }))
+                        ageMax = Math.max.apply(Math, medalistProfileData.map(function (d) { return d.Age; }))
+                        ageMin = Math.min.apply(Math,medalistProfileData.map(function (d) { return d.Age; }))
+                        yearMax = 2016;
+                        yearMin = 1896;
 
-               // //Deletes old points and replaces with new points that fit the criteria of the four filter select options
-               // function updateSP() {
-               //   // Create new data with year selection
-               //   var selectedYearOption = d3.select("#selectYear").property("value")
-               //   var dataFilterInitial = data.map(function(d){
-               //     if (d.Decade === selectedYearOption){
-               //       return d;
-               //     }
-               //   })
-               //   var dataFilter = dataFilterInitial.filter(function (d) {
-               //     return d != null;
-               //   });
-               //
-               //   if (selectedYearOption === "All Decades") {
-               //     dataFilter = data;
-               //   }
-               //   // Update new data with genre selection
-               //   var selectedGenreOption = d3.select("#selectGenre").property("value")
-               //   var dataFilterInitial2 = dataFilter.map(function(d){
-               //     for( i=0; i<d.Genres.length; i++) {
-               //       if (d.Genres[i] === selectedGenreOption){
-               //         return d;
-               //       }
-               //     }})
-               //   var dataFilter2 = dataFilterInitial2.filter(function (d) {
-               //     return d != null;
-               //   });
-               //   if (selectedGenreOption === "All Genres") {
-               //     dataFilter2 = dataFilter;
-               //   }
-               //
-               //   // Update new data with language selection
-               //   var selectedLanguageOption = d3.select("#selectLanguage").property("value")
-               //   var dataFilterInitial3 = dataFilter2.map(function(d){
-               //     for( i=0; i<d.Language.length; i++) {
-               //       if (d.Language[i] === selectedLanguageOption){
-               //         return d;
-               //       }
-               //     }})
-               //   var dataFilter3 = dataFilterInitial3.filter(function (d) {
-               //     return d != null;
-               //   });
-               //   if (selectedLanguageOption === "All Languages") {
-               //     dataFilter3 = dataFilter2;
-               //   }
-               //
-               //   // Update new data with streaming platform selection
-               //   var selectedStreamingOption = d3.select("#selectStreaming").property("value")
-               //   var dataFilterInitial4 = dataFilter3.map(function(d){
-               //       if (d[selectedStreamingOption] === 1){
-               //         return d;
-               //       }
-               //   })
-               //   var dataFilter4 = dataFilterInitial4.filter(function (d) {
-               //     return d != null;
-               //   });
-               //   if (selectedStreamingOption === "All Platforms") {
-               //     dataFilter4 = dataFilter3;
-               //   }
-               //
-               //   chartArea.selectAll("circle.point").remove();
-               //
-               //   let circles = chartArea.selectAll("circle.point").data(dataFilter4)
-               //     .join(enter => enter.append("circle")
-               //       .attr("class", "point")
-               //       .attr("opacity", 0.8)
-               //     )
-               //     .attr("cx", d => tomatoScale(d['Rotten_Tomatoes']))
-               //     .attr("cy", d => imbdScale(d['IMDb']))
-               //     .attr("r", 5)
-               //     .attr("fill", function(d) {
-               //              return yearColorScale(d.Decade);
-               //            ;})
-               //     .attr("label", d => d["Title"])
-               //     .attr("genre", d => d["Genres"]);
-               //
-               //     circles.on("dblclick",function(d){
-               //       var savedMovie = d.Title + " (" + d.Year + ")"
-               //       updateWatchList(savedMovie)
-               //     });
-               //
-               //
-               // //Resets all filters and displays all points
-               // function resetSP(){
-               //
-               //   chartArea.selectAll("circle.point").remove();
-               //
-               //   let circles = chartArea.selectAll("circle.point").data(data)
-               //     .join(enter => enter.append("circle")
-               //       .attr("class", "point")
-               //       .attr("opacity", 0.8)
-               //     )
-               //     .attr("cx", d => tomatoScale(d['Rotten_Tomatoes']))
-               //     .attr("cy", d => imbdScale(d['IMDb']))
-               //     .attr("r", 5)
-               //     .attr("fill", function(d) {
-               //              return yearColorScale(d.Decade);
-               //            ;})
-               //     .attr("label", d => d["Title"])
-               //     .attr("genre", d => d["Genres"]);
-               //
-               //     var selections = document.getElementsByTagName('select');
-               //     for (var i = 0; i < selections.length; i++)
-               //     {
-               //         selections[i].selectedIndex = 0;
-               //     }
-               // }
-               //
-               // // Creating Scales
-               const weightExtent = d3.extent(scatterdata, d => d['Weight']);
-               const weightScale = d3.scaleLinear().domain(weightExtent).range([0,chartHeight]);
+                    var yearSlider = d3.sliderBottom()
+                     .min(yearMin)
+                     .max(yearMax)
+                     .width(100)
+                     .tickFormat(d3.format(".0f"))
+                     .ticks(0)
+                     .default([yearMin, yearMax])
+                     .fill('#2081c7');
 
-               const heightExtent = d3.extent(scatterdata, d => d['Height']);
-               const heightScale = d3.scaleLinear().domain(heightExtent).range([chartWidth,0]);
+                    var yearSliderSVG = d3.select('#year-slider-range')
+                     .append('svg')
+                     .attr('width', 175)
+                     .attr('height', 100)
+                     .append('g')
+                     .attr('transform', 'translate(30,30)');
 
-               // const medalsExtent = d3.extent(scatterProfilesData, d => d['NumberMedals']);
-               // const medalsScale = d3.scaleLinear().domain(medalsExtent).range([3, 10]);
+                    yearSliderSVG.call(yearSlider);
+
+
+                    // Initializing Slider Filters: Age
+                      var ageSlider = d3.sliderBottom()
+                        .min(ageMin)
+                        .max(ageMax)
+                        .width(100)
+                        .tickFormat(d3.format(".0f"))
+                        .ticks(0)
+                        .default([ageMin, ageMax])
+                        .fill('#2081c7');
+
+                      var ageSliderSVG = d3.select('#age-slider-range')
+                        .append('svg')
+                        .attr('width', 175)
+                        .attr('height', 100)
+                        .append('g')
+                        .attr('transform', 'translate(30,30)');
+
+                      ageSliderSVG.call(ageSlider);
+
+                  // Initializing Slider Filters: Height
+                     var heightSlider = d3.sliderBottom()
+                       .min(heightMin)
+                       .max(heightMax)
+                       .width(100)
+                       .tickFormat(d3.format(".0f"))
+                       .ticks(0)
+                       .default([heightMin, heightMax])
+                       .fill('#2081c7');
+
+                     var heightSliderSVG = d3.select('#height-slider-range')
+                       .append('svg')
+                       .attr('width', 175)
+                       .attr('height', 100)
+                       .append('g')
+                       .attr('transform', 'translate(30,30)');
+
+                     heightSliderSVG.call(heightSlider);
+
+                   // Initializing Slider Filters: Weight
+                      var weightSlider = d3.sliderBottom()
+                        .min(weightMin)
+                        .max(weightMax)
+                        .width(100)
+                        .tickFormat(d3.format(".0f"))
+                        .ticks(0)
+                        .default([weightMin, weightMax])
+                        .fill('#2081c7');
+
+                      var weightSliderSVG = d3.select('#weight-slider-range')
+                        .append('svg')
+                        .attr('width', 175)
+                        .attr('height', 100)
+                        .append('g')
+                        .attr('transform', 'translate(30,30)');
+
+                      weightSliderSVG.call(weightSlider);
+
+
+
+                  // **************************************************************************************************************
+
+                  // Runs update function when any of the select drop-downs are changed
+                  d3.select("#generateButtonSP").on("click", function(d) { errorhandling_generateSP() })
+                  // Runs reset function when reset button is clicked
+                  d3.select("#resetButtonSP").on("click", function(d) { resetSP() })
+
+                   // Updating Filter Options
+                   function updateFiltersSP(){
+                     var updateFiltersData = filterData(medalistProfileData)
+                     console.log(medalistProfileData.length)
+                     console.log(updateFiltersData.length)
+                     // Updating Drop Down Options
+                     var allSport = []
+                     var allNationality = []
+                     var allEvent = []
+                     updateFiltersData.forEach(d => {
+                       if (!allSport.includes(d['Sport'])){
+                         allSport.push(d['Sport'])
+                       }
+                       if (!allEvent.includes(d['Event'])){
+                         allEvent.push(d['Event'])
+                       }
+                       if (!allNationality.includes(d['NOC'])){
+                         allNationality.push(d['NOC'])
+                       }
+                     });
+                       d3.select("#selectSportSP")
+                         .selectAll('myOptions')
+                          .data(allSport)
+                         .enter()
+                        .append('option')
+                         .text(function (d) { return d; })
+                         .attr("value", function (d) { return d; })
+
+                       d3.select("#selectNationalitySP")
+                         .selectAll('myOptions')
+                          .data(allNationality)
+                         .enter()
+                        .append('option')
+                         .text(function (d) { return d; })
+                         .attr("value", function (d) { return d; })
+
+                       d3.select("#selectEventSP")
+                         .selectAll('myOptions')
+                          .data(allEvent)
+                         .enter()
+                        .append('option')
+                         .text(function (d) { return d; })
+                         .attr("value", function (d) { return d; })
+
+                         allSport.sort();
+                         allSport.unshift("Select Sport")
+                         allNationality.sort();
+                         allNationality.unshift("All Nationalities")
+                         allEvent.sort();
+                         allEvent.unshift("All Events")
+
+                   // Initializing Slider Filters: Year
+                   var weightMaxNew = Math.max.apply(Math, updateFiltersData.map(function (d) { return d.Weight; }))
+                       weightMinNew = Math.min.apply(Math,updateFiltersData.map(function (d) { return d.Weight; }))
+                       heightMaxNew = Math.max.apply(Math, updateFiltersData.map(function (d) { return d.Height; }))
+                       heightMinNew =Math.min.apply(Math, updateFiltersData.map(function (d) { return d.Height; }))
+                       ageMaxNew = Math.max.apply(Math, updateFiltersData.map(function (d) { return d.Age; }))
+                       ageMinNew = Math.min.apply(Math,updateFiltersData.map(function (d) { return d.Age; }))
+                       yearMaxNew = Math.max.apply(Math,updateFiltersData.map(function (d) {
+                         d.YearsCompeted.forEach(p => {
+                           return p;
+                         });
+                       }))
+                       yearMinNew = Math.min.apply(Math,updateFiltersData.map(function (d) {
+                         d.YearsCompeted.forEach(p => {
+                           return p;
+                         });
+                       }));
+
+                   yearSlider.min(yearMinNew).max(yearMaxNew)
+                   ageSlider.min(ageMinNew).max(ageMaxNew)
+                   heightSlider.min(heightMinNew).max(heightMaxNew)
+                   weightSlider.min(weightMinNew).max(weightMaxNew)
+
+                   }
+
+                   // **************************************************************************************************************
+                   // Filter Interactivity: Functions to Filter Out Data That Doesn't Meet Selections
+
+                   var seasonFilter = d => {
+                     return true;
+                   }
+                  d3.selectAll("input[name='seasonSP']").on("change", function(){
+                    var selectedSeasonSP = d3.select('input[name="seasonSP"]:checked').property("value");
+                     seasonFilter = d => {
+                      return (d.Season == selectedSeasonSP)
+                    }
+                    updateFiltersSP()
+                  });
+
+                    //if gender radio button changes
+                    var genderFilter = d => {
+                      return true;
+                    }
+                   d3.selectAll("input[name='genderSP']").on("change", function(){
+                     var selectedGenderSP = d3.select('input[name="genderSP"]:checked').property("value");
+                     genderFilter = d => {
+                       return (d.Sex == selectedGenderSP)
+                     }
+                     updateFiltersSP()
+                   })
+
+                   //if sport dropdown changes
+                     var sportFilter = d => {
+                       return false;
+                     }
+                     d3.select("#selectSportSP").on("change", function(){
+                       var selectedSportOptionSP = d3.select("#selectSportSP").property("value")
+                        if(selectedSportOptionSP != "Select Sport"){
+                          sportFilter = d => {
+                            return (d.Sport == selectedSportOptionSP)
+                          }
+                          }else{
+                            sportFilter = d => { return true; }
+                          }
+                          updateFiltersSP()
+                     })
+
+                     //if nationality dropdown changes
+                       var nationalityFilter = d => {
+                         return true;
+                       }
+                       d3.select("#selectNationalitySP").on("change", function(){
+                         var selectedNationalityOptionSP = d3.select("#selectNationalitySP").property("value")
+                          if(selectedNationalityOptionSP != "All Nationalities"){
+                            nationalityFilter = d => {
+                              return (d.NOC == selectedNationalityOptionSP)
+                            }
+                            }else{
+                              nationalityFilter = d => { return true; }
+                            }
+                            updateFiltersSP()
+                       })
+
+                       //if event dropdown changes
+                         var eventFilter = d => {
+                           return true;
+                         }
+                         d3.select("#selectEventSP").on("change", function(){
+                           var selectedEventOptionSP = d3.select("#selectEventSP").property("value")
+                            if(selectedEventOptionSP != "All Events"){
+                              eventFilter = d => {
+                                var athleteHasEvent = 0;
+                                d.Events.forEach( p => {
+                                  if(p == selectedEventOptionSP){
+                                    athleteHasEvent += 1;
+                                  }
+                                })
+                                return (athleteHasEvent>0)
+                              }
+                              }else{
+                                eventFilter = d => { return true; }
+                              }
+                              updateFiltersSP()
+                         })
+
+                     //if year slider changes
+                       var yearFilter = d => {
+                         return true;
+                       }
+                       (yearSlider).on("onchange", function(value){ //value is [min,max]
+                         yearFilter = d => {
+                           var withinYearBoolean = 0;
+                           for (year in d.YearsCompeted){
+                             if((d.YearsCompeted[year]>=value[0]) && (d.YearsCompeted[year]<=value[1])){
+                               withinYearBoolean += 1;
+                             }
+                           }
+                           return (withinYearBoolean>0)
+                         }
+                         updateFiltersSP()
+                       })
+
+                       //if year slider changes
+                         var ageFilter = d => {
+                           return true;
+                         }
+                         (ageSlider).on("onchange", function(value){ //value is [min,max]
+                           ageFilter = d => {
+                             return ((d.Age >=value[0]) && (d.Age<=value[1]))
+                           }
+                           updateFiltersSP()
+                         })
+
+                         //if height slider changes
+                           var heightFilter = d => {
+                             return true;
+                           }
+                           (heightSlider).on("onchange", function(value){ //value is [min,max]
+                             heightFilter = d => {
+                               return ((d.Height >=value[0]) && (d.Height<=value[1]))
+                             }
+                             updateFiltersSP()
+                           })
+
+                           //if year slider changes
+                           var weightFilter = d => {
+                             return true;
+                           }
+                           (weightSlider).on("onchange", function(value){ //value is [min,max]
+                             weightFilter = d => {
+                               return ((d.Weight >=value[0]) && (d.Weight<=value[1]))
+                             }
+                             updateFiltersSP()
+                           })
+
+                     function filterData(scatterdata){
+                       newData = [];
+                       scatterdata.forEach(d => {
+                         if(seasonFilter(d) && genderFilter(d) && sportFilter(d) &&
+                       yearFilter(d) && nationalityFilter(d) && eventFilter(d) &&
+                       ageFilter(d) && heightFilter(d) && weightFilter(d)){
+                           newData.push(d)
+                         }
+                       })
+                       return newData;
+                     }
+
+                // **************************************************************************************************************
+               //Deletes old points and replaces with new points that fit the criteria of the four filter select options
+
+               updateFiltersSP()
+
+               function errorhandling_generateSP(){
+                 try {
+                   // if((sportFilter()!=false) && (genderFilter()!=false) && (seasonFilter()!=false)){
+                     let newData = filterData(medalistProfileData)
+                      generateSP(newData);
+                   // }
+                   // else{
+                   //   d3.select("#errorTextSP")
+                   //     .style("opacity", 1);
+                   //   }
+                   //   throw "error";
+                   // }
+                  } catch (e) {
+                    d3.select("#errorTextSP")
+                      .style("opacity", 1);
+                  }
+               }
+
+               function generateSP(newData) {
+                 d3.select("#errorTextSP")
+                   .style("opacity", 0);
+               // Circle Plotting
+               let circles = areaSP.selectAll("circle.point").data(newData)
+                 .join(enter => enter.append("circle")
+                   .attr("class", "point")
+                   .attr("opacity", 0.8)
+                 )
+                 .attr("cx", d => weightScale(d['Weight']))
+                 .attr("cy", d => heightScale(d['Height']))
+                 .attr("r", d => medalsScale(d['TotalMedals']))
+                 .attr("fill", function(d) {
+                          return medalsColorScale(d.TopMedal);
+                        ;});
+
+                 //Update Saved Movies
+                 circles.on("click",function(event,d){
+                   updateProfilePanel(d)
+                 });
+               }
+
+
+               //Resets all filters
+               function resetSP(){
+                   d3.select("#selectSportSP").selectAll('myOptions').exit().remove()
+                   updateFiltersSP()
+                   d3.select('input[name="seasonSP"]:checked').attr('checked',null)
+                   d3.select('input[name="genderSP"]:checked').attr('checked',null)
+                   d3.select('input[name="medalsOne"]:checked').attr('checked',true)
+                   d3.select('input[name="medalsTwo"]:checked').attr('checked',true)
+                   d3.select('input[name="medalsThree"]:checked').attr('checked',true)
+               }
+
+               // **************************************************************************************************************
+               // Creating Scales
+               const weightScale = d3.scaleLinear().domain([weightMin,weightMax]).range([0,widthSP]);
+               const heightScale = d3.scaleLinear().domain([heightMin,heightMax]).range([heightSP,0]);
+               const medalsExtent = d3.extent(medalistProfileData, d => d['TotalMedals']);
+               const medalsScale = d3.scaleLinear().domain(medalsExtent).range([3, 50]);
+
+               var goldColor = "#e6c90d";
+               var silverColor = "#e0dfd2";
+               var bronzeColor = "#c16e00";
+               var noMedalsColor = "#7cdaeb";
 
                const medalsColorScale = d3.scaleOrdinal().domain(
-                 ["3","2","1","0"]) //where 0 is no medals, 1 is bronze, 2 is silver, 3 is gold
-                 .range(["#e6c90d", "#e0dfd2" , "#c16e00", "#569daa"]);
-               //
+                 ["3","2","1"]) //where 1 is bronze, 2 is silver, 3 is gold
+                 .range([goldColor,silverColor,bronzeColor]);
+
                // Y axis
                let leftAxis = d3.axisLeft(heightScale)
                  .tickFormat(d3.format(""));
                let leftGridlines = d3.axisLeft(heightScale)
-                 .tickSize(-chartWidth)
-                 .tickFormat("")
+                 .tickSize(-widthSP)
+                 .tickFormat("");
 
                annotations.append("g")
                  .attr("class", "y axis")
-                 .style("color", "white")
-                 .attr("transform", "translate(" + (scattermargin.left) + "," + (scattermargin.top-195) + ")")
+                 .attr("transform", "translate(" + (scattermargin.left) + "," + scattermargin.top + ")")
                  .call(leftAxis)
                annotations.append("g")
                  .attr("class", "y gridlines")
-                 .style("color", "white")
-                 .attr("transform", "translate(" + (scattermargin.left) + "," + (scattermargin.top-195) + ")")
+                 .attr("transform", "translate(" + (scattermargin.left) + "," + scattermargin.top + ")")
                  .call(leftGridlines);
 
                // X axis
                let bottomAxis = d3.axisBottom(weightScale)
                  .tickFormat(d3.format(""));
                let bottomGridlines = d3.axisBottom(weightScale)
-                 .tickSize(-chartHeight)
-                 .tickFormat("")
+                 .tickSize(-heightSP)
+                 .tickFormat("");
 
                annotations.append("g")
                  .attr("class", "x axis")
-                 .style("color", "white")
-                 .attr("transform", "translate(" + (scattermargin.left) + "," + (chartHeight+15) + ")")
+                 .attr("transform", "translate(" + scattermargin.left + "," + (heightSP + scattermargin.top) + ")")
                  .call(bottomAxis);
                annotations.append("g")
                  .attr("class", "x gridlines")
-                 .style("color", "white")
-                 .attr("transform", "translate(" + (scattermargin.left) + "," + (chartHeight+15) + ")")
+                 .attr("transform", "translate(" + scattermargin.left + "," + (heightSP + scattermargin.top) + ")")
                  .call(bottomGridlines);
-               //
-               // // Adding Axis Labels
-               //
+
+               // Adding Axis Labels
+
                //Y Axis
                annotations.append("text")
-                 .attr("class", "ylabel")
-                 .attr("text-anchor", "end")
+                 .attr("class", "y label")
+                 .attr("text-anchor", "middle")
                  .attr("y", 3)
-                 .attr("x", -290)
+                 .attr("x", (-heightSP/2))
                  .attr("dy", "0.75em")
                  .attr("transform", "rotate(-90)")
-                 .style("font-size", "15x")
-                 .style("color", "white")
-                 .text("Height (cm)");
-               //
-               // //X Axis
-               annotations.append("text")
-                 .attr("class", "xlabel")
-                 .attr("text-anchor", "end")
-                 .attr("x", width - 500)
-                 .attr("y", height + 40)
                  .style("font-size", "15px")
-                 .style("color", "white")
+                 .style("fill", "white")
+                 .text("Height (cm)");
+
+               //X Axis
+               annotations.append("text")
+                 .attr("class", "x label")
+                 .attr("text-anchor", "middle")
+                 .attr("x", (widthSP/2)+scattermargin.left)
+                 .attr("y", heightSP + scattermargin.bottom)
+                 .style("font-size", "15px")
+                 .style("fill", "white")
                  .text("Weight (kg)");
-               //
-               // // Circle Plotting
-               // let circles = chartArea.selectAll("circle.point").data(scatterProfilesData)
-               //   .join(enter => enter.append("circle")
-               //     .attr("class", "point")
-               //     .attr("opacity", 0.8)
-               //   )
-               //   .attr("cx", d => weightScale(d['Weight']))
-               //   .attr("cy", d => heightScale(d['Height']))
-               //   .attr("r", d => medalsScale(d['NumberMedals']))
-               //   .attr("fill", function(d) {
-               //            return medalsColorScale(d.topMedal);
-               //          ;});
-               //
-               //   //Update Saved Movies
-               //   circles.on("click",function(d){
-               //     var clickedAthlete = d
-               //     console.log(d)
-               //     updateProfilePanel(clickedAthlete)
-               //   });
-               //
-               //   function updateProfilePanel(clickedAthlete){
-               // //       var watchList = d3.select("#watchList")
-               // //       savedAthleteList.push(savedMovie)
-               // //       watchList.data(savedAthleteList)
-               // //       .enter().append("g")
-               // //       .attr("class", "savedMovies");
-               // //       if (savedAthleteList.length == 1) {
-               // //         watchList.select("h3").remove()
-               // //         watchList.append("text")
-               // //              .html("<h2>Watch List:</h2>");
-               // //       }
-               // //       if (savedAthleteList.length < 9) {
-               // //         watchList.append("text")
-               // //              .attr("x", 20)
-               // //              .attr("y", 5)
-               // //              .style("text-anchor", "start")
-               // //              .html(savedMovie + "</br>");
-               // //       } else {
-               // //         alert("You can only save up to 8 movies.")
-               // //       }
-               //     }
+
+               // Creating the Legend
+                 scatterLeg.append("g")
+                   .attr("class", "legend-title")
+                   .append("text")
+                   .text("Highest Medal")
+                   .attr("x",125)
+                   .attr("y",30)
+                   .style("font-weight","bold")
+                   .style("fill", "white")
+                   .style("font-size", "15px")
+                   .style("text-anchor","start");
+
+                 var legendSP = scatterLeg.selectAll()
+                 .data([3,2,1])
+                 .enter().append("g")
+                 .attr("class", "legendSP")
+                 .attr("transform", function(d, i) { return "translate(" + i * 100 +",10)"; });
+
+                 // Draw Colored Circles in the Legend
+                 legendSP.append("circle")
+                      .attr("cx", 50)
+                      .attr("cy", 50)
+                      .attr("r", 8)
+                      .style("fill", function(d){return medalsColorScale(d)})
+                      .attr("transform", function(d, i) { return "translate(-5,0)"; });
+
+                 // Add Corresponding Text in the Legend
+                 legendSP.append("text")
+                      .attr("x", 60)
+                      .attr("y", 50)
+                      .attr("dy", ".35em")
+                      .style("text-anchor", "start")
+                      .style("font-size", "13px")
+                      .style("fill", "white")
+                      .text(function(d) {
+                        if(d==3){
+                          return "Gold";
+                        }else if(d==2){
+                          return "Silver";
+                        }else{
+                          return "Bronze";
+                        }
+                      });
+
+                      scatterLeg.append("g")
+                        .attr("class", "legend-title2")
+                        .append("text")
+                        .text("Total Medals")
+                        .attr("x",525)
+                        .attr("y",30)
+                        .style("font-weight","bold")
+                        .style("fill", "white")
+                        .style("font-size", "15px")
+                        .style("text-anchor","start");
+
+                      var legendSP2 = scatterLeg.selectAll()
+                      .data([5,10,15,20]) //3 is 1 medal, 12 is 5 medals, 20 is 10 medals, 47 is 25 medals - didn't work? how is radius scale working?
+                      .enter().append("g")
+                      .attr("class", "legendSP2")
+                      .attr("transform", function(d, i) { return "translate(" + i * 100 +",10)"; });
+
+                      // Draw Colored Circles in the Legend
+                      legendSP2.append("circle")
+                           .attr("cx", 400)
+                           .attr("cy", 50)
+                           .attr("r", function(d){return medalsScale(d)*.5})
+                           .style("fill", "lightgray")
+                           .attr("transform", function(d, i) { return "translate(-5,0)"; });
+
+                      // Add Corresponding Text in the Legend
+                      legendSP2.append("text")
+                           .attr("x", 420)
+                           .attr("y", 50)
+                           .attr("dy", ".35em")
+                           .style("text-anchor", "start")
+                           .style("font-size", "13px")
+                           .style("fill", "white")
+                           .text(function(d) {
+                             if(d==5){
+                               return "1-2";
+                             }else if(d==10){
+                               return "3-4";
+                             }else if(d==15){
+                               return "5-10";
+                             }else if(d==20){
+                               return "10-30";
+                             }
+                           });
+
+                 function updateProfilePanel(d){
+                   d3.select("#profilePanelSPIntro")
+                   .html("<h4><b>"+d.NOC+"</b></h4>"
+                   + "<h4><b>"+d.Name+"</b></h4>");
+
+                   d3.select("#profilePanelSPIntroStats")
+                   .html("<p><b>Stats:</b></p>"
+                   +"<p>"+d.YearsCompeted.length+" Olympics</p>"
+                   +"<p>"+d.TotalMedals+" Medals</p>"
+                   +"<p>"+parseFloat((d.TotalMedals/d.TotalOlympicEvents)*100).toFixed(0)+"% Success Rate</p>");
+
+                   // d3.select("#profilePanelSPTraitsIcon").selectAll("svg:image").remove()
+                   var profilePanelSPGenderIcon = d3.select("#profilePanelSPTraitsIcon").append("svg")
+                        .attr("class","profilePanelSPGenderIcon")
+                        .attr("width", 100)
+                        .attr("height", 100);
+
+                    var iconSP = profilePanelSPGenderIcon.append("g");
+
+                    if (d.Sex == "F"){
+                      var img = iconSP.append("svg:image")
+                          .attr("xlink:href", "Images/female.svg")
+                          .attr("width", 100)
+                          .attr("height", 100)
+                          .style("fill","white")
+                          .attr("x", 10)
+                          .attr("y",10);
+                    }else{
+                      var img = iconSP.append("svg:image")
+                          .attr("xlink:href", "Images/male.svg")
+                          .attr("width", 100)
+                          .attr("height", 100)
+                          .style("stroke","white")
+                          .attr("x", 10)
+                          .attr("y",10);
+                    }
+
+                    d3.select("#profilePanelSPTraitsText")
+                    .html("<h4><b>"+d.Age+" years old</b></h4>"
+                    +"<p>"+d.Height.toFixed(0)+"m | "+d.Weight.toFixed(0)+"kg</p>");
+
+                    //Bar graph
+
+                var stackdata = ["Gold", "Silver", "Bronze", "NoMedals"].map(function(medals) {
+                return d.EventMedals.map(function(k,i) { //x: "Event", y0: 0, y: how many medals
+                  return {x: k["Event"], y: +k[medals]};
+                })});
+
+                for (i=0; i<stackdata.length; i++){
+                  if (i==0){
+                    for (j=0; j<stackdata[i].length; j++){
+                      stackdata[i][j]["y0"] = 0;
+                    }
+                  }else{
+                    for (j=0; j<stackdata[i].length; j++){
+                      stackdata[i][j]["y0"] = (stackdata[i-1][j]["y"]+stackdata[i-1][j]["y0"]);
+                    }
+                  }
+                }
+                const barGraphSP = d3.select("svg#profilePanelSPSVG")
+                const barWidthSP = barGraphSP.attr("width");
+                const barHeightSP = barGraphSP.attr("height");
+                var barMarginSP = {top: 10, right: 10, bottom: 50, left: 50};
+                const barMarginWidth = barWidthSP - barMarginSP.left - barMarginSP.right;
+                const barMarginHeight = barHeightSP - barMarginSP.top - barMarginSP.bottom;
+
+                var barGraphSPBars = barGraphSP.append("svg")
+                .attr("width", barMarginWidth + barMarginSP.left + barMarginSP.right)
+                    .attr("height", barMarginHeight + barMarginSP.top + barMarginSP.bottom)
+                    .append("g")
+                    .attr("transform",
+                          "translate(" + barMarginSP.left + "," + barMarginSP.top + ")");
+
+                var x = d3.scaleBand()
+                        .rangeRound([0, barMarginWidth])
+                        .padding(0.1);
+
+                var y = d3.scaleLinear()
+                        .rangeRound([barMarginHeight, 0]);
+
+                var color = [goldColor,silverColor,bronzeColor,noMedalsColor]
+
+                var xAxis = d3.axisBottom()
+                    .scale(x);
+
+                x.domain(stackdata[0].map(function (d) {
+                    return d.x;
+                }));
+
+                y.domain([0,
+                    d3.max(stackdata[stackdata.length - 1],
+                            function (d) { return d.y0 + d.y;})
+                    ])
+                  .nice();
+
+                var layer = barGraphSPBars.selectAll()
+                        .data(stackdata)
+                        .enter().append("g")
+                        .attr("class", "stack")
+                        .style("fill", function(d, i) { return color[i]});
+
+                layer.selectAll("rect")
+                        .data(function (d) {
+                            return d;
+                        })
+                        .enter().append("rect")
+                        .attr("x", function (d) {
+                            return x(d.x);
+                        })
+                        .attr("y", function (d) {
+                            return y(d.y + d.y0);
+                        })
+                        .attr("height", function (d) {
+                            return y(d.y0) - y(d.y + d.y0);
+                        })
+                        .attr("width", 20)
+                        .style("stroke","lightgray");
+
+                barGraphSPBars.append("g")
+                        .attr("class", "axis")
+                        .attr("transform", "translate(0," + barMarginHeight + ")")
+                        .call(xAxis);
+                   }
                  }
 
             // requestData();
