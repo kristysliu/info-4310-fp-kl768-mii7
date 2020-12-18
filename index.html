@@ -674,51 +674,49 @@
 
             const requestData = async function() {
                 let map_data = await d3.csv('athlete_events_filtered.csv', d3.autoType)
+                let iso_data = await d3.csv('iso_3digit_alpha_country_codes.csv', d3.autoType)
+                    // console.log(iso_data);
                 console.log(map_data)
 
 
                 var world_dict = {};
 
-                //country {
-                //Year1 { 
-                //Gold: 5
-                //Silver: 4
-                //Bronze: 2
-                //}
-
-                //Year2 { 
-                //Gold: 5
-                //Silver: 4
-                //Bronze: 2
-                //}
-                //}
-
-                //USA { 
-                //1896 { 
-                //Gold: 5
-                //Silver: 4
-                //Bronze: 2
-                //}
-                //2016 { 
-                //Gold: 5
-                //Silver: 4
-                //Bronze: 2
-                //}
-                //}
-
+                // World Dict 
                 map_data.forEach(d => {
                     if (!world_dict.hasOwnProperty(d["NOC"])) {
                         world_dict[d["NOC"]] = {};
                     }
-
                     if (!world_dict[d["NOC"]].hasOwnProperty(d["Year"])) {
                         world_dict[d["NOC"]][d["Year"]] = {};
                     }
-
-
+                    if (!world_dict[d["NOC"]][d["Year"]].hasOwnProperty("Gold")) {
+                        world_dict[d["NOC"]][d["Year"]]["Gold"] = 0;
+                    }
+                    if (!world_dict[d["NOC"]][d["Year"]].hasOwnProperty("Silver")) {
+                        world_dict[d["NOC"]][d["Year"]]["Silver"] = 0;
+                    }
+                    if (!world_dict[d["NOC"]][d["Year"]].hasOwnProperty("Bronze")) {
+                        world_dict[d["NOC"]][d["Year"]]["Bronze"] = 0;
+                    }
+                    if (!world_dict[d["NOC"]][d["Year"]].hasOwnProperty("Total")) {
+                        world_dict[d["NOC"]][d["Year"]]["Total"] = 0;
+                    } else {
+                        if (d["Medal"] == "Gold") {
+                            world_dict[d["NOC"]][d["Year"]]["Gold"] += 1;
+                        }
+                        if (d["Medal"] == "Silver") {
+                            world_dict[d["NOC"]][d["Year"]]["Silver"] += 1;
+                        }
+                        if (d["Medal"] == "Bronze") {
+                            world_dict[d["NOC"]][d["Year"]]["Bronze"] += 1;
+                        }
+                        world_dict[d["NOC"]][d["Year"]]["Total"] = world_dict[d["NOC"]][d["Year"]]["Bronze"] + world_dict[d["NOC"]][d["Year"]]["Silver"] + world_dict[d["NOC"]][d["Year"]]["Gold"];
+                    }
                 });
 
                 console.log(world_dict);
+
+
 
             }
 
