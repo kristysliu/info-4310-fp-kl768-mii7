@@ -3,7 +3,7 @@
 
 <head>
     <meta charset='UTF-8'>
-    <script src="https://d3js.org/d3.v5.min.js"></script>
+    <script src="https://d3js.org/d3.v6.min.js"></script>
     <script src="https://unpkg.com/d3-simple-slider"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/d3-legend/2.25.6/d3-legend.min.js"></script>
     <script src="https://unpkg.com/topojson@3"></script>
@@ -298,14 +298,12 @@
         }
         
         #optMapFilters {
-            /* width: 50vw;
-            height: 30vh; */
             width: 600px;
             height: 250px;
             text-align: center;
             border: 1px solid #000;
             display: inline-block;
-            margin-top: 10vh;
+            margin-top: 5vh;
             background-color: rgb(238, 238, 238);
         }
         
@@ -323,9 +321,6 @@
             width: 14vw;
             display: inline-block;
         }
-        /* .optMPFilters_flex_medals_titles {
-            text-align: left;
-        } */
         
         .optMPFilters_flexContainer_medals {
             display: flex;
@@ -345,6 +340,34 @@
         
         .radioSeasonMP {
             text-align: left;
+            font-size: 13px;
+        }
+        
+        .row {
+            display: -ms-flexbox;
+            display: flex;
+            -ms-flex-wrap: wrap;
+            flex-wrap: wrap;
+            /* margin-right: -15px; */
+            margin-left: -15px
+        }
+        
+        .align-items-center {
+            -ms-flex-align: center!important;
+            align-items: center!important
+        }
+        
+        .col-sm,
+        .col-sm-2 {
+            position: relative;
+            width: 100%;
+            min-height: 1px;
+            display: flex;
+            justify-content: center;
+        }
+        
+        .time_year {
+            padding-top: 5px;
             font-size: 13px;
         }
         /* .xlabel, .ylabel{
@@ -394,10 +417,19 @@
             <div id='viz'>
                 <div id="flexContainerMP_1">
                 </div>
-                <div id="timeline">
-                    <input id="timeslide" type="range" min="0" max="11" value="0" step="1" /><br>
-                    <span id="range">1896</span>
+                <!-- <div id="timeline"> -->
+                <div class="row align-items-center">
+                    <div class="col-sm">
+                        <div id="slider-time"></div>
+                        <h3 class="time_year">Year</h3>
+                    </div>
+                    <div class="col-sm-2">
+                        <p id="value-time"></p>
+                    </div>
                 </div>
+                <!-- <input id="timeslide" type="range" min="0" max="15" value="0" step="1" /><br>
+                    <span id="range">1896</span> -->
+                <!-- </div> -->
 
                 <!-- Optional Filters -->
                 <div id="optMapFilters">
@@ -415,7 +447,6 @@
 
                         <div class="optMPFilters_flexContainer_medals">
                             <div class="optMPFilters_flex_medals_titles">
-
                                 <h4 class="filterTitlesMP"># of Medals</h4>
                                 <input type="checkbox" id="selectGoldMP" name="selectGoldMP" value="Gold">Gold<br>
                                 <input type="checkbox" id="selectSilverMP" name="selectSilverMP" value="Silver">Silver<br>
@@ -583,6 +614,7 @@
              **********        Map Visualization        ********
              **************************************************/
 
+            //Map
             var width = 950,
                 height = 550;
 
@@ -608,6 +640,36 @@
                     .attr("d", path);
 
             });
+
+            // Year
+            var dataTime = d3.range(0, 16).map(function(d) {
+                return new Date(1896 + (8 * d), 10, 3);
+            });
+
+            var sliderTime = d3
+                .sliderBottom()
+                .min(d3.min(dataTime))
+                .max(d3.max(dataTime))
+                .step(1000 * 60 * 60 * 24 * 365 * 8)
+                .width(900)
+                .tickFormat(d3.timeFormat('%Y'))
+                .tickValues(dataTime)
+                .default(new Date(1896, 10, 3))
+                .on('onchange', val => {
+                    d3.select('p#value-time').text(d3.timeFormat('%Y')(val));
+                });
+
+            var gTime = d3
+                .select('div#slider-time')
+                .append('svg')
+                .attr('width', 950)
+                .attr('height', 100)
+                .append('g')
+                .attr('transform', 'translate(30,30)');
+
+            gTime.call(sliderTime);
+
+            d3.select('p#value-time').text(d3.timeFormat('%Y')(sliderTime.value()));
 
             /**************************************************
              *****        ScatterPlot Visualization        *****
