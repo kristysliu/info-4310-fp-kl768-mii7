@@ -15,48 +15,48 @@
             font-family: monaco, Consolas, Lucida Console, monospace;
             background: #f9f9f9;
         }
-
+        
         .sectionTitles {
             font-size: 60px;
             text-align: center;
         }
-
+        
         .websiteTitle {
             font-size: 80px;
             text-align: center;
             color: #2e2e2e;
         }
-
+        
         .authorsTitle {
             font-size: 30px;
             font-style: italic;
             text-align: center;
             color: #2e2e2e;
         }
-
+        
         .center {
             display: block;
             margin-left: auto;
             margin-right: auto;
             width: 1000px;
         }
-
+        
         .olympicsflexcontainermain {
             height: 750px;
         }
-
+        
         .olympicsflexcontainertoc {
             margin: auto;
             margin-top: -575px;
             width: 990px;
         }
-
+        
         .olympicsflexcontainer1,
         .olympicsflexcontainer2 {
             display: flex;
             flex-direction: row;
         }
-
+        
         .toc_textbox_r1 {
             height: 240px;
             width: 240px;
@@ -66,12 +66,12 @@
             margin: 45px;
             display: flex;
         }
-
+        
         .olympicsflexcontainer2 {
             margin-left: 165px;
             margin-top: -180px;
         }
-
+        
         .toc_textbox_r2 {
             height: 240px;
             width: 240px;
@@ -81,7 +81,7 @@
             margin: 45px;
             display: flex;
         }
-
+        
         .toc_text {
             text-decoration: none;
             color: #2e2e2e;
@@ -90,16 +90,16 @@
             margin: auto;
             width: 200px;
         }
-
+        
         hr.solid {
             border-top: 3px solid #2e2e2e;
         }
-
+        
         #mapPanel {
             color: #2e2e2e;
             padding-bottom: 2vh;
         }
-
+        
         #scatterplotPanel {
             background: #14284a;
             position: absolute;
@@ -107,7 +107,7 @@
             right: 0;
             color: white;
         }
-
+        
         #flexContainerSP_1 {
             display: flex;
             justify-content: center;
@@ -118,31 +118,31 @@
             background: rgba(255, 255, 255, 0.1);
             font-size: 12px;
         }
-
+        
         #flexContainerSP_1 h3,
         #generateButtonSP,
         #resetButtonSP,
         #errorTextSP {
             font-size: 15px;
         }
-
+        
         .filterButtonSPflexContainer {
             display: flex;
             flex-direction: row;
         }
-
+        
         .filterTitlesSP,
         .filterTitlesMP {
             font-size: 13px;
         }
-
+        
         #reqSPFilters {
             width: 250px;
             padding: 10px;
             padding-left: 30px;
             text-align: left;
         }
-
+        
         #selectSportSP,
         #selectNationalitySP,
         #selectEventSP,
@@ -151,7 +151,7 @@
             width: 175px;
             height: 20px;
         }
-
+        
         .checkboxMedalsFlexContainer {
             display: flex;
             flex-direction: row;
@@ -163,7 +163,7 @@
           margin-right: 15px;
           margin-top: 2px;
         } */
-
+        
         #optSPFilters {
             width: 600px;
             padding: 10px;
@@ -171,14 +171,14 @@
             text-align: left;
             border-left: 1.5px solid lightgray;
         }
-
+        
         .radioGenderSPflexcontainer,
         .radioSeasonSPflexcontainer {
             display: flex;
             flex-direction: row;
             height: 17px;
         }
-
+        
         .radioGenderSPflexcontainer label,
         .radioSeasonSPflexcontainer label {
             margin-left: 5px;
@@ -186,7 +186,7 @@
             margin-top: 2px;
         }
         /* Styling for Scatterplot radio button filters */
-
+        
         .radioSPStyling {
             display: block;
             position: relative;
@@ -200,7 +200,7 @@
             -ms-user-select: none;
             user-select: none;
         }
-
+        
         .radioSPStyling input {
             margin-left: 10px;
             opacity: 0;
@@ -208,15 +208,15 @@
             height: 0;
             width: 0;
         }
-
+        
         .radioSPStyling:hover input~.radioDot {
             background-color: #d9f1ff;
         }
-
+        
         .radioSPStyling input:checked~.radioDot {
             background-color: #2081c7;
         }
-
+        
         .radioDot {
             position: absolute;
             top: 0;
@@ -228,17 +228,17 @@
             background-color: #a3d9f7;
             border-radius: 50%;
         }
-
+        
         .radioDot:after {
             content: "";
             position: absolute;
             display: none;
         }
-
+        
         .radioSPStyling input:checked~.radioDot:after {
             display: block;
         }
-
+        
         .radioSPStyling .radioDot:after {
             top: 6px;
             left: 6px;
@@ -248,7 +248,7 @@
             background: white;
         }
         /* Styling for Scatterplot checkbox filters */
-
+        
         .checkboxSPStyling {
             display: block;
             position: relative;
@@ -262,7 +262,7 @@
             -ms-user-select: none;
             user-select: none;
         }
-
+        
         .checkboxSPStyling input {
             margin-left: 10px;
             opacity: 0;
@@ -270,15 +270,15 @@
             height: 0;
             width: 0;
         }
-
+        
         .checkboxSPStyling:hover input~.checkmark {
             background-color: #d9f1ff;
         }
-
+        
         .checkboxSPStyling input:checked~.checkmark {
             background-color: #2081c7;
         }
-
+        
         .checkmark {
             position: absolute;
             top: 0;
@@ -287,17 +287,17 @@
             width: 15px;
             background-color: #a3d9f7;
         }
-
+        
         .checkmark:after {
             content: "";
             position: absolute;
             display: none;
         }
-
+        
         .checkboxSPStyling input:checked~.checkmark:after {
             display: block;
         }
-
+        
         .checkboxSPStyling .checkmark:after {
             left: 4px;
             top: 0px;
@@ -310,7 +310,7 @@
             transform: rotate(45deg);
         }
         /* Styling for Scatterplot dropdown filters */
-
+        
         #selectSportSP,
         #selectNationalitySP,
         #selectEventSP {
@@ -323,60 +323,60 @@
             border-radius: 5px;
             padding: 0 1em;
         }
-
+        
         .reqSPFilters_flexContainer label {
             font-size: 13px;
         }
-
+        
         .reqSPFilters_flexContainer {
             display: flex;
             flex-direction: column;
             margin-top: -15px;
         }
-
+        
         .optSPFilters_flexContainer {
             display: flex;
             flex-direction: row;
             margin-top: -15px;
         }
-
+        
         .optSPFilters_flex_section1 {
             width: 200px;
         }
-
+        
         .optSPFilters_flex_section2,
         .optSPFilters_flex_section3 {
             width: 200px;
         }
-
+        
         .optSPFilters_flexContainer select,
         .reqSPFilters_flexContainer select {
             margin-top: -5px;
         }
-
+        
         .optSPSilderContainers {
             height: 90px;
             ;
         }
-
+        
         .sliderRange {
             margin-left: -10px;
             margin-top: -25px;
         }
-
+        
         .sliderRange text {
             fill: white;
             font-size: 12px;
             font-family: monaco, Consolas, Lucida Console, monospace;
         }
-
+        
         .generateButtonSP,
         .resetButtonSP,
         #errorTextSP {
             text-align: center;
             margin: auto;
         }
-
+        
         #errorTextSP {
             font-style: italic;
             font-weight: bold;
@@ -384,7 +384,7 @@
             width: 400px;
             opacity: 0%;
         }
-
+        
         #generateButtonSP,
         #resetButtonSP {
             font-family: monaco, Consolas, Lucida Console, monospace;
@@ -395,12 +395,12 @@
             padding-left: 20px;
             padding-right: 20px;
         }
-
+        
         #flexContainerSP_2 {
             display: flex;
             justify-content: center;
         }
-
+        
         #graphSP,
         #profilePanelSP {
             margin-top: 30px;
@@ -408,62 +408,62 @@
             margin-right: 30px;
             height: 700px;
         }
-
+        
         #graphSP,
         #legendSP {
             width: 800px;
         }
-
+        
         #profilePanelSP {
             width: 600px;
             padding-bottom: 20px;
         }
-
+        
         #profilePanelSPflexContainer {
             display: flex;
             flex-direction: row;
         }
-
+        
         #profilePanelSPIntroStatsContainer {
             height: 250px;
             width: 300px;
             padding-top: 20px;
             padding-left: 20px;
         }
-
+        
         #profilePanelSPIntroStats p {
             margin: 0;
             font-size: 15px;
             padding-bottom: 5px;
         }
-
+        
         #profilePanelSPIntro h4 {
             margin: 0;
             font-size: 18px;
             font-weight: bold;
             padding-bottom: 5px;
         }
-
+        
         #profilePanelSPIntro {
             padding-bottom: 20px;
         }
-
+        
         #profilePanelSPPhysicalTraits {
             height: 250px;
             width: 300px;
         }
-
+        
         #profilePanelSPTraitsText {
             text-align: center;
             width: 140px;
             padding-left: 160px;
         }
-
+        
         #profilePanelSPTraitsIcon {
             text-align: right;
             padding-right: 30px;
         }
-
+        
         #profilePanelSPTraitsText h4,
         #profilePanelSPTraitsText p {
             font-size: 13px;
@@ -472,7 +472,7 @@
         /* #scatterlegendsvg {
             background-color: rgba(255, 255, 255, 0.1);
         } */
-
+        
         .y.axis text,
         .x.axis text {
             font-size: 13px;
@@ -480,48 +480,48 @@
         /* #profilePanelSPSVG {
             padding-left: 20px;
         } */
-
+        
         #savedAthletesTablePanel {
             margin-top: 100px;
             padding: 20px;
             height: 800px;
         }
-
+        
         #savedAthletesTable {
             background-color: rgba(255, 255, 255, 0.1);
             border: 1.5px solid lightgray;
             width: 1400px;
             margin: auto;
         }
-
+        
         #viz {
             height: 130vh;
             text-align: center;
             margin-bottom: 5vh;
         }
-
+        
         .boundary {
             fill: #DEB887;
             stroke: black;
             stroke-width: 1px;
         }
-
+        
         #flexContainerMP_1 {
             display: flex;
             justify-content: center;
         }
-
+        
         #map_svg {
             border: 2px solid rgb(230, 238, 247);
             background-color: rgb(230, 238, 247);
         }
-
+        
         #timeline {
             text-align: center;
             position: relative;
             /* top: 600px; */
         }
-
+        
         #optMapFilters {
             width: 600px;
             height: 250px;
@@ -531,29 +531,29 @@
             margin-top: 5vh;
             background-color: rgb(238, 238, 238);
         }
-
+        
         .optMapFilters_flexContainer {
             display: flex;
             flex-direction: row;
             justify-content: space-around;
         }
-
+        
         #map_opt_title {
             border-bottom: 1px solid #000;
         }
-
+        
         #map_opt_title_div {
             width: 14vw;
             display: inline-block;
         }
-
+        
         .optMPFilters_flexContainer_medals {
             display: flex;
             flex-direction: row;
             text-align: left;
             font-size: 13px;
         }
-
+        
         #selectGoldMP,
         #selectSilverMP,
         #selectBronzeMP,
@@ -562,12 +562,12 @@
             width: 40px;
             height: 20px;
         }
-
+        
         .radioSeasonMP {
             text-align: left;
             font-size: 13px;
         }
-
+        
         .row {
             display: -ms-flexbox;
             display: flex;
@@ -576,12 +576,12 @@
             /* margin-right: -15px; */
             margin-left: -15px
         }
-
+        
         .align-items-center {
             -ms-flex-align: center!important;
             align-items: center!important
         }
-
+        
         .col-sm,
         .col-sm-2 {
             position: relative;
@@ -590,12 +590,12 @@
             display: flex;
             justify-content: center;
         }
-
+        
         .time_year {
             padding-top: 5px;
             font-size: 13px;
         }
-
+        
         .filterTitlesMP {
             text-align: left;
         }
@@ -977,6 +977,43 @@
                     }
                 });
 
+                var map_data = await d3.csv('athlete_events_filtered.csv', d3.autoType);
+                var iso_data = await d3.csv('iso_3digit_alpha_country_codes.csv', d3.autoType);
+
+                // Create World Dictionary for Map Visualization
+                var world_dict = {};
+                map_data.forEach(d => {
+                    if (!world_dict.hasOwnProperty(d["NOC"])) {
+                        world_dict[d["NOC"]] = {};
+                    }
+                    if (!world_dict[d["NOC"]].hasOwnProperty(d["Year"])) {
+                        world_dict[d["NOC"]][d["Year"]] = {};
+                    }
+                    if (!world_dict[d["NOC"]][d["Year"]].hasOwnProperty("Gold")) {
+                        world_dict[d["NOC"]][d["Year"]]["Gold"] = 0;
+                    }
+                    if (!world_dict[d["NOC"]][d["Year"]].hasOwnProperty("Silver")) {
+                        world_dict[d["NOC"]][d["Year"]]["Silver"] = 0;
+                    }
+                    if (!world_dict[d["NOC"]][d["Year"]].hasOwnProperty("Bronze")) {
+                        world_dict[d["NOC"]][d["Year"]]["Bronze"] = 0;
+                    }
+                    if (!world_dict[d["NOC"]][d["Year"]].hasOwnProperty("Total")) {
+                        world_dict[d["NOC"]][d["Year"]]["Total"] = 0;
+                    } else {
+                        if (d["Medal"] == "Gold") {
+                            world_dict[d["NOC"]][d["Year"]]["Gold"] += 1;
+                        }
+                        if (d["Medal"] == "Silver") {
+                            world_dict[d["NOC"]][d["Year"]]["Silver"] += 1;
+                        }
+                        if (d["Medal"] == "Bronze") {
+                            world_dict[d["NOC"]][d["Year"]]["Bronze"] += 1;
+                        }
+                        world_dict[d["NOC"]][d["Year"]]["Total"] = world_dict[d["NOC"]][d["Year"]]["Bronze"] + world_dict[d["NOC"]][d["Year"]]["Silver"] + world_dict[d["NOC"]][d["Year"]]["Gold"];
+                    }
+                });
+
                 //Create new dictionary for medalistEventsData to reduce data loading times
                 var medalistEventsDataDict = {}
                 medalistEventsData.forEach(d => {
@@ -1116,45 +1153,45 @@
 
                 initialStateSP(); //initializing filters
                 // Initializing or resetting drop down filters
-              function initialStateSP(){
-                d3.select("#selectSportSP")
-                    .selectAll('myOptions')
-                    .data(allSport)
-                    .enter()
-                    .append('option')
-                    .text(function(d) {
-                        return d;
-                    })
-                    .attr("value", function(d) {
-                        return d;
-                    })
+                function initialStateSP() {
+                    d3.select("#selectSportSP")
+                        .selectAll('myOptions')
+                        .data(allSport)
+                        .enter()
+                        .append('option')
+                        .text(function(d) {
+                            return d;
+                        })
+                        .attr("value", function(d) {
+                            return d;
+                        })
 
 
-                d3.select("#selectNationalitySP")
-                    .selectAll('myOptions')
-                    .data(allNationality)
-                    .enter()
-                    .append('option')
-                    .text(function(d) {
-                        return d;
-                    })
-                    .attr("value", function(d) {
-                        return d;
-                    })
+                    d3.select("#selectNationalitySP")
+                        .selectAll('myOptions')
+                        .data(allNationality)
+                        .enter()
+                        .append('option')
+                        .text(function(d) {
+                            return d;
+                        })
+                        .attr("value", function(d) {
+                            return d;
+                        })
 
-                d3.select("#selectEventSP")
-                    .selectAll('myOptions')
-                    .data(allEvent)
-                    .enter()
-                    .append('option')
-                    .text(function(d) {
-                        return d;
-                    })
-                    .attr("value", function(d) {
-                        return d;
-                    })
+                    d3.select("#selectEventSP")
+                        .selectAll('myOptions')
+                        .data(allEvent)
+                        .enter()
+                        .append('option')
+                        .text(function(d) {
+                            return d;
+                        })
+                        .attr("value", function(d) {
+                            return d;
+                        })
 
-                     yearSlider = d3.sliderBottom()
+                    yearSlider = d3.sliderBottom()
                         .min(yearMin)
                         .max(yearMax)
                         .width(100)
@@ -1174,7 +1211,7 @@
 
 
                     // Initializing Slider Filters: Age
-                     ageSlider = d3.sliderBottom()
+                    ageSlider = d3.sliderBottom()
                         .min(ageMin)
                         .max(ageMax)
                         .width(100)
@@ -1193,7 +1230,7 @@
                     ageSliderSVG.call(ageSlider);
 
                     // Initializing Slider Filters: Height
-                     heightSlider = d3.sliderBottom()
+                    heightSlider = d3.sliderBottom()
                         .min(heightMin)
                         .max(heightMax)
                         .width(100)
@@ -1212,7 +1249,7 @@
                     heightSliderSVG.call(heightSlider);
 
                     // Initializing Slider Filters: Weight
-                     weightSlider = d3.sliderBottom()
+                    weightSlider = d3.sliderBottom()
                         .min(weightMin)
                         .max(weightMax)
                         .width(100)
@@ -1229,7 +1266,7 @@
                         .attr('transform', 'translate(30,30)');
 
                     weightSliderSVG.call(weightSlider);
-              }
+                }
 
 
 
@@ -1255,65 +1292,65 @@
                             newData2.push(d)
                         }
                     })
-                    return [newData1,newData2];
+                    return [newData1, newData2];
                 }
 
-                function changeSeasonFilter(allSportUpdated){
-                  allSportUpdated.sort();
-                  allSportUpdated.unshift("Select Sport")
-                  console.log(allSportUpdated)
-                  document.getElementById("selectSportSP").innerHTML = "";
-                  d3.select("#selectSportSP")
-                      .selectAll('myOptions')
-                      .data(allSportUpdated)
-                      .enter()
-                      .append('option')
-                      .text(function(d) {
-                          return d;
-                      })
-                      .attr("value", function(d) {
-                          return d;
-                      })
+                function changeSeasonFilter(allSportUpdated) {
+                    allSportUpdated.sort();
+                    allSportUpdated.unshift("Select Sport")
+                    console.log(allSportUpdated)
+                    document.getElementById("selectSportSP").innerHTML = "";
+                    d3.select("#selectSportSP")
+                        .selectAll('myOptions')
+                        .data(allSportUpdated)
+                        .enter()
+                        .append('option')
+                        .text(function(d) {
+                            return d;
+                        })
+                        .attr("value", function(d) {
+                            return d;
+                        })
                 }
 
-                function changeNationalityAndEventFilter(allNationalityUpdated,allEventUpdated){
-                  allNationalityUpdated.sort();
-                  allNationalityUpdated.unshift("All Nationalities")
-                  console.log(allNationalityUpdated)
-                  document.getElementById("selectNationalitySP").innerHTML = "";
-                  d3.select("#selectNationalitySP")
-                      .selectAll('myOptions')
-                      .data(allNationalityUpdated)
-                      .enter()
-                      .append('option')
-                      .text(function(d) {
-                          return d;
-                      })
-                      .attr("value", function(d) {
-                          return d;
-                      })
-                  allEventUpdated.sort();
-                  allEventUpdated.unshift("All Events")
-                  console.log(allEventUpdated)
-                  document.getElementById("selectEventSP").innerHTML = "";
-                  d3.select("#selectEventSP")
-                      .selectAll('myOptions')
-                      .data(allEventUpdated)
-                      .enter()
-                      .append('option')
-                      .text(function(d) {
-                          return d;
-                      })
-                      .attr("value", function(d) {
-                          return d;
-                      })
+                function changeNationalityAndEventFilter(allNationalityUpdated, allEventUpdated) {
+                    allNationalityUpdated.sort();
+                    allNationalityUpdated.unshift("All Nationalities")
+                    console.log(allNationalityUpdated)
+                    document.getElementById("selectNationalitySP").innerHTML = "";
+                    d3.select("#selectNationalitySP")
+                        .selectAll('myOptions')
+                        .data(allNationalityUpdated)
+                        .enter()
+                        .append('option')
+                        .text(function(d) {
+                            return d;
+                        })
+                        .attr("value", function(d) {
+                            return d;
+                        })
+                    allEventUpdated.sort();
+                    allEventUpdated.unshift("All Events")
+                    console.log(allEventUpdated)
+                    document.getElementById("selectEventSP").innerHTML = "";
+                    d3.select("#selectEventSP")
+                        .selectAll('myOptions')
+                        .data(allEventUpdated)
+                        .enter()
+                        .append('option')
+                        .text(function(d) {
+                            return d;
+                        })
+                        .attr("value", function(d) {
+                            return d;
+                        })
                 }
 
                 // Updating Filter Options
                 function updateFiltersSP() {
                     var updateFiltersData = filterData_season_gender(medalistProfileData)
-                    // console.log(medalistProfileData.length)
-                    // console.log(updateFiltersData.length)
+                        // console.log(medalistProfileData.length)
+                        // console.log(updateFiltersData.length)
                         // Updating Drop Down Options
                     var allSportUpdated = []
                     var allNationalityUpdated = []
@@ -1321,37 +1358,41 @@
                     var allNationalityUpdated2 = []
                     var allEventUpdated2 = []
                     updateFiltersData[1].forEach(d => {
-                        for (event in d['Events']){
-                          if (!allEventUpdated.includes(d['Events'][event])) {
-                              allEventUpdated.push(d['Events'][event])
-                          }
+                        for (event in d['Events']) {
+                            if (!allEventUpdated.includes(d['Events'][event])) {
+                                allEventUpdated.push(d['Events'][event])
+                            }
                         }
                         if (!allNationalityUpdated.includes(d['NOC'])) {
                             allNationalityUpdated.push(d['NOC'])
                         }
                     });
                     updateFiltersData[0].forEach(d => {
-                      if (!allSportUpdated.includes(d['Sport'])) {
-                          allSportUpdated.push(d['Sport'])
-                      }
-                      for (event in d['Events']){
-                        if (!allEventUpdated2.includes(d['Events'][event])) {
-                            allEventUpdated2.push(d['Events'][event])
+                        if (!allSportUpdated.includes(d['Sport'])) {
+                            allSportUpdated.push(d['Sport'])
                         }
-                      }
-                      if (!allNationalityUpdated2.includes(d['NOC'])) {
-                          allNationalityUpdated2.push(d['NOC'])
-                      }
+                        for (event in d['Events']) {
+                            if (!allEventUpdated2.includes(d['Events'][event])) {
+                                allEventUpdated2.push(d['Events'][event])
+                            }
+                        }
+                        if (!allNationalityUpdated2.includes(d['NOC'])) {
+                            allNationalityUpdated2.push(d['NOC'])
+                        }
                     });
 
-                    if(lastSelected=="season"){
-                      changeSeasonFilter(allSportUpdated)
-                      changeNationalityAndEventFilter(allNationalityUpdated2,allEventUpdated2)
-                      sportInitialSelect = 0;
-                          eventFilter = d => { return true; }
-                          nationalityFilter = d => { return true; }
-                    }else{
-                      changeNationalityAndEventFilter(allNationalityUpdated,allEventUpdated)
+                    if (lastSelected == "season") {
+                        changeSeasonFilter(allSportUpdated)
+                        changeNationalityAndEventFilter(allNationalityUpdated2, allEventUpdated2)
+                        sportInitialSelect = 0;
+                        eventFilter = d => {
+                            return true;
+                        }
+                        nationalityFilter = d => {
+                            return true;
+                        }
+                    } else {
+                        changeNationalityAndEventFilter(allNationalityUpdated, allEventUpdated)
                     }
 
 
@@ -1435,12 +1476,12 @@
                     lastSelected = "sport";
                     var selectedSportOptionSP = d3.select("#selectSportSP").property("value")
                     if (selectedSportOptionSP != "Select Sport") {
-                      sportInitialSelect = 1;
+                        sportInitialSelect = 1;
                         sportFilter = d => {
                             return (d.Sport == selectedSportOptionSP)
                         }
                     } else {
-                      sportInitialSelect = 0;
+                        sportInitialSelect = 0;
                         sportFilter = d => {
                             return true;
                         }
@@ -1453,7 +1494,7 @@
                     return true;
                 }
                 d3.select("#selectNationalitySP").on("change", function() {
-                  lastSelected = "nationality";
+                    lastSelected = "nationality";
                     var selectedNationalityOptionSP = d3.select("#selectNationalitySP").property("value")
                     if (selectedNationalityOptionSP != "All Nationalities") {
                         nationalityFilter = d => {
@@ -1471,7 +1512,7 @@
                     return true;
                 }
                 d3.select("#selectEventSP").on("change", function() {
-                  lastSelected = "event";
+                    lastSelected = "event";
                     var selectedEventOptionSP = d3.select("#selectEventSP").property("value")
                     if (selectedEventOptionSP != "All Events") {
                         eventFilter = d => {
@@ -1495,7 +1536,7 @@
                         return true;
                     }
                     (yearSlider).on("onchange", function(value) { //value is [min,max]
-                      lastSelected = "year";
+                        lastSelected = "year";
                         yearFilter = d => {
                             var withinYearBoolean = 0;
                             for (year in d.YearsCompeted) {
@@ -1512,7 +1553,7 @@
                         return true;
                     }
                     (ageSlider).on("onchange", function(value) { //value is [min,max]
-                      lastSelected = "age";
+                        lastSelected = "age";
                         ageFilter = d => {
                             return ((d.Age >= value[0]) && (d.Age <= value[1]))
                         }
@@ -1523,8 +1564,8 @@
                         return true;
                     }
                     (heightSlider).on("onchange", function(value) { //value is [min,max]
-                      lastSelected = "height";
-                      console.log("hey")
+                        lastSelected = "height";
+                        console.log("hey")
                         heightFilter = d => {
                             return ((d.Height >= value[0]) && (d.Height <= value[1]))
                         }
@@ -1535,7 +1576,7 @@
                         return true;
                     }
                     (weightSlider).on("onchange", function(value) { //value is [min,max]
-                      lastSelected = "weight";
+                        lastSelected = "weight";
                         weightFilter = d => {
                             return ((d.Weight >= value[0]) && (d.Weight <= value[1]))
                         }
@@ -1560,19 +1601,18 @@
 
                 function errorhandling_generateSP() {
                     try {
-                      console.log("sport = " + sportInitialSelect)
-                      console.log("gender = " + genderInitialSelect)
-                      console.log("season = " + seasonInitialSelect)
-                      if ((sportInitialSelect == 1) && (genderInitialSelect==1) && (seasonInitialSelect==1)){
-                        let newData = filterData(medalistProfileData)
-                        console.log(newData)
-                        generateSP(newData);
+                        console.log("sport = " + sportInitialSelect)
+                        console.log("gender = " + genderInitialSelect)
+                        console.log("season = " + seasonInitialSelect)
+                        if ((sportInitialSelect == 1) && (genderInitialSelect == 1) && (seasonInitialSelect == 1)) {
+                            let newData = filterData(medalistProfileData)
+                            console.log(newData)
+                            generateSP(newData);
+                        } else {
+                            resetSPGraph()
+                            d3.select("#errorTextSP")
+                                .style("opacity", 1);
                         }
-                        else{
-                          resetSPGraph()
-                          d3.select("#errorTextSP")
-                              .style("opacity", 1);
-                          }
                     } catch (e) {
                         d3.select("#errorTextSP")
                             .style("opacity", 1);
@@ -1604,50 +1644,50 @@
 
                 //Resets all filters
                 function resetSP() {
-                  //Removing old dropdown options
-                  document.getElementById("selectNationalitySP").innerHTML = "";
-                  document.getElementById("selectEventSP").innerHTML = "";
-                  document.getElementById("selectSportSP").innerHTML = "";
-                  document.getElementById("year-slider-range").innerHTML = "";
-                  document.getElementById("age-slider-range").innerHTML = "";
-                  document.getElementById("height-slider-range").innerHTML = "";
-                  document.getElementById("weight-slider-range").innerHTML = "";
-                  ageFilter = d => {
-                          return true;
-                      }
-                  heightFilter = d => {
-                          return true;
-                      }
-                  yearFilter = d => {
-                          return true;
-                      }
-                  weightFilter = d => {
-                          return true;
-                      }
+                    //Removing old dropdown options
+                    document.getElementById("selectNationalitySP").innerHTML = "";
+                    document.getElementById("selectEventSP").innerHTML = "";
+                    document.getElementById("selectSportSP").innerHTML = "";
+                    document.getElementById("year-slider-range").innerHTML = "";
+                    document.getElementById("age-slider-range").innerHTML = "";
+                    document.getElementById("height-slider-range").innerHTML = "";
+                    document.getElementById("weight-slider-range").innerHTML = "";
+                    ageFilter = d => {
+                        return true;
+                    }
+                    heightFilter = d => {
+                        return true;
+                    }
+                    yearFilter = d => {
+                        return true;
+                    }
+                    weightFilter = d => {
+                        return true;
+                    }
                     initialStateSP() //resets all dropdowns
-                    //resets all radio buttons to not checked
+                        //resets all radio buttons to not checked
                     var seasonRadioList = document.getElementsByName('seasonSP');
-                      for (var i = 0; i < seasonRadioList.length; i++) {
-                        if(seasonRadioList[i].checked) seasonRadioList[i].checked = false;
-                      }
+                    for (var i = 0; i < seasonRadioList.length; i++) {
+                        if (seasonRadioList[i].checked) seasonRadioList[i].checked = false;
+                    }
                     var genderRadioList = document.getElementsByName('genderSP');
-                      for (var i = 0; i < genderRadioList.length; i++) {
-                        if(genderRadioList[i].checked) genderRadioList[i].checked = false;
-                      }
-                      seasonInitialSelect = 0;
-                      genderInitialSelect = 0;
-                      sportInitialSelect = 0;
+                    for (var i = 0; i < genderRadioList.length; i++) {
+                        if (genderRadioList[i].checked) genderRadioList[i].checked = false;
+                    }
+                    seasonInitialSelect = 0;
+                    genderInitialSelect = 0;
+                    sportInitialSelect = 0;
                     //resets all checkboxes to checked
-                   d3.select('#medalsOne').property('checked', true);
-                   d3.select('#medalsTwo').property('checked', true);
-                   d3.select('#medalsThree').property('checked', true);
-                  resetSPGraph()
+                    d3.select('#medalsOne').property('checked', true);
+                    d3.select('#medalsTwo').property('checked', true);
+                    d3.select('#medalsThree').property('checked', true);
+                    resetSPGraph()
                 }
 
                 //Resets all filters
                 function resetSPGraph() {
-                  console.log("remove circles")
-                  areaSP.selectAll("circle.point").remove();
+                    console.log("remove circles")
+                    areaSP.selectAll("circle.point").remove();
                 }
 
                 // **************************************************************************************************************
@@ -1824,17 +1864,17 @@
                     });
 
                 function updateProfilePanel(d) {
-                  d.EventMedals.forEach(p => {
-                    console.log(p)
-                    console.log(p.Event)
-                    // if (p.EventMedals.match(/Mixed/) != null) {
-                    //     d["Event"] = "Mixed " + d.Event.split('Mixed ').pop().trim();
-                    // } else if (d.Event.match(/men's/) != null) {
-                    //     d["Event"] = d.Event.split("men's ").pop().trim();
-                    // } else {
-                    //     d["Event"] = d.Event.split("Men's ").pop().trim();
-                    // }
-                  })
+                    d.EventMedals.forEach(p => {
+                        console.log(p)
+                        console.log(p.Event)
+                            // if (p.EventMedals.match(/Mixed/) != null) {
+                            //     d["Event"] = "Mixed " + d.Event.split('Mixed ').pop().trim();
+                            // } else if (d.Event.match(/men's/) != null) {
+                            //     d["Event"] = d.Event.split("men's ").pop().trim();
+                            // } else {
+                            //     d["Event"] = d.Event.split("Men's ").pop().trim();
+                            // }
+                    })
                     d3.select("#profilePanelSPIntro")
                         .html("<h4><b>" + d.NOC + "</b></h4>" +
                             "<h4><b>" + d.Name + "</b></h4>");
@@ -1975,42 +2015,7 @@
                 // <!--                     MAP VISUALIZATION DATA FILTERING                     -->
                 // <!-- ************************************************************************ -->
 
-                var map_data = await d3.csv('athlete_events_filtered.csv', d3.autoType);
-                var iso_data = await d3.csv('iso_3digit_alpha_country_codes.csv', d3.autoType);
 
-                // Create World Dictionary for Map Visualization
-                var world_dict = {};
-                map_data.forEach(d => {
-                    if (!world_dict.hasOwnProperty(d["NOC"])) {
-                        world_dict[d["NOC"]] = {};
-                    }
-                    if (!world_dict[d["NOC"]].hasOwnProperty(d["Year"])) {
-                        world_dict[d["NOC"]][d["Year"]] = {};
-                    }
-                    if (!world_dict[d["NOC"]][d["Year"]].hasOwnProperty("Gold")) {
-                        world_dict[d["NOC"]][d["Year"]]["Gold"] = 0;
-                    }
-                    if (!world_dict[d["NOC"]][d["Year"]].hasOwnProperty("Silver")) {
-                        world_dict[d["NOC"]][d["Year"]]["Silver"] = 0;
-                    }
-                    if (!world_dict[d["NOC"]][d["Year"]].hasOwnProperty("Bronze")) {
-                        world_dict[d["NOC"]][d["Year"]]["Bronze"] = 0;
-                    }
-                    if (!world_dict[d["NOC"]][d["Year"]].hasOwnProperty("Total")) {
-                        world_dict[d["NOC"]][d["Year"]]["Total"] = 0;
-                    } else {
-                        if (d["Medal"] == "Gold") {
-                            world_dict[d["NOC"]][d["Year"]]["Gold"] += 1;
-                        }
-                        if (d["Medal"] == "Silver") {
-                            world_dict[d["NOC"]][d["Year"]]["Silver"] += 1;
-                        }
-                        if (d["Medal"] == "Bronze") {
-                            world_dict[d["NOC"]][d["Year"]]["Bronze"] += 1;
-                        }
-                        world_dict[d["NOC"]][d["Year"]]["Total"] = world_dict[d["NOC"]][d["Year"]]["Bronze"] + world_dict[d["NOC"]][d["Year"]]["Silver"] + world_dict[d["NOC"]][d["Year"]]["Gold"];
-                    }
-                });
                 console.log("world_dict");
                 console.log(world_dict);
                 // console.log(map_data);
@@ -2021,7 +2026,7 @@
                 // console.log(medalistEventsDataDict);
                 // console.log(eventsDataSP);
 
-                // Updating Drop Down Options
+                // Creating Drop Down Options
                 var mapSports = []
 
                 medalistProfileData.forEach(d => {
@@ -2029,6 +2034,8 @@
                         mapSports.push(d['Sport'])
                     }
                 });
+
+                mapSports.sort();
 
                 d3.select("#selectSportMP")
                     .selectAll('myOptions')
@@ -2041,6 +2048,8 @@
                     .attr("value", function(d) {
                         return d;
                     });
+
+                // mapSports.unshift("Select Sport")
 
 
                 // Updating Map Filter Options
@@ -2119,6 +2128,7 @@
                 //     })
                 //     return newData;
                 // }
+
             }
             requestData();
         </script>
