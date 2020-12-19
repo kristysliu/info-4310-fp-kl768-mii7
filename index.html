@@ -853,8 +853,6 @@
         </div>
 
         <script>
-            //python3 -m http.server
-
             /**************************************************
              **********        Map Visualization        ********
              **************************************************/
@@ -916,53 +914,6 @@
 
             d3.select('p#value-time').text(d3.timeFormat('%Y')(sliderTime.value()));
 
-            const requestData = async function() {
-                let map_data = await d3.csv('athlete_events_filtered.csv', d3.autoType)
-                let iso_data = await d3.csv('iso_3digit_alpha_country_codes.csv', d3.autoType)
-                    // console.log(iso_data);
-                console.log(map_data)
-
-
-                var world_dict = {};
-
-                // World Dict 
-                map_data.forEach(d => {
-                    if (!world_dict.hasOwnProperty(d["NOC"])) {
-                        world_dict[d["NOC"]] = {};
-                    }
-                    if (!world_dict[d["NOC"]].hasOwnProperty(d["Year"])) {
-                        world_dict[d["NOC"]][d["Year"]] = {};
-                    }
-                    if (!world_dict[d["NOC"]][d["Year"]].hasOwnProperty("Gold")) {
-                        world_dict[d["NOC"]][d["Year"]]["Gold"] = 0;
-                    }
-                    if (!world_dict[d["NOC"]][d["Year"]].hasOwnProperty("Silver")) {
-                        world_dict[d["NOC"]][d["Year"]]["Silver"] = 0;
-                    }
-                    if (!world_dict[d["NOC"]][d["Year"]].hasOwnProperty("Bronze")) {
-                        world_dict[d["NOC"]][d["Year"]]["Bronze"] = 0;
-                    }
-                    if (!world_dict[d["NOC"]][d["Year"]].hasOwnProperty("Total")) {
-                        world_dict[d["NOC"]][d["Year"]]["Total"] = 0;
-                    } else {
-                        if (d["Medal"] == "Gold") {
-                            world_dict[d["NOC"]][d["Year"]]["Gold"] += 1;
-                        }
-                        if (d["Medal"] == "Silver") {
-                            world_dict[d["NOC"]][d["Year"]]["Silver"] += 1;
-                        }
-                        if (d["Medal"] == "Bronze") {
-                            world_dict[d["NOC"]][d["Year"]]["Bronze"] += 1;
-                        }
-                        world_dict[d["NOC"]][d["Year"]]["Total"] = world_dict[d["NOC"]][d["Year"]]["Bronze"] + world_dict[d["NOC"]][d["Year"]]["Silver"] + world_dict[d["NOC"]][d["Year"]]["Gold"];
-                    }
-                });
-
-                console.log(world_dict);
-
-            }
-
-
             /**************************************************
              *****        ScatterPlot Visualization        *****
              **************************************************/
@@ -997,7 +948,7 @@
 
             // **************************************************************************************************************
 
-            const loadScatter = async function() {
+            const requestData = async function() {
                 var medalistProfileData = await d3.json('medalist_profiles.json');
                 var medalistEventsData = await d3.json('medalist_events.json');
                 const eventsDataSP = await d3.json('SeasonSportEvents.json');
@@ -1017,6 +968,44 @@
                     }
                 });
 
+                var map_data = await d3.csv('athlete_events_filtered.csv', d3.autoType);
+                var iso_data = await d3.csv('iso_3digit_alpha_country_codes.csv', d3.autoType);
+
+
+                // Create World Dictionary for Map Visualization
+                var world_dict = {};
+                map_data.forEach(d => {
+                    if (!world_dict.hasOwnProperty(d["NOC"])) {
+                        world_dict[d["NOC"]] = {};
+                    }
+                    if (!world_dict[d["NOC"]].hasOwnProperty(d["Year"])) {
+                        world_dict[d["NOC"]][d["Year"]] = {};
+                    }
+                    if (!world_dict[d["NOC"]][d["Year"]].hasOwnProperty("Gold")) {
+                        world_dict[d["NOC"]][d["Year"]]["Gold"] = 0;
+                    }
+                    if (!world_dict[d["NOC"]][d["Year"]].hasOwnProperty("Silver")) {
+                        world_dict[d["NOC"]][d["Year"]]["Silver"] = 0;
+                    }
+                    if (!world_dict[d["NOC"]][d["Year"]].hasOwnProperty("Bronze")) {
+                        world_dict[d["NOC"]][d["Year"]]["Bronze"] = 0;
+                    }
+                    if (!world_dict[d["NOC"]][d["Year"]].hasOwnProperty("Total")) {
+                        world_dict[d["NOC"]][d["Year"]]["Total"] = 0;
+                    } else {
+                        if (d["Medal"] == "Gold") {
+                            world_dict[d["NOC"]][d["Year"]]["Gold"] += 1;
+                        }
+                        if (d["Medal"] == "Silver") {
+                            world_dict[d["NOC"]][d["Year"]]["Silver"] += 1;
+                        }
+                        if (d["Medal"] == "Bronze") {
+                            world_dict[d["NOC"]][d["Year"]]["Bronze"] += 1;
+                        }
+                        world_dict[d["NOC"]][d["Year"]]["Total"] = world_dict[d["NOC"]][d["Year"]]["Bronze"] + world_dict[d["NOC"]][d["Year"]]["Silver"] + world_dict[d["NOC"]][d["Year"]]["Gold"];
+                    }
+                });
+
                 //Create new dictionary for medalistEventsData to reduce data loading times
                 var medalistEventsDataDict = {}
                 medalistEventsData.forEach(d => {
@@ -1033,7 +1022,7 @@
                     } else {
                         d["Event"] = d.Event.split("Men's ").pop().trim();
                     }
-                })
+                });
 
                 //Create new dictionary to merge events dictionary with athlete profiles array based on ID
                 medalistProfileData.forEach(p => {
@@ -1107,6 +1096,14 @@
                         }
                     }
                 });
+
+                // console.log(world_dict);
+                // console.log(map_data);
+                // console.log(iso_data);
+                // console.log(medalistProfileData);
+                // console.log(medalistEventsData);
+                console.log(medalistEventsDataDict);
+                // console.log(eventsDataSP);
 
                 // Updating Drop Down Options
                 var allSport = []
@@ -1891,9 +1888,7 @@
                         .call(xAxis);
                 }
             }
-
             requestData();
-            loadScatter();
         </script>
     </div>
 </body>
