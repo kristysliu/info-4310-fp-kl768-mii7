@@ -673,11 +673,11 @@
                         <div class="selectSportMP">
                             <h4 class="filterTitlesMP">Sport</h4>
                             <select id="selectSportMP">
-                                <option value="" disabled selected>Select Sport</option>
+                                <option selected="selected">All Sports</option>
                             </select>
                             <h4 class="filterTitlesMP">Event</h4>
                             <select id="selectEventMP">
-                                <option value="" disabled selected>Select Event</option>
+                                <option selected="selected">All Events</option>
                             </select>
                         </div>
 
@@ -1903,26 +1903,26 @@
                 // console.log(medalistEventsDataDict);
                 // console.log(eventsDataSP);
 
-                // // Updating Drop Down Options
-                // var allSport = []
+                // Updating Drop Down Options
+                var mapSports = []
 
-                // medalistProfileData.forEach(d => {
-                //     if (!allSport.includes(d['Sport'])) {
-                //         allSport.push(d['Sport'])
-                //     }
-                // });
+                medalistProfileData.forEach(d => {
+                    if (!mapSports.includes(d['Sport'])) {
+                        mapSports.push(d['Sport'])
+                    }
+                });
 
-                // d3.select("#selectSportMP")
-                //     .selectAll('myOptions')
-                //     .data(allSport)
-                //     .enter()
-                //     .append('option')
-                //     .text(function(d) {
-                //         return d;
-                //     })
-                //     .attr("value", function(d) {
-                //         return d;
-                //     });
+                d3.select("#selectSportMP")
+                    .selectAll('myOptions')
+                    .data(mapSports)
+                    .enter()
+                    .append('option')
+                    .text(function(d) {
+                        return d;
+                    })
+                    .attr("value", function(d) {
+                        return d;
+                    });
 
 
                 // Updating Map Filter Options
