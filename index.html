@@ -595,6 +595,10 @@
             padding-top: 5px;
             font-size: 13px;
         }
+
+        .filterTitlesMP {
+            text-align: left;
+        }
         /* .xlabel, .ylabel{
           font-size: 13px;
           color: white;
@@ -652,9 +656,6 @@
                         <p id="value-time"></p>
                     </div>
                 </div>
-                <!-- <input id="timeslide" type="range" min="0" max="15" value="0" step="1" /><br>
-                    <span id="range">1896</span> -->
-                <!-- </div> -->
 
                 <!-- Optional Filters -->
                 <div id="optMapFilters">
@@ -663,28 +664,33 @@
                     </div>
                     <div class="optMapFilters_flexContainer">
 
-                        <div class="selectSportMP">
-                            <h4 class="filterTitlesMP">Sport</h4>
-                            <select id="selectSportMP"></select>
-                            <h4 class="filterTitlesMP">Event</h4>
-                            <select id="selectEventMP"></select>
-                        </div>
-
-                        <div class="optMPFilters_flexContainer_medals">
-                            <div class="optMPFilters_flex_medals_titles">
-                                <h4 class="filterTitlesMP"># of Medals</h4>
-                                <input type="checkbox" id="selectGoldMP" name="selectGoldMP" value="Gold">Gold<br>
-                                <input type="checkbox" id="selectSilverMP" name="selectSilverMP" value="Silver">Silver<br>
-                                <input type="checkbox" id="selectBronzeMP" name="selectBronzeMP" value="Bronze">Bronze <br>
-
-                            </div>
-                        </div>
-
                         <div class="radioSeasonMP">
                             <h4 class="filterTitlesMP">Season</h4>
                             <input type="checkbox" id="summerMP" name="seasonMP" value="summer">Summer<br>
                             <input type="checkbox" id="winterMP" name="seasonMP" value="winter">Winter<br>
                         </div>
+
+                        <div class="selectSportMP">
+                            <h4 class="filterTitlesMP">Sport</h4>
+                            <select id="selectSportMP">
+                                <option selected="selected">All Sports</option>
+                            </select>
+                            <h4 class="filterTitlesMP">Event</h4>
+                            <select id="selectEventMP">
+                                <option selected="selected">All Events</option>
+                            </select>
+                        </div>
+
+                        <div class="optMPFilters_flexContainer_medals">
+                            <div class="optMPFilters_flex_medals_titles">
+                                <h4 class="filterTitlesMP"># of Medals</h4>
+                                <input type="checkbox" id="selectGoldMP" name="selectMedalMP" value="Gold">Gold<br>
+                                <input type="checkbox" id="selectSilverMP" name="selectMedalMP" value="Silver">Silver<br>
+                                <input type="checkbox" id="selectBronzeMP" name="selectMedalMP" value="Bronze">Bronze <br>
+
+                            </div>
+                        </div>
+
                     </div>
                 </div>
             </div>
@@ -895,7 +901,7 @@
                 .width(900)
                 .tickFormat(d3.timeFormat('%Y'))
                 .tickValues(dataTime)
-                .default(new Date(1896, 10, 3))
+                .default(new Date(2016, 10, 3))
                 .on('onchange', val => {
                     d3.select('p#value-time').text(d3.timeFormat('%Y')(val));
                 });
@@ -944,9 +950,14 @@
             let colorLegendGroup = scatterLeg.append('g')
                 .attr("id", "colorLegendGroup");
 
-            // **************************************************************************************************************
+            // ******************************************** DATA ASYNC FILTERING ***************************************************
 
             const requestData = async function() {
+
+                // <!-- ************************************************************************ -->
+                // <!--               ScatterPlot VISUALIZATION DATA FILTERING                   -->
+                // <!-- ************************************************************************ -->
+
                 var medalistProfileData = await d3.json('medalist_profiles.json');
                 var medalistEventsData = await d3.json('medalist_events.json');
                 const eventsDataSP = await d3.json('SeasonSportEvents.json');
@@ -963,44 +974,6 @@
                     } else {
                         d["eventGender"] = "Mixed";
                         // d["Event"] = "Mixed " + d.Event.split('Mixed ').pop().trim();
-                    }
-                });
-
-                var map_data = await d3.csv('athlete_events_filtered.csv', d3.autoType);
-                var iso_data = await d3.csv('iso_3digit_alpha_country_codes.csv', d3.autoType);
-
-
-                // Create World Dictionary for Map Visualization
-                var world_dict = {};
-                map_data.forEach(d => {
-                    if (!world_dict.hasOwnProperty(d["NOC"])) {
-                        world_dict[d["NOC"]] = {};
-                    }
-                    if (!world_dict[d["NOC"]].hasOwnProperty(d["Year"])) {
-                        world_dict[d["NOC"]][d["Year"]] = {};
-                    }
-                    if (!world_dict[d["NOC"]][d["Year"]].hasOwnProperty("Gold")) {
-                        world_dict[d["NOC"]][d["Year"]]["Gold"] = 0;
-                    }
-                    if (!world_dict[d["NOC"]][d["Year"]].hasOwnProperty("Silver")) {
-                        world_dict[d["NOC"]][d["Year"]]["Silver"] = 0;
-                    }
-                    if (!world_dict[d["NOC"]][d["Year"]].hasOwnProperty("Bronze")) {
-                        world_dict[d["NOC"]][d["Year"]]["Bronze"] = 0;
-                    }
-                    if (!world_dict[d["NOC"]][d["Year"]].hasOwnProperty("Total")) {
-                        world_dict[d["NOC"]][d["Year"]]["Total"] = 0;
-                    } else {
-                        if (d["Medal"] == "Gold") {
-                            world_dict[d["NOC"]][d["Year"]]["Gold"] += 1;
-                        }
-                        if (d["Medal"] == "Silver") {
-                            world_dict[d["NOC"]][d["Year"]]["Silver"] += 1;
-                        }
-                        if (d["Medal"] == "Bronze") {
-                            world_dict[d["NOC"]][d["Year"]]["Bronze"] += 1;
-                        }
-                        world_dict[d["NOC"]][d["Year"]]["Total"] = world_dict[d["NOC"]][d["Year"]]["Bronze"] + world_dict[d["NOC"]][d["Year"]]["Silver"] + world_dict[d["NOC"]][d["Year"]]["Gold"];
                     }
                 });
 
@@ -1095,13 +1068,7 @@
                     }
                 });
 
-                // console.log(world_dict);
-                // console.log(map_data);
-                // console.log(iso_data);
-                // console.log(medalistProfileData);
-                // console.log(medalistEventsData);
-                // console.log(medalistEventsDataDict);
-                // console.log(eventsDataSP);
+                // Finding default data for filters
                 var allSport = []
                 var allNationality = Object.keys(world_dict);
                 var allEvent = []
@@ -2003,6 +1970,155 @@
                         .attr("transform", "translate(0," + barMarginHeight + ")")
                         .call(xAxis);
                 }
+
+                // <!-- ************************************************************************ -->
+                // <!--                     MAP VISUALIZATION DATA FILTERING                     -->
+                // <!-- ************************************************************************ -->
+
+                var map_data = await d3.csv('athlete_events_filtered.csv', d3.autoType);
+                var iso_data = await d3.csv('iso_3digit_alpha_country_codes.csv', d3.autoType);
+
+                // Create World Dictionary for Map Visualization
+                var world_dict = {};
+                map_data.forEach(d => {
+                    if (!world_dict.hasOwnProperty(d["NOC"])) {
+                        world_dict[d["NOC"]] = {};
+                    }
+                    if (!world_dict[d["NOC"]].hasOwnProperty(d["Year"])) {
+                        world_dict[d["NOC"]][d["Year"]] = {};
+                    }
+                    if (!world_dict[d["NOC"]][d["Year"]].hasOwnProperty("Gold")) {
+                        world_dict[d["NOC"]][d["Year"]]["Gold"] = 0;
+                    }
+                    if (!world_dict[d["NOC"]][d["Year"]].hasOwnProperty("Silver")) {
+                        world_dict[d["NOC"]][d["Year"]]["Silver"] = 0;
+                    }
+                    if (!world_dict[d["NOC"]][d["Year"]].hasOwnProperty("Bronze")) {
+                        world_dict[d["NOC"]][d["Year"]]["Bronze"] = 0;
+                    }
+                    if (!world_dict[d["NOC"]][d["Year"]].hasOwnProperty("Total")) {
+                        world_dict[d["NOC"]][d["Year"]]["Total"] = 0;
+                    } else {
+                        if (d["Medal"] == "Gold") {
+                            world_dict[d["NOC"]][d["Year"]]["Gold"] += 1;
+                        }
+                        if (d["Medal"] == "Silver") {
+                            world_dict[d["NOC"]][d["Year"]]["Silver"] += 1;
+                        }
+                        if (d["Medal"] == "Bronze") {
+                            world_dict[d["NOC"]][d["Year"]]["Bronze"] += 1;
+                        }
+                        world_dict[d["NOC"]][d["Year"]]["Total"] = world_dict[d["NOC"]][d["Year"]]["Bronze"] + world_dict[d["NOC"]][d["Year"]]["Silver"] + world_dict[d["NOC"]][d["Year"]]["Gold"];
+                    }
+                });
+                console.log("world_dict");
+                console.log(world_dict);
+                // console.log(map_data);
+                // console.log(iso_data);
+                // console.log(medalistProfileData);
+                // console.log(medalistEventsData);
+                // console.log("medalistEventsDataDict");
+                // console.log(medalistEventsDataDict);
+                // console.log(eventsDataSP);
+
+                // Updating Drop Down Options
+                var mapSports = []
+
+                medalistProfileData.forEach(d => {
+                    if (!mapSports.includes(d['Sport'])) {
+                        mapSports.push(d['Sport'])
+                    }
+                });
+
+                d3.select("#selectSportMP")
+                    .selectAll('myOptions')
+                    .data(mapSports)
+                    .enter()
+                    .append('option')
+                    .text(function(d) {
+                        return d;
+                    })
+                    .attr("value", function(d) {
+                        return d;
+                    });
+
+
+                // Updating Map Filter Options
+                // function updateFiltersMP() {
+                //     var updateFiltersData = filterMapData(medalistProfileData)
+                //     var allSport = []
+                //     updateFiltersData.forEach(d => {
+                //         if (!allSport.includes(d['Sport'])) {
+                //             allSport.push(d['Sport'])
+                //         }
+                //     });
+
+                //     d3.select("#selectSportMP")
+                //         .selectAll('myOptions')
+                //         .data(allSport)
+                //         .enter()
+                //         .append('option')
+                //         .text(function(d) {
+                //             return d;
+                //         })
+                //         .attr("value", function(d) {
+                //             return d;
+                //         });
+
+                // }
+
+                // **************************************************************************************************************
+                // Filter Interactivity: Functions to Filter Out Data That Doesn't Meet Selections
+
+                //if Map sport dropdown changes
+                // var mapsportFilter = d => {
+                //     return false;
+                // }
+                // d3.select("#selectSportMP").on("change", function() {
+                //     var selectedSportOptionSP = d3.select("#selectSportMP").property("value")
+                //     if (selectedSportOptionSP != "Select Sport") {
+                //         sportFilter = d => {
+                //             return (d.Sport == selectedSportOptionSP)
+                //         }
+                //     } else {
+                //         mapsportFilter = d => {
+                //             return true;
+                //         }
+                //     }
+                //     updateFiltersSP()
+                // });
+
+                // var mapSeasonFilter = d => {
+                //     return true;
+                // }
+                // d3.selectAll("input[name='seasonMP']").on("change", function() {
+                //     var selectedSeasonMP = d3.select('input[name="seasonMP"]:checked').property("value");
+                //     mapSeasonFilter = d => {
+                //         return (d.Season == selectedSeasonMP)
+                //     }
+                //     updateFiltersSP()
+                // });
+
+                // var mapMedalFilter = d => {
+                //     return true;
+                // }
+                // d3.selectAll("input[name='selectMedalMP']").on("change", function() {
+                //     var selectedMedalMP = d3.select('input[name="selectMedalMP"]:checked').property("value");
+                //     mapMedalFilter = d => {
+                //         return (d.Season == selectedMedalMP)
+                //     }
+                //     updateFiltersSP()
+                // });
+
+                // function filterMapData(worldMapData) {
+                //     newData = [];
+                //     worldMapData.forEach(d => {
+                //         if (mapsportFilter(d) && mapSeasonFilter(d)) {
+                //             newData.push(d)
+                //         }
+                //     })
+                //     return newData;
+                // }
             }
             requestData();
         </script>
