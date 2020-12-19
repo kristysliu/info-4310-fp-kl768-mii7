@@ -595,6 +595,10 @@
             padding-top: 5px;
             font-size: 13px;
         }
+        
+        .filterTitlesMP {
+            text-align: left;
+        }
         /* .xlabel, .ylabel{
           font-size: 13px;
           color: white;
@@ -637,55 +641,6 @@
         <!-- ********************************** -->
         <!--         MAP VISUALIZATION          -->
         <!-- ********************************** -->
-        <!-- <div id="mapPanel">
-            <h1 class="sectionTitles">World Map of Olympics Results</h1>
-            <div id='viz'>
-                <div id="flexContainerMP_1">
-                </div>
-                <div class="row align-items-center">
-                    <div class="col-sm">
-                        <div id="slider-time"></div>
-                        <h3 class="time_year">Year</h3>
-                    </div>
-                    <div class="col-sm-2">
-                        <p id="value-time"></p>
-                    </div>
-                </div> -->
-
-        <!-- Optional Filters -->
-        <!-- <div id="optMapFilters">
-                    <div id="map_opt_title_div">
-                        <h3 id="map_opt_title">Optional Filters</h3>
-                    </div>
-                    <div class="optMapFilters_flexContainer">
-
-                        <div class="selectSportMP">
-                            <h4 class="filterTitlesMP">Sport</h4>
-                            <select id="selectSportMP"></select>
-                            <h4 class="filterTitlesMP">Event</h4>
-                            <select id="selectEventMP"></select>
-                        </div>
-
-                        <div class="optMPFilters_flexContainer_medals">
-                            <div class="optMPFilters_flex_medals_titles">
-                                <h4 class="filterTitlesMP"># of Medals</h4>
-                                <input type="checkbox" id="selectGoldMP" name="selectGoldMP" value="Gold">Gold<br>
-                                <input type="checkbox" id="selectSilverMP" name="selectSilverMP" value="Silver">Silver<br>
-                                <input type="checkbox" id="selectBronzeMP" name="selectBronzeMP" value="Bronze">Bronze <br>
-
-                            </div>
-                        </div>
-
-                        <div class="radioSeasonMP">
-                            <h4 class="filterTitlesMP">Season</h4>
-                            <input type="checkbox" id="summerMP" name="seasonMP" value="summer">Summer<br>
-                            <input type="checkbox" id="winterMP" name="seasonMP" value="winter">Winter<br>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div> -->
-
         <div id="mapPanel">
             <h1 class="sectionTitles">World Map of Olympics Results</h1>
             <div id='viz'>
@@ -718,7 +673,11 @@
                         <div class="selectSportMP">
                             <h4 class="filterTitlesMP">Sport</h4>
                             <select id="selectSportMP">
-                                <option selected="selected">Select Sport</option>
+                                <option value="" disabled selected>Select Sport</option>
+                            </select>
+                            <h4 class="filterTitlesMP">Event</h4>
+                            <select id="selectEventMP">
+                                <option value="" disabled selected>Select Event</option>
                             </select>
                         </div>
 
@@ -944,7 +903,7 @@
                 .width(900)
                 .tickFormat(d3.timeFormat('%Y'))
                 .tickValues(dataTime)
-                .default(new Date(1896, 10, 3))
+                .default(new Date(2016, 10, 3))
                 .on('onchange', val => {
                     d3.select('p#value-time').text(d3.timeFormat('%Y')(val));
                 });
@@ -1940,6 +1899,7 @@
                 // console.log(iso_data);
                 // console.log(medalistProfileData);
                 // console.log(medalistEventsData);
+                // console.log("medalistEventsDataDict");
                 // console.log(medalistEventsDataDict);
                 // console.log(eventsDataSP);
 
