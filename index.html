@@ -15,48 +15,48 @@
             font-family: monaco, Consolas, Lucida Console, monospace;
             background: #f9f9f9;
         }
-        
+
         .sectionTitles {
             font-size: 60px;
             text-align: center;
         }
-        
+
         .websiteTitle {
             font-size: 80px;
             text-align: center;
             color: #2e2e2e;
         }
-        
+
         .authorsTitle {
             font-size: 30px;
             font-style: italic;
             text-align: center;
             color: #2e2e2e;
         }
-        
+
         .center {
             display: block;
             margin-left: auto;
             margin-right: auto;
             width: 1000px;
         }
-        
+
         .olympicsflexcontainermain {
             height: 750px;
         }
-        
+
         .olympicsflexcontainertoc {
             margin: auto;
             margin-top: -575px;
             width: 990px;
         }
-        
+
         .olympicsflexcontainer1,
         .olympicsflexcontainer2 {
             display: flex;
             flex-direction: row;
         }
-        
+
         .toc_textbox_r1 {
             height: 240px;
             width: 240px;
@@ -66,12 +66,12 @@
             margin: 45px;
             display: flex;
         }
-        
+
         .olympicsflexcontainer2 {
             margin-left: 165px;
             margin-top: -180px;
         }
-        
+
         .toc_textbox_r2 {
             height: 240px;
             width: 240px;
@@ -81,7 +81,7 @@
             margin: 45px;
             display: flex;
         }
-        
+
         .toc_text {
             text-decoration: none;
             color: #2e2e2e;
@@ -90,16 +90,16 @@
             margin: auto;
             width: 200px;
         }
-        
+
         hr.solid {
             border-top: 3px solid #2e2e2e;
         }
-        
+
         #mapPanel {
             color: #2e2e2e;
             padding-bottom: 2vh;
         }
-        
+
         #scatterplotPanel {
             background: #14284a;
             position: absolute;
@@ -107,42 +107,52 @@
             right: 0;
             color: white;
         }
-        
+
         #flexContainerSP_1 {
             display: flex;
             justify-content: center;
             width: 890px;
             height: 275px;
-            margin: 30px auto;
-            border: 1.5px solid lightgray;
-            background: rgba(255, 255, 255, 0.1);
+            border: 1.5px solid rgb(204, 234, 254);
+            background: rgba(204, 234, 254, 0.01);
             font-size: 12px;
         }
-        
+
         #flexContainerSP_1 h3,
         #generateButtonSP,
         #resetButtonSP,
         #errorTextSP {
             font-size: 15px;
         }
-        
-        .filterButtonSPflexContainer {
-            display: flex;
-            flex-direction: row;
+
+        #flexContainerSP_Top{
+          display: flex;
+          flex-direction: row;
+          width: 1100px;
+          height: 275px;
+          margin: 0 auto;
+
         }
-        
+
+        .filterButtonSPflexContainer {
+            height: 150px;
+            width: 200px;
+            align-items: center;
+            margin-top: 60px;
+        }
+
         .filterTitlesSP,
         .filterTitlesMP {
             font-size: 13px;
         }
-        
+
         #reqSPFilters {
             width: 250px;
             padding: 10px;
             padding-left: 30px;
             text-align: left;
         }
-        
+
         #selectSportSP,
         #selectNationalitySP,
         #selectEventSP,
@@ -151,19 +161,14 @@
             width: 175px;
             height: 20px;
         }
-        
+
         .checkboxMedalsFlexContainer {
             display: flex;
             flex-direction: row;
             margin-top: -2px;
             margin-left: -2px;
         }
-        /* .checkboxMedalsFlexContainer label {
-          margin-left: 5px;
-          margin-right: 15px;
-          margin-top: 2px;
-        } */
-        
+
         #optSPFilters {
             width: 600px;
             padding: 10px;
@@ -171,14 +176,14 @@
             text-align: left;
             border-left: 1.5px solid lightgray;
         }
-        
+
         .radioGenderSPflexcontainer,
         .radioSeasonSPflexcontainer {
             display: flex;
             flex-direction: row;
             height: 17px;
         }
-        
+
         .radioGenderSPflexcontainer label,
         .radioSeasonSPflexcontainer label {
             margin-left: 5px;
@@ -186,7 +191,7 @@
             margin-top: 2px;
         }
         /* Styling for Scatterplot radio button filters */
-        
+
         .radioSPStyling {
             display: block;
             position: relative;
@@ -200,7 +205,7 @@
             -ms-user-select: none;
             user-select: none;
         }
-        
+
         .radioSPStyling input {
             margin-left: 10px;
             opacity: 0;
@@ -208,15 +213,15 @@
             height: 0;
             width: 0;
         }
-        
+
         .radioSPStyling:hover input~.radioDot {
             background-color: #d9f1ff;
         }
-        
+
         .radioSPStyling input:checked~.radioDot {
             background-color: #2081c7;
         }
-        
+
         .radioDot {
             position: absolute;
             top: 0;
@@ -228,17 +233,17 @@
             background-color: #a3d9f7;
             border-radius: 50%;
         }
-        
+
         .radioDot:after {
             content: "";
             position: absolute;
             display: none;
         }
-        
+
         .radioSPStyling input:checked~.radioDot:after {
             display: block;
         }
-        
+
         .radioSPStyling .radioDot:after {
             top: 6px;
             left: 6px;
@@ -248,7 +253,7 @@
             background: white;
         }
         /* Styling for Scatterplot checkbox filters */
-        
+
         .checkboxSPStyling {
             display: block;
             position: relative;
@@ -262,7 +267,7 @@
             -ms-user-select: none;
             user-select: none;
         }
-        
+
         .checkboxSPStyling input {
             margin-left: 10px;
             opacity: 0;
@@ -270,15 +275,15 @@
             height: 0;
             width: 0;
         }
-        
+
         .checkboxSPStyling:hover input~.checkmark {
             background-color: #d9f1ff;
         }
-        
+
         .checkboxSPStyling input:checked~.checkmark {
             background-color: #2081c7;
         }
-        
+
         .checkmark {
             position: absolute;
             top: 0;
@@ -287,17 +292,17 @@
             width: 15px;
             background-color: #a3d9f7;
         }
-        
+
         .checkmark:after {
             content: "";
             position: absolute;
             display: none;
         }
-        
+
         .checkboxSPStyling input:checked~.checkmark:after {
             display: block;
         }
-        
+
         .checkboxSPStyling .checkmark:after {
             left: 4px;
             top: 0px;
@@ -310,7 +315,7 @@
             transform: rotate(45deg);
         }
         /* Styling for Scatterplot dropdown filters */
-        
+
         #selectSportSP,
         #selectNationalitySP,
         #selectEventSP {
@@ -323,60 +328,60 @@
             border-radius: 5px;
             padding: 0 1em;
         }
-        
+
         .reqSPFilters_flexContainer label {
             font-size: 13px;
         }
-        
+
         .reqSPFilters_flexContainer {
             display: flex;
             flex-direction: column;
             margin-top: -15px;
         }
-        
+
         .optSPFilters_flexContainer {
             display: flex;
             flex-direction: row;
             margin-top: -15px;
         }
-        
+
         .optSPFilters_flex_section1 {
             width: 200px;
         }
-        
+
         .optSPFilters_flex_section2,
         .optSPFilters_flex_section3 {
             width: 200px;
         }
-        
+
         .optSPFilters_flexContainer select,
         .reqSPFilters_flexContainer select {
             margin-top: -5px;
         }
-        
+
         .optSPSilderContainers {
             height: 90px;
             ;
         }
-        
+
         .sliderRange {
             margin-left: -10px;
             margin-top: -25px;
         }
-        
+
         .sliderRange text {
             fill: white;
             font-size: 12px;
             font-family: monaco, Consolas, Lucida Console, monospace;
         }
-        
+
         .generateButtonSP,
         .resetButtonSP,
         #errorTextSP {
             text-align: center;
             margin: auto;
         }
-        
+
         #errorTextSP {
             font-style: italic;
             font-weight: bold;
@@ -384,144 +389,138 @@
             width: 400px;
             opacity: 0%;
         }
-        
+
         #generateButtonSP,
         #resetButtonSP {
             font-family: monaco, Consolas, Lucida Console, monospace;
             font-weight: bold;
-            background-color: #f9f9f9;
-            border: 1.5px solid lightgray;
+            background-color: rgb(204, 234, 254);
+            border-style: none;
+            border-radius: 5px;
             padding: 5px;
             padding-left: 20px;
             padding-right: 20px;
+            width: 150px;
+            margin-top: 30px;
         }
-        
+
+
         #flexContainerSP_2 {
             display: flex;
             justify-content: center;
         }
-        
+
         #graphSP,
         #profilePanelSP {
-            margin-top: 30px;
-            margin-bottom: 30px;
+            margin-bottom: 50px;
             margin-right: 30px;
-            height: 700px;
+            height: 785px;
         }
-        
+
         #graphSP,
         #legendSP {
             width: 800px;
         }
-        
+
         #profilePanelSP {
             width: 600px;
-            padding-bottom: 20px;
+            margin-top: 10px;
         }
-        
+
         #profilePanelSPflexContainer {
             display: flex;
             flex-direction: row;
+            margin-top: 10px;
+            background-color: rgba(25, 98, 158, 1);
+            box-shadow: 5px 10px rgb(204, 234, 254);
         }
-        
+
         #profilePanelSPIntroStatsContainer {
             height: 250px;
             width: 300px;
             padding-top: 20px;
             padding-left: 20px;
         }
-        
+
         #profilePanelSPIntroStats p {
             margin: 0;
             font-size: 15px;
             padding-bottom: 5px;
         }
-        
+
         #profilePanelSPIntro h4 {
             margin: 0;
             font-size: 18px;
             font-weight: bold;
             padding-bottom: 5px;
         }
-        
+
         #profilePanelSPIntro {
             padding-bottom: 20px;
         }
-        
+
         #profilePanelSPPhysicalTraits {
             height: 250px;
             width: 300px;
         }
-        
+
         #profilePanelSPTraitsText {
             text-align: center;
             width: 140px;
-            padding-left: 160px;
+            padding-left: 125px;
+            margin-top: -20px;
         }
-        
+
         #profilePanelSPTraitsIcon {
             text-align: right;
             padding-right: 30px;
         }
-        
+
         #profilePanelSPTraitsText h4,
         #profilePanelSPTraitsText p {
             font-size: 13px;
             margin: 0;
         }
-        /* #scatterlegendsvg {
-            background-color: rgba(255, 255, 255, 0.1);
-        } */
-        
+
         .y.axis text,
         .x.axis text {
             font-size: 13px;
+            font-family: monaco, Consolas, Lucida Console, monospace;
         }
-        /* #profilePanelSPSVG {
-            padding-left: 20px;
-        } */
-        
-        #savedAthletesTablePanel {
-            margin-top: 100px;
-            padding: 20px;
-            height: 800px;
+
+        #profilePanelSPSVG {
+            margin-top: 40px;
+            margin-left: 10px;
         }
-        
-        #savedAthletesTable {
-            background-color: rgba(255, 255, 255, 0.1);
-            border: 1.5px solid lightgray;
-            width: 1400px;
-            margin: auto;
-        }
-        
+
         #viz {
             height: 130vh;
             text-align: center;
             margin-bottom: 5vh;
         }
-        
+
         .boundary {
             fill: #DEB887;
             stroke: black;
             stroke-width: 1px;
         }
-        
+
         #flexContainerMP_1 {
             display: flex;
             justify-content: center;
         }
-        
+
         #map_svg {
             border: 2px solid rgb(230, 238, 247);
             background-color: rgb(230, 238, 247);
         }
-        
+
         #timeline {
             text-align: center;
             position: relative;
             /* top: 600px; */
         }
-        
+
         #optMapFilters {
             width: 600px;
             height: 250px;
@@ -531,29 +530,29 @@
             margin-top: 5vh;
             background-color: rgb(238, 238, 238);
         }
-        
+
         .optMapFilters_flexContainer {
             display: flex;
             flex-direction: row;
             justify-content: space-around;
         }
-        
+
         #map_opt_title {
             border-bottom: 1px solid #000;
         }
-        
+
         #map_opt_title_div {
             width: 14vw;
             display: inline-block;
         }
-        
+
         .optMPFilters_flexContainer_medals {
             display: flex;
             flex-direction: row;
             text-align: left;
             font-size: 13px;
         }
-        
+
         #selectGoldMP,
         #selectSilverMP,
         #selectBronzeMP,
@@ -562,12 +561,12 @@
             width: 40px;
             height: 20px;
         }
-        
+
         .radioSeasonMP {
             text-align: left;
             font-size: 13px;
         }
-        
+
         .row {
             display: -ms-flexbox;
             display: flex;
@@ -576,12 +575,12 @@
             /* margin-right: -15px; */
             margin-left: -15px
         }
-        
+
         .align-items-center {
             -ms-flex-align: center!important;
             align-items: center!important
         }
-        
+
         .col-sm,
         .col-sm-2 {
             position: relative;
@@ -590,12 +589,12 @@
             display: flex;
             justify-content: center;
         }
-        
+
         .time_year {
             padding-top: 5px;
             font-size: 13px;
         }
-        
+
         .filterTitlesMP {
             text-align: left;
         }
@@ -702,102 +701,115 @@
         <div id="scatterplotPanel">
             <h1 class="sectionTitles">Athlete Profiles</h1>
             <!-- Section 1: Scatterplot Filters Panel -->
-            <div id="flexContainerSP_1">
+            <div id="flexContainerSP_Top">
+              <div id="flexContainerSP_1">
                 <!-- Required Filters -->
-                <div id="reqSPFilters">
-                    <h3><b>Required Filters:</b></h3>
-                    <div class="reqSPFilters_flexContainer">
-                        <div class="radioSeasonSP">
-                            <h4 class="filterTitlesSP">Season</h4>
-                            <div class="radioSeasonSPflexcontainer">
-                                <label class="radioSPStyling" for="summerSP">Summer
-                                <input type="radio" id="summerSP" name="seasonSP" value="Summer">
-                                <span class="radioDot"></span>
-                              </label><br>
-                                <label class="radioSPStyling" for="winterSP">Winter
-                                <input type="radio" id="winterSP" name="seasonSP" value="Winter">
-                                <span class="radioDot"></span>
-                              </label><br>
-                            </div>
-                        </div>
-                        <div class="selectSportSP">
-                            <h4 class="filterTitlesSP">Sport</h4>
-                            <select name="selectSportSP" id="selectSportSP"></select>
-                        </div>
-                        <div class="radioGenderSP">
-                            <h4 class="filterTitlesSP">Gender</h4>
-                            <div class="radioGenderSPflexcontainer">
-                                <label class="radioSPStyling" for="maleSP">Male
-                                <input type="radio" id="maleSP" name="genderSP" value="M">
-                                <span class="radioDot"></span>
-                              </label><br>
-                                <label class="radioSPStyling" for="femaleSP">Female
-                                <input type="radio" id="femaleSP" name="genderSP" value="F">
-                                <span class="radioDot"></span>
-                              </label><br>
-                            </div>
-                        </div>
-                    </div>
+                  <div id="reqSPFilters">
+                      <h3><b>Required Filters:</b></h3>
+                      <div class="reqSPFilters_flexContainer">
+                          <div class="radioSeasonSP">
+                              <h4 class="filterTitlesSP">Season</h4>
+                              <div class="radioSeasonSPflexcontainer">
+                                  <label class="radioSPStyling" for="summerSP">Summer
+                                  <input type="radio" id="summerSP" name="seasonSP" value="Summer">
+                                  <span class="radioDot"></span>
+                                </label><br>
+                                  <label class="radioSPStyling" for="winterSP">Winter
+                                  <input type="radio" id="winterSP" name="seasonSP" value="Winter">
+                                  <span class="radioDot"></span>
+                                </label><br>
+                              </div>
+                          </div>
+                          <div class="selectSportSP">
+                              <h4 class="filterTitlesSP">Sport</h4>
+                              <select name="selectSportSP" id="selectSportSP"></select>
+                          </div>
+                          <div class="radioGenderSP">
+                              <h4 class="filterTitlesSP">Gender</h4>
+                              <div class="radioGenderSPflexcontainer">
+                                  <label class="radioSPStyling" for="maleSP">Male
+                                  <input type="radio" id="maleSP" name="genderSP" value="M">
+                                  <span class="radioDot"></span>
+                                </label><br>
+                                  <label class="radioSPStyling" for="femaleSP">Female
+                                  <input type="radio" id="femaleSP" name="genderSP" value="F">
+                                  <span class="radioDot"></span>
+                                </label><br>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+                  <!-- Optional Filters -->
+                  <div id="optSPFilters">
+                      <h3><b>Optional Filters:</b></h3>
+                      <div class="optSPFilters_flexContainer">
+                          <div class="optSPFilters_flex_section1">
+                              <h4 class="filterTitlesSP">Nationality</h4>
+                              <select id="selectNationalitySP"></select>
+                              <h4 class="filterTitlesSP">Event</h4>
+                              <select id="selectEventSP"></select>
+                              <h4 class="filterTitlesSP"># of Medals</h4>
+                              <div class="checkboxMedalsFlexContainer">
+                                  <label class="checkboxSPStyling" for="medalsOne">1-2
+                                    <input type="checkbox" id="medalsOne" name="medalsOne" value="1" checked>
+                                    <span class="checkmark"></span>
+                                  </label><br>
+                                  <label class="checkboxSPStyling" for="medalsTwo">3-5
+                                    <input type="checkbox" id="medalsTwo" name="medalsTwo" value="3" checked>
+                                    <span class="checkmark"></span>
+                                  </label><br>
+                                  <label class="checkboxSPStyling" for="medalsThree">>5
+                                    <input type="checkbox" id="medalsThree" name="medalsThree" value="6" checked>
+                                    <span class="checkmark"></span>
+                                  </label><br>
+                                  <!-- <select id="selectTotalMedalSP"></select> -->
+                              </div>
+                          </div>
+                          <div class="optSPFilters_flex_section2">
+                              <div class="optSPSilderContainers">
+                                  <h4 class="filterTitlesSP">Year</h4>
+                                  <div class="sliderRange">
+                                      <div id="year-slider-range"></div>
+                                  </div>
+                              </div>
+                              <div class="optSPSilderContainers">
+                                  <h4 class="filterTitlesSP">Age</h4>
+                                  <div class="sliderRange">
+                                      <div id="age-slider-range"></div>
+                                  </div>
+                              </div>
+                          </div>
+                          <div class="optSPFilters_flex_section3">
+                              <div class="optSPSilderContainers">
+                                  <h4 class="filterTitlesSP">Height</h4>
+                                  <div class="sliderRange">
+                                      <div id="height-slider-range"></div>
+                                  </div>
+                              </div>
+                              <div class="optSPSilderContainers">
+                                  <h4 class="filterTitlesSP">Weight</h4>
+                                  <div class="sliderRange">
+                                      <div id="weight-slider-range"></div>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
                 </div>
-                <!-- Optional Filters -->
-                <div id="optSPFilters">
-                    <h3><b>Optional Filters:</b></h3>
-                    <div class="optSPFilters_flexContainer">
-                        <div class="optSPFilters_flex_section1">
-                            <h4 class="filterTitlesSP">Nationality</h4>
-                            <select id="selectNationalitySP"></select>
-                            <h4 class="filterTitlesSP">Event</h4>
-                            <select id="selectEventSP"></select>
-                            <h4 class="filterTitlesSP"># of Medals</h4>
-                            <div class="checkboxMedalsFlexContainer">
-                                <label class="checkboxSPStyling" for="medalsOne">1+
-                                  <input type="checkbox" id="medalsOne" name="medalsOne" value="1" checked>
-                                  <span class="checkmark"></span>
-                                </label><br>
-                                <label class="checkboxSPStyling" for="medalsTwo">2+
-                                  <input type="checkbox" id="medalsTwo" name="medalsTwo" value="2" checked>
-                                  <span class="checkmark"></span>
-                                </label><br>
-                                <label class="checkboxSPStyling" for="medalsThree">3+
-                                  <input type="checkbox" id="medalsThree" name="medalsThree" value="3" checked>
-                                  <span class="checkmark"></span>
-                                </label><br>
-                                <!-- <select id="selectTotalMedalSP"></select> -->
-                            </div>
-                        </div>
-                        <div class="optSPFilters_flex_section2">
-                            <div class="optSPSilderContainers">
-                                <h4 class="filterTitlesSP">Year</h4>
-                                <div class="sliderRange">
-                                    <div id="year-slider-range"></div>
-                                </div>
-                            </div>
-                            <div class="optSPSilderContainers">
-                                <h4 class="filterTitlesSP">Age</h4>
-                                <div class="sliderRange">
-                                    <div id="age-slider-range"></div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="optSPFilters_flex_section3">
-                            <div class="optSPSilderContainers">
-                                <h4 class="filterTitlesSP">Height</h4>
-                                <div class="sliderRange">
-                                    <div id="height-slider-range"></div>
-                                </div>
-                            </div>
-                            <div class="optSPSilderContainers">
-                                <h4 class="filterTitlesSP">Weight</h4>
-                                <div class="sliderRange">
-                                    <div id="weight-slider-range"></div>
-                                </div>
-                            </div>
-                        </div>
+                <div class="filterButtonSPflexContainer">
+                    <div class="generateButtonSP">
+                        <button type="button" id="generateButtonSP">Generate</button>
+                    </div>
+                    <div class="resetButtonSP">
+                        <button type="button" id="resetButtonSP">Reset</button>
                     </div>
                 </div>
             </div>
+            <div id="errorTextSP">
+                <p>Please fill out all required filters.</p>
+            </div>
             <!-- Generate Button: Update Scatterplot Based On Filters -->
-            <div class="filterButtonSPflexContainer">
+            <!-- <div class="filterButtonSPflexContainer">
                 <div class="generateButtonSP">
                     <button type="button" id="generateButtonSP">Generate</button>
                 </div>
@@ -807,14 +819,14 @@
                 <div class="resetButtonSP">
                     <button type="button" id="resetButtonSP">Reset</button>
                 </div>
-            </div>
+            </div> -->
             <!-- Section 2: Scatterplot Graph and Profile Panel -->
             <div id="flexContainerSP_2">
                 <!-- Scatterplot Graph Container -->
                 <div id="graphSP">
                     <!-- Scatterplot Graph -->
                     <div id="scatterplotGraph">
-                        <svg id="scatterplotGraphSVG" height="600" width="800"></svg>
+                        <svg id="scatterplotGraphSVG" height="700" width="800"></svg>
                     </div>
                     <!-- Scatterplot Legend -->
                     <div id="legendSP">
@@ -833,26 +845,8 @@
                             <div id="profilePanelSPTraitsText"></div>
                         </div>
                     </div>
-                    <svg id="profilePanelSPSVG" height="450" width="500"></svg>
+                    <svg id="profilePanelSPSVG" height="450" width="580"></svg>
                 </div>
-            </div>
-
-            <!-- ********************************** -->
-            <!--    SAVED ATHLETES TABLE            -->
-            <!-- ********************************** -->
-            <div id="savedAthletesTablePanel">
-                <table id="savedAthletesTable">
-                    <thead>
-                        <tr>
-                            <th>Name</th>
-                            <th></th>
-                            <th>Sport</th>
-                            <th>View</th>
-                            <th>Remove</th>
-                        </tr>
-                    </thead>
-                    <tbody></tbody>
-                </table>
             </div>
         </div>
 
@@ -974,6 +968,16 @@
                     } else {
                         d["eventGender"] = "Mixed";
                         // d["Event"] = "Mixed " + d.Event.split('Mixed ').pop().trim();
+                    }
+                });
+
+                var eventsDataSPDataDict = {}
+                eventsDataSP.forEach(d => {
+                    if (d.Event in eventsDataSPDataDict) {
+                        eventsDataSPDataDict[d.Event].push(d)
+                    } else {
+                        eventsDataSPDataDict[d.Event] = []
+                        eventsDataSPDataDict[d.Event].push(d)
                     }
                 });
 
@@ -1105,18 +1109,29 @@
                     }
                 });
 
-                // Finding default data for filters
+                // Finding default data for dropdowns
                 var allSport = []
                 var allNationality = Object.keys(world_dict);
                 var allEvent = []
-                eventsDataSP.forEach(d => {
-                    if (!allSport.includes(d['Sport'])) {
-                        allSport.push(d['Sport'])
-                    }
-                    if (!allEvent.includes(d['Event'])) {
-                        allEvent.push(d['Event'])
-                    }
-                });
+                // eventsDataSP.forEach(d => { //delete
+                //     if (!allSport.includes(d['Sport'])) {
+                //         allSport.push(d['Sport'])
+                //     }
+                //     if (!allEvent.includes(d['Event'])) {
+                //         allEvent.push(d['Event'])
+                //     }
+                // });
+
+                for (var key in eventsDataSPDataDict){
+                  eventsDataSPDataDict[key].forEach(d => {
+                      if (!allSport.includes(d['Sport'])) {
+                          allSport.push(d['Sport'])
+                      }
+                      if (!allEvent.includes(d['Event'])) {
+                          allEvent.push(d['Event'])
+                      }
+                  });
+                }
 
                 allSport.sort();
                 allSport.unshift("Select Sport")
@@ -1125,6 +1140,7 @@
                 allEvent.sort();
                 allEvent.unshift("All Events")
 
+                //Finding default max and min values for sliders
                 var weightMax = Math.max.apply(Math, medalistProfileData.map(function(d) {
                     return d.Weight;
                 }))
@@ -1146,13 +1162,85 @@
                 yearMax = 2016;
                 yearMin = 1896;
 
-                var yearSlider;
-                var ageSlider;
-                var heightSlider;
-                var weightSlider;
+                // Initializing Slider Filters: Year
+                var yearSlider = d3.sliderBottom()
+                    .min(yearMin)
+                    .max(yearMax)
+                    .width(100)
+                    .tickFormat(d3.format(".0f"))
+                    .ticks(0)
+                    .default([yearMin, yearMax])
+                    .fill('#2081c7');
 
-                initialStateSP(); //initializing filters
-                // Initializing or resetting drop down filters
+                var yearSliderSVG = d3.select('#year-slider-range')
+                    .append('svg')
+                    .attr('width', 175)
+                    .attr('height', 100)
+                    .append('g')
+                    .attr('transform', 'translate(30,30)');
+
+                yearSliderSVG.call(yearSlider);
+
+                // Initializing Slider Filters: Age
+                var ageSlider = d3.sliderBottom()
+                    .min(ageMin)
+                    .max(ageMax)
+                    .width(100)
+                    .tickFormat(d3.format(".0f"))
+                    .ticks(0)
+                    .default([ageMin, ageMax])
+                    .fill('#2081c7');
+
+                var ageSliderSVG = d3.select('#age-slider-range')
+                    .append('svg')
+                    .attr('width', 175)
+                    .attr('height', 100)
+                    .append('g')
+                    .attr('transform', 'translate(30,30)');
+
+                ageSliderSVG.call(ageSlider);
+
+                // Initializing Slider Filters: Height
+                var heightSlider = d3.sliderBottom()
+                    .min(heightMin)
+                    .max(heightMax)
+                    .width(100)
+                    .tickFormat(d3.format(".0f"))
+                    .ticks(0)
+                    .default([heightMin, heightMax])
+                    .fill('#2081c7');
+
+                var heightSliderSVG = d3.select('#height-slider-range')
+                    .append('svg')
+                    .attr('width', 175)
+                    .attr('height', 100)
+                    .append('g')
+                    .attr('transform', 'translate(30,30)');
+
+                heightSliderSVG.call(heightSlider);
+
+                // Initializing Slider Filters: Weight
+                var weightSlider = d3.sliderBottom()
+                    .min(weightMin)
+                    .max(weightMax)
+                    .width(100)
+                    .tickFormat(d3.format(".0f"))
+                    .ticks(0)
+                    .default([weightMin, weightMax])
+                    .fill('#2081c7');
+
+                var weightSliderSVG = d3.select('#weight-slider-range')
+                    .append('svg')
+                    .attr('width', 175)
+                    .attr('height', 100)
+                    .append('g')
+                    .attr('transform', 'translate(30,30)');
+
+                weightSliderSVG.call(weightSlider);
+
+                //Initialize dropdown filters in the beginning
+                initialStateSP();
+                // Function to initialize or reset drop down filters
                 function initialStateSP() {
                     d3.select("#selectSportSP")
                         .selectAll('myOptions')
@@ -1165,7 +1253,6 @@
                         .attr("value", function(d) {
                             return d;
                         })
-
 
                     d3.select("#selectNationalitySP")
                         .selectAll('myOptions')
@@ -1190,82 +1277,6 @@
                         .attr("value", function(d) {
                             return d;
                         })
-
-                    yearSlider = d3.sliderBottom()
-                        .min(yearMin)
-                        .max(yearMax)
-                        .width(100)
-                        .tickFormat(d3.format(".0f"))
-                        .ticks(0)
-                        .default([yearMin, yearMax])
-                        .fill('#2081c7');
-
-                    var yearSliderSVG = d3.select('#year-slider-range')
-                        .append('svg')
-                        .attr('width', 175)
-                        .attr('height', 100)
-                        .append('g')
-                        .attr('transform', 'translate(30,30)');
-
-                    yearSliderSVG.call(yearSlider);
-
-
-                    // Initializing Slider Filters: Age
-                    ageSlider = d3.sliderBottom()
-                        .min(ageMin)
-                        .max(ageMax)
-                        .width(100)
-                        .tickFormat(d3.format(".0f"))
-                        .ticks(0)
-                        .default([ageMin, ageMax])
-                        .fill('#2081c7');
-
-                    var ageSliderSVG = d3.select('#age-slider-range')
-                        .append('svg')
-                        .attr('width', 175)
-                        .attr('height', 100)
-                        .append('g')
-                        .attr('transform', 'translate(30,30)');
-
-                    ageSliderSVG.call(ageSlider);
-
-                    // Initializing Slider Filters: Height
-                    heightSlider = d3.sliderBottom()
-                        .min(heightMin)
-                        .max(heightMax)
-                        .width(100)
-                        .tickFormat(d3.format(".0f"))
-                        .ticks(0)
-                        .default([heightMin, heightMax])
-                        .fill('#2081c7');
-
-                    var heightSliderSVG = d3.select('#height-slider-range')
-                        .append('svg')
-                        .attr('width', 175)
-                        .attr('height', 100)
-                        .append('g')
-                        .attr('transform', 'translate(30,30)');
-
-                    heightSliderSVG.call(heightSlider);
-
-                    // Initializing Slider Filters: Weight
-                    weightSlider = d3.sliderBottom()
-                        .min(weightMin)
-                        .max(weightMax)
-                        .width(100)
-                        .tickFormat(d3.format(".0f"))
-                        .ticks(0)
-                        .default([weightMin, weightMax])
-                        .fill('#2081c7');
-
-                    var weightSliderSVG = d3.select('#weight-slider-range')
-                        .append('svg')
-                        .attr('width', 175)
-                        .attr('height', 100)
-                        .append('g')
-                        .attr('transform', 'translate(30,30)');
-
-                    weightSliderSVG.call(weightSlider);
                 }
 
 
@@ -1295,10 +1306,9 @@
                     return [newData1, newData2];
                 }
 
-                function changeSeasonFilter(allSportUpdated) {
+                function changeSportFilter(allSportUpdated) {
                     allSportUpdated.sort();
                     allSportUpdated.unshift("Select Sport")
-                    console.log(allSportUpdated)
                     document.getElementById("selectSportSP").innerHTML = "";
                     d3.select("#selectSportSP")
                         .selectAll('myOptions')
@@ -1313,10 +1323,9 @@
                         })
                 }
 
-                function changeNationalityAndEventFilter(allNationalityUpdated, allEventUpdated) {
+                function changeNationalityAndEventFilter(allNationalityUpdated, allEventUpdates) {
                     allNationalityUpdated.sort();
                     allNationalityUpdated.unshift("All Nationalities")
-                    console.log(allNationalityUpdated)
                     document.getElementById("selectNationalitySP").innerHTML = "";
                     d3.select("#selectNationalitySP")
                         .selectAll('myOptions')
@@ -1329,13 +1338,20 @@
                         .attr("value", function(d) {
                             return d;
                         })
-                    allEventUpdated.sort();
-                    allEventUpdated.unshift("All Events")
-                    console.log(allEventUpdated)
+
+                    //Filters out outlier events from if athletes classified in one sport has done events in another sport
+                    var selectedSportOptionSP = d3.select("#selectSportSP").property("value")
+                    if(selectedSportOptionSP != "Select Sport"){
+                      allEventUpdates = allEventUpdates.filter( function(value) {
+                        return ((value.split(' ')[0]) == selectedSportOptionSP.split(' ')[0])
+                      });
+                    }
+                    allEventUpdates.sort();
+                    allEventUpdates.unshift("All Events")
                     document.getElementById("selectEventSP").innerHTML = "";
                     d3.select("#selectEventSP")
                         .selectAll('myOptions')
-                        .data(allEventUpdated)
+                        .data(allEventUpdates)
                         .enter()
                         .append('option')
                         .text(function(d) {
@@ -1346,17 +1362,55 @@
                         })
                 }
 
+                function changeSliderFilter(updateFiltersData){
+                  // Initializing Slider Filters: Year
+                  var weightMaxNew = Math.max.apply(Math, updateFiltersData.map(function(d) {
+                      return d.Weight;
+                  }))
+                  weightMinNew = Math.min.apply(Math, updateFiltersData.map(function(d) {
+                      return d.Weight;
+                  }))
+                  heightMaxNew = Math.max.apply(Math, updateFiltersData.map(function(d) {
+                      return d.Height;
+                  }))
+                  heightMinNew = Math.min.apply(Math, updateFiltersData.map(function(d) {
+                      return d.Height;
+                  }))
+                  ageMaxNew = Math.max.apply(Math, updateFiltersData.map(function(d) {
+                      return d.Age;
+                  }))
+                  ageMinNew = Math.min.apply(Math, updateFiltersData.map(function(d) {
+                      return d.Age;
+                  }))
+                  yearMaxNew = Math.max.apply(Math, updateFiltersData.map(function(d) {
+                    var max = Math.max.apply(Math, d.YearsCompeted)
+                    return max;
+                  }))
+                  yearMinNew = Math.min.apply(Math, updateFiltersData.map(function(d) {
+                    var min = Math.min.apply(Math, d.YearsCompeted)
+                    return min;
+                  }))
+
+                  yearSlider.min(yearMinNew).max(yearMaxNew).default([yearMinNew, yearMaxNew]).value([yearMinNew, yearMaxNew]);
+                  yearSliderSVG.call(yearSlider);
+                  ageSlider.min(ageMinNew).max(ageMaxNew).default([ageMinNew, ageMaxNew]).value([ageMinNew, ageMaxNew]);
+                  ageSliderSVG.call(ageSlider);
+                  heightSlider.min(heightMinNew).max(heightMaxNew).default([heightMinNew, heightMaxNew]).value([heightMinNew, heightMaxNew]);
+                  heightSliderSVG.call(heightSlider);
+                  weightSlider.min(weightMinNew).max(weightMaxNew).default([weightMinNew, weightMaxNew]).value([weightMinNew, weightMaxNew]);
+                  weightSliderSVG.call(weightSlider);
+                }
+
                 // Updating Filter Options
                 function updateFiltersSP() {
                     var updateFiltersData = filterData_season_gender(medalistProfileData)
-                        // console.log(medalistProfileData.length)
-                        // console.log(updateFiltersData.length)
-                        // Updating Drop Down Options
                     var allSportUpdated = []
                     var allNationalityUpdated = []
                     var allEventUpdated = []
                     var allNationalityUpdated2 = []
                     var allEventUpdated2 = []
+
+                    //filter for only season, gender, and sport
                     updateFiltersData[1].forEach(d => {
                         for (event in d['Events']) {
                             if (!allEventUpdated.includes(d['Events'][event])) {
@@ -1367,6 +1421,8 @@
                             allNationalityUpdated.push(d['NOC'])
                         }
                     });
+
+                    //filter for only season and gender
                     updateFiltersData[0].forEach(d => {
                         if (!allSportUpdated.includes(d['Sport'])) {
                             allSportUpdated.push(d['Sport'])
@@ -1382,7 +1438,7 @@
                     });
 
                     if (lastSelected == "season") {
-                        changeSeasonFilter(allSportUpdated)
+                        changeSportFilter(allSportUpdated)
                         changeNationalityAndEventFilter(allNationalityUpdated2, allEventUpdated2)
                         sportInitialSelect = 0;
                         eventFilter = d => {
@@ -1391,46 +1447,11 @@
                         nationalityFilter = d => {
                             return true;
                         }
+                        changeSliderFilter(updateFiltersData[0])
                     } else {
                         changeNationalityAndEventFilter(allNationalityUpdated, allEventUpdated)
+                        changeSliderFilter(updateFiltersData[1])
                     }
-
-
-                    //
-                    // // Initializing Slider Filters: Year
-                    // var weightMaxNew = Math.max.apply(Math, updateFiltersData.map(function(d) {
-                    //     return d.Weight;
-                    // }))
-                    // weightMinNew = Math.min.apply(Math, updateFiltersData.map(function(d) {
-                    //     return d.Weight;
-                    // }))
-                    // heightMaxNew = Math.max.apply(Math, updateFiltersData.map(function(d) {
-                    //     return d.Height;
-                    // }))
-                    // heightMinNew = Math.min.apply(Math, updateFiltersData.map(function(d) {
-                    //     return d.Height;
-                    // }))
-                    // ageMaxNew = Math.max.apply(Math, updateFiltersData.map(function(d) {
-                    //     return d.Age;
-                    // }))
-                    // ageMinNew = Math.min.apply(Math, updateFiltersData.map(function(d) {
-                    //     return d.Age;
-                    // }))
-                    // yearMaxNew = Math.max.apply(Math, updateFiltersData.map(function(d) {
-                    //     d.YearsCompeted.forEach(p => {
-                    //         return p;
-                    //     });
-                    // }))
-                    // yearMinNew = Math.min.apply(Math, updateFiltersData.map(function(d) {
-                    //     d.YearsCompeted.forEach(p => {
-                    //         return p;
-                    //     });
-                    // }));
-                    //
-                    // yearSlider.min(yearMinNew).max(yearMaxNew)
-                    // ageSlider.min(ageMinNew).max(ageMaxNew)
-                    // heightSlider.min(heightMinNew).max(heightMaxNew)
-                    // weightSlider.min(weightMinNew).max(weightMaxNew)
 
                 }
 
@@ -1441,6 +1462,7 @@
                 var genderInitialSelect = 0;
                 var sportInitialSelect = 0;
                 var lastSelected = "";
+
                 var seasonFilter = d => {
                     return true;
                 }
@@ -1565,7 +1587,6 @@
                     }
                     (heightSlider).on("onchange", function(value) { //value is [min,max]
                         lastSelected = "height";
-                        console.log("hey")
                         heightFilter = d => {
                             return ((d.Height >= value[0]) && (d.Height <= value[1]))
                         }
@@ -1582,16 +1603,95 @@
                         }
                     })
 
+                var medalsFilter = d => {
+                        return true;
+                }
+                d3.selectAll("input[name='medalsOne']").on("change", function() {
+                    lastSelected = "medalsOne";
+                    medalsFilters()
+                });
+
+                d3.selectAll("input[name='medalsTwo']").on("change", function() {
+                    lastSelected = "medalsTwo";
+                    medalsFilters()
+                });
+
+                d3.selectAll("input[name='medalsThree']").on("change", function() {
+                    lastSelected = "medalsThree";
+                    medalsFilters()
+                });
+
+                function medalsFilters(){
+                  var checkedBooleanOne = d3.select('input[name="medalsOne"]').property("checked");
+                  var checkedBooleanTwo = d3.select('input[name="medalsTwo"]').property("checked");
+                  var checkedBooleanThree = d3.select('input[name="medalsThree"]').property("checked");
+                  var selectedMedalsOneSP = d3.select('input[name="medalsOne"]').property("value");
+                  var selectedMedalsTwoSP = d3.select('input[name="medalsTwo"]').property("value");
+                  var selectedMedalsThreeSP = d3.select('input[name="medalsThree"]').property("value");
+                  var selectedMedalsOneSPMax = parseInt(selectedMedalsOneSP)+1;
+                  var selectedMedalsTwoSPMax = parseInt(selectedMedalsTwoSP)+2;
+                  if(checkedBooleanOne == true && checkedBooleanTwo == false && checkedBooleanThree == false){
+                    medalsFilter = d => { return (d.TotalMedals >= selectedMedalsOneSP) && (d.TotalMedals <= selectedMedalsOneSPMax); }
+                  }else if(checkedBooleanOne == true && checkedBooleanTwo == true && checkedBooleanThree == false){
+                    medalsFilter = d => { return (d.TotalMedals >= selectedMedalsOneSP) && (d.TotalMedals <= selectedMedalsTwoSPMax); }
+                  }else if(checkedBooleanOne == true && checkedBooleanTwo == true && checkedBooleanThree == true){
+                    medalsFilter = d => { return true; }
+                  }else if(checkedBooleanOne == false && checkedBooleanTwo == true && checkedBooleanThree == true){
+                    medalsFilter = d => { return (d.TotalMedals >= selectedMedalsTwoSP); }
+                  }else if(checkedBooleanOne == false && checkedBooleanTwo == false && checkedBooleanThree == true){
+                    medalsFilter = d => { return (d.TotalMedals >= selectedMedalsThreeSP); }
+                  }else if(checkedBooleanOne == false && checkedBooleanTwo == false && checkedBooleanThree == false){
+                    medalsFilter = d => { return false; }
+                  }else if(checkedBooleanOne == false && checkedBooleanTwo == true && checkedBooleanThree == false){
+                    medalsFilter = d => { return (d.TotalMedals >= selectedMedalsTwoSP) && (d.TotalMedals <= selectedMedalsTwoSPMax); }
+                  }else if(checkedBooleanOne == true && checkedBooleanTwo == false && checkedBooleanThree == true){
+                    medalsFilter = d => {
+                      return (((d.TotalMedals >= selectedMedalsOneSP) && (d.TotalMedals <= selectedMedalsOneSPMax)) || (d.TotalMedals >= selectedMedalsThreeSP));
+                  }
+                }
+              }
+
                 function filterData(scatterdata) {
                     newData = [];
                     scatterdata.forEach(d => {
                         if (seasonFilter(d) && genderFilter(d) && sportFilter(d) &&
                             yearFilter(d) && nationalityFilter(d) && eventFilter(d) &&
-                            ageFilter(d) && heightFilter(d) && weightFilter(d)) {
+                            ageFilter(d) && heightFilter(d) && weightFilter(d) && medalsFilter(d)) {
                             newData.push(d)
                         }
                     })
                     return newData;
+                }
+
+                // resetFiltersToTrue()
+                function resetFiltersToTrue(){
+                  seasonFilter = d => {
+                      return true;
+                  }
+                  genderFilter = d => {
+                      return true;
+                  }
+                  sportFilter = d => {
+                      return true;
+                  }
+                  eventFilter = d => {
+                      return true;
+                  }
+                  nationalityFilter = d => {
+                      return true;
+                  }
+                  ageFilter = d => {
+                      return true;
+                  }
+                  yearFilter = d => {
+                      return true;
+                  }
+                  heightFilter = d => {
+                      return true;
+                  }
+                  weightFilter = d => {
+                      return true;
+                  }
                 }
 
                 // **************************************************************************************************************
@@ -1601,12 +1701,8 @@
 
                 function errorhandling_generateSP() {
                     try {
-                        console.log("sport = " + sportInitialSelect)
-                        console.log("gender = " + genderInitialSelect)
-                        console.log("season = " + seasonInitialSelect)
                         if ((sportInitialSelect == 1) && (genderInitialSelect == 1) && (seasonInitialSelect == 1)) {
                             let newData = filterData(medalistProfileData)
-                            console.log(newData)
                             generateSP(newData);
                         } else {
                             resetSPGraph()
@@ -1637,6 +1733,7 @@
 
                     //Update Saved Movies
                     circles.on("click", function(event, d) {
+                      console.log(d)
                         updateProfilePanel(d)
                     });
                 }
@@ -1648,24 +1745,18 @@
                     document.getElementById("selectNationalitySP").innerHTML = "";
                     document.getElementById("selectEventSP").innerHTML = "";
                     document.getElementById("selectSportSP").innerHTML = "";
-                    document.getElementById("year-slider-range").innerHTML = "";
-                    document.getElementById("age-slider-range").innerHTML = "";
-                    document.getElementById("height-slider-range").innerHTML = "";
-                    document.getElementById("weight-slider-range").innerHTML = "";
-                    ageFilter = d => {
-                        return true;
-                    }
-                    heightFilter = d => {
-                        return true;
-                    }
-                    yearFilter = d => {
-                        return true;
-                    }
-                    weightFilter = d => {
-                        return true;
-                    }
-                    initialStateSP() //resets all dropdowns
-                        //resets all radio buttons to not checked
+
+                    //Sets all sliders to intiial min and max
+                    yearSlider.min(yearMin).max(yearMax).default([yearMin, yearMax]).value([yearMin, yearMax]);
+                    yearSliderSVG.call(yearSlider);
+                    ageSlider.min(ageMin).max(ageMax).default([ageMin, ageMax]).value([ageMin, ageMax]);
+                    ageSliderSVG.call(ageSlider);
+                    heightSlider.min(heightMin).max(heightMax).default([heightMin, heightMax]).value([heightMin, heightMax]);
+                    heightSliderSVG.call(heightSlider);
+                    weightSlider.min(weightMin).max(weightMax).default([weightMin, weightMax]).value([weightMin, weightMax]);
+                    weightSliderSVG.call(weightSlider);
+
+                    //resets all radio buttons to not checked
                     var seasonRadioList = document.getElementsByName('seasonSP');
                     for (var i = 0; i < seasonRadioList.length; i++) {
                         if (seasonRadioList[i].checked) seasonRadioList[i].checked = false;
@@ -1674,19 +1765,24 @@
                     for (var i = 0; i < genderRadioList.length; i++) {
                         if (genderRadioList[i].checked) genderRadioList[i].checked = false;
                     }
+
+                    //resets selected indicators so that error text will work
                     seasonInitialSelect = 0;
                     genderInitialSelect = 0;
                     sportInitialSelect = 0;
+
                     //resets all checkboxes to checked
                     d3.select('#medalsOne').property('checked', true);
                     d3.select('#medalsTwo').property('checked', true);
                     d3.select('#medalsThree').property('checked', true);
-                    resetSPGraph()
+
+                    resetFiltersToTrue() //resets filter dependencies data to all
+                    initialStateSP() //resets all dropdowns
+                    resetSPGraph() //removes dots from scatterplot
                 }
 
                 //Resets all filters
                 function resetSPGraph() {
-                    console.log("remove circles")
                     areaSP.selectAll("circle.point").remove();
                 }
 
@@ -1698,7 +1794,7 @@
                 const medalsScale = d3.scaleLinear().domain(medalsExtent).range([3, 50]);
 
                 var goldColor = "#e6c90d";
-                var silverColor = "#e0dfd2";
+                var silverColor = "#e0e0e0";
                 var bronzeColor = "#c16e00";
                 var noMedalsColor = "#7cdaeb";
 
@@ -1865,47 +1961,48 @@
 
                 function updateProfilePanel(d) {
                     d.EventMedals.forEach(p => {
-                        console.log(p)
-                        console.log(p.Event)
-                            // if (p.EventMedals.match(/Mixed/) != null) {
-                            //     d["Event"] = "Mixed " + d.Event.split('Mixed ').pop().trim();
-                            // } else if (d.Event.match(/men's/) != null) {
-                            //     d["Event"] = d.Event.split("men's ").pop().trim();
-                            // } else {
-                            //     d["Event"] = d.Event.split("Men's ").pop().trim();
-                            // }
+                        if (p.Event.match(/Mixed/) != null) {
+                            p["Event"] = "Mixed " + p.Event.split('Mixed ').pop().trim();
+                        } else if (p.Event.match(/men's/) != null) {
+                            p["Event"] = p.Event.split("men's ").pop().trim();
+                        } else {
+                            p["Event"] = p.Event.split("Men's ").pop().trim();
+                        }
                     })
                     d3.select("#profilePanelSPIntro")
                         .html("<h4><b>" + d.NOC + "</b></h4>" +
                             "<h4><b>" + d.Name + "</b></h4>");
 
+                    YearsCompetedMax = Math.max(...d.YearsCompeted) //finding the athlete's first year of the Olympics
+                    YearsCompetedMin = Math.min(...d.YearsCompeted) //finding the athlete's last year of the Olympics
+
                     d3.select("#profilePanelSPIntroStats")
                         .html("<p><b>Stats:</b></p>" +
-                            "<p>" + d.YearsCompeted.length + " Olympics</p>" +
+                            "<p>" + d.YearsCompeted.length + " Olympics ("+ YearsCompetedMin + " - " + YearsCompetedMax + ")</p>" +
                             "<p>" + d.TotalMedals + " Medals</p>" +
                             "<p>" + parseFloat((d.TotalMedals / d.TotalOlympicEvents) * 100).toFixed(0) + "% Success Rate</p>");
 
-                    // d3.select("#profilePanelSPTraitsIcon").selectAll("svg:image").remove()
+                    d3.selectAll("#profilePanelSPTraitsIcon > *").remove();
                     var profilePanelSPGenderIcon = d3.select("#profilePanelSPTraitsIcon").append("svg")
                         .attr("class", "profilePanelSPGenderIcon")
-                        .attr("width", 100)
-                        .attr("height", 100);
+                        .attr("width", 150)
+                        .attr("height", 150);
 
                     var iconSP = profilePanelSPGenderIcon.append("g");
 
                     if (d.Sex == "F") {
                         var img = iconSP.append("svg:image")
                             .attr("xlink:href", "Images/female.svg")
-                            .attr("width", 100)
-                            .attr("height", 100)
+                            .attr("width", 150)
+                            .attr("height", 150)
                             .style("fill", "white")
                             .attr("x", 10)
                             .attr("y", 10);
                     } else {
                         var img = iconSP.append("svg:image")
                             .attr("xlink:href", "Images/male.svg")
-                            .attr("width", 100)
-                            .attr("height", 100)
+                            .attr("width", 150)
+                            .attr("height", 150)
                             .style("stroke", "white")
                             .attr("x", 10)
                             .attr("y", 10);
@@ -1926,24 +2023,35 @@
                         })
                     });
 
+                    var maxYBar = 0; //Storing the highest Y-axis value of a bar to use as the # of ticks on the Y Axis
+                    //For loops to add starting Y-axis values for stacked bars
                     for (i = 0; i < stackdata.length; i++) {
                         if (i == 0) {
                             for (j = 0; j < stackdata[i].length; j++) {
                                 stackdata[i][j]["y0"] = 0;
                             }
-                        } else {
-                            for (j = 0; j < stackdata[i].length; j++) {
-                                stackdata[i][j]["y0"] = (stackdata[i - 1][j]["y"] + stackdata[i - 1][j]["y0"]);
-                            }
+                        }else if(i==3){
+                          for (j = 0; j < stackdata[i].length; j++) {
+                              stackdata[i][j]["y0"] = (stackdata[i - 1][j]["y"] + stackdata[i - 1][j]["y0"]);
+                              if(maxYBar<(stackdata[i][j]["y0"]+stackdata[i][j]["y"])){
+                                maxYBar = stackdata[i][j]["y0"]+stackdata[i][j]["y"];
+                              }
+                          }
+                        }else{
+                          for (j = 0; j < stackdata[i].length; j++) {
+                              stackdata[i][j]["y0"] = (stackdata[i - 1][j]["y"] + stackdata[i - 1][j]["y0"]);
+                          }
                         }
                     }
+
+                    d3.selectAll("#profilePanelSPSVG > *").remove(); //Removes previous bar chart
                     const barGraphSP = d3.select("svg#profilePanelSPSVG")
                     const barWidthSP = barGraphSP.attr("width");
                     const barHeightSP = barGraphSP.attr("height");
                     var barMarginSP = {
                         top: 10,
                         right: 10,
-                        bottom: 50,
+                        bottom: 100,
                         left: 50
                     };
                     const barMarginWidth = barWidthSP - barMarginSP.left - barMarginSP.right;
@@ -1958,7 +2066,7 @@
 
                     var x = d3.scaleBand()
                         .rangeRound([0, barMarginWidth])
-                        .padding(0.1);
+                        .padding(0.2);
 
                     var y = d3.scaleLinear()
                         .rangeRound([barMarginHeight, 0]);
@@ -1966,7 +2074,10 @@
                     var color = [goldColor, silverColor, bronzeColor, noMedalsColor]
 
                     var xAxis = d3.axisBottom()
-                        .scale(x);
+                        .scale(x).tickSizeInner(5).tickSizeOuter(0);
+
+                    var yAxis = d3.axisLeft()
+                        .scale(y).tickSizeInner(0).tickSizeOuter(0).ticks(maxYBar);
 
                     x.domain(stackdata[0].map(function(d) {
                         return d.x;
@@ -2002,13 +2113,73 @@
                         .attr("height", function(d) {
                             return y(d.y0) - y(d.y + d.y0);
                         })
-                        .attr("width", 20)
+                        .attr("width", x.bandwidth())
                         .style("stroke", "lightgray");
 
+
                     barGraphSPBars.append("g")
-                        .attr("class", "axis")
+                      .attr("class", "y-axis-bars")
+                      .attr("transform", "translate(0,0)")
+                      .call(yAxis)
+                      .selectAll(".tick text")
+                      .style("font-size","12px")
+                      .style("text-anchor", "center")
+                      .attr("font-family","monaco, Consolas, Lucida Console, monospace");
+
+                    barGraphSPBars.append("g")
+                        .attr("class", "x-axis-bars")
                         .attr("transform", "translate(0," + barMarginHeight + ")")
-                        .call(xAxis);
+                        .call(xAxis)
+                        .selectAll(".tick text")
+                        .style("font-size","11px")
+                        .style("text-anchor", "center")
+                        .attr("font-family","monaco, Consolas, Lucida Console, monospace")
+                        .call(wrap, 40);
+
+                    barGraphSPBars.append("text")
+                        .attr("class", "y-axis-bar-labels")
+                        .attr("text-anchor", "middle")
+                        .attr("y", -30)
+                        .attr("x", (-barHeightSP / 2)+50)
+                        .attr("dy", "0.25em")
+                        .attr("transform", "rotate(-90)")
+                        .style("font-size", "13px")
+                        .style("fill", "white")
+                        .text("# of Medals");
+
+                    barGraphSPBars.append("text")
+                        .attr("class", "x-axis-bar-labels")
+                        .attr("text-anchor", "middle")
+                        .attr("x", (barWidthSP / 2) - 30)
+                        .attr("y", barHeightSP - 20)
+                        .style("font-size", "13px")
+                        .style("fill", "white")
+                        .text("Events");
+
+                    //Inspiration from "Wrapping Long Labels" by Mike Bostock: https://bl.ocks.org/mbostock/7555321
+                    function wrap(text, width) {
+                        text.each(function() {
+                          var text = d3.select(this),
+                              words = text.text().split(/\s+/).reverse(),
+                              word,
+                              line = [],
+                              lineNumber = 0,
+                              lineHeight = 1.1, // ems
+                              y = text.attr("y"),
+                              dy = parseFloat(text.attr("dy")),
+                              tspan = text.text(null).append("tspan").attr("x", 0).attr("y", y).attr("dy", dy + "em");
+                          while (word = words.pop()) {
+                            line.push(word);
+                            tspan.text(line.join(" "));
+                            if (tspan.node().getComputedTextLength() > width) {
+                              line.pop();
+                              tspan.text(line.join(" "));
+                              line = [word];
+                              tspan = text.append("tspan").attr("x", 0).attr("y", y).attr("dy", ++lineNumber * lineHeight + dy + "em").text(word);
+                            }
+                          }
+                        });
+                      }
                 }
 
                 // <!-- ************************************************************************ -->
