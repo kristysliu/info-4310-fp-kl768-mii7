@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang='en'>
+
+<head>
+    <meta charset='UTF-8'>
+    <script src="https://d3js.org/d3.v6.min.js"></script>
+    <script src="https://unpkg.com/d3-simple-slider"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3-legend/2.25.6/d3-legend.min.js"></script>
+    <script src="https://unpkg.com/topojson@3"></script>
+    <title>INFO4310 Final Project</title>
+</head>
+
+<body>
+    <h3>Map Dictionary Construction Script</h3>
+
+    <script>
+        const requestData = async function() {
+
+            var map_data = await d3.csv('athlete_events_filtered.csv', d3.autoType);
+            var iso_data = await d3.csv('iso_3digit_alpha_country_codes.csv', d3.autoType);
+
+            // Create World Dictionary for Map Visualization
+            var world_dict = {};
+            map_data.forEach(d => {
+
+                if (!world_dict.hasOwnProperty(d["NOC"])) {
+                    world_dict[d["NOC"]] = {};
+                }
+                if (!world_dict[d["NOC"]].hasOwnProperty(d["Year"])) {
+                    world_dict[d["NOC"]][d["Year"]] = {};
+                }
+                if (!world_dict[d["NOC"]][d["Year"]].hasOwnProperty("Summer")) {
+                    world_dict[d["NOC"]][d["Year"]]["Summer"] = {};
+                }
+                if (!world_dict[d["NOC"]][d["Year"]].hasOwnProperty("Winter")) {
+                    world_dict[d["NOC"]][d["Year"]]["Winter"] = {};
+                }
+                if (!world_dict[d["NOC"]][d["Year"]]["Summer"].hasOwnProperty("Gold")) {
+                    world_dict[d["NOC"]][d["Year"]]["Summer"]["Gold"] = {};
+                }
+                if (!world_dict[d["NOC"]][d["Year"]]["Winter"].hasOwnProperty("Gold")) {
+                    world_dict[d["NOC"]][d["Year"]]["Winter"]["Gold"] = {};
+                }
+                if (!world_dict[d["NOC"]][d["Year"]]["Summer"].hasOwnProperty("Silver")) {
+                    world_dict[d["NOC"]][d["Year"]]["Summer"]["Silver"] = {};
+                }
+                if (!world_dict[d["NOC"]][d["Year"]]["Winter"].hasOwnProperty("Silver")) {
+                    world_dict[d["NOC"]][d["Year"]]["Winter"]["Silver"] = {};
+                }
+                if (!world_dict[d["NOC"]][d["Year"]]["Summer"].hasOwnProperty("Bronze")) {
+                    world_dict[d["NOC"]][d["Year"]]["Summer"]["Bronze"] = {};
+                }
+                if (!world_dict[d["NOC"]][d["Year"]]["Winter"].hasOwnProperty("Bronze")) {
+                    world_dict[d["NOC"]][d["Year"]]["Winter"]["Bronze"] = {};
+                }
+                //Only create list for sport if its within the right season 
+                if (!world_dict[d["NOC"]][d["Year"]]["Summer"]["Gold"].hasOwnProperty(d["Sport"])) {
+                    if (d["Season"] == "Summer" && d["Medal"] == "Gold") {
+                        world_dict[d["NOC"]][d["Year"]]["Summer"]["Gold"][d["Sport"]] = [];
+                    }
+                }
+                if (!world_dict[d["NOC"]][d["Year"]]["Winter"]["Gold"].hasOwnProperty(d["Sport"])) {
+                    if (d["Season"] == "Winter" && d["Medal"] == "Gold") {
+                        world_dict[d["NOC"]][d["Year"]]["Winter"]["Gold"][d["Sport"]] = [];
+                    }
+                }
+                if (!world_dict[d["NOC"]][d["Year"]]["Summer"]["Silver"].hasOwnProperty(d["Sport"])) {
+                    if (d["Season"] == "Summer" && d["Medal"] == "Silver") {
+                        world_dict[d["NOC"]][d["Year"]]["Summer"]["Silver"][d["Sport"]] = [];
+                    }
+                }
+                if (!world_dict[d["NOC"]][d["Year"]]["Winter"]["Silver"].hasOwnProperty(d["Sport"])) {
+                    if (d["Season"] == "Winter" && d["Medal"] == "Silver") {
+                        world_dict[d["NOC"]][d["Year"]]["Winter"]["Silver"][d["Sport"]] = [];
+                    }
+                }
+                if (!world_dict[d["NOC"]][d["Year"]]["Summer"]["Bronze"].hasOwnProperty(d["Sport"])) {
+                    if (d["Season"] == "Summer" && d["Medal"] == "Bronze") {
+                        world_dict[d["NOC"]][d["Year"]]["Summer"]["Bronze"][d["Sport"]] = [];
+                    }
+                }
+                if (!world_dict[d["NOC"]][d["Year"]]["Winter"]["Bronze"].hasOwnProperty(d["Sport"])) {
+                    if (d["Season"] == "Winter" && d["Medal"] == "Bronze") {
+                        world_dict[d["NOC"]][d["Year"]]["Winter"]["Bronze"][d["Sport"]] = [];
+                    }
+                }
+                if (!world_dict[d["NOC"]][d["Year"]]["Summer"]["Gold"].hasOwnProperty("All")) {
+                    world_dict[d["NOC"]][d["Year"]]["Summer"]["Gold"]["All"] = 0;
+                }
+                if (!world_dict[d["NOC"]][d["Year"]]["Winter"]["Gold"].hasOwnProperty("All")) {
+                    world_dict[d["NOC"]][d["Year"]]["Winter"]["Gold"]["All"] = 0;
+                }
+                if (!world_dict[d["NOC"]][d["Year"]]["Summer"]["Silver"].hasOwnProperty("All")) {
+                    world_dict[d["NOC"]][d["Year"]]["Summer"]["Silver"]["All"] = 0;
+                }
+                if (!world_dict[d["NOC"]][d["Year"]]["Winter"]["Silver"].hasOwnProperty("All")) {
+                    world_dict[d["NOC"]][d["Year"]]["Winter"]["Silver"]["All"] = 0;
+                }
+                if (!world_dict[d["NOC"]][d["Year"]]["Summer"]["Bronze"].hasOwnProperty("All")) {
+                    world_dict[d["NOC"]][d["Year"]]["Summer"]["Bronze"]["All"] = 0;
+                }
+                if (!world_dict[d["NOC"]][d["Year"]]["Winter"]["Bronze"].hasOwnProperty("All")) {
+                    world_dict[d["NOC"]][d["Year"]]["Winter"]["Bronze"]["All"] = 0;
+                }
+                if (!world_dict[d["NOC"]][d["Year"]].hasOwnProperty("Total")) {
+                    world_dict[d["NOC"]][d["Year"]]["Total"] = 0;
+                }
+                if (!world_dict[d["NOC"]][d["Year"]].hasOwnProperty("All_Gold")) {
+                    world_dict[d["NOC"]][d["Year"]]["All_Gold"] = 0;
+                }
+                if (!world_dict[d["NOC"]][d["Year"]].hasOwnProperty("All_Silver")) {
+                    world_dict[d["NOC"]][d["Year"]]["All_Silver"] = 0;
+                }
+                if (!world_dict[d["NOC"]][d["Year"]].hasOwnProperty("All_Bronze")) {
+                    world_dict[d["NOC"]][d["Year"]]["All_Bronze"] = 0;
+                } else {
+                    if (d["Medal"] == "Gold" && d["Season"] == "Summer") {
+                        world_dict[d["NOC"]][d["Year"]]["Summer"]["Gold"]["All"] += 1;
+                        world_dict[d["NOC"]][d["Year"]]["Summer"]["Gold"][d["Sport"]].push(d.Event);
+                        world_dict[d["NOC"]][d["Year"]]["Total"] += 1;
+                        world_dict[d["NOC"]][d["Year"]]["All_Gold"] += 1;
+                    }
+                    if (d["Medal"] == "Gold" && d["Season"] == "Winter") {
+                        world_dict[d["NOC"]][d["Year"]]["Winter"]["Gold"]["All"] += 1;
+                        world_dict[d["NOC"]][d["Year"]]["Winter"]["Gold"][d["Sport"]].push(d.Event);
+                        world_dict[d["NOC"]][d["Year"]]["Total"] += 1;
+                        world_dict[d["NOC"]][d["Year"]]["All_Gold"] += 1;
+                    }
+                    if (d["Medal"] == "Silver" && d["Season"] == "Summer") {
+                        world_dict[d["NOC"]][d["Year"]]["Summer"]["Silver"]["All"] += 1;
+                        world_dict[d["NOC"]][d["Year"]]["Summer"]["Silver"][d["Sport"]].push(d.Event);
+                        world_dict[d["NOC"]][d["Year"]]["Total"] += 1;
+                        world_dict[d["NOC"]][d["Year"]]["All_Silver"] += 1;
+                    }
+                    if (d["Medal"] == "Silver" && d["Season"] == "Winter") {
+                        world_dict[d["NOC"]][d["Year"]]["Winter"]["Silver"]["All"] += 1;
+                        world_dict[d["NOC"]][d["Year"]]["Winter"]["Silver"][d["Sport"]].push(d.Event);
+                        world_dict[d["NOC"]][d["Year"]]["Total"] += 1;
+                        world_dict[d["NOC"]][d["Year"]]["All_Silver"] += 1;
+                    }
+                    if (d["Medal"] == "Bronze" && d["Season"] == "Summer") {
+                        world_dict[d["NOC"]][d["Year"]]["Summer"]["Bronze"]["All"] += 1;
+                        world_dict[d["NOC"]][d["Year"]]["Summer"]["Bronze"][d["Sport"]].push(d.Event);
+                        world_dict[d["NOC"]][d["Year"]]["Total"] += 1;
+                        world_dict[d["NOC"]][d["Year"]]["All_Bronze"] += 1;
+                    }
+                    if (d["Medal"] == "Bronze" && d["Season"] == "Winter") {
+                        world_dict[d["NOC"]][d["Year"]]["Winter"]["Bronze"]["All"] += 1;
+                        world_dict[d["NOC"]][d["Year"]]["Winter"]["Bronze"][d["Sport"]].push(d.Event);
+                        world_dict[d["NOC"]][d["Year"]]["Total"] += 1;
+                        world_dict[d["NOC"]][d["Year"]]["All_Bronze"] += 1;
+                    }
+                }
+            });
+
+            ioc_data.forEach(d => {
+                if (d["IOC"] in world_dict) {
+                    world_dict[d["IOC"]]["Name"] = d["Country"];
+                }
+            });
+        }
+        requestData();
+    </script>
+</body>
+
+</html>
