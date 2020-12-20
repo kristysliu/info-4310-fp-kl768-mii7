@@ -982,39 +982,15 @@
                 });
 
                 var map_data = await d3.csv('athlete_events_filtered.csv', d3.autoType);
-                var iso_data = await d3.csv('iso_3digit_alpha_country_codes.csv', d3.autoType);
+                var ioc_data = await d3.csv('ioc_data.csv', d3.autoType);
 
-                // Create World Dictionary for Map Visualization
-                var world_dict = {};
-                map_data.forEach(d => {
-                    if (!world_dict.hasOwnProperty(d["NOC"])) {
-                        world_dict[d["NOC"]] = {};
-                    }
-                    if (!world_dict[d["NOC"]].hasOwnProperty(d["Year"])) {
-                        world_dict[d["NOC"]][d["Year"]] = {};
-                    }
-                    if (!world_dict[d["NOC"]][d["Year"]].hasOwnProperty("Gold")) {
-                        world_dict[d["NOC"]][d["Year"]]["Gold"] = 0;
-                    }
-                    if (!world_dict[d["NOC"]][d["Year"]].hasOwnProperty("Silver")) {
-                        world_dict[d["NOC"]][d["Year"]]["Silver"] = 0;
-                    }
-                    if (!world_dict[d["NOC"]][d["Year"]].hasOwnProperty("Bronze")) {
-                        world_dict[d["NOC"]][d["Year"]]["Bronze"] = 0;
-                    }
-                    if (!world_dict[d["NOC"]][d["Year"]].hasOwnProperty("Total")) {
-                        world_dict[d["NOC"]][d["Year"]]["Total"] = 0;
-                    } else {
-                        if (d["Medal"] == "Gold") {
-                            world_dict[d["NOC"]][d["Year"]]["Gold"] += 1;
-                        }
-                        if (d["Medal"] == "Silver") {
-                            world_dict[d["NOC"]][d["Year"]]["Silver"] += 1;
-                        }
-                        if (d["Medal"] == "Bronze") {
-                            world_dict[d["NOC"]][d["Year"]]["Bronze"] += 1;
-                        }
-                        world_dict[d["NOC"]][d["Year"]]["Total"] = world_dict[d["NOC"]][d["Year"]]["Bronze"] + world_dict[d["NOC"]][d["Year"]]["Silver"] + world_dict[d["NOC"]][d["Year"]]["Gold"];
+                //World Map Dictionary
+                const world_dict = await d3.json('world_map.json', d3.autoType);
+
+                var olympic_countries_list = [];
+                ioc_data.forEach(d => {
+                    if (d["IOC"] in world_dict) {
+                        olympic_countries_list.push(d["Country"])
                     }
                 });
 
@@ -1111,7 +1087,7 @@
 
                 // Finding default data for dropdowns
                 var allSport = []
-                var allNationality = Object.keys(world_dict);
+                var allNationality = olympic_countries_list;
                 var allEvent = []
                 // eventsDataSP.forEach(d => { //delete
                 //     if (!allSport.includes(d['Sport'])) {
@@ -1278,8 +1254,6 @@
                             return d;
                         })
                 }
-
-
 
                 // **************************************************************************************************************
 
@@ -2185,19 +2159,12 @@
                 // <!-- ************************************************************************ -->
                 // <!--                     MAP VISUALIZATION DATA FILTERING                     -->
                 // <!-- ************************************************************************ -->
-
-
-                console.log("world_dict");
-                console.log(world_dict);
+                // console.log("map_data");
                 // console.log(map_data);
-                // console.log(iso_data);
-                // console.log(medalistProfileData);
-                // console.log(medalistEventsData);
-                // console.log("medalistEventsDataDict");
-                // console.log(medalistEventsDataDict);
-                // console.log(eventsDataSP);
+                // console.log("world_dict");
+                console.log(world_dict);
 
-                // Creating Drop Down Options
+                // Creating default sports options
                 var mapSports = []
 
                 medalistProfileData.forEach(d => {
@@ -2219,6 +2186,96 @@
                     .attr("value", function(d) {
                         return d;
                     });
+
+
+                // Change sports options according to Season selection
+                d3.select(".seasonMP").on("change", function(d) {
+                    changeMapSeason(updatedSports)
+                });
+
+                d3.select("#selectSportMP").on("change", function(d) {
+                    errorhandling_generateSP()
+                });
+
+                function changeMapSeason(updatedSports) {
+                    updatedSports.sort();
+                    updatedSports.unshift("All Sports")
+                    console.log(updatedSports)
+                    document.getElementById("selectSportMP").innerHTML = "";
+                    d3.select("#selectSportMP")
+                        .selectAll('myOptions')
+                        .data(updatedSports)
+                        .enter()
+                        .append('option')
+                        .text(function(d) {
+                            return d;
+                        })
+                        .attr("value", function(d) {
+                            return d;
+                        })
+                }
+
+                function filterData_season_sport(map_datapoints) {
+                    let newData1 = [];
+                    let newData2 = [];
+                    map_datapoints.forEach(d => {
+                        if (seasonFilter(d) && genderFilter(d)) {
+                            newData1.push(d)
+                        }
+                        if (seasonFilter(d) && genderFilter(d) && sportFilter(d)) {
+                            newData2.push(d)
+                        }
+                    })
+                    return [newData1, newData2];
+                }
+
+                // Updating Filter Options
+                function updateFiltersMP() {
+                    var updateFiltersData = filterData_season_gender(medalistProfileData)
+                        // console.log(medalistProfileData.length)
+                        // console.log(updateFiltersData.length)
+                        // Updating Drop Down Options
+                    var allSportUpdated = []
+                    var allEventUpdated = []
+                    var allEventUpdated2 = []
+                    updateFiltersData[1].forEach(d => {
+                        for (event in d['Events']) {
+                            if (!allEventUpdated.includes(d['Events'][event])) {
+                                allEventUpdated.push(d['Events'][event])
+                            }
+                        }
+                        if (!allNationalityUpdated.includes(d['NOC'])) {
+                            allNationalityUpdated.push(d['NOC'])
+                        }
+                    });
+                    updateFiltersData[0].forEach(d => {
+                        if (!allSportUpdated.includes(d['Sport'])) {
+                            allSportUpdated.push(d['Sport'])
+                        }
+                        for (event in d['Events']) {
+                            if (!allEventUpdated2.includes(d['Events'][event])) {
+                                allEventUpdated2.push(d['Events'][event])
+                            }
+                        }
+                        if (!allNationalityUpdated2.includes(d['NOC'])) {
+                            allNationalityUpdated2.push(d['NOC'])
+                        }
+                    });
+
+                    if (lastSelected == "season") {
+                        changeSeasonFilter(allSportUpdated)
+                        changeNationalityAndEventFilter(allNationalityUpdated2, allEventUpdated2)
+                        sportInitialSelect = 0;
+                        eventFilter = d => {
+                            return true;
+                        }
+                        nationalityFilter = d => {
+                            return true;
+                        }
+                    } else {
+                        changeNationalityAndEventFilter(allNationalityUpdated, allEventUpdated)
+                    }
+                }
 
                 // mapSports.unshift("Select Sport")
 
