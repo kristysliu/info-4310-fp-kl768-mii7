@@ -2237,9 +2237,6 @@
                 // <!--                     MAP VISUALIZATION DATA FILTERING                     -->
                 // <!-- ************************************************************************ -->
 
-                // console.log(world_dict);
-                // console.log(medalistProfileData);
-
                 // Creating default drop down options
                 var mapSports = [];
                 var summerSports = [];
@@ -2267,6 +2264,7 @@
                 mapEvents.push("All Events")
                 mapEvents.sort()
                 var lastSelectedMapSport = "All Sports";
+                var last_yearSelected = 1;
 
                 //Custom function that changes a select element's option 
                 //inspired by https://thisinterestsme.com/change-select-option-javascript/
@@ -2330,18 +2328,19 @@
                 OptEventMP(mapEvents);
 
                 //Data filters
-                // var seasonMapFilter = d => {
-                //     return true;
-                // }
-                // var sportMapFilter = d => {
-                //     return true;
-                // }
-                // var eventMapFilter = d => {
-                //     return true;
-                // }
-                // var medalsMapFilter = d => {
-                //     return true;
-                // }
+                var seasonMapFilter = d => {
+                    return true;
+                };
+                var sportMapFilter = d => {
+                    return true;
+                };
+                var eventMapFilter = d => {
+                    return true;
+                };
+                var medalsMapFilter = d => {
+                    return true;
+                };
+
                 // var yearMapFilter = d => {
                 //     return true;
                 // }
@@ -2353,32 +2352,23 @@
                     filteredData = {};
 
                     Object.entries(world_dict).forEach(([key, value]) => {
-                        // console.log(year);
-                        // console.log(key, value[year], value[year + 0], value[`${year}`]);
+                        console.log(value);
                         var country = world_dict[key]["Name"];
-                        // console.log(country);
-                        // console.log(Object.getOwnPropertyNames(d["NOC"]));
-                        // var mapCountries = Object.keys(map_data);
-
-                        // if (country = undefined) {
-                        //     console.log(d); //can't figure out what's undefined...
-                        // }
 
                         if (!filteredData.hasOwnProperty(country)) {
-
                             if (world_dict[key].hasOwnProperty(year)) {
-                                // filteredData.push([world_dict[d["NOC"]]["Name"], world_dict[d["NOC"]][yearSelected]["Total"]]);
-                                // if (yearSelected == 1944 && world_dict[d["NOC"]].hasOwnProperty("1948")) {
-                                //     filteredData[country] = world_dict[d["NOC"]][1948]["Total"];
-                                // } else if (world_dict[d["NOC"]][1948] == null) {
-                                //     filteredData[country] = 0;
-                                // } 
+
+                                if (seasonMapFilter(value[year]["Summer"]) && sportMapFilter(value) && eventMapFilter(value) &&
+                                    medalsMapFilter(value)) {
+                                    filteredData[country] = world_dict[key][year]["Total"];
+                                }
 
                                 filteredData[country] = world_dict[key][year]["Total"];
                             }
                         }
                     });
                     console.log(filteredData);
+                    return filteredData;
                 }
 
                 // Change Sports options and Filter Data according to Season selection
@@ -2387,24 +2377,24 @@
 
                     if (checkedBoxes.length == 0 || checkedBoxes.length == 2) {
                         OptSportMP(mapSports);
-                        // seasonMapFilter = d => {
-                        //     return (d.Total) //figure out data and whether to use true false or count.
-                        // };
+                        seasonMapFilter = d => {
+                            return (d["Total"])
+                        };
                     } else if (checkedBoxes.length == 1) {
                         if (checkedBoxes[0].value == "Summer") {
                             OptSportMP(summerSports);
-                            // seasonMapFilter = d => {
-                            //     return (d.Summer.Total)
-                            // };
+                            seasonMapFilter = d => {
+                                return (d[last_yearSelected]["Summer"]["Total"])
+                            };
                         }
                         if (checkedBoxes[0].value == "Winter") {
                             OptSportMP(winterSports);
-                            // seasonMapFilter = d => {
-                            //     return (d.Winter.Total)
-                            // };
+                            seasonMapFilter = d => {
+                                return (d[last_yearSelected]["Winter"]["Total"])
+                            };
                         }
                     }
-                    // filterMapData()
+                    filterMapData(last_yearSelected);
                 });
 
                 // Change Events options and Filter Data according to Sports selection
@@ -2427,7 +2417,7 @@
                     } else {
                         OptEventMP(eventsMatch);
                     }
-                    // filterMapData()
+                    // filterMapData(last_yearSelected);
                 });
 
                 // Filter data according to Medal selections
@@ -2438,7 +2428,6 @@
                 });
 
                 // Filter data according to time slider
-                last_yearSelected = 1;
                 sliderTime.on('onchange', val => {
                     // d3.select('p#value-time').text(d3.timeFormat('%Y')(val));
                     yearSelected = val.getFullYear(); //pass as parameter 
