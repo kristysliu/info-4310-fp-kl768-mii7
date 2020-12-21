@@ -923,7 +923,7 @@
                 .sliderBottom()
                 .min(d3.min(dataTime))
                 .max(d3.max(dataTime))
-                .step(1000 * 60 * 60 * 24 * 365 * 8)
+                .step(1000 * 60 * 60 * 24 * 365.25 * 4)
                 .width(900)
                 .tickFormat(d3.timeFormat('%Y'))
                 .tickValues(dataTime)
@@ -1012,7 +1012,8 @@
 
                 //World Map Dictionary
                 const world_dict = await d3.json('world_map.json', d3.autoType);
-                var ioc_data = await d3.csv('ioc_codes.csv', d3.autoType);
+                const map_data = await d3.csv('athlete_events_filtered.csv', d3.autoType);
+                const ioc_data = await d3.csv('ioc_codes.csv', d3.autoType);
 
                 var olympic_countries_list = [];
                 ioc_data.forEach(d => {
@@ -2236,8 +2237,8 @@
                 // <!--                     MAP VISUALIZATION DATA FILTERING                     -->
                 // <!-- ************************************************************************ -->
 
-                console.log(world_dict);
-                console.log(medalistProfileData);
+                // console.log(world_dict);
+                // console.log(medalistProfileData);
 
                 // Creating default drop down options
                 var mapSports = [];
@@ -2345,19 +2346,16 @@
                 //     return true;
                 // }
 
-                var winterSelected;
-                var summerSelected;
-                var yearSelected = 2016;
+                //Initialize slider year and data in the beginning
+                filterMapData(2016)
 
-                var map_data = await d3.csv('athlete_events_filtered.csv', d3.autoType);
-
-                // filterMapData()
-
-                function filterMapData() {
+                function filterMapData(year) {
                     filteredData = {};
 
-                    map_data.forEach(d => {
-                        var country = world_dict[d["NOC"]]["Name"];
+                    Object.entries(world_dict).forEach(([key, value]) => {
+                        // console.log(year);
+                        // console.log(key, value[year], value[year + 0], value[`${year}`]);
+                        var country = world_dict[key]["Name"];
                         // console.log(country);
                         // console.log(Object.getOwnPropertyNames(d["NOC"]));
                         // var mapCountries = Object.keys(map_data);
@@ -2366,19 +2364,20 @@
                         //     console.log(d); //can't figure out what's undefined...
                         // }
 
-                        if (!filteredData.hasOwnProperty(country) && world_dict[d["NOC"]].hasOwnProperty(yearSelected)) {
-                            // filteredData.push([world_dict[d["NOC"]]["Name"], world_dict[d["NOC"]][yearSelected]["Total"]]);
-                            // if (yearSelected == 1944 && world_dict[d["NOC"]].hasOwnProperty("1948")) {
-                            //     filteredData[country] = world_dict[d["NOC"]][1948]["Total"];
-                            // } else if (world_dict[d["NOC"]][1948] == null) {
-                            //     filteredData[country] = 0;
-                            // } 
+                        if (!filteredData.hasOwnProperty(country)) {
 
-                            filteredData[country] = world_dict[d["NOC"]][yearSelected]["Total"];
+                            if (world_dict[key].hasOwnProperty(year)) {
+                                // filteredData.push([world_dict[d["NOC"]]["Name"], world_dict[d["NOC"]][yearSelected]["Total"]]);
+                                // if (yearSelected == 1944 && world_dict[d["NOC"]].hasOwnProperty("1948")) {
+                                //     filteredData[country] = world_dict[d["NOC"]][1948]["Total"];
+                                // } else if (world_dict[d["NOC"]][1948] == null) {
+                                //     filteredData[country] = 0;
+                                // } 
 
+                                filteredData[country] = world_dict[key][year]["Total"];
+                            }
                         }
                     });
-                    console.log(yearSelected);
                     console.log(filteredData);
                 }
 
@@ -2439,10 +2438,15 @@
                 });
 
                 // Filter data according to time slider
+                last_yearSelected = 1;
                 sliderTime.on('onchange', val => {
                     // d3.select('p#value-time').text(d3.timeFormat('%Y')(val));
-                    yearSelected = d3.timeFormat('%Y')(val);
-                    filterMapData()
+                    yearSelected = val.getFullYear(); //pass as parameter 
+                    if (yearSelected != last_yearSelected) {
+                        filterMapData(yearSelected)
+                        console.log(val.getFullYear());
+                    }
+                    last_yearSelected = yearSelected;
                 });
             }
             requestData();
