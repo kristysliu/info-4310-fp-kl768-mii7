@@ -2219,6 +2219,9 @@
 
                 function OptEventMP(events) {
                     events.sort();
+                    if (events.length < mapEvents.length) {
+                        events.unshift("Select Event");
+                    }
                     document.getElementById("selectEventMP").innerHTML = "";
                     d3.select("#selectEventMP")
                         .selectAll('myOptions')
@@ -2274,6 +2277,10 @@
                         OptEventMP(eventsMatch);
                     }
                 });
+
+                //Data filters
+
+
             }
             requestData();
         </script>
