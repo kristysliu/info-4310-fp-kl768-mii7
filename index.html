@@ -100,6 +100,14 @@
             padding-bottom: 2vh;
         }
 
+        #radialPanel {
+            background: #1f0917;
+            /* position: absolute; */
+            left: 0;
+            right: 0;
+            color: white;
+        }
+
         #scatterplotPanel {
             background: #14284a;
             position: absolute;
@@ -439,7 +447,7 @@
             height: 250px;
             width: 300px;
             padding-top: 20px;
-            padding-left: 20px;
+            padding-left: 35px;
         }
 
         #profilePanelSPIntroStats p {
@@ -617,18 +625,18 @@
             <div class="olympicsflexcontainertoc">
                 <div class="olympicsflexcontainer1">
                     <div class="toc_textbox_r1">
-                        <a href="#mapPanel" class="toc_text">1. How the Olympics Have Changed Since 1896</a>
+                        <a href="#radialPanel" class="toc_text">1. Introduction to the Olympics</a>
                     </div>
                     <div class="toc_textbox_r1">
-                        <a href="#mapPanel" class="toc_text">2. World Map of Olympics Results</a>
+                        <a href="#radialPanel" class="toc_text">2. How the Olympics Have Changed Since 1896</a>
                     </div>
                     <div class="toc_textbox_r1">
-                        <a href="#scatterplotPanel" class="toc_text">3. Athlete Profiles</a>
+                        <a href="#mapPanel" class="toc_text">3. World Map of Olympics Results</a>
                     </div>
                 </div>
                 <div class="olympicsflexcontainer2">
                     <div class="toc_textbox_r2">
-                        <a href="#savedAthletesTablePanel" class="toc_text">4. Saved Athletes</a>
+                      <a href="#scatterplotPanel" class="toc_text">4. Athlete Profiles</a>
                     </div>
                     <div class="toc_textbox_r2">
                         <a href="#scatterplotPanel" class="toc_text">5. Citations</a>
@@ -637,6 +645,18 @@
             </div>
         </div>
         <hr class="solid">
+
+        <!-- ********************************** -->
+        <!--         Radial Charts VISUALIZATION          -->
+        <!-- ********************************** -->
+        <div id="radialPanel">
+            <h1 class="sectionTitles">How the Olympics Have Changed Since 1896</h1>
+            <!-- Section 1: Scatterplot Filters Panel -->
+            <div id="radialFlexContainer">
+              <svg id="FSradialSVG" height="200" width="200"></svg>
+            </div>
+        </div>
+
         <!-- ********************************** -->
         <!--         MAP VISUALIZATION          -->
         <!-- ********************************** -->
@@ -852,6 +872,20 @@
 
         <script>
             /**************************************************
+             *****        Radial Chart Visualizations     *****
+             **************************************************/
+
+
+
+
+
+
+
+
+
+
+
+            /**************************************************
              **********        Map Visualization        ********
              **************************************************/
 
@@ -1017,6 +1051,7 @@
                     p["Events"] = [];
                     p["EventMedals"] = [];
                     p["YearsCompeted"] = [];
+                    p["FirstYear"] = 0;
                     p["TotalOlympicEvents"] = 0;
                     p["TotalOlympicMedals"] = 0;
                     medalistEventsDataDict[p.medalistID].forEach(d => {
@@ -1083,7 +1118,41 @@
                             }
                         }
                     }
+                    p["FirstYear"] = Math.min(p["YearsCompeted"]);
                 });
+
+                // <!-- ************************************************************************ -->
+                // <!--               Radial Charts VISUALIZATION DATA FILTERING                   -->
+                // <!-- ************************************************************************ -->
+                var FSsvgRadial = d3.select("svg#profilePanelSPSVG"),
+                    widthRadial = +svg.attr("width"),
+                    heightRadial = +svg.attr("height"),
+                    innerRadiusRadial = 180,
+                    outerRadiusRadial = Math.min(width, height) / 2.5,
+                    g = svg.append("g").attr("transform", "translate(" + widthRadial / 2 + "," + heightRadial / 2 + ")");
+
+
+                var xScaleOffset = Math.PI * 75/180;
+                var xRadial = d3.scaleBand()
+                    .range([xScaleOffset, 2 * Math.PI + xScaleOffset])
+                    .align(0);
+
+                var yRadial = d3.scaleLinear()
+                    .range([innerRadius, outerRadius]);
+
+                var zRadial = d3.scaleOrdinal()
+                    .range(["#a1d76a", "#91bfdb"]);
+
+                var zClasses =["Women","Men"]
+
+
+
+
+
+
+                // <!-- ************************************************************************ -->
+                // <!--               ScatterPlot VISUALIZATION IMPLEMENTATION                   -->
+                // <!-- ************************************************************************ -->
 
                 // Finding default data for dropdowns
                 var allSport = []
