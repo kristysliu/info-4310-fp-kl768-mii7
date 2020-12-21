@@ -1018,6 +1018,8 @@
                 ioc_data.forEach(d => {
                     if (d["IOC"] in world_dict) {
                         olympic_countries_list.push(d["Country"])
+                    } else {
+                        console.log(d["IOC"]);
                     }
                 });
 
@@ -2358,6 +2360,10 @@
 
                     map_data.forEach(d => {
                         var country = world_dict[d["NOC"]]["Name"];
+                        console.log(country);
+                        // console.log(Object.getOwnPropertyNames(d["NOC"]));
+                        // var mapCountries = Object.keys(map_data);
+
                         // if (country = undefined) {
                         //     console.log(d); //can't figure out what's undefined...
                         // }
