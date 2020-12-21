@@ -2260,8 +2260,20 @@
                 OptSportMP(mapSports);
                 OptEventMP(mapEvents);
 
-                // Change Sports options according to Season selection
+                //Data filters
+                // function filterMapData(mapData) {
+                //     newData = [];
+                //     scatterdata.forEach(d => {
+                //         if (yearMapFilter(d) && seasonMapFilter(d) && sportMapFilter(d) &&
+                //             eventMapFilter(d) && medalsMapFilter(d)) {
+                //             newData.push(d)
+                //         }
+                //     })
+                //     return newData;
+                // }
 
+
+                // Change Sports options and Filter Data according to Season selection
                 d3.selectAll("input[name='seasonMP']").on("change", function() {
                     var checkedBoxes = document.querySelectorAll('input[name=seasonMP]:checked');
                     console.log(checkedBoxes);
@@ -2280,7 +2292,7 @@
                     // filterMapData(mapData)
                 });
 
-                // Change Events options according to Sports selection
+                // Change Events options and Filter Data according to Sports selection
                 d3.selectAll("select[id='selectSportMP']").on("change", function() {
                     var selectedSportMP = document.querySelectorAll("select[id='selectSportMP']")[0].value;
                     lastSelectedMapSport = selectedSportMP;
@@ -2303,18 +2315,11 @@
                     // filterMapData(mapData)
                 });
 
-                //Data filters
-                // function filterMapData(mapData) {
-                //     newData = [];
-                //     scatterdata.forEach(d => {
-                //         if (yearMapFilter(d) && seasonMapFilter(d) && sportMapFilter(d) &&
-                //             eventMapFilter(d) && medalsMapFilter(d)) {
-                //             newData.push(d)
-                //         }
-                //     })
-                //     return newData;
-                // }
 
+                // Filter data according to Medal selections
+                d3.selectAll("select[name='selectMedalMP']").on("change", function() {
+                    // filterMapData(mapData)
+                });
 
             }
             requestData();
