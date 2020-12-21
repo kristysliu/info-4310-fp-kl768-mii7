@@ -17,7 +17,7 @@
         const requestData = async function() {
 
             var map_data = await d3.csv('athlete_events_filtered.csv', d3.autoType);
-            var iso_data = await d3.csv('iso_3digit_alpha_country_codes.csv', d3.autoType);
+            var ioc_data = await d3.csv('ioc_codes.csv', d3.autoType);
 
             // Create World Dictionary for Map Visualization
             var world_dict = {};
@@ -158,6 +158,8 @@
                     world_dict[d["IOC"]]["Name"] = d["Country"];
                 }
             });
+
+            console.log(JSON.stringify(world_dict));
         }
         requestData();
     </script>

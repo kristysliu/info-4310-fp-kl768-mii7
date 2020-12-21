@@ -1012,14 +1012,12 @@
 
                 //World Map Dictionary
                 const world_dict = await d3.json('world_map.json', d3.autoType);
-                var ioc_data = await d3.csv('ioc_data.csv', d3.autoType);
+                var ioc_data = await d3.csv('ioc_codes.csv', d3.autoType);
 
                 var olympic_countries_list = [];
                 ioc_data.forEach(d => {
                     if (d["IOC"] in world_dict) {
-                        olympic_countries_list.push(d["Country"])
-                    } else {
-                        console.log(d["IOC"]);
+                        olympic_countries_list.push(d["Country"]);
                     }
                 });
 
@@ -2360,7 +2358,7 @@
 
                     map_data.forEach(d => {
                         var country = world_dict[d["NOC"]]["Name"];
-                        console.log(country);
+                        // console.log(country);
                         // console.log(Object.getOwnPropertyNames(d["NOC"]));
                         // var mapCountries = Object.keys(map_data);
 
