@@ -893,10 +893,7 @@
                 .width(900)
                 .tickFormat(d3.timeFormat('%Y'))
                 .tickValues(dataTime)
-                .default(new Date(2016, 10, 3))
-                .on('onchange', val => {
-                    d3.select('p#value-time').text(d3.timeFormat('%Y')(val));
-                });
+                .default(new Date(2016, 10, 3));
 
             var gTime = d3
                 .select('div#slider-time')
@@ -2276,7 +2273,6 @@
                 // Change Sports options and Filter Data according to Season selection
                 d3.selectAll("input[name='seasonMP']").on("change", function() {
                     var checkedBoxes = document.querySelectorAll('input[name=seasonMP]:checked');
-                    console.log(checkedBoxes);
 
                     if (checkedBoxes.length == 0 || checkedBoxes.length == 2) {
                         OptSportMP(mapSports);
@@ -2296,7 +2292,6 @@
                 d3.selectAll("select[id='selectSportMP']").on("change", function() {
                     var selectedSportMP = document.querySelectorAll("select[id='selectSportMP']")[0].value;
                     lastSelectedMapSport = selectedSportMP;
-                    console.log(lastSelectedMapSport)
                     eventsMatch = [];
 
                     medalistProfileData.forEach(d => {
@@ -2317,10 +2312,18 @@
 
 
                 // Filter data according to Medal selections
-                d3.selectAll("select[name='selectMedalMP']").on("change", function() {
-                    // filterMapData(mapData)
+                d3.selectAll("input[name='selectMedalMP']").on("change", function() {
+                    var checkedBoxes = document.querySelectorAll('input[name="selectMedalMP"]:checked');
+                    console.log(checkedBoxes)
+                        // filterMapData(mapData)
                 });
 
+                // Filter data according to time slider
+                sliderTime.on('onchange', val => {
+                    d3.select('p#value-time').text(d3.timeFormat('%Y')(val));
+                    // filterMapData(mapData)
+
+                });
             }
             requestData();
         </script>
