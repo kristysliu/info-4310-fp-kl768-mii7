@@ -661,7 +661,7 @@
                 </div>
                 <div class="olympicsflexcontainer2">
                     <div class="toc_textbox_r2">
-                      <a href="#scatterplotPanel" class="toc_text">4. Athlete Profiles</a>
+                        <a href="#scatterplotPanel" class="toc_text">4. Athlete Profiles</a>
                     </div>
                     <div class="toc_textbox_r2">
                         <a href="#scatterplotPanel" class="toc_text">5. Citations</a>
@@ -986,7 +986,7 @@
                 .sliderBottom()
                 .min(d3.min(dataTime))
                 .max(d3.max(dataTime))
-                .step(1000 * 60 * 60 * 24 * 365 * 8)
+                .step(1000 * 60 * 60 * 24 * 365.25 * 4)
                 .width(900)
                 .tickFormat(d3.timeFormat('%Y'))
                 .tickValues(dataTime)
@@ -1002,7 +1002,7 @@
 
             gTime.call(sliderTime);
 
-            d3.select('p#value-time').text(d3.timeFormat('%Y')(sliderTime.value()));
+            // d3.select('p#value-time').text(d3.timeFormat('%Y')(sliderTime.value()));
 
             /**************************************************
              *****        ScatterPlot Visualization        *****
@@ -1075,13 +1075,13 @@
 
                 //World Map Dictionary
                 const world_dict = await d3.json('world_map.json', d3.autoType);
-                var ioc_data = await d3.csv('ioc_data.csv', d3.autoType);
-                console.log(ioc_data)
+                const map_data = await d3.csv('athlete_events_filtered.csv', d3.autoType);
+                const ioc_data = await d3.csv('ioc_codes.csv', d3.autoType);
 
                 var olympic_countries_list = [];
                 ioc_data.forEach(d => {
                     if (d["IOC"] in world_dict) {
-                        olympic_countries_list.push(d["Country"])
+                        olympic_countries_list.push(d["Country"]);
                     }
                 });
                 console.log(olympic_countries_list.length)
@@ -2582,9 +2582,6 @@
                 // <!--                     MAP VISUALIZATION DATA FILTERING                     -->
                 // <!-- ************************************************************************ -->
 
-                console.log(world_dict);
-                console.log(medalistProfileData);
-
                 // Creating default drop down options
                 var mapSports = [];
                 var summerSports = [];
@@ -2612,6 +2609,7 @@
                 mapEvents.push("All Events")
                 mapEvents.sort()
                 var lastSelectedMapSport = "All Sports";
+                var last_yearSelected = 1;
 
                 //Custom function that changes a select element's option
                 //inspired by https://thisinterestsme.com/change-select-option-javascript/
@@ -2653,6 +2651,8 @@
                     events.sort();
                     if (events.length < mapEvents.length) {
                         events.unshift("Select Event");
+                    } else {
+
                     }
                     document.getElementById("selectEventMP").innerHTML = "";
                     d3.select("#selectEventMP")
@@ -2665,7 +2665,7 @@
                         })
                         .attr("value", function(d) {
                             return d;
-                        })
+                        });
                 }
 
                 //Initialize dropdown filters in the beginning
@@ -2673,17 +2673,48 @@
                 OptEventMP(mapEvents);
 
                 //Data filters
-                // function filterMapData(mapData) {
-                //     newData = [];
-                //     scatterdata.forEach(d => {
-                //         if (yearMapFilter(d) && seasonMapFilter(d) && sportMapFilter(d) &&
-                //             eventMapFilter(d) && medalsMapFilter(d)) {
-                //             newData.push(d)
-                //         }
-                //     })
-                //     return newData;
+                var seasonMapFilter = d => {
+                    return true;
+                };
+                var sportMapFilter = d => {
+                    return true;
+                };
+                var eventMapFilter = d => {
+                    return true;
+                };
+                var medalsMapFilter = d => {
+                    return true;
+                };
+
+                // var yearMapFilter = d => {
+                //     return true;
                 // }
 
+                //Initialize slider year and data in the beginning
+                filterMapData(2016)
+
+                function filterMapData(year) {
+                    filteredData = {};
+
+                    Object.entries(world_dict).forEach(([key, value]) => {
+                        console.log(value);
+                        var country = world_dict[key]["Name"];
+
+                        if (!filteredData.hasOwnProperty(country)) {
+                            if (world_dict[key].hasOwnProperty(year)) {
+
+                                if (seasonMapFilter(value[year]["Summer"]) && sportMapFilter(value) && eventMapFilter(value) &&
+                                    medalsMapFilter(value)) {
+                                    filteredData[country] = world_dict[key][year]["Total"];
+                                }
+
+                                filteredData[country] = world_dict[key][year]["Total"];
+                            }
+                        }
+                    });
+                    console.log(filteredData);
+                    return filteredData;
+                }
 
                 // Change Sports options and Filter Data according to Season selection
                 d3.selectAll("input[name='seasonMP']").on("change", function() {
@@ -2691,20 +2722,29 @@
 
                     if (checkedBoxes.length == 0 || checkedBoxes.length == 2) {
                         OptSportMP(mapSports);
-                    }
-                    if (checkedBoxes.length == 1) {
+                        seasonMapFilter = d => {
+                            return (d["Total"])
+                        };
+                    } else if (checkedBoxes.length == 1) {
                         if (checkedBoxes[0].value == "Summer") {
                             OptSportMP(summerSports);
+                            seasonMapFilter = d => {
+                                return (d[last_yearSelected]["Summer"]["Total"])
+                            };
                         }
                         if (checkedBoxes[0].value == "Winter") {
                             OptSportMP(winterSports);
+                            seasonMapFilter = d => {
+                                return (d[last_yearSelected]["Winter"]["Total"])
+                            };
                         }
                     }
-                    // filterMapData(mapData)
+                    filterMapData(last_yearSelected);
                 });
 
                 // Change Events options and Filter Data according to Sports selection
                 d3.selectAll("select[id='selectSportMP']").on("change", function() {
+
                     var selectedSportMP = document.querySelectorAll("select[id='selectSportMP']")[0].value;
                     lastSelectedMapSport = selectedSportMP;
                     eventsMatch = [];
@@ -2717,27 +2757,30 @@
                         });
                     });
 
-                    if (selectedSportMP == "All Sports") {
+                    if (lastSelectedMapSport == "All Sports") {
                         OptEventMP(mapEvents);
                     } else {
                         OptEventMP(eventsMatch);
                     }
-                    // filterMapData(mapData)
+                    // filterMapData(last_yearSelected);
                 });
-
 
                 // Filter data according to Medal selections
                 d3.selectAll("input[name='selectMedalMP']").on("change", function() {
                     var checkedBoxes = document.querySelectorAll('input[name="selectMedalMP"]:checked');
                     console.log(checkedBoxes)
-                        // filterMapData(mapData)
+                        // filterMapData()
                 });
 
                 // Filter data according to time slider
                 sliderTime.on('onchange', val => {
-                    d3.select('p#value-time').text(d3.timeFormat('%Y')(val));
-                    // filterMapData(mapData)
-
+                    // d3.select('p#value-time').text(d3.timeFormat('%Y')(val));
+                    yearSelected = val.getFullYear(); //pass as parameter
+                    if (yearSelected != last_yearSelected) {
+                        filterMapData(yearSelected)
+                        console.log(val.getFullYear());
+                    }
+                    last_yearSelected = yearSelected;
                 });
             }
             requestData();
