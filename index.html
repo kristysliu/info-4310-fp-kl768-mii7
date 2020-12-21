@@ -1118,11 +1118,11 @@
                 // <!--               Radial Charts VISUALIZATION DATA FILTERING                   -->
                 // <!-- ************************************************************************ -->
                 var FSsvgRadial = d3.select("svg#profilePanelSPSVG"),
-                    widthRadial = +svg.attr("width"),
-                    heightRadial = +svg.attr("height"),
+                    widthRadial = FSsvgRadial.attr("width"),
+                    heightRadial = FSsvgRadial.attr("height"),
                     innerRadiusRadial = 180,
                     outerRadiusRadial = Math.min(width, height) / 2.5,
-                    g = svg.append("g").attr("transform", "translate(" + widthRadial / 2 + "," + heightRadial / 2 + ")");
+                    FSsvgRadial_g = FSsvgRadial.append("g").attr("transform", "translate(" + widthRadial / 2 + "," + heightRadial / 2 + ")");
 
 
                 var xScaleOffset = Math.PI * 75/180;
@@ -1131,7 +1131,7 @@
                     .align(0);
 
                 var yRadial = d3.scaleLinear()
-                    .range([innerRadius, outerRadius]);
+                    .range([innerRadiusRadial, outerRadiusRadial]);
 
                 var zRadial = d3.scaleOrdinal()
                     .range(["#a1d76a", "#91bfdb"]);
