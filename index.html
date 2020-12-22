@@ -704,6 +704,24 @@
             margin-top: 80px;
             margin-right: 40px;
         }
+        /* *******NEW******** */
+        /*comment out display:none line to see where it is*/
+        
+        .textinfo {
+            position: absolute;
+            display: none;
+            background: none repeat scroll 0 0 black;
+            box-shadow: -3px 3px 15px #888888;
+            color: white;
+            padding: 10px;
+            width: 100px;
+            height: 100px;
+            text-align: center;
+            font-family: Helvetica, sans-serif;
+            line-height: 1.8;
+            border-radius: 5%;
+        }
+        /* *************** */
     </style>
 </head>
 
@@ -3188,6 +3206,25 @@
                         // filterMapData()
                 });
 
+                /* *******NEW******** */
+
+                const textinfo = d3.select("#flexContainerMP_1").append("div").attr("class", "textinfo");
+
+                function hover_c(d) {
+                    // d3.select(this).attr('stroke-width', '5px'); 
+                    console.log(this);
+                    textinfo.style("left", 0 + "px");
+                    textinfo.style("top", 0 + "px"); //adapted from http://bl.ocks.org/ndobie/90ae9f1a5c7f88ad4929 
+                    textinfo.style("display", "inline-block");
+                    console.log(d)
+                    textinfo.html("<p> <u> County: <strong>" + "Country" + "</strong> </u> <br></p>");
+                    // +
+                    //     "Winner Lead by: <strong>" + Math.abs(idToCountyPercentLead[d.id]) + "</strong>% <br> Total Votes: <strong>" +
+                    //     formatComma(Math.abs(totalvotesC[d.id])) + "</strong> votes <br> Democratic Candidate votes: <strong>" +
+                    //     formatComma(D_candidate_votesC[d.id]) + "</strong> votes <br> Republican Candidate votes: <strong>" +
+                    //     formatComma(R_candidate_votesC[d.id]) + "</strong> votes  <br> Total Population: <strong>" +
+                    //     formatComma(TotalPopC[d.id]) + "</strong> </p>");
+                }
 
                 var width = 950,
                     height = 550;
@@ -3215,6 +3252,22 @@
                         .enter()
                         .append("path")
                         .attr("class", "boundary")
+                        .on("mouseover", function(d) {
+                            hover_c(d) /* *******NEW******** */
+                        })
+                        // .on("mouseover", function(d) {
+                        //     d3.select(this).attr('stroke-width', '5px');
+                        //     textinfo.style("left", width - 70 + "px");
+                        //     textinfo.style("top", (height / 2) - 35 + "px"); //adapted from http://bl.ocks.org/ndobie/90ae9f1a5c7f88ad4929 
+                        //     textinfo.style("display", "inline-block");
+                        //     console.log(d)
+                        //     textinfo.html("<p class='cs_h'> <u> County: <strong>" + idToCountyName[d.id] + "</strong> </u> <br>" +
+                        //         "Winner Lead by: <strong>" + Math.abs(idToCountyPercentLead[d.id]) + "</strong>% <br> Total Votes: <strong>" +
+                        //         formatComma(Math.abs(totalvotesC[d.id])) + "</strong> votes <br> Democratic Candidate votes: <strong>" +
+                        //         formatComma(D_candidate_votesC[d.id]) + "</strong> votes <br> Republican Candidate votes: <strong>" +
+                        //         formatComma(R_candidate_votesC[d.id]) + "</strong> votes  <br> Total Population: <strong>" +
+                        //         formatComma(TotalPopC[d.id]) + "</strong> </p>");
+                        // })
                         // draw each country
                         .attr("d", path)
                         .attr("fill", function(d) {
