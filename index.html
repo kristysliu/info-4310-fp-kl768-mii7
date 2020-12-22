@@ -109,9 +109,9 @@
 
         #scatterplotPanel {
             background: #14284a;
-            position: absolute;
             left: 0;
             right: 0;
+            padding-top: 30px;
             color: white;
         }
 
@@ -442,7 +442,7 @@
         }
 
         #profilePanelSPIntroStatsContainer {
-            height: 250px;
+            height: 200px;
             width: 300px;
             padding-top: 20px;
             padding-left: 35px;
@@ -637,6 +637,30 @@
             margin-right: 10px;
         }
 
+        .scatterInfo{
+          height: 250px;
+          width: 800px;
+          background-color: rgb(241, 238, 233);
+          color: black;
+          padding: 20px;
+          border-radius: 10px;
+          text-align: center;
+          margin: 30px auto 0;
+          margin-bottom: 50px;
+        }
+
+        .mapInfo{
+          height: 125px;
+          width: 625px;
+          background-color: rgb(241, 238, 233);
+          color: black;
+          padding: 20px;
+          border-radius: 10px;
+          margin: 30px auto 0;
+          margin-bottom: 50px;
+          text-align: center;
+        }
+
         .radialInfo {
             height: 150px;
             width: 625px;
@@ -649,12 +673,35 @@
             border-radius: 10px;
         }
 
-        .radialInfo h3 {
-            width: 100px;
+        .radialInfo h3, .scatterInfo h3, .mapInfo h3 {
+            width: 150px;
             margin-top: -5px;
             margin-bottom: -10px;
             border-bottom: #000 2px solid;
             display: inline-block;
+        }
+
+        .Introduction_Olympics{
+          width: 800px;
+          height: 300px;
+          text-align: center;
+          margin: 0 auto;
+        }
+
+        .Info_header{
+          color: black;
+          font-size: 20px;
+        }
+
+        .IntroFlex{
+          display: flex;
+          width: 900px;
+          margin: 0 auto;
+        }
+
+        .IntroFlex img{
+          margin-top: 80px;
+          margin-right: 40px;
         }
 
     </style>
@@ -672,7 +719,7 @@
             <div class="olympicsflexcontainertoc">
                 <div class="olympicsflexcontainer1">
                     <div class="toc_textbox_r1">
-                        <a href="#radialPanel" class="toc_text">1. Introduction to the Olympics</a>
+                        <a href="#Introduction_panel" class="toc_text">1. Introduction to the Olympics</a>
                     </div>
                     <div class="toc_textbox_r1">
                         <a href="#radialPanel" class="toc_text">2. How the Olympics Have Changed Since 1896</a>
@@ -691,6 +738,32 @@
                 </div>
             </div>
         </div>
+        <div id="Introduction_panel"></div>
+        <h1 class="sectionTitles">Introduction to the Olympics</h1>
+        <div class="IntroFlex">
+          <img src="Images/history.png" height="70" width="70" alt="History Icon">
+          <div class="Introduction_Olympics">
+              <h3 class="Info_header">
+                  History of the Olympics
+              </h3>
+              <p>The Olympics is an international sporting event, which originated from the Olympic Games in Greece from over 3,000 years ago.
+              However, the first modern day Olympics took place in 1896 in Athens, where 13 countries
+            competed in 32 sporting events. The Olympics is held every four years, and the most recent one was in 2016.
+            Today, the Olympics draws over hundreds of thousands spectators and gathers widespread media coverage. </p>
+          </div>
+        </div>
+        <div class="IntroFlex">
+          <img src="Images/tracker1.png" height="70" width="70" alt="Tracker Icon">
+          <div class="Introduction_Olympics">
+            <h3 class="Info_header">
+                Olympics Tracker
+            </h3>
+            <p>Olympics Tracker visualizes the rankings of different countries over the years as well as the top athletes and their
+              profiles to help Olympics' fans understand trends in historical Olympic results. Additionally, this tracker visualizes
+              how the Olympics have changed over the years in terms of the diversity of events and the diversity of gender among its athletes.
+            </p>
+          </div>
+        </div>
 
         <!-- ********************************** -->
         <!--   Radial Charts VISUALIZATION      -->
@@ -698,7 +771,7 @@
         <div id="radialPanel">
             <h1 class="sectionTitles">How the Olympics Have Changed Since 1896</h1>
             <div class="radialInfo">
-                <h3 id="eventsInfo_header">
+                <h3 class="eventsInfo_header">
                     Events
                 </h3>
                 <p>During the first summer Olympics in 1896, there were only 43 events.
@@ -775,6 +848,14 @@
         <!-- ********************************** -->
         <div id="mapPanel">
             <h1 class="sectionTitles">World Map of Olympics Results</h1>
+            <div class="mapInfo">
+                <h3 id="mapInfo_header">
+                    Background
+                </h3>
+                <p>This map visualizes how many total medals each country has obtained throughout time.
+                To change the year of the Olympics, move the slider below the map. Additionally,
+              feel free to filter the data based on season and sport. </p>
+            </div>
             <div id='viz'>
                 <div id="flexContainerMP_1">
                 </div>
@@ -833,6 +914,16 @@
         <!-- ********************************** -->
         <div id="scatterplotPanel">
             <h1 class="sectionTitles">Athlete Profiles</h1>
+            <div class="scatterInfo">
+                <h3 id="scatterInfo_header">
+                    Background
+                </h3>
+                <p>This visualization allows you to compare athlete profiles based on wide range of filters, and once generated, the scatterplot displays the average height and weight for an athlete.
+                Season competed, sport, and gender are required filters as they were determined to be the top differentiating factors between athlete's
+            physical characteristics. Additionally, you can apply optional filters to further narrow down the dataset.
+          To display the scatterplot, 1) Fill Out Required Filters 2) Choose Optional Filters If You Wish 3) Click Generate. </p>
+          <p>You can also interact with the scatterplot by clicking on a dot to view more in-depth statistics about an athlete! </p>
+            </div>
             <!-- Section 1: Scatterplot Filters Panel -->
             <div id="flexContainerSP_Top">
                 <div id="flexContainerSP_1">
@@ -958,11 +1049,21 @@
                 <div id="profilePanelSP">
                     <div id="profilePanelSPflexContainer">
                         <div id="profilePanelSPIntroStatsContainer">
-                            <div id="profilePanelSPIntro"></div>
-                            <div id="profilePanelSPIntroStats"></div>
+                            <div id="profilePanelSPIntro">
+                              <h4><b>Country</b></h4>
+                              <h4><b>Athlete Name</b></h4>
+                            </div>
+                            <div id="profilePanelSPIntroStats">
+                              <p><b>Stats:</b></p>
+                              <p># of Olympics</p>
+                              <p># of Medals</p>
+                              <p>% Success Rate</p>
+                            </div>
                         </div>
                         <div id="profilePanelSPPhysicalTraits">
-                            <div id="profilePanelSPTraitsIcon"></div>
+                            <div id="profilePanelSPTraitsIcon">
+                              <p><em>To view info about an athlete, click on a dot!</em></p>
+                            </div>
                             <div id="profilePanelSPTraitsText"></div>
                         </div>
                     </div>
@@ -1124,7 +1225,6 @@
                         olympic_countries_list.push(d["Country"]);
                     }
                 });
-                console.log(olympic_countries_list.length)
 
                 var IOCDataDict = {}
                 ioc_data.forEach(d => {
@@ -1132,7 +1232,6 @@
                         IOCDataDict[d.IOC] = d.Country;
                     }
                 });
-                console.log(Object.keys(IOCDataDict).length)
 
                 //Create new dictionary for medalistEventsData to reduce data loading times
                 var medalistEventsDataDict = {}
@@ -1143,13 +1242,6 @@
                         medalistEventsDataDict[d.ID] = []
                         medalistEventsDataDict[d.ID].push(d)
                     }
-                    // if (d.Event.match(/Mixed/) != null) {
-                    //     d["Event"] = "Mixed " + d.Event.split('Mixed ').pop().trim();
-                    // } else if (d.Event.match(/men's/) != null) {
-                    //     d["Event"] = d.Event.split("men's ").pop().trim();
-                    // } else {
-                    //     d["Event"] = d.Event.split("Men's ").pop().trim();
-                    // }
                 });
 
                 //Create new dictionary to merge events dictionary with athlete profiles array based on ID
@@ -2464,8 +2556,6 @@
                 // **************************************************************************************************************
                 //Deletes old points and replaces with new points that fit the criteria of the four filter select options
 
-                // updateFiltersSP()
-
                 function errorhandling_generateSP() {
                     try {
                         if ((sportInitialSelect == 1) && (genderInitialSelect == 1) && (seasonInitialSelect == 1)) {
@@ -2500,7 +2590,6 @@
 
                     //Update Saved Movies
                     circles.on("click", function(event, d) {
-                        console.log(d)
                         updateProfilePanel(d)
                     });
                 }
@@ -2812,9 +2901,9 @@
                     d3.selectAll("#profilePanelSPSVG > *").remove(); //Removes previous bar chart
                     const barGraphSP = d3.select("svg#profilePanelSPSVG")
                     const barWidthSP = barGraphSP.attr("width");
-                    const barHeightSP = barGraphSP.attr("height");
+                    const barHeightSP = barGraphSP.attr("height") - 80;
                     var barMarginSP = {
-                        top: 10,
+                        top: 70,
                         right: 10,
                         bottom: 100,
                         left: 50
@@ -2920,6 +3009,52 @@
                         .style("font-size", "13px")
                         .style("fill", "white")
                         .text("Events");
+
+                    // Draw Colored Rectangles in the Legend
+                    barGraphSP.append("g")
+                        .attr("class", "legend-title");
+
+                    var legendBarSP = barGraphSP.selectAll()
+                        .data([0, 1, 2, 3])
+                        .enter().append("g")
+                        .attr("class", "legendBarSP")
+                        .attr("transform", function(d, i) {
+                          return "translate(" + i*90 + ",10)";
+                        });
+
+                    // Draw Colored Circles in the Legend
+                    legendBarSP.append("rect")
+                        .attr("width", 10)
+                        .attr("height", 10)
+                        .attr("x", 150)
+                        .attr("y", 0)
+                        .style("fill", function(d,i) {
+                            return color[i]
+                        })
+                        .attr("transform", function(d, i) {
+                            return "translate(-5,0)";
+                        });
+
+                    // Add Corresponding Text in the Legend
+                    legendBarSP.append("text")
+                        .attr("x", 180)
+                        .attr("y", 5)
+                        .attr("dy", ".35em")
+                        .style("text-anchor", "start")
+                        .style("font-size", "13px")
+                        .style("fill", "white")
+                        .text(function(d) {
+                            if (d == 0) {
+                                return "Gold";
+                            } else if (d == 1) {
+                                return "Silver";
+                            } else if (d == 2) {
+                                return "Bronze";
+                            } else {
+                                return "No Medal";
+                            }
+                        });
+
 
                     //Inspiration from "Wrapping Long Labels" by Mike Bostock: https://bl.ocks.org/mbostock/7555321
                     function wrap(text, width) {
@@ -3067,7 +3202,6 @@
                     filteredData = {};
 
                     Object.entries(world_dict).forEach(([key, value]) => {
-                        // console.log(value);
                         var country = world_dict[key]["Name"];
 
                         if (!filteredData.hasOwnProperty(country)) {
@@ -3082,7 +3216,6 @@
                             }
                         }
                     });
-                    console.log(filteredData);
                     return filteredData;
                 }
 
@@ -3138,7 +3271,6 @@
                 // Filter data according to Medal selections
                 d3.selectAll("input[name='selectMedalMP']").on("change", function() {
                     var checkedBoxes = document.querySelectorAll('input[name="selectMedalMP"]:checked');
-                    console.log(checkedBoxes)
                         // filterMapData()
                 });
 
@@ -3148,7 +3280,6 @@
                     yearSelected = val.getFullYear(); //pass as parameter
                     if (yearSelected != last_yearSelected) {
                         filterMapData(yearSelected)
-                        console.log(val.getFullYear());
                     }
                     last_yearSelected = yearSelected;
                 });

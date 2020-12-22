@@ -1,0 +1,3091 @@
+<!DOCTYPE html>
+<html lang='en'>
+
+<head>
+    <meta charset='UTF-8'>
+    <script src="https://d3js.org/d3.v6.min.js"></script>
+    <script src="https://unpkg.com/d3-simple-slider"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3-legend/2.25.6/d3-legend.min.js"></script>
+    <script src="https://unpkg.com/topojson@3"></script>
+
+    <title>INFO4310 Final Project</title>
+
+    <style>
+        body {
+            font-family: monaco, Consolas, Lucida Console, monospace;
+            background: #f9f9f9;
+        }
+
+        .sectionTitles {
+            font-size: 60px;
+            text-align: center;
+        }
+
+        .websiteTitle {
+            font-size: 80px;
+            text-align: center;
+            color: #2e2e2e;
+        }
+
+        .authorsTitle {
+            font-size: 30px;
+            font-style: italic;
+            text-align: center;
+            color: #2e2e2e;
+        }
+
+        .center {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            width: 1000px;
+        }
+
+        .olympicsflexcontainermain {
+            height: 750px;
+        }
+
+        .olympicsflexcontainertoc {
+            margin: auto;
+            margin-top: -575px;
+            width: 990px;
+        }
+
+        .olympicsflexcontainer1,
+        .olympicsflexcontainer2 {
+            display: flex;
+            flex-direction: row;
+        }
+
+        .toc_textbox_r1 {
+            height: 240px;
+            width: 240px;
+            border-radius: 50%;
+            /* background-color: rgba(38, 38, 38, 0.2); */
+            text-align: center;
+            margin: 45px;
+            display: flex;
+        }
+
+        .olympicsflexcontainer2 {
+            margin-left: 165px;
+            margin-top: -180px;
+        }
+
+        .toc_textbox_r2 {
+            height: 240px;
+            width: 240px;
+            border-radius: 50%;
+            /* background-color: rgba(38, 38, 38, 0.2); */
+            text-align: center;
+            margin: 45px;
+            display: flex;
+        }
+
+        .toc_text {
+            text-decoration: none;
+            color: #2e2e2e;
+            font-weight: bold;
+            font-size: 15px;
+            margin: auto;
+            width: 200px;
+        }
+
+        #mapPanel {
+            color: #2e2e2e;
+            padding-bottom: 2vh;
+            left: 0;
+            right: 0;
+        }
+
+        #radialPanel {
+            background: #14284a;
+            left: 0;
+            right: 0;
+            color: white;
+            padding-top: 30px;
+            text-align: center;
+        }
+
+        #scatterplotPanel {
+            background: #14284a;
+            left: 0;
+            right: 0;
+            padding-top: 30px;
+            color: white;
+        }
+
+        #flexContainerSP_1 {
+            display: flex;
+            justify-content: center;
+            width: 890px;
+            height: 275px;
+            border: 1.5px solid rgb(204, 234, 254);
+            background: rgba(204, 234, 254, 0.01);
+            font-size: 12px;
+        }
+
+        #flexContainerSP_1 h3,
+        #generateButtonSP,
+        #resetButtonSP,
+        #errorTextSP {
+            font-size: 15px;
+        }
+
+        #flexContainerSP_Top {
+            display: flex;
+            flex-direction: row;
+            width: 1100px;
+            height: 275px;
+            margin: 0 auto;
+        }
+
+        .filterButtonSPflexContainer {
+            height: 150px;
+            width: 200px;
+            align-items: center;
+            margin-top: 60px;
+        }
+
+        .filterTitlesSP,
+        .filterTitlesMP {
+            font-size: 13px;
+        }
+
+        #reqSPFilters {
+            width: 250px;
+            padding: 10px;
+            padding-left: 30px;
+            text-align: left;
+        }
+
+        #selectSportSP,
+        #selectNationalitySP,
+        #selectEventSP,
+        #selectSportMP,
+        #selectEventMP {
+            width: 175px;
+            height: 20px;
+            font-family: monaco, Consolas, Lucida Console, monospace;
+        }
+
+        .checkboxMedalsFlexContainer {
+            display: flex;
+            flex-direction: row;
+            margin-top: -2px;
+            margin-left: -2px;
+        }
+
+        #optSPFilters {
+            width: 600px;
+            padding: 10px;
+            padding-left: 30px;
+            text-align: left;
+            border-left: 1.5px solid lightgray;
+        }
+
+        .radioGenderSPflexcontainer,
+        .radioSeasonSPflexcontainer {
+            display: flex;
+            flex-direction: row;
+            height: 17px;
+        }
+
+        .radioGenderSPflexcontainer label,
+        .radioSeasonSPflexcontainer label {
+            margin-left: 5px;
+            margin-right: 15px;
+            margin-top: 2px;
+        }
+        /* Styling for Scatterplot radio button filters */
+
+        .radioSPStyling {
+            display: block;
+            position: relative;
+            padding-left: 25px;
+            margin-bottom: 12px;
+            cursor: pointer;
+            font-size: 13px;
+            font-family: monaco, Consolas, Lucida Console, monospace;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+
+        .radioSPStyling input {
+            margin-left: 10px;
+            opacity: 0;
+            cursor: pointer;
+            height: 0;
+            width: 0;
+        }
+
+        .radioSPStyling:hover input~.radioDot {
+            background-color: #d9f1ff;
+        }
+
+        .radioSPStyling input:checked~.radioDot {
+            background-color: #2081c7;
+        }
+
+        .radioDot {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 20px;
+            width: 20px;
+            margin-top: -2px;
+            margin-left: -3px;
+            background-color: #a3d9f7;
+            border-radius: 50%;
+        }
+
+        .radioDot:after {
+            content: "";
+            position: absolute;
+            display: none;
+        }
+
+        .radioSPStyling input:checked~.radioDot:after {
+            display: block;
+        }
+
+        .radioSPStyling .radioDot:after {
+            top: 6px;
+            left: 6px;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: white;
+        }
+        /* Styling for Scatterplot checkbox filters */
+
+        .checkboxSPStyling {
+            display: block;
+            position: relative;
+            padding-left: 25px;
+            margin-bottom: 12px;
+            cursor: pointer;
+            font-size: 13px;
+            font-family: monaco, Consolas, Lucida Console, monospace;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+
+        .checkboxSPStyling input {
+            margin-left: 10px;
+            opacity: 0;
+            cursor: pointer;
+            height: 0;
+            width: 0;
+        }
+
+        .checkboxSPStyling:hover input~.checkmark {
+            background-color: #d9f1ff;
+        }
+
+        .checkboxSPStyling input:checked~.checkmark {
+            background-color: #2081c7;
+        }
+
+        .checkmark {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 15px;
+            width: 15px;
+            background-color: #a3d9f7;
+        }
+
+        .checkmark:after {
+            content: "";
+            position: absolute;
+            display: none;
+        }
+
+        .checkboxSPStyling input:checked~.checkmark:after {
+            display: block;
+        }
+
+        .checkboxSPStyling .checkmark:after {
+            left: 4px;
+            top: 0px;
+            width: 5px;
+            height: 10px;
+            border: solid white;
+            border-width: 0 3px 3px 0;
+            -webkit-transform: rotate(45deg);
+            -ms-transform: rotate(45deg);
+            transform: rotate(45deg);
+        }
+        /* Styling for Scatterplot dropdown filters */
+
+        #selectSportSP,
+        #selectNationalitySP,
+        #selectEventSP {
+            font-family: monaco, Consolas, Lucida Console, monospace;
+            stroke: none;
+            background-color: #2081c7;
+            color: white;
+            border: 0px;
+            outline: 0px;
+            border-radius: 5px;
+            padding: 0 1em;
+        }
+
+        .reqSPFilters_flexContainer label {
+            font-size: 13px;
+        }
+
+        .reqSPFilters_flexContainer {
+            display: flex;
+            flex-direction: column;
+            margin-top: -15px;
+        }
+
+        .optSPFilters_flexContainer {
+            display: flex;
+            flex-direction: row;
+            margin-top: -15px;
+        }
+
+        .optSPFilters_flex_section1 {
+            width: 200px;
+        }
+
+        .optSPFilters_flex_section2,
+        .optSPFilters_flex_section3 {
+            width: 200px;
+        }
+
+        .optSPFilters_flexContainer select,
+        .reqSPFilters_flexContainer select {
+            margin-top: -5px;
+        }
+
+        .optSPSilderContainers {
+            height: 90px;
+            ;
+        }
+
+        .sliderRange {
+            margin-left: -10px;
+            margin-top: -25px;
+        }
+
+        .sliderRange text {
+            fill: white;
+            font-size: 12px;
+            font-family: monaco, Consolas, Lucida Console, monospace;
+        }
+
+        .generateButtonSP,
+        .resetButtonSP,
+        #errorTextSP {
+            text-align: center;
+            margin: auto;
+        }
+
+        #errorTextSP {
+            font-style: italic;
+            font-weight: bold;
+            color: #af2323;
+            width: 400px;
+            opacity: 0%;
+        }
+
+        #generateButtonSP,
+        #resetButtonSP {
+            font-family: monaco, Consolas, Lucida Console, monospace;
+            font-weight: bold;
+            background-color: rgb(204, 234, 254);
+            border-style: none;
+            border-radius: 5px;
+            padding: 5px;
+            padding-left: 20px;
+            padding-right: 20px;
+            width: 150px;
+            margin-top: 30px;
+        }
+
+        #flexContainerSP_2 {
+            display: flex;
+            justify-content: center;
+        }
+
+        #graphSP,
+        #profilePanelSP {
+            margin-bottom: 50px;
+            margin-right: 30px;
+            height: 785px;
+        }
+
+        #graphSP,
+        #legendSP {
+            width: 800px;
+        }
+
+        #profilePanelSP {
+            width: 600px;
+            margin-top: 10px;
+        }
+
+        #profilePanelSPflexContainer {
+            display: flex;
+            flex-direction: row;
+            margin-top: 10px;
+            background-color: rgba(25, 98, 158, 1);
+            box-shadow: 5px 10px rgb(204, 234, 254);
+        }
+
+        #profilePanelSPIntroStatsContainer {
+            height: 200px;
+            width: 300px;
+            padding-top: 20px;
+            padding-left: 35px;
+        }
+
+        #profilePanelSPIntroStats p {
+            margin: 0;
+            font-size: 15px;
+            padding-bottom: 5px;
+        }
+
+        #profilePanelSPIntro h4 {
+            margin: 0;
+            font-size: 18px;
+            font-weight: bold;
+            padding-bottom: 5px;
+        }
+
+        #profilePanelSPIntro {
+            padding-bottom: 20px;
+        }
+
+        #profilePanelSPPhysicalTraits {
+            height: 250px;
+            width: 300px;
+        }
+
+        #profilePanelSPTraitsText {
+            text-align: center;
+            width: 140px;
+            padding-left: 125px;
+            margin-top: -20px;
+        }
+
+        #profilePanelSPTraitsIcon {
+            text-align: right;
+            padding-right: 30px;
+        }
+
+        #profilePanelSPTraitsText h4,
+        #profilePanelSPTraitsText p {
+            font-size: 13px;
+            margin: 0;
+        }
+
+        .y.axis text,
+        .x.axis text {
+            font-size: 13px;
+            font-family: monaco, Consolas, Lucida Console, monospace;
+        }
+
+        #profilePanelSPSVG {
+            margin-top: 40px;
+            margin-left: 10px;
+        }
+
+        #viz {
+            height: 130vh;
+            text-align: center;
+            margin-bottom: 5vh;
+        }
+
+        .boundary {
+            fill: #DEB887;
+            stroke: black;
+            stroke-width: 1px;
+        }
+
+        #flexContainerMP_1 {
+            display: flex;
+            justify-content: center;
+        }
+
+        #map_svg {
+            border: 2px solid rgb(230, 238, 247);
+            background-color: rgb(230, 238, 247);
+        }
+
+        #timeline {
+            text-align: center;
+            position: relative;
+            /* top: 600px; */
+        }
+
+        #optMapFilters {
+            width: 600px;
+            height: 250px;
+            text-align: center;
+            border: 1px solid #000;
+            display: inline-block;
+            margin-top: 5vh;
+            background-color: rgb(238, 238, 238);
+        }
+
+        .optMapFilters_flexContainer {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-around;
+        }
+
+        #map_opt_title {
+            border-bottom: 1px solid #000;
+        }
+
+        #map_opt_title_div {
+            width: 14vw;
+            display: inline-block;
+        }
+
+        .optMPFilters_flexContainer_medals {
+            display: flex;
+            flex-direction: row;
+            text-align: left;
+            font-size: 13px;
+        }
+
+        #selectGoldMP,
+        #selectSilverMP,
+        #selectBronzeMP,
+        #summerMP,
+        #winterMP {
+            width: 40px;
+            height: 20px;
+        }
+
+        .radioSeasonMP {
+            text-align: left;
+            font-size: 13px;
+        }
+
+        .row {
+            display: -ms-flexbox;
+            display: flex;
+            -ms-flex-wrap: wrap;
+            flex-wrap: wrap;
+            /* margin-right: -15px; */
+            margin-left: -15px
+        }
+
+        .align-items-center {
+            -ms-flex-align: center!important;
+            align-items: center!important
+        }
+
+        .col-sm,
+        .col-sm-2 {
+            position: relative;
+            width: 100%;
+            min-height: 1px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .time_year {
+            padding-top: 5px;
+            font-size: 13px;
+        }
+
+        .filterTitlesMP {
+            text-align: left;
+        }
+        /* .xlabel, .ylabel{
+          font-size: 13px;
+          color: white;
+        } */
+
+        .radialFlexContainer {
+            display: flex;
+            width: 1100px;
+            margin: auto;
+        }
+
+        .radialFlex {
+            flex: 1;
+            padding: 50px;
+            text-align: center;
+        }
+
+        .radialFlexContainer_text,
+        .radialFlexContainer_text_large {
+            display: flex;
+            padding-left: 70px;
+        }
+
+        .radialFlexContainer_text_large img {
+            margin-top: 50px;
+            margin-right: 10px;
+        }
+
+        .radialFlexContainer_text img {
+            margin-top: 18px;
+            margin-right: 10px;
+        }
+
+        .scatterInfo{
+          height: 250px;
+          width: 800px;
+          background-color: rgb(241, 238, 233);
+          color: black;
+          padding: 20px;
+          border-radius: 10px;
+          text-align: center;
+          margin: 30px auto 0;
+          margin-bottom: 50px;
+        }
+
+        .mapInfo{
+          height: 125px;
+          width: 625px;
+          background-color: rgb(241, 238, 233);
+          color: black;
+          padding: 20px;
+          border-radius: 10px;
+          margin: 30px auto 0;
+          margin-bottom: 50px;
+          text-align: center;
+        }
+
+        .radialInfo {
+            height: 150px;
+            width: 625px;
+            background-color: rgb(241, 238, 233);
+            color: black;
+            display: inline-block;
+            padding: 20px;
+            margin-top: 50px;
+            margin-bottom: 20px;
+            border-radius: 10px;
+        }
+
+        .radialInfo h3, .scatterInfo h3, .mapInfo h3 {
+            width: 150px;
+            margin-top: -5px;
+            margin-bottom: -10px;
+            border-bottom: #000 2px solid;
+            display: inline-block;
+        }
+
+        .Introduction_Olympics{
+          width: 800px;
+          height: 300px;
+          text-align: center;
+          margin: 0 auto;
+        }
+
+        .Info_header{
+          color: black;
+          font-size: 20px;
+        }
+
+        .IntroFlex{
+          display: flex;
+          width: 900px;
+          margin: 0 auto;
+        }
+
+        .IntroFlex img{
+          margin-top: 80px;
+          margin-right: 40px;
+        }
+
+    </style>
+</head>
+
+<body>
+    <div id='p1'>
+        <!-- ********************************** -->
+        <!--         INTRO SECTION              -->
+        <!-- ********************************** -->
+        <h1 class="websiteTitle">Olympics Tracker</h1>
+        <h1 class="authorsTitle">By Marcella Imoisili & Kristy Liu</h1>
+        <div class="olympicsflexcontainermain">
+            <img src="Images/olympics.png" alt="Olympics Logo" class="center">
+            <div class="olympicsflexcontainertoc">
+                <div class="olympicsflexcontainer1">
+                    <div class="toc_textbox_r1">
+                        <a href="#Introduction_panel" class="toc_text">1. Introduction to the Olympics</a>
+                    </div>
+                    <div class="toc_textbox_r1">
+                        <a href="#radialPanel" class="toc_text">2. How the Olympics Have Changed Since 1896</a>
+                    </div>
+                    <div class="toc_textbox_r1">
+                        <a href="#mapPanel" class="toc_text">3. World Map of Olympics Results</a>
+                    </div>
+                </div>
+                <div class="olympicsflexcontainer2">
+                    <div class="toc_textbox_r2">
+                        <a href="#scatterplotPanel" class="toc_text">4. Athlete Profiles</a>
+                    </div>
+                    <div class="toc_textbox_r2">
+                        <a href="#scatterplotPanel" class="toc_text">5. Citations</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="Introduction_panel"></div>
+        <h1 class="sectionTitles">Introduction to the Olympics</h1>
+        <div class="IntroFlex">
+          <img src="Images/history.png" height="70" width="70" alt="History Icon">
+          <div class="Introduction_Olympics">
+              <h3 class="Info_header">
+                  History of the Olympics
+              </h3>
+              <p>The Olympics is an international sporting event, which originated from the Olympic Games in Greece from over 3,000 years ago.
+              However, the first modern day Olympics took place in 1896 in Athens, where 13 countries
+            competed in 32 sporting events. The Olympics is held every four years, and the most recent one was in 2016.
+            Today, the Olympics draws over hundreds of thousands spectators and gathers widespread media coverage. </p>
+          </div>
+        </div>
+        <div class="IntroFlex">
+          <img src="Images/tracker1.png" height="70" width="70" alt="Tracker Icon">
+          <div class="Introduction_Olympics">
+            <h3 class="Info_header">
+                Olympics Tracker
+            </h3>
+            <p>Olympics Tracker visualizes the rankings of different countries over the years as well as the top athletes and their
+              profiles to help Olympics' fans understand trends in historical Olympic results. Additionally, this tracker visualizes
+              how the Olympics have changed over the years in terms of the diversity of events and the diversity of gender among its athletes.
+            </p>
+          </div>
+        </div>
+
+        <!-- ********************************** -->
+        <!--   Radial Charts VISUALIZATION      -->
+        <!-- ********************************** -->
+        <div id="radialPanel">
+            <h1 class="sectionTitles">How the Olympics Have Changed Since 1896</h1>
+            <div class="radialInfo">
+                <h3 class="eventsInfo_header">
+                    Events
+                </h3>
+                <p>During the first summer Olympics in 1896, there were only 43 events.
+                  However, by 2016, there were over 306 events! In 1924, the Winter Olympics were also
+                created and the number of winter events have risen dramatically.  To view the number of events each
+                year, hover over the charts below.</p>
+            </div>
+            <div class="radialFlexContainer">
+                <div class="radialFlex">
+                    <div class="radialFlexContainer_text">
+                        <img src="Images/sun.svg" height="70" width="70" alt="Summer Icon">
+                        <div id="ESradialSVG_text">
+                            <p>Year: </p>
+                            <p>Number of Events: </p>
+                        </div>
+                    </div>
+                    <svg id="ESradialSVGLegend" height="40" width="200" ></svg>
+                    <svg id="ESradialSVG" height="400" width="400"></svg>
+                </div>
+                <div class="radialFlex">
+                    <div class="radialFlexContainer_text">
+                        <img src="Images/snowflake.svg" height="70" width="70" alt="Winter Icon">
+                        <div id="EWradialSVG_text">
+                            <p>Year: </p>
+                            <p>Number of Events: </p>
+                        </div>
+                    </div>
+                    <svg id="EWradialSVGLegend" height="40" width="200"></svg>
+                    <svg id="EWradialSVG" height="400" width="400"></svg>
+                </div>
+            </div>
+            <div class="radialInfo">
+                <h3 id="genderInfo_header">
+                    Gender
+                </h3>
+                <p>Women didn't participate in the Olympics in 1896.
+                  However, participation from women has increased dramatically since
+                  then, and by 2016, there are almost as many women competing in the
+                  Olympics as men! To view the number of male and female althletes each
+                  year, hover over these charts. </p>
+            </div>
+            <div class="radialFlexContainer">
+                <div class="radialFlex">
+                    <div class="radialFlexContainer_text_large">
+                        <img src="Images/sun.svg" height="70" width="70" alt="Summer Icon">
+                        <div id="GSradialSVG_text">
+                            <p>Year: </p>
+                            <p>Total Athletes: </p>
+                            <p>Number of Women: </p>
+                            <p>Number of Men: </p>
+                        </div>
+                    </div>
+                    <svg id="GSradialSVGLegend" height="40" width="200"></svg>
+                    <svg id="GSradialSVG" height="400" width="400"></svg>
+                </div>
+                <div class="radialFlex">
+                    <div class="radialFlexContainer_text_large">
+                        <img src="Images/snowflake.svg" height="70" width="70" alt="Winter Icon">
+                        <div id="GWradialSVG_text">
+                            <p>Year: </p>
+                            <p>Total Athletes: </p>
+                            <p>Number of Women: </p>
+                            <p>Number of Men: </p>
+                        </div>
+                    </div>
+                    <svg id="GWradialSVGLegend" height="40" width="200"></svg>
+                    <svg id="GWradialSVG" height="400" width="400"></svg>
+                </div>
+            </div>
+        </div>
+
+        <!-- ********************************** -->
+        <!--         MAP VISUALIZATION          -->
+        <!-- ********************************** -->
+        <div id="mapPanel">
+            <h1 class="sectionTitles">World Map of Olympics Results</h1>
+            <div class="mapInfo">
+                <h3 id="mapInfo_header">
+                    Background
+                </h3>
+                <p>This map visualizes how many total medals each country has obtained throughout time.
+                To change the year of the Olympics, move the slider below the map. Additionally,
+              feel free to filter the data based on season and sport. </p>
+            </div>
+            <div id='viz'>
+                <div id="flexContainerMP_1">
+                </div>
+                <!-- <div id="timeline"> -->
+                <div class="row align-items-center">
+                    <div class="col-sm">
+                        <div id="slider-time"></div>
+                        <h3 class="time_year">Year</h3>
+                    </div>
+                    <div class="col-sm-2">
+                        <p id="value-time"></p>
+                    </div>
+                </div>
+
+                <!-- Optional Filters -->
+                <div id="optMapFilters">
+                    <div id="map_opt_title_div">
+                        <h3 id="map_opt_title">Optional Filters</h3>
+                    </div>
+                    <div class="optMapFilters_flexContainer">
+
+                        <div class="radioSeasonMP">
+                            <h4 class="filterTitlesMP">Season</h4>
+                            <input type="checkbox" id="summerMP" name="seasonMP" value="Summer">Summer<br>
+                            <input type="checkbox" id="winterMP" name="seasonMP" value="Winter">Winter<br>
+                        </div>
+
+                        <div class="selectSportMP">
+                            <h4 class="filterTitlesMP">Sport</h4>
+                            <select id="selectSportMP">
+                                <option selected="selected">All Sports</option>
+                            </select>
+                            <h4 class="filterTitlesMP">Event</h4>
+                            <select id="selectEventMP">
+                                <option selected="selected">All Events</option>
+                            </select>
+                        </div>
+
+                        <div class="optMPFilters_flexContainer_medals">
+                            <div class="optMPFilters_flex_medals_titles">
+                                <h4 class="filterTitlesMP"># of Medals</h4>
+                                <input type="checkbox" id="selectGoldMP" name="selectMedalMP" value="Gold">Gold<br>
+                                <input type="checkbox" id="selectSilverMP" name="selectMedalMP" value="Silver">Silver<br>
+                                <input type="checkbox" id="selectBronzeMP" name="selectMedalMP" value="Bronze">Bronze <br>
+
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ********************************** -->
+        <!--   SCATTERPLOT VISUALIZATION        -->
+        <!-- ********************************** -->
+        <div id="scatterplotPanel">
+            <h1 class="sectionTitles">Athlete Profiles</h1>
+            <div class="scatterInfo">
+                <h3 id="scatterInfo_header">
+                    Background
+                </h3>
+                <p>This visualization allows you to compare athlete profiles based on wide range of filters, and once generated, the scatterplot displays the average height and weight for an athlete.
+                Season competed, sport, and gender are required filters as they were determined to be the top differentiating factors between athlete's
+            physical characteristics. Additionally, you can apply optional filters to further narrow down the dataset.
+          To display the scatterplot, 1) Fill Out Required Filters 2) Choose Optional Filters If You Wish 3) Click Generate. </p>
+          <p>You can also interact with the scatterplot by clicking on a dot to view more in-depth statistics about an athlete! </p>
+            </div>
+            <!-- Section 1: Scatterplot Filters Panel -->
+            <div id="flexContainerSP_Top">
+                <div id="flexContainerSP_1">
+                    <!-- Required Filters -->
+                    <div id="reqSPFilters">
+                        <h3><b>Required Filters:</b></h3>
+                        <div class="reqSPFilters_flexContainer">
+                            <div class="radioSeasonSP">
+                                <h4 class="filterTitlesSP">Season</h4>
+                                <div class="radioSeasonSPflexcontainer">
+                                    <label class="radioSPStyling" for="summerSP">Summer
+                                  <input type="radio" id="summerSP" name="seasonSP" value="Summer">
+                                  <span class="radioDot"></span>
+                                </label><br>
+                                    <label class="radioSPStyling" for="winterSP">Winter
+                                  <input type="radio" id="winterSP" name="seasonSP" value="Winter">
+                                  <span class="radioDot"></span>
+                                </label><br>
+                                </div>
+                            </div>
+                            <div class="selectSportSP">
+                                <h4 class="filterTitlesSP">Sport</h4>
+                                <select name="selectSportSP" id="selectSportSP"></select>
+                            </div>
+                            <div class="radioGenderSP">
+                                <h4 class="filterTitlesSP">Gender</h4>
+                                <div class="radioGenderSPflexcontainer">
+                                    <label class="radioSPStyling" for="maleSP">Male
+                                  <input type="radio" id="maleSP" name="genderSP" value="M">
+                                  <span class="radioDot"></span>
+                                </label><br>
+                                    <label class="radioSPStyling" for="femaleSP">Female
+                                  <input type="radio" id="femaleSP" name="genderSP" value="F">
+                                  <span class="radioDot"></span>
+                                </label><br>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Optional Filters -->
+                    <div id="optSPFilters">
+                        <h3><b>Optional Filters:</b></h3>
+                        <div class="optSPFilters_flexContainer">
+                            <div class="optSPFilters_flex_section1">
+                                <h4 class="filterTitlesSP">Nationality</h4>
+                                <select id="selectNationalitySP"></select>
+                                <h4 class="filterTitlesSP">Event</h4>
+                                <select id="selectEventSP"></select>
+                                <h4 class="filterTitlesSP"># of Medals</h4>
+                                <div class="checkboxMedalsFlexContainer">
+                                    <label class="checkboxSPStyling" for="medalsOne">1-2
+                                    <input type="checkbox" id="medalsOne" name="medalsOne" value="1" checked>
+                                    <span class="checkmark"></span>
+                                  </label><br>
+                                    <label class="checkboxSPStyling" for="medalsTwo">3-5
+                                    <input type="checkbox" id="medalsTwo" name="medalsTwo" value="3" checked>
+                                    <span class="checkmark"></span>
+                                  </label><br>
+                                    <label class="checkboxSPStyling" for="medalsThree">>5
+                                    <input type="checkbox" id="medalsThree" name="medalsThree" value="6" checked>
+                                    <span class="checkmark"></span>
+                                  </label><br>
+                                    <!-- <select id="selectTotalMedalSP"></select> -->
+                                </div>
+                            </div>
+                            <div class="optSPFilters_flex_section2">
+                                <div class="optSPSilderContainers">
+                                    <h4 class="filterTitlesSP">Year</h4>
+                                    <div class="sliderRange">
+                                        <div id="year-slider-range"></div>
+                                    </div>
+                                </div>
+                                <div class="optSPSilderContainers">
+                                    <h4 class="filterTitlesSP">Age</h4>
+                                    <div class="sliderRange">
+                                        <div id="age-slider-range"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="optSPFilters_flex_section3">
+                                <div class="optSPSilderContainers">
+                                    <h4 class="filterTitlesSP">Height</h4>
+                                    <div class="sliderRange">
+                                        <div id="height-slider-range"></div>
+                                    </div>
+                                </div>
+                                <div class="optSPSilderContainers">
+                                    <h4 class="filterTitlesSP">Weight</h4>
+                                    <div class="sliderRange">
+                                        <div id="weight-slider-range"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="filterButtonSPflexContainer">
+                    <div class="generateButtonSP">
+                        <button type="button" id="generateButtonSP">Generate</button>
+                    </div>
+                    <div class="resetButtonSP">
+                        <button type="button" id="resetButtonSP">Reset</button>
+                    </div>
+                </div>
+            </div>
+            <div id="errorTextSP">
+                <p>Please fill out all required filters.</p>
+            </div>
+            <!-- Section 2: Scatterplot Graph and Profile Panel -->
+            <div id="flexContainerSP_2">
+                <!-- Scatterplot Graph Container -->
+                <div id="graphSP">
+                    <!-- Scatterplot Graph -->
+                    <div id="scatterplotGraph">
+                        <svg id="scatterplotGraphSVG" height="700" width="800"></svg>
+                    </div>
+                    <!-- Scatterplot Legend -->
+                    <div id="legendSP">
+                        <svg id="scatterlegendsvg" height="150" width="800"></svg>
+                    </div>
+                </div>
+                <!-- Scatterplot Profile Panel -->
+                <div id="profilePanelSP">
+                    <div id="profilePanelSPflexContainer">
+                        <div id="profilePanelSPIntroStatsContainer">
+                            <div id="profilePanelSPIntro">
+                              <h4><b>Country</b></h4>
+                              <h4><b>Athlete Name</b></h4>
+                            </div>
+                            <div id="profilePanelSPIntroStats">
+                              <p><b>Stats:</b></p>
+                              <p># of Olympics</p>
+                              <p># of Medals</p>
+                              <p>% Success Rate</p>
+                            </div>
+                        </div>
+                        <div id="profilePanelSPPhysicalTraits">
+                            <div id="profilePanelSPTraitsIcon">
+                              <p><em>To view info about an athlete, click on a dot!</em></p>
+                            </div>
+                            <div id="profilePanelSPTraitsText"></div>
+                        </div>
+                    </div>
+                    <svg id="profilePanelSPSVG" height="450" width="580"></svg>
+                </div>
+            </div>
+        </div>
+
+        <script>
+            /**************************************************
+             *****        Radial Chart Visualizations     *****
+             **************************************************/
+
+
+
+
+
+
+
+
+
+
+
+            /**************************************************
+             **********        Map Visualization        ********
+             **************************************************/
+
+            //Map
+            var width = 950,
+                height = 550;
+
+            var projection = d3.geoMercator()
+                .scale(153)
+                .translate([width / 2, height / 1.5])
+
+            var path = d3.geoPath().projection(projection);
+
+
+            var map = d3.select("#flexContainerMP_1").append("svg")
+                .attr("width", width)
+                .attr("height", height)
+                .attr("id", "map_svg");
+
+            var g = map.append("g").attr("class", "boundary");
+
+            d3.json("countries-110m.json").then(function(topology) {
+
+                g.selectAll("path")
+                    .data(topojson.feature(topology, topology.objects.countries).features)
+                    .enter().append("path")
+                    .attr("d", path);
+
+            });
+
+            // Year inspired by: https://bl.ocks.org/johnwalley/e1d256b81e51da68f7feb632a53c3518
+            var dataTime = d3.range(0, 16).map(function(d) {
+                return new Date(1896 + (8 * d), 10, 3);
+            });
+
+            var sliderTime = d3
+                .sliderBottom()
+                .min(d3.min(dataTime))
+                .max(d3.max(dataTime))
+                .step(1000 * 60 * 60 * 24 * 365.25 * 4)
+                .width(900)
+                .tickFormat(d3.timeFormat('%Y'))
+                .tickValues(dataTime)
+                .default(new Date(2016, 10, 3));
+
+            var gTime = d3
+                .select('div#slider-time')
+                .append('svg')
+                .attr('width', 950)
+                .attr('height', 100)
+                .append('g')
+                .attr('transform', 'translate(30,30)');
+
+            gTime.call(sliderTime);
+
+            // d3.select('p#value-time').text(d3.timeFormat('%Y')(sliderTime.value()));
+
+            /**************************************************
+             *****        ScatterPlot Visualization        *****
+             **************************************************/
+
+            const scatter = d3.select("svg#scatterplotGraphSVG");
+            const scatterLeg = d3.select("svg#scatterlegendsvg");
+
+            const scatterwidth = scatter.attr("width");
+            const scatterheight = scatter.attr("height");
+            const scattermargin = {
+                top: 10,
+                right: 10,
+                bottom: 60,
+                left: 60
+            };
+
+            const legWidth = scatterLeg.attr("width");
+            const legHeight = scatterLeg.attr("height");
+
+            const widthSP = scatterwidth - scattermargin.left - scattermargin.right;
+            const heightSP = scatterheight - scattermargin.top - scattermargin.bottom;
+
+            let annotations = scatter.append("g")
+                .attr("id", "annotations")
+                .attr("class", "annotationsSP");
+
+            let areaSP = scatter.append("g").attr("id", "points").attr("class", "pointsSP")
+                .attr("transform", "translate(" + scattermargin.left + "," + scattermargin.top + ")");
+
+            let colorLegendGroup = scatterLeg.append('g')
+                .attr("id", "colorLegendGroup");
+
+            // ******************************************** DATA ASYNC FILTERING ***************************************************
+
+            const requestData = async function() {
+
+                // <!-- ************************************************************************ -->
+                // <!--               ScatterPlot VISUALIZATION DATA FILTERING                   -->
+                // <!-- ************************************************************************ -->
+
+                var medalistProfileData = await d3.json('medalist_profiles.json');
+                var medalistEventsData = await d3.json('medalist_events.json');
+                const eventsDataSP = await d3.json('SeasonSportEvents.json');
+
+                eventsDataSP.forEach(d => {
+                    //Make a New Column eventGender Based on Event Name Text
+                    //Make Event Name Text Shorter
+                    if (d.Event.match(/Women's/) != null) {
+                        d["eventGender"] = "F";
+                        // d["Event"] = d.Event.split("men's ").pop().trim();
+                    } else if (d.Event.match(/Men's/) != null) {
+                        d["eventGender"] = "M";
+                        // d["Event"] = d.Event.split("Men's ").pop().trim();
+                    } else {
+                        d["eventGender"] = "Mixed";
+                        // d["Event"] = "Mixed " + d.Event.split('Mixed ').pop().trim();
+                    }
+                });
+
+                var eventsDataSPDataDict = {}
+                eventsDataSP.forEach(d => {
+                    if (d.Event in eventsDataSPDataDict) {
+                        eventsDataSPDataDict[d.Event].push(d)
+                    } else {
+                        eventsDataSPDataDict[d.Event] = []
+                        eventsDataSPDataDict[d.Event].push(d)
+                    }
+                });
+
+                //World Map Dictionary
+                const world_dict = await d3.json('world_map.json', d3.autoType);
+                const map_data = await d3.csv('athlete_events_filtered.csv', d3.autoType);
+                const ioc_data = await d3.csv('ioc_codes.csv', d3.autoType);
+
+                var olympic_countries_list = [];
+                ioc_data.forEach(d => {
+                    if (d["IOC"] in world_dict) {
+                        olympic_countries_list.push(d["Country"]);
+                    }
+                });
+
+                var IOCDataDict = {}
+                ioc_data.forEach(d => {
+                    if (d["IOC"] in world_dict) {
+                        IOCDataDict[d.IOC] = d.Country;
+                    }
+                });
+
+                //Create new dictionary for medalistEventsData to reduce data loading times
+                var medalistEventsDataDict = {}
+                medalistEventsData.forEach(d => {
+                    if (d.ID in medalistEventsDataDict) {
+                        medalistEventsDataDict[d.ID].push(d)
+                    } else {
+                        medalistEventsDataDict[d.ID] = []
+                        medalistEventsDataDict[d.ID].push(d)
+                    }
+                });
+
+                //Create new dictionary to merge events dictionary with athlete profiles array based on ID
+                medalistProfileData.forEach(p => {
+                    p["Events"] = [];
+                    p["EventMedals"] = [];
+                    p["YearsCompeted"] = [];
+                    p["FirstYear"] = 0;
+                    p["TotalOlympicEvents"] = 0;
+                    p["NOC"] = IOCDataDict[p["NOC"]];
+                    medalistEventsDataDict[p.medalistID].forEach(d => {
+                        if (p.medalistID == d.ID) {
+                            p["TotalOlympicEvents"] += 1;
+                            if (!(p["YearsCompeted"].includes(d.Year))) {
+                                p["YearsCompeted"].push(d.Year)
+                            }
+                            if (!(p["Events"].includes(d.Event))) {
+                                p["Events"].push(d.Event);
+                                if (d["Medal"] == "NA") {
+                                    p["EventMedals"].push({
+                                        "Event": d.Event,
+                                        "Gold": 0,
+                                        "Silver": 0,
+                                        "Bronze": 0,
+                                        "NoMedals": 1
+                                    });
+                                } else if (d["Medal"] == "Gold") {
+                                    p["EventMedals"].push({
+                                        "Event": d.Event,
+                                        "Gold": 1,
+                                        "Silver": 0,
+                                        "Bronze": 0,
+                                        "NoMedals": 0
+                                    });
+                                } else if (d["Medal"] == "Silver") {
+                                    p["EventMedals"].push({
+                                        "Event": d.Event,
+                                        "Gold": 0,
+                                        "Silver": 1,
+                                        "Bronze": 0,
+                                        "NoMedals": 0
+                                    });
+                                } else if (d["Medal"] == "Bronze") {
+                                    p["EventMedals"].push({
+                                        "Event": d.Event,
+                                        "Gold": 0,
+                                        "Silver": 0,
+                                        "Bronze": 1,
+                                        "NoMedals": 0
+                                    });
+                                }
+                            } else {
+                                var indexEventMedal = p["EventMedals"].map(function(o) {
+                                    return o.Event;
+                                }).indexOf(d.Event);
+                                if (d["Medal"] == "NoMedals") {
+                                    p["EventMedals"][indexEventMedal]["NoMedals"] += 1;
+                                } else if (d["Medal"] == "Gold") {
+                                    p["EventMedals"][indexEventMedal]["Gold"] += 1;
+                                } else if (d["Medal"] == "Silver") {
+                                    p["EventMedals"][indexEventMedal]["Silver"] += 1;
+                                } else if (d["Medal"] == "Bronze") {
+                                    p["EventMedals"][indexEventMedal]["Bronze"] += 1;
+                                }
+                            }
+                        }
+                    });
+                    for (event in p.EventMedals) {
+                        for (numMedals in p.EventMedals[event]) {
+                            if ((numMedals != "NoMedals") && (numMedals != "Event")) {
+                                p["TotalOlympicMedals"] += p.EventMedals[event][numMedals]
+                            }
+                        }
+                    }
+                    p["FirstYear"] = Math.min(p["YearsCompeted"]);
+                });
+
+                // <!-- ************************************************************************ -->
+                // <!--               Radial Charts VISUALIZATION DATA FILTERING                   -->
+                // <!-- ************************************************************************ -->
+
+                var gSData = await d3.json('gender_summer.json');
+                var gWData = await d3.json('gender_winter.json');
+                var eSData = await d3.json('events_summer.json');
+                var eWData = await d3.json('events_winter.json');
+                var cSData = await d3.json('country_summer.json');
+                var cWData = await d3.json('country_winter.json');
+
+                var svgRadial = d3.select("svg#ESradialSVG"),
+                    widthRadial = svgRadial.attr("width"),
+                    heightRadial = svgRadial.attr("height");
+
+                // <!-- ************************************************************************ -->
+                // <!--                           RADIAL CHART: SUMMER EVENTS                    -->
+                // <!-- ************************************************************************ -->
+
+                var marginRadialES = {
+                        top: 50,
+                        right: 20,
+                        bottom: 10,
+                        left: 20
+                    },
+                    widthRadialMarginES = widthRadial - marginRadialES.left - marginRadialES.right,
+                    heightRadialMarginES = heightRadial - marginRadialES.top - marginRadialES.bottom,
+                    innerRadiusES = 50,
+                    outerRadiusES = Math.min(widthRadialMarginES, heightRadialMarginES) / 2;
+
+                var eSDataMax = Math.max.apply(Math, eSData.map(function(d) {
+                    return d.NumEvents;
+                }))
+
+                var svgRadialES = d3.select("svg#ESradialSVG").append("svg")
+                    .attr("width", widthRadial + marginRadialES.left + marginRadialES.right)
+                    .attr("height", heightRadialMarginES + marginRadialES.top + marginRadialES.bottom)
+                    .append("g")
+                    .attr("transform", "translate(" + (widthRadial / 2 + marginRadialES.left) + "," + (heightRadialMarginES / 2 + marginRadialES.top) + ")");
+
+                var xRadialES = d3.scaleBand()
+                    .range([0, 2 * Math.PI])
+                    .align(0)
+                    .domain(eSData.map(function(d) {
+                        return d.Year;
+                    }));
+                var yRadialES = d3.scaleRadial()
+                    .range([innerRadiusES, outerRadiusES])
+                    .domain([0, eSDataMax]);
+
+                svgRadialES.append("g")
+                    .selectAll("path")
+                    .data(eSData)
+                    .enter()
+                    .append("path")
+                    .attr("class", "radialArcs")
+                    .attr("fill", "#e0bc7f")
+                    .attr("d", d3.arc()
+                        .innerRadius(innerRadiusES)
+                        .outerRadius(function(d) {
+                            return yRadialES(d['NumEvents']);
+                        })
+                        .startAngle(function(d) {
+                            return xRadialES(d.Year);
+                        })
+                        .endAngle(function(d) {
+                            return xRadialES(d.Year) + xRadialES.bandwidth();
+                        })
+                        .padAngle(0.01)
+                        .padRadius(innerRadiusES))
+                    .on('mouseover', function(d, i) {
+                        d3.select(this).transition()
+                            .duration('50')
+                            .attr('opacity', '.85');
+                        d3.select("#ESradialSVG_text")
+                            .html("<p>Year: " + i.Year + "</p>" +
+                                "<p>Number of Events: " + i.NumEvents.toLocaleString() + "</p>");
+                    })
+                    .on('mouseout', function(d, i) {
+                        d3.select(this).transition()
+                            .duration('50')
+                            .attr('opacity', '1');
+
+                    });
+
+                svgRadialES.append("g")
+                    .selectAll("g")
+                    .data(eSData)
+                    .enter()
+                    .append("g")
+                    .attr("text-anchor", function(d) {
+                        return (xRadialES(d.Year) + xRadialES.bandwidth() / 2 + Math.PI) % (2 * Math.PI) < Math.PI ? "end" : "start";
+                    })
+                    .attr("transform", function(d) {
+                        return "rotate(" + ((xRadialES(d.Year) + xRadialES.bandwidth() / 2) * 180 / Math.PI - 90) + ")" + "translate(" + (yRadialES(d['NumEvents']) + 10) + ",0)";
+                    })
+                    .append("text")
+                    .text(function(d) {
+                        return (d.Year)
+                    })
+                    .attr("transform", function(d) {
+                        return (xRadialES(d.Year) + xRadialES.bandwidth() / 2 + Math.PI) % (2 * Math.PI) < Math.PI ? "rotate(180)" : "rotate(0)";
+                    })
+                    .style("font-size", "11px")
+                    .style("fill", "white")
+                    .attr("alignment-baseline", "middle")
+
+                // Creating the Legend
+                const legES = d3.select("svg#ESradialSVGLegend")
+
+                // Draw Colored Circles in the Legend
+                legES.append("rect")
+                    .attr("width", 10)
+                    .attr("height", 10)
+                    .attr("x", 30)
+                    .attr("y", 30)
+                    .style("fill", "#e0bc7f");
+
+                // Add Corresponding Text in the Legend
+                legES.append("text")
+                    .attr("x", 50)
+                    .attr("y", 35)
+                    .attr("dy", ".35em")
+                    .style("text-anchor", "start")
+                    .style("font-size", "13px")
+                    .style("fill", "white")
+                    .text("# Summer Events");
+
+                // <!-- ************************************************************************ -->
+                // <!--                           RADIAL CHART: WINTER EVENTS                    -->
+                // <!-- ************************************************************************ -->
+
+                var marginRadialEW = {
+                        top: 50,
+                        right: 0,
+                        bottom: 20,
+                        left: 0
+                    },
+                    widthRadialMarginEW = widthRadial - marginRadialEW.left - marginRadialEW.right,
+                    heightRadialMarginEW = heightRadial - marginRadialEW.top - marginRadialEW.bottom,
+                    innerRadiusEW = 50,
+                    outerRadiusEW = Math.min(widthRadialMarginEW, heightRadialMarginEW) / 2;
+
+                var eWDataMax = Math.max.apply(Math, eWData.map(function(d) {
+                    return d.NumEvents;
+                }))
+
+                var svgRadialEW = d3.select("svg#EWradialSVG").append("svg")
+                    .attr("width", widthRadial + marginRadialEW.left + marginRadialEW.right)
+                    .attr("height", heightRadialMarginEW + marginRadialEW.top + marginRadialEW.bottom)
+                    .append("g")
+                    .attr("transform", "translate(" + (widthRadial / 2 + marginRadialEW.left + 20) + "," + (heightRadialMarginEW / 2 + marginRadialEW.top) + ")");
+
+                var xRadialEW = d3.scaleBand()
+                    .range([0, 2 * Math.PI])
+                    .align(0)
+                    .domain(eWData.map(function(d) {
+                        return d.Year;
+                    }));
+                var yRadialEW = d3.scaleRadial()
+                    .range([innerRadiusEW, outerRadiusEW])
+                    .domain([0, eWDataMax]);
+
+                svgRadialEW.append("g")
+                    .selectAll("path")
+                    .data(eWData)
+                    .enter()
+                    .append("path")
+                    .attr("class", "radialArcs")
+                    .attr("fill", "#7fc6e0")
+                    .attr("d", d3.arc()
+                        .innerRadius(innerRadiusEW)
+                        .outerRadius(function(d) {
+                            return yRadialEW(d['NumEvents']);
+                        })
+                        .startAngle(function(d) {
+                            return xRadialEW(d.Year);
+                        })
+                        .endAngle(function(d) {
+                            return xRadialEW(d.Year) + xRadialEW.bandwidth();
+                        })
+                        .padAngle(0.01)
+                        .padRadius(innerRadiusEW))
+                    .on('mouseover', function(d, i) {
+                        d3.select(this).transition()
+                            .duration('50')
+                            .attr('opacity', '.85');
+                        d3.select("#EWradialSVG_text")
+                            .html("<p>Year: " + i.Year + "</p>" +
+                                "<p>Number of Events: " + i.NumEvents.toLocaleString() + "</p>");
+                    })
+                    .on('mouseout', function(d, i) {
+                        d3.select(this).transition()
+                            .duration('50')
+                            .attr('opacity', '1');
+
+                    });
+
+                svgRadialEW.append("g")
+                    .selectAll("g")
+                    .data(eWData)
+                    .enter()
+                    .append("g")
+                    .attr("text-anchor", function(d) {
+                        return (xRadialEW(d.Year) + xRadialEW.bandwidth() / 2 + Math.PI) % (2 * Math.PI) < Math.PI ? "end" : "start";
+                    })
+                    .attr("transform", function(d) {
+                        return "rotate(" + ((xRadialEW(d.Year) + xRadialEW.bandwidth() / 2) * 180 / Math.PI - 90) + ")" + "translate(" + (yRadialEW(d['NumEvents']) + 10) + ",0)";
+                    })
+                    .append("text")
+                    .text(function(d) {
+                        return (d.Year)
+                    })
+                    .attr("transform", function(d) {
+                        return (xRadialEW(d.Year) + xRadialEW.bandwidth() / 2 + Math.PI) % (2 * Math.PI) < Math.PI ? "rotate(180)" : "rotate(0)";
+                    })
+                    .style("font-size", "11px")
+                    .style("fill", "white")
+                    .attr("alignment-baseline", "middle")
+
+                    // Creating the Legend
+                    const legEW = d3.select("svg#EWradialSVGLegend")
+
+                    // Draw Colored Circles in the Legend
+                    legEW.append("rect")
+                        .attr("width", 10)
+                        .attr("height", 10)
+                        .attr("x", 30)
+                        .attr("y", 30)
+                        .style("fill", "#7fc6e0");
+
+                    // Add Corresponding Text in the Legend
+                    legEW.append("text")
+                        .attr("x", 50)
+                        .attr("y", 35)
+                        .attr("dy", ".35em")
+                        .style("text-anchor", "start")
+                        .style("font-size", "13px")
+                        .style("fill", "white")
+                        .text("# Winter Events");
+
+                // <!-- ************************************************************************ -->
+                // <!--                           RADIAL CHART: SUMMER EVENTS                    -->
+                // <!-- ************************************************************************ -->
+
+                var marginRadialGS = {
+                        top: 50,
+                        right: 0,
+                        bottom: 0,
+                        left: 0
+                    },
+                    widthRadialMarginGS = widthRadial - marginRadialGS.left - marginRadialGS.right,
+                    heightRadialMarginGS = heightRadial - marginRadialGS.top - marginRadialGS.bottom,
+                    innerRadiusGS = 50,
+                    outerRadiusGS = Math.min(widthRadialMarginGS, heightRadialMarginGS) / 2;
+
+                var gSDataMax = Math.max.apply(Math, gSData.map(function(d) {
+                    return d.NumAthletes;
+                }))
+
+                var svgRadialGS = d3.select("svg#GSradialSVG").append("svg")
+                    .attr("width", widthRadial + marginRadialGS.left + marginRadialGS.right)
+                    .attr("height", heightRadialMarginGS + marginRadialGS.top + marginRadialGS.bottom)
+                    .append("g")
+                    .attr("transform", "translate(" + (widthRadial / 2 + marginRadialGS.left + 20) + "," + (heightRadialMarginGS / 2 + marginRadialGS.top) + ")");
+
+
+                var GSstackdata = ["NumMale", "NumWomen"].map(function(numGender) {
+                    return gSData.map(function(k) { //x: "Event", y0: 0, y: how many athletes
+                        return {
+                            x: k["Year"],
+                            y: +k[numGender]
+                        };
+                    })
+                });
+
+                for (i = 0; i < GSstackdata.length; i++) {
+                    if (i == 0) {
+                        for (j = 0; j < GSstackdata[i].length; j++) {
+                            GSstackdata[i][j]["y0"] = 0;
+                        }
+                    } else {
+                        for (j = 0; j < GSstackdata[i].length; j++) {
+                            GSstackdata[i][j]["y0"] = (GSstackdata[i - 1][j]["y"] + GSstackdata[i - 1][j]["y0"]);
+                        }
+                    }
+                }
+
+                var xRadialGS = d3.scaleBand()
+                    .range([0, 2 * Math.PI])
+                    .domain(GSstackdata[0].map(function(d) {
+                        return d.x;
+                    }));
+                var yRadialGS = d3.scaleRadial()
+                    .range([innerRadiusGS, outerRadiusGS])
+                    .domain([0, gSDataMax]);
+
+                var colorGS = ["rgb(0, 133, 218)", "rgb(219, 115, 255)"]
+
+                var layerGS = svgRadialGS.selectAll()
+                    .data(GSstackdata)
+                    .enter().append("g")
+                    .attr("class", "stackGS")
+                    .style("fill", function(d, i) {
+                        return colorGS[i]
+                    });
+
+                layerGS.selectAll("path")
+                    .data(function(d) {
+                        return d;
+                    })
+                    .enter()
+                    .append("path")
+                    .attr("class", "radialArcs")
+                    .attr("d", d3.arc()
+                        .innerRadius(function(d) {
+                            return yRadialGS(d.y0);
+                        })
+                        .outerRadius(function(d) {
+                            return yRadialGS(d.y + d.y0);
+                        })
+                        .startAngle(function(d) {
+                            return xRadialGS(d.x);
+                        })
+                        .endAngle(function(d) {
+                            return xRadialGS(d.x) + xRadialGS.bandwidth();
+                        })
+                        .padAngle(0.01)
+                        .padRadius(innerRadiusGS));
+
+                var layerGS2 = svgRadialGS.selectAll()
+                    .data(GSstackdata)
+                    .enter().append("g")
+                    .attr("class", "stackGS");
+
+                layerGS2.append("g")
+                    .selectAll("path")
+                    .data(gSData)
+                    .enter()
+                    .append("path")
+                    .attr("class", "radialArcs")
+                    .attr("fill", "white")
+                    .attr('opacity', '0.05')
+                    .attr("d", d3.arc()
+                        .innerRadius(yRadialGS(0))
+                        .outerRadius(function(d) {
+                            return yRadialGS(d['NumAthletes']);
+                        })
+                        .startAngle(function(d) {
+                            return xRadialGS(d.Year);
+                        })
+                        .endAngle(function(d) {
+                            return xRadialGS(d.Year) + xRadialGS.bandwidth();
+                        })
+                        .padAngle(0.01)
+                        .padRadius(innerRadiusGS))
+                    .on('mouseover', function(d, i) {
+                        d3.select(this).transition()
+                            .duration('50')
+                            .attr('opacity', '.2');
+                        d3.select("#GSradialSVG_text")
+                            .html("<p>Year: " + i.Year + "</p>" +
+                                "<p>Total Athletes: " + i.NumAthletes.toLocaleString() + "</p>" +
+                                "<p>Number of Women: " + i.NumWomen.toLocaleString() + "</p>" +
+                                "<p>Number of Men: " + i.NumMale.toLocaleString() + "</p>");
+                    })
+                    .on('mouseout', function(d, i) {
+                        d3.select(this).transition()
+                            .duration('50')
+                            .attr('opacity', '0.05');
+
+                    });
+
+                svgRadialGS.append("g")
+                    .selectAll("g")
+                    .data(gSData)
+                    .enter()
+                    .append("g")
+                    .attr("text-anchor", function(d) {
+                        return (xRadialGS(d.Year) + xRadialGS.bandwidth() / 2 + Math.PI) % (2 * Math.PI) < Math.PI ? "end" : "start";
+                    })
+                    .attr("transform", function(d) {
+                        return "rotate(" + ((xRadialGS(d.Year) + xRadialGS.bandwidth() / 2) * 180 / Math.PI - 90) + ")" + "translate(" + (yRadialGS(d['NumAthletes']) + 10) + ",0)";
+                    })
+                    .append("text")
+                    .text(function(d) {
+                        return (d.Year)
+                    })
+                    .attr("transform", function(d) {
+                        return (xRadialGS(d.Year) + xRadialGS.bandwidth() / 2 + Math.PI) % (2 * Math.PI) < Math.PI ? "rotate(180)" : "rotate(0)";
+                    })
+                    .style("font-size", "11px")
+                    .style("fill", "white")
+                    .attr("alignment-baseline", "middle")
+
+
+                    // Creating the Legend
+                    const legGS = d3.select("svg#GSradialSVGLegend")
+
+                    // Draw Colored Circles in the Legend
+                    legGS.append("rect")
+                        .attr("width", 10)
+                        .attr("height", 10)
+                        .attr("x", 70)
+                        .attr("y", 30)
+                        .style("fill", "rgb(0, 133, 218)");
+
+                    // Add Corresponding Text in the Legend
+                    legGS.append("text")
+                        .attr("x", 90)
+                        .attr("y", 35)
+                        .attr("dy", ".35em")
+                        .style("text-anchor", "start")
+                        .style("font-size", "13px")
+                        .style("fill", "white")
+                        .text("Male");
+                        // Draw Colored Circles in the Legend
+
+                    legGS.append("rect")
+                        .attr("width", 10)
+                        .attr("height", 10)
+                        .attr("x", 70)
+                        .attr("y", 15)
+                        .style("fill", "rgb(219, 115, 255)");
+
+                    // Add Corresponding Text in the Legend
+                    legGS.append("text")
+                        .attr("x", 90)
+                        .attr("y", 20)
+                        .attr("dy", ".35em")
+                        .style("text-anchor", "start")
+                        .style("font-size", "13px")
+                        .style("fill", "white")
+                        .text("Female");
+
+
+            // <!-- ************************************************************************ -->
+            // <!--                           RADIAL CHART: WINTER EVENTS                    -->
+            // <!-- ************************************************************************ -->
+
+            var marginRadialGW = {
+                    top: 50,
+                    right: 0,
+                    bottom: 0,
+                    left: 0
+                },
+                widthRadialMarginGW = widthRadial - marginRadialGW.left - marginRadialGW.right,
+                heightRadialMarginGW = heightRadial - marginRadialGW.top - marginRadialGW.bottom,
+                innerRadiusGW = 50,
+                outerRadiusGW = Math.min(widthRadialMarginGW, heightRadialMarginGW) / 2;
+
+            var gWDataMax = Math.max.apply(Math, gWData.map(function(d) {
+                return d.NumAthletes;
+            }))
+
+            var svgRadialGW = d3.select("svg#GWradialSVG").append("svg")
+                .attr("width", widthRadial + marginRadialGW.left + marginRadialGW.right)
+                .attr("height", heightRadialMarginGW + marginRadialGW.top + marginRadialGW.bottom)
+                .append("g")
+                .attr("transform", "translate(" + (widthRadial / 2 + marginRadialGW.left + 20) + "," + (heightRadialMarginGW / 2 + marginRadialGW.top) + ")");
+
+
+            var GWstackdata = ["NumMale", "NumWomen"].map(function(numGender) {
+                return gWData.map(function(k) { //x: "Event", y0: 0, y: how many athletes
+                    return {
+                        x: k["Year"],
+                        y: +k[numGender]
+                    };
+                })
+            });
+
+            for (i = 0; i < GWstackdata.length; i++) {
+                if (i == 0) {
+                    for (j = 0; j < GWstackdata[i].length; j++) {
+                        GWstackdata[i][j]["y0"] = 0;
+                    }
+                } else {
+                    for (j = 0; j < GWstackdata[i].length; j++) {
+                        GWstackdata[i][j]["y0"] = (GWstackdata[i - 1][j]["y"] + GWstackdata[i - 1][j]["y0"]);
+                    }
+                }
+            }
+
+            var xRadialGW = d3.scaleBand()
+                .range([0, 2 * Math.PI])
+                .domain(GWstackdata[0].map(function(d) {
+                    return d.x;
+                }));
+            var yRadialGW = d3.scaleRadial()
+                .range([innerRadiusGW, outerRadiusGW])
+                .domain([0, gWDataMax]);
+
+            var colorGW = ["rgb(0, 133, 218)", "rgb(219, 115, 255)"]
+
+            var layerGW = svgRadialGW.selectAll()
+                .data(GWstackdata)
+                .enter().append("g")
+                .attr("class", "stackGW")
+                .style("fill", function(d, i) {
+                    return colorGW[i]
+                });
+
+            layerGW.selectAll("path")
+                .data(function(d) {
+                    return d;
+                })
+                .enter()
+                .append("path")
+                .attr("class", "radialArcs")
+                .attr("d", d3.arc()
+                    .innerRadius(function(d) {
+                        return yRadialGW(d.y0);
+                    })
+                    .outerRadius(function(d) {
+                        return yRadialGW(d.y + d.y0);
+                    })
+                    .startAngle(function(d) {
+                        return xRadialGW(d.x);
+                    })
+                    .endAngle(function(d) {
+                        return xRadialGW(d.x) + xRadialGW.bandwidth();
+                    })
+                    .padAngle(0.01)
+                    .padRadius(innerRadiusGW));
+
+            var layerGW2 = svgRadialGW.selectAll()
+                .data(GWstackdata)
+                .enter().append("g")
+                .attr("class", "stackGW");
+
+            layerGW2.append("g")
+                .selectAll("path")
+                .data(gWData)
+                .enter()
+                .append("path")
+                .attr("class", "radialArcs")
+                .attr("fill", "white")
+                .attr('opacity', '0.05')
+                .attr("d", d3.arc()
+                    .innerRadius(yRadialGW(0))
+                    .outerRadius(function(d) {
+                        return yRadialGW(d['NumAthletes']);
+                    })
+                    .startAngle(function(d) {
+                        return xRadialGW(d.Year);
+                    })
+                    .endAngle(function(d) {
+                        return xRadialGW(d.Year) + xRadialGW.bandwidth();
+                    })
+                    .padAngle(0.01)
+                    .padRadius(innerRadiusGW))
+                .on('mouseover', function(d, i) {
+                    d3.select(this).transition()
+                        .duration('50')
+                        .attr('opacity', '.2');
+                    d3.select("#GWradialSVG_text")
+                        .html("<p>Year: " + i.Year + "</p>" +
+                            "<p>Total Athletes: " + i.NumAthletes.toLocaleString() + "</p>" +
+                            "<p>Number of Women: " + i.NumWomen.toLocaleString() + "</p>" +
+                            "<p>Number of Men: " + i.NumMale.toLocaleString() + "</p>");
+                })
+                .on('mouseout', function(d, i) {
+                    d3.select(this).transition()
+                        .duration('50')
+                        .attr('opacity', '0.05');
+
+                });
+
+            svgRadialGW.append("g")
+                .selectAll("g")
+                .data(gWData)
+                .enter()
+                .append("g")
+                .attr("text-anchor", function(d) {
+                    return (xRadialGW(d.Year) + xRadialGW.bandwidth() / 2 + Math.PI) % (2 * Math.PI) < Math.PI ? "end" : "start";
+                })
+                .attr("transform", function(d) {
+                    return "rotate(" + ((xRadialGW(d.Year) + xRadialGW.bandwidth() / 2) * 180 / Math.PI - 90) + ")" + "translate(" + (yRadialGW(d['NumAthletes']) + 10) + ",0)";
+                })
+                .append("text")
+                .text(function(d) {
+                    return (d.Year)
+                })
+                .attr("transform", function(d) {
+                    return (xRadialGW(d.Year) + xRadialGW.bandwidth() / 2 + Math.PI) % (2 * Math.PI) < Math.PI ? "rotate(180)" : "rotate(0)";
+                })
+                .style("font-size", "11px")
+                .style("fill", "white")
+                .attr("alignment-baseline", "middle")
+
+
+                // Creating the Legend
+                const legGW = d3.select("svg#GWradialSVGLegend")
+
+                // Draw Colored Circles in the Legend
+                legGW.append("rect")
+                    .attr("width", 10)
+                    .attr("height", 10)
+                    .attr("x", 70)
+                    .attr("y", 30)
+                    .style("fill", "rgb(0, 133, 218)");
+
+                // Add Corresponding Text in the Legend
+                legGW.append("text")
+                    .attr("x", 90)
+                    .attr("y", 35)
+                    .attr("dy", ".35em")
+                    .style("text-anchor", "start")
+                    .style("font-size", "13px")
+                    .style("fill", "white")
+                    .text("Male");
+                    // Draw Colored Circles in the Legend
+
+                legGW.append("rect")
+                    .attr("width", 10)
+                    .attr("height", 10)
+                    .attr("x", 70)
+                    .attr("y", 15)
+                    .style("fill", "rgb(219, 115, 255)");
+
+                // Add Corresponding Text in the Legend
+                legGW.append("text")
+                    .attr("x", 90)
+                    .attr("y", 20)
+                    .attr("dy", ".35em")
+                    .style("text-anchor", "start")
+                    .style("font-size", "13px")
+                    .style("fill", "white")
+                    .text("Female");
+
+                // <!-- ************************************************************************ -->
+                // <!--               ScatterPlot VISUALIZATION IMPLEMENTATION                   -->
+                // <!-- ************************************************************************ -->
+
+                // Finding default data for dropdowns
+                var allSport = []
+                var allNationality = olympic_countries_list;
+                var allEvent = []
+
+                for (var key in eventsDataSPDataDict) {
+                    eventsDataSPDataDict[key].forEach(d => {
+                        if (!allSport.includes(d['Sport'])) {
+                            allSport.push(d['Sport'])
+                        }
+                        if (!allEvent.includes(d['Event'])) {
+                            allEvent.push(d['Event'])
+                        }
+                    });
+                }
+
+                for (var key in eventsDataSPDataDict) {
+                    eventsDataSPDataDict[key].forEach(d => {
+                        if (!allSport.includes(d['Sport'])) {
+                            allSport.push(d['Sport'])
+                        }
+                        if (!allEvent.includes(d['Event'])) {
+                            allEvent.push(d['Event'])
+                        }
+                    });
+                }
+
+                allSport.sort();
+                allSport.unshift("Select Sport")
+                allNationality.sort();
+                allNationality.unshift("All Nationalities")
+                allEvent.sort();
+                allEvent.unshift("All Events")
+
+                //Finding default max and min values for sliders
+                var weightMax = Math.max.apply(Math, medalistProfileData.map(function(d) {
+                    return d.Weight;
+                }))
+                weightMin = Math.min.apply(Math, medalistProfileData.map(function(d) {
+                    return d.Weight;
+                }))
+                heightMax = Math.max.apply(Math, medalistProfileData.map(function(d) {
+                    return d.Height;
+                }))
+                heightMin = Math.min.apply(Math, medalistProfileData.map(function(d) {
+                    return d.Height;
+                }))
+                ageMax = Math.max.apply(Math, medalistProfileData.map(function(d) {
+                    return d.Age;
+                }))
+                ageMin = Math.min.apply(Math, medalistProfileData.map(function(d) {
+                    return d.Age;
+                }))
+                yearMax = 2016;
+                yearMin = 1896;
+
+                // Initializing Slider Filters: Year
+                var yearSlider = d3.sliderBottom()
+                    .min(yearMin)
+                    .max(yearMax)
+                    .width(100)
+                    .tickFormat(d3.format(".0f"))
+                    .ticks(0)
+                    .default([yearMin, yearMax])
+                    .fill('#2081c7');
+
+                var yearSliderSVG = d3.select('#year-slider-range')
+                    .append('svg')
+                    .attr('width', 175)
+                    .attr('height', 100)
+                    .append('g')
+                    .attr('transform', 'translate(30,30)');
+
+                yearSliderSVG.call(yearSlider);
+
+                // Initializing Slider Filters: Age
+                var ageSlider = d3.sliderBottom()
+                    .min(ageMin)
+                    .max(ageMax)
+                    .width(100)
+                    .tickFormat(d3.format(".0f"))
+                    .ticks(0)
+                    .default([ageMin, ageMax])
+                    .fill('#2081c7');
+
+                var ageSliderSVG = d3.select('#age-slider-range')
+                    .append('svg')
+                    .attr('width', 175)
+                    .attr('height', 100)
+                    .append('g')
+                    .attr('transform', 'translate(30,30)');
+
+                ageSliderSVG.call(ageSlider);
+
+                // Initializing Slider Filters: Height
+                var heightSlider = d3.sliderBottom()
+                    .min(heightMin)
+                    .max(heightMax)
+                    .width(100)
+                    .tickFormat(d3.format(".0f"))
+                    .ticks(0)
+                    .default([heightMin, heightMax])
+                    .fill('#2081c7');
+
+                var heightSliderSVG = d3.select('#height-slider-range')
+                    .append('svg')
+                    .attr('width', 175)
+                    .attr('height', 100)
+                    .append('g')
+                    .attr('transform', 'translate(30,30)');
+
+                heightSliderSVG.call(heightSlider);
+
+                // Initializing Slider Filters: Weight
+                var weightSlider = d3.sliderBottom()
+                    .min(weightMin)
+                    .max(weightMax)
+                    .width(100)
+                    .tickFormat(d3.format(".0f"))
+                    .ticks(0)
+                    .default([weightMin, weightMax])
+                    .fill('#2081c7');
+
+                var weightSliderSVG = d3.select('#weight-slider-range')
+                    .append('svg')
+                    .attr('width', 175)
+                    .attr('height', 100)
+                    .append('g')
+                    .attr('transform', 'translate(30,30)');
+
+                weightSliderSVG.call(weightSlider);
+
+                //Initialize dropdown filters in the beginning
+                initialStateSP();
+                // Function to initialize or reset drop down filters
+                function initialStateSP() {
+                    d3.select("#selectSportSP")
+                        .selectAll('myOptions')
+                        .data(allSport)
+                        .enter()
+                        .append('option')
+                        .text(function(d) {
+                            return d;
+                        })
+                        .attr("value", function(d) {
+                            return d;
+                        })
+
+                    d3.select("#selectNationalitySP")
+                        .selectAll('myOptions')
+                        .data(allNationality)
+                        .enter()
+                        .append('option')
+                        .text(function(d) {
+                            return d;
+                        })
+                        .attr("value", function(d) {
+                            return d;
+                        })
+
+                    d3.select("#selectEventSP")
+                        .selectAll('myOptions')
+                        .data(allEvent)
+                        .enter()
+                        .append('option')
+                        .text(function(d) {
+                            return d;
+                        })
+                        .attr("value", function(d) {
+                            return d;
+                        })
+                }
+
+                // **************************************************************************************************************
+
+                // Runs update function when any of the select drop-downs are changed
+                d3.select("#generateButtonSP").on("click", function(d) {
+                        errorhandling_generateSP()
+                    })
+                    // Runs reset function when reset button is clicked
+                d3.select("#resetButtonSP").on("click", function(d) {
+                    resetSP()
+                })
+
+                function filterData_season_gender(scatterdata) {
+                    let newData1 = [];
+                    let newData2 = [];
+                    scatterdata.forEach(d => {
+                        if (seasonFilter(d) && genderFilter(d)) {
+                            newData1.push(d)
+                        }
+                        if (seasonFilter(d) && genderFilter(d) && sportFilter(d)) {
+                            newData2.push(d)
+                        }
+                    })
+                    return [newData1, newData2];
+                }
+
+                function changeSportFilter(allSportUpdated) {
+                    allSportUpdated.sort();
+                    allSportUpdated.unshift("Select Sport")
+                    document.getElementById("selectSportSP").innerHTML = "";
+                    d3.select("#selectSportSP")
+                        .selectAll('myOptions')
+                        .data(allSportUpdated)
+                        .enter()
+                        .append('option')
+                        .text(function(d) {
+                            return d;
+                        })
+                        .attr("value", function(d) {
+                            return d;
+                        })
+                }
+
+                function changeNationalityAndEventFilter(allNationalityUpdated, allEventUpdates) {
+                    allNationalityUpdated.sort();
+                    allNationalityUpdated.unshift("All Nationalities")
+                    document.getElementById("selectNationalitySP").innerHTML = "";
+                    d3.select("#selectNationalitySP")
+                        .selectAll('myOptions')
+                        .data(allNationalityUpdated)
+                        .enter()
+                        .append('option')
+                        .text(function(d) {
+                            return d;
+                        })
+                        .attr("value", function(d) {
+                            return d;
+                        })
+
+                    //Filters out outlier events from if athletes classified in one sport has done events in another sport
+                    var selectedSportOptionSP = d3.select("#selectSportSP").property("value")
+                    if (selectedSportOptionSP != "Select Sport") {
+                        allEventUpdates = allEventUpdates.filter(function(value) {
+                            return ((value.split(' ')[0]) == selectedSportOptionSP.split(' ')[0])
+                        });
+                    }
+                    allEventUpdates.sort();
+                    allEventUpdates.unshift("All Events")
+                    document.getElementById("selectEventSP").innerHTML = "";
+                    d3.select("#selectEventSP")
+                        .selectAll('myOptions')
+                        .data(allEventUpdates)
+                        .enter()
+                        .append('option')
+                        .text(function(d) {
+                            return d;
+                        })
+                        .attr("value", function(d) {
+                            return d;
+                        })
+                }
+
+                function changeSliderFilter(updateFiltersData) {
+                    // Initializing Slider Filters: Year
+                    var weightMaxNew = Math.max.apply(Math, updateFiltersData.map(function(d) {
+                        return d.Weight;
+                    }))
+                    weightMinNew = Math.min.apply(Math, updateFiltersData.map(function(d) {
+                        return d.Weight;
+                    }))
+                    heightMaxNew = Math.max.apply(Math, updateFiltersData.map(function(d) {
+                        return d.Height;
+                    }))
+                    heightMinNew = Math.min.apply(Math, updateFiltersData.map(function(d) {
+                        return d.Height;
+                    }))
+                    ageMaxNew = Math.max.apply(Math, updateFiltersData.map(function(d) {
+                        return d.Age;
+                    }))
+                    ageMinNew = Math.min.apply(Math, updateFiltersData.map(function(d) {
+                        return d.Age;
+                    }))
+                    yearMaxNew = Math.max.apply(Math, updateFiltersData.map(function(d) {
+                        var max = Math.max.apply(Math, d.YearsCompeted)
+                        return max;
+                    }))
+                    yearMinNew = Math.min.apply(Math, updateFiltersData.map(function(d) {
+                        var min = Math.min.apply(Math, d.YearsCompeted)
+                        return min;
+                    }))
+
+                    yearSlider.min(yearMinNew).max(yearMaxNew).default([yearMinNew, yearMaxNew]).value([yearMinNew, yearMaxNew]);
+                    yearSliderSVG.call(yearSlider);
+                    ageSlider.min(ageMinNew).max(ageMaxNew).default([ageMinNew, ageMaxNew]).value([ageMinNew, ageMaxNew]);
+                    ageSliderSVG.call(ageSlider);
+                    heightSlider.min(heightMinNew).max(heightMaxNew).default([heightMinNew, heightMaxNew]).value([heightMinNew, heightMaxNew]);
+                    heightSliderSVG.call(heightSlider);
+                    weightSlider.min(weightMinNew).max(weightMaxNew).default([weightMinNew, weightMaxNew]).value([weightMinNew, weightMaxNew]);
+                    weightSliderSVG.call(weightSlider);
+                }
+
+                // Updating Filter Options
+                function updateFiltersSP() {
+                    var updateFiltersData = filterData_season_gender(medalistProfileData)
+                    var allSportUpdated = []
+                    var allNationalityUpdated = []
+                    var allEventUpdated = []
+                    var allNationalityUpdated2 = []
+                    var allEventUpdated2 = []
+
+                    //filter for only season, gender, and sport
+                    updateFiltersData[1].forEach(d => {
+                        for (event in d['Events']) {
+                            if (!allEventUpdated.includes(d['Events'][event])) {
+                                allEventUpdated.push(d['Events'][event])
+                            }
+                        }
+                        if (!allNationalityUpdated.includes(d['NOC'])) {
+                            allNationalityUpdated.push(d['NOC'])
+                        }
+                    });
+
+                    //filter for only season and gender
+                    updateFiltersData[0].forEach(d => {
+                        if (!allSportUpdated.includes(d['Sport'])) {
+                            allSportUpdated.push(d['Sport'])
+                        }
+                        for (event in d['Events']) {
+                            if (!allEventUpdated2.includes(d['Events'][event])) {
+                                allEventUpdated2.push(d['Events'][event])
+                            }
+                        }
+                        if (!allNationalityUpdated2.includes(d['NOC'])) {
+                            allNationalityUpdated2.push(d['NOC'])
+                        }
+                    });
+
+                    if (lastSelected == "season") {
+                        changeSportFilter(allSportUpdated)
+                        changeNationalityAndEventFilter(allNationalityUpdated2, allEventUpdated2)
+                        sportInitialSelect = 0;
+                        eventFilter = d => {
+                            return true;
+                        }
+                        nationalityFilter = d => {
+                            return true;
+                        }
+                        changeSliderFilter(updateFiltersData[0])
+                    } else {
+                        changeNationalityAndEventFilter(allNationalityUpdated, allEventUpdated)
+                        changeSliderFilter(updateFiltersData[1])
+                    }
+
+                }
+
+                // **************************************************************************************************************
+                // Filter Interactivity: Functions to Filter Out Data That Doesn't Meet Selections
+
+                var seasonInitialSelect = 0;
+                var genderInitialSelect = 0;
+                var sportInitialSelect = 0;
+                var lastSelected = "";
+
+                var seasonFilter = d => {
+                    return true;
+                }
+                d3.selectAll("input[name='seasonSP']").on("change", function() {
+                    lastSelected = "season";
+                    seasonInitialSelect = 1;
+                    var selectedSeasonSP = d3.select('input[name="seasonSP"]:checked').property("value");
+                    seasonFilter = d => {
+                        return (d.Season == selectedSeasonSP)
+                    }
+                    updateFiltersSP()
+                });
+
+                //if gender radio button changes
+                var genderFilter = d => {
+                    return true;
+                }
+                d3.selectAll("input[name='genderSP']").on("change", function() {
+                    lastSelected = "gender";
+                    genderInitialSelect = 1;
+                    var selectedGenderSP = d3.select('input[name="genderSP"]:checked').property("value");
+                    genderFilter = d => {
+                        return (d.Sex == selectedGenderSP)
+                    }
+                    updateFiltersSP()
+                })
+
+                //if sport dropdown changes
+                var sportFilter = d => {
+                    return true;
+                }
+                d3.select("#selectSportSP").on("change", function() {
+                    lastSelected = "sport";
+                    var selectedSportOptionSP = d3.select("#selectSportSP").property("value")
+                    if (selectedSportOptionSP != "Select Sport") {
+                        sportInitialSelect = 1;
+                        sportFilter = d => {
+                            return (d.Sport == selectedSportOptionSP)
+                        }
+                    } else {
+                        sportInitialSelect = 0;
+                        sportFilter = d => {
+                            return true;
+                        }
+                    }
+                    updateFiltersSP()
+                })
+
+                //if nationality dropdown changes
+                var nationalityFilter = d => {
+                    return true;
+                }
+                d3.select("#selectNationalitySP").on("change", function() {
+                    lastSelected = "nationality";
+                    var selectedNationalityOptionSP = d3.select("#selectNationalitySP").property("value")
+                    if (selectedNationalityOptionSP != "All Nationalities") {
+                        nationalityFilter = d => {
+                            return (d.NOC == selectedNationalityOptionSP)
+                        }
+                    } else {
+                        nationalityFilter = d => {
+                            return true;
+                        }
+                    }
+                })
+
+                //if event dropdown changes
+                var eventFilter = d => {
+                    return true;
+                }
+                d3.select("#selectEventSP").on("change", function() {
+                    lastSelected = "event";
+                    var selectedEventOptionSP = d3.select("#selectEventSP").property("value")
+                    if (selectedEventOptionSP != "All Events") {
+                        eventFilter = d => {
+                            var athleteHasEvent = 0;
+                            d.Events.forEach(p => {
+                                if (p == selectedEventOptionSP) {
+                                    athleteHasEvent += 1;
+                                }
+                            })
+                            return (athleteHasEvent > 0)
+                        }
+                    } else {
+                        eventFilter = d => {
+                            return true;
+                        }
+                    }
+                })
+
+                //if year slider changes
+                var yearFilter = d => {
+                        return true;
+                    }
+                    (yearSlider).on("onchange", function(value) { //value is [min,max]
+                        lastSelected = "year";
+                        yearFilter = d => {
+                            var withinYearBoolean = 0;
+                            for (year in d.YearsCompeted) {
+                                if ((d.YearsCompeted[year] >= value[0]) && (d.YearsCompeted[year] <= value[1])) {
+                                    withinYearBoolean += 1;
+                                }
+                            }
+                            return (withinYearBoolean > 0)
+                        }
+                    })
+
+                //if year slider changes
+                var ageFilter = d => {
+                        return true;
+                    }
+                    (ageSlider).on("onchange", function(value) { //value is [min,max]
+                        lastSelected = "age";
+                        ageFilter = d => {
+                            return ((d.Age >= value[0]) && (d.Age <= value[1]))
+                        }
+                    })
+
+                //if height slider changes
+                var heightFilter = d => {
+                        return true;
+                    }
+                    (heightSlider).on("onchange", function(value) { //value is [min,max]
+                        lastSelected = "height";
+                        heightFilter = d => {
+                            return ((d.Height >= value[0]) && (d.Height <= value[1]))
+                        }
+                    })
+
+                //if year slider changes
+                var weightFilter = d => {
+                        return true;
+                    }
+                    (weightSlider).on("onchange", function(value) { //value is [min,max]
+                        lastSelected = "weight";
+                        weightFilter = d => {
+                            return ((d.Weight >= value[0]) && (d.Weight <= value[1]))
+                        }
+                    })
+
+                var medalsFilter = d => {
+                    return true;
+                }
+                d3.selectAll("input[name='medalsOne']").on("change", function() {
+                    lastSelected = "medalsOne";
+                    medalsFilters()
+                });
+
+                d3.selectAll("input[name='medalsTwo']").on("change", function() {
+                    lastSelected = "medalsTwo";
+                    medalsFilters()
+                });
+
+                d3.selectAll("input[name='medalsThree']").on("change", function() {
+                    lastSelected = "medalsThree";
+                    medalsFilters()
+                });
+
+                function medalsFilters() {
+                    var checkedBooleanOne = d3.select('input[name="medalsOne"]').property("checked");
+                    var checkedBooleanTwo = d3.select('input[name="medalsTwo"]').property("checked");
+                    var checkedBooleanThree = d3.select('input[name="medalsThree"]').property("checked");
+                    var selectedMedalsOneSP = d3.select('input[name="medalsOne"]').property("value");
+                    var selectedMedalsTwoSP = d3.select('input[name="medalsTwo"]').property("value");
+                    var selectedMedalsThreeSP = d3.select('input[name="medalsThree"]').property("value");
+                    var selectedMedalsOneSPMax = parseInt(selectedMedalsOneSP) + 1;
+                    var selectedMedalsTwoSPMax = parseInt(selectedMedalsTwoSP) + 2;
+                    if (checkedBooleanOne == true && checkedBooleanTwo == false && checkedBooleanThree == false) {
+                        medalsFilter = d => {
+                            return (d.TotalMedals >= selectedMedalsOneSP) && (d.TotalMedals <= selectedMedalsOneSPMax);
+                        }
+                    } else if (checkedBooleanOne == true && checkedBooleanTwo == true && checkedBooleanThree == false) {
+                        medalsFilter = d => {
+                            return (d.TotalMedals >= selectedMedalsOneSP) && (d.TotalMedals <= selectedMedalsTwoSPMax);
+                        }
+                    } else if (checkedBooleanOne == true && checkedBooleanTwo == true && checkedBooleanThree == true) {
+                        medalsFilter = d => {
+                            return true;
+                        }
+                    } else if (checkedBooleanOne == false && checkedBooleanTwo == true && checkedBooleanThree == true) {
+                        medalsFilter = d => {
+                            return (d.TotalMedals >= selectedMedalsTwoSP);
+                        }
+                    } else if (checkedBooleanOne == false && checkedBooleanTwo == false && checkedBooleanThree == true) {
+                        medalsFilter = d => {
+                            return (d.TotalMedals >= selectedMedalsThreeSP);
+                        }
+                    } else if (checkedBooleanOne == false && checkedBooleanTwo == false && checkedBooleanThree == false) {
+                        medalsFilter = d => {
+                            return false;
+                        }
+                    } else if (checkedBooleanOne == false && checkedBooleanTwo == true && checkedBooleanThree == false) {
+                        medalsFilter = d => {
+                            return (d.TotalMedals >= selectedMedalsTwoSP) && (d.TotalMedals <= selectedMedalsTwoSPMax);
+                        }
+                    } else if (checkedBooleanOne == true && checkedBooleanTwo == false && checkedBooleanThree == true) {
+                        medalsFilter = d => {
+                            return (((d.TotalMedals >= selectedMedalsOneSP) && (d.TotalMedals <= selectedMedalsOneSPMax)) || (d.TotalMedals >= selectedMedalsThreeSP));
+                        }
+                    }
+                }
+
+                function filterData(scatterdata) {
+                    newData = [];
+                    scatterdata.forEach(d => {
+                        if (seasonFilter(d) && genderFilter(d) && sportFilter(d) &&
+                            yearFilter(d) && nationalityFilter(d) && eventFilter(d) &&
+                            ageFilter(d) && heightFilter(d) && weightFilter(d) && medalsFilter(d)) {
+                            newData.push(d)
+                        }
+                    })
+                    return newData;
+                }
+
+                // resetFiltersToTrue()
+                function resetFiltersToTrue() {
+                    seasonFilter = d => {
+                        return true;
+                    }
+                    genderFilter = d => {
+                        return true;
+                    }
+                    sportFilter = d => {
+                        return true;
+                    }
+                    eventFilter = d => {
+                        return true;
+                    }
+                    nationalityFilter = d => {
+                        return true;
+                    }
+                    ageFilter = d => {
+                        return true;
+                    }
+                    yearFilter = d => {
+                        return true;
+                    }
+                    heightFilter = d => {
+                        return true;
+                    }
+                    weightFilter = d => {
+                        return true;
+                    }
+                }
+
+                // **************************************************************************************************************
+                //Deletes old points and replaces with new points that fit the criteria of the four filter select options
+
+                function errorhandling_generateSP() {
+                    try {
+                        if ((sportInitialSelect == 1) && (genderInitialSelect == 1) && (seasonInitialSelect == 1)) {
+                            let newData = filterData(medalistProfileData)
+                            generateSP(newData);
+                        } else {
+                            resetSPGraph()
+                            d3.select("#errorTextSP")
+                                .style("opacity", 1);
+                        }
+                    } catch (e) {
+                        d3.select("#errorTextSP")
+                            .style("opacity", 1);
+                    }
+                }
+
+                function generateSP(newData) {
+                    d3.select("#errorTextSP")
+                        .style("opacity", 0);
+                    // Circle Plotting
+                    let circles = areaSP.selectAll("circle.point").data(newData)
+                        .join(enter => enter.append("circle")
+                            .attr("class", "point")
+                            .attr("opacity", 0.8)
+                        )
+                        .attr("cx", d => weightScale(d['Weight']))
+                        .attr("cy", d => heightScale(d['Height']))
+                        .attr("r", d => medalsScale(d['TotalMedals']))
+                        .attr("fill", function(d) {
+                            return medalsColorScale(d.TopMedal);;
+                        });
+
+                    //Update Saved Movies
+                    circles.on("click", function(event, d) {
+                        updateProfilePanel(d)
+                    });
+                }
+
+
+                //Resets all filters
+                function resetSP() {
+                    //Removing old dropdown options
+                    document.getElementById("selectNationalitySP").innerHTML = "";
+                    document.getElementById("selectEventSP").innerHTML = "";
+                    document.getElementById("selectSportSP").innerHTML = "";
+
+                    //Sets all sliders to intiial min and max
+                    yearSlider.min(yearMin).max(yearMax).default([yearMin, yearMax]).value([yearMin, yearMax]);
+                    yearSliderSVG.call(yearSlider);
+                    ageSlider.min(ageMin).max(ageMax).default([ageMin, ageMax]).value([ageMin, ageMax]);
+                    ageSliderSVG.call(ageSlider);
+                    heightSlider.min(heightMin).max(heightMax).default([heightMin, heightMax]).value([heightMin, heightMax]);
+                    heightSliderSVG.call(heightSlider);
+                    weightSlider.min(weightMin).max(weightMax).default([weightMin, weightMax]).value([weightMin, weightMax]);
+                    weightSliderSVG.call(weightSlider);
+
+                    //resets all radio buttons to not checked
+                    var seasonRadioList = document.getElementsByName('seasonSP');
+                    for (var i = 0; i < seasonRadioList.length; i++) {
+                        if (seasonRadioList[i].checked) seasonRadioList[i].checked = false;
+                    }
+                    var genderRadioList = document.getElementsByName('genderSP');
+                    for (var i = 0; i < genderRadioList.length; i++) {
+                        if (genderRadioList[i].checked) genderRadioList[i].checked = false;
+                    }
+
+                    //resets selected indicators so that error text will work
+                    seasonInitialSelect = 0;
+                    genderInitialSelect = 0;
+                    sportInitialSelect = 0;
+
+                    //resets all checkboxes to checked
+                    d3.select('#medalsOne').property('checked', true);
+                    d3.select('#medalsTwo').property('checked', true);
+                    d3.select('#medalsThree').property('checked', true);
+
+                    resetFiltersToTrue() //resets filter dependencies data to all
+                    initialStateSP() //resets all dropdowns
+                    resetSPGraph() //removes dots from scatterplot
+                }
+
+                //Resets all filters
+                function resetSPGraph() {
+                    areaSP.selectAll("circle.point").remove();
+                }
+
+                // **************************************************************************************************************
+                // Creating Scales
+                const weightScale = d3.scaleLinear().domain([weightMin, weightMax]).range([0, widthSP]);
+                const heightScale = d3.scaleLinear().domain([heightMin, heightMax]).range([heightSP, 0]);
+                const medalsExtent = d3.extent(medalistProfileData, d => d['TotalMedals']);
+                const medalsScale = d3.scaleLinear().domain(medalsExtent).range([3, 50]);
+
+                var goldColor = "#e6c90d";
+                var silverColor = "#e0e0e0";
+                var bronzeColor = "#c16e00";
+                var noMedalsColor = "#7cdaeb";
+
+                const medalsColorScale = d3.scaleOrdinal().domain(
+                        ["3", "2", "1"]) //where 1 is bronze, 2 is silver, 3 is gold
+                    .range([goldColor, silverColor, bronzeColor]);
+
+                // Y axis
+                let leftAxis = d3.axisLeft(heightScale)
+                    .tickFormat(d3.format(""));
+                let leftGridlines = d3.axisLeft(heightScale)
+                    .tickSize(-widthSP)
+                    .tickFormat("");
+
+                annotations.append("g")
+                    .attr("class", "y axis")
+                    .attr("transform", "translate(" + (scattermargin.left) + "," + scattermargin.top + ")")
+                    .call(leftAxis)
+                annotations.append("g")
+                    .attr("class", "y gridlines")
+                    .attr("transform", "translate(" + (scattermargin.left) + "," + scattermargin.top + ")")
+                    .call(leftGridlines);
+
+                // X axis
+                let bottomAxis = d3.axisBottom(weightScale)
+                    .tickFormat(d3.format(""));
+                let bottomGridlines = d3.axisBottom(weightScale)
+                    .tickSize(-heightSP)
+                    .tickFormat("");
+
+                annotations.append("g")
+                    .attr("class", "x axis")
+                    .attr("transform", "translate(" + scattermargin.left + "," + (heightSP + scattermargin.top) + ")")
+                    .call(bottomAxis);
+                annotations.append("g")
+                    .attr("class", "x gridlines")
+                    .attr("transform", "translate(" + scattermargin.left + "," + (heightSP + scattermargin.top) + ")")
+                    .call(bottomGridlines);
+
+                // Adding Axis Labels
+
+                //Y Axis
+                annotations.append("text")
+                    .attr("class", "y label")
+                    .attr("text-anchor", "middle")
+                    .attr("y", 3)
+                    .attr("x", (-heightSP / 2))
+                    .attr("dy", "0.75em")
+                    .attr("transform", "rotate(-90)")
+                    .style("font-size", "15px")
+                    .style("fill", "white")
+                    .text("Height (cm)");
+
+                //X Axis
+                annotations.append("text")
+                    .attr("class", "x label")
+                    .attr("text-anchor", "middle")
+                    .attr("x", (widthSP / 2) + scattermargin.left)
+                    .attr("y", heightSP + scattermargin.bottom)
+                    .style("font-size", "15px")
+                    .style("fill", "white")
+                    .text("Weight (kg)");
+
+                // Creating the Legend
+                scatterLeg.append("g")
+                    .attr("class", "legend-title")
+                    .append("text")
+                    .text("Highest Medal")
+                    .attr("x", 125)
+                    .attr("y", 20)
+                    .style("font-weight", "bold")
+                    .style("fill", "white")
+                    .style("font-size", "15px")
+                    .style("text-anchor", "start");
+
+                var legendSP = scatterLeg.selectAll()
+                    .data([3, 2, 1])
+                    .enter().append("g")
+                    .attr("class", "legendSP")
+                    .attr("transform", function(d, i) {
+                        return "translate(" + i * 100 + ",10)";
+                    });
+
+                // Draw Colored Circles in the Legend
+                legendSP.append("circle")
+                    .attr("cx", 50)
+                    .attr("cy", 50)
+                    .attr("r", 8)
+                    .style("fill", function(d) {
+                        return medalsColorScale(d)
+                    })
+                    .attr("transform", function(d, i) {
+                        return "translate(-5,0)";
+                    });
+
+                // Add Corresponding Text in the Legend
+                legendSP.append("text")
+                    .attr("x", 60)
+                    .attr("y", 50)
+                    .attr("dy", ".35em")
+                    .style("text-anchor", "start")
+                    .style("font-size", "13px")
+                    .style("fill", "white")
+                    .text(function(d) {
+                        if (d == 3) {
+                            return "Gold";
+                        } else if (d == 2) {
+                            return "Silver";
+                        } else {
+                            return "Bronze";
+                        }
+                    });
+
+                scatterLeg.append("g")
+                    .attr("class", "legend-title2")
+                    .append("text")
+                    .text("Total Medals")
+                    .attr("x", 545)
+                    .attr("y", 20)
+                    .style("font-weight", "bold")
+                    .style("fill", "white")
+                    .style("font-size", "15px")
+                    .style("text-anchor", "start");
+
+                var legendSP2 = scatterLeg.selectAll()
+                    .data([5, 10, 15]) //3 is 1 medal, 12 is 5 medals, 20 is 10 medals, 47 is 25 medals - didn't work? how is radius scale working?
+                    .enter().append("g")
+                    .attr("class", "legendSP2");
+
+                // Draw Colored Circles in the Legend
+                legendSP2.append("circle")
+                    .attr("cx", 500)
+                    .attr("cy", 50)
+                    .attr("r", function(d) {
+                        return medalsScale(d)
+                    })
+                    .style("fill", "lightgray")
+                    .attr("transform", function(d, i) {
+                        return "translate(" + i * 90 + ",10)";
+                    });
+
+                // Add Corresponding Text in the Legend
+                legendSP2.append("text")
+                    .attr("x", 522)
+                    .attr("y", 50)
+                    .attr("dy", ".35em")
+                    .style("text-anchor", "middle")
+                    .style("font-size", "13px")
+                    .style("fill", "white")
+                    .text(function(d) {
+                        if (d == 5) {
+                            return "5";
+                        } else if (d == 10) {
+                            return "10";
+                        } else if (d == 15) {
+                            return "15";
+                        }
+                    })
+                    .attr("transform", function(d, i) {
+                        return "translate(" + i * 100 + ",10)";
+                    });
+
+                function updateProfilePanel(d) {
+                    d.EventMedals.forEach(p => {
+                        if (p.Event.match(/Mixed/) != null) {
+                            p["Event"] = "Mixed " + p.Event.split('Mixed ').pop().trim();
+                        } else if (p.Event.match(/men's/) != null) {
+                            p["Event"] = p.Event.split("men's ").pop().trim();
+                        } else {
+                            p["Event"] = p.Event.split("Men's ").pop().trim();
+                        }
+                    })
+                    d3.select("#profilePanelSPIntro")
+                        .html("<h4><b>" + d.NOC + "</b></h4>" +
+                            "<h4><b>" + d.Name + "</b></h4>");
+
+                    YearsCompetedMax = Math.max(...d.YearsCompeted) //finding the athlete's first year of the Olympics
+                    YearsCompetedMin = Math.min(...d.YearsCompeted) //finding the athlete's last year of the Olympics
+
+                    d3.select("#profilePanelSPIntroStats")
+                        .html("<p><b>Stats:</b></p>" +
+                            "<p>" + d.YearsCompeted.length + " Olympics (" + YearsCompetedMin + " - " + YearsCompetedMax + ")</p>" +
+                            "<p>" + d.TotalMedals + " Medals</p>" +
+                            "<p>" + parseFloat((d.TotalMedals / d.TotalOlympicEvents) * 100).toFixed(0) + "% Success Rate</p>");
+
+                    d3.selectAll("#profilePanelSPTraitsIcon > *").remove();
+                    var profilePanelSPGenderIcon = d3.select("#profilePanelSPTraitsIcon").append("svg")
+                        .attr("class", "profilePanelSPGenderIcon")
+                        .attr("width", 150)
+                        .attr("height", 150);
+
+                    var iconSP = profilePanelSPGenderIcon.append("g");
+
+                    if (d.Sex == "F") {
+                        var img = iconSP.append("svg:image")
+                            .attr("xlink:href", "Images/female.svg")
+                            .attr("width", 150)
+                            .attr("height", 150)
+                            .style("fill", "white")
+                            .attr("x", 10)
+                            .attr("y", 10);
+                    } else {
+                        var img = iconSP.append("svg:image")
+                            .attr("xlink:href", "Images/male.svg")
+                            .attr("width", 150)
+                            .attr("height", 150)
+                            .style("stroke", "white")
+                            .attr("x", 10)
+                            .attr("y", 10);
+                    }
+
+                    d3.select("#profilePanelSPTraitsText")
+                        .html("<h4><b>" + d.Age + " years old</b></h4>" +
+                            "<p>" + d.Height.toFixed(0) + "m | " + d.Weight.toFixed(0) + "kg</p>");
+
+                    //Bar graph
+
+                    var stackdata = ["Gold", "Silver", "Bronze", "NoMedals"].map(function(medals) {
+                        return d.EventMedals.map(function(k, i) { //x: "Event", y0: 0, y: how many medals
+                            return {
+                                x: k["Event"],
+                                y: +k[medals]
+                            };
+                        })
+                    });
+
+                    var maxYBar = 0; //Storing the highest Y-axis value of a bar to use as the # of ticks on the Y Axis
+                    //For loops to add starting Y-axis values for stacked bars
+                    for (i = 0; i < stackdata.length; i++) {
+                        if (i == 0) {
+                            for (j = 0; j < stackdata[i].length; j++) {
+                                stackdata[i][j]["y0"] = 0;
+                            }
+                        } else if (i == 3) {
+                            for (j = 0; j < stackdata[i].length; j++) {
+                                stackdata[i][j]["y0"] = (stackdata[i - 1][j]["y"] + stackdata[i - 1][j]["y0"]);
+                                if (maxYBar < (stackdata[i][j]["y0"] + stackdata[i][j]["y"])) {
+                                    maxYBar = stackdata[i][j]["y0"] + stackdata[i][j]["y"];
+                                }
+                            }
+                        } else {
+                            for (j = 0; j < stackdata[i].length; j++) {
+                                stackdata[i][j]["y0"] = (stackdata[i - 1][j]["y"] + stackdata[i - 1][j]["y0"]);
+                            }
+                        }
+                    }
+
+                    d3.selectAll("#profilePanelSPSVG > *").remove(); //Removes previous bar chart
+                    const barGraphSP = d3.select("svg#profilePanelSPSVG")
+                    const barWidthSP = barGraphSP.attr("width");
+                    const barHeightSP = barGraphSP.attr("height") - 80;
+                    var barMarginSP = {
+                        top: 70,
+                        right: 10,
+                        bottom: 100,
+                        left: 50
+                    };
+                    const barMarginWidth = barWidthSP - barMarginSP.left - barMarginSP.right;
+                    const barMarginHeight = barHeightSP - barMarginSP.top - barMarginSP.bottom;
+
+                    var barGraphSPBars = barGraphSP.append("svg")
+                        .attr("width", barMarginWidth + barMarginSP.left + barMarginSP.right)
+                        .attr("height", barMarginHeight + barMarginSP.top + barMarginSP.bottom)
+                        .append("g")
+                        .attr("transform",
+                            "translate(" + barMarginSP.left + "," + barMarginSP.top + ")");
+
+                    var x = d3.scaleBand()
+                        .rangeRound([0, barMarginWidth])
+                        .padding(0.2);
+
+                    var y = d3.scaleLinear()
+                        .rangeRound([barMarginHeight, 0]);
+
+                    var color = [goldColor, silverColor, bronzeColor, noMedalsColor]
+
+                    var xAxis = d3.axisBottom()
+                        .scale(x).tickSizeInner(5).tickSizeOuter(0);
+
+                    var yAxis = d3.axisLeft()
+                        .scale(y).tickSizeInner(0).tickSizeOuter(0).ticks(maxYBar);
+
+                    x.domain(stackdata[0].map(function(d) {
+                        return d.x;
+                    }));
+
+                    y.domain([0,
+                            d3.max(stackdata[stackdata.length - 1],
+                                function(d) {
+                                    return d.y0 + d.y;
+                                })
+                        ])
+                        .nice();
+
+                    var layer = barGraphSPBars.selectAll()
+                        .data(stackdata)
+                        .enter().append("g")
+                        .attr("class", "stack")
+                        .style("fill", function(d, i) {
+                            return color[i]
+                        });
+
+                    layer.selectAll("rect")
+                        .data(function(d) {
+                            return d;
+                        })
+                        .enter().append("rect")
+                        .attr("x", function(d) {
+                            return x(d.x);
+                        })
+                        .attr("y", function(d) {
+                            return y(d.y + d.y0);
+                        })
+                        .attr("height", function(d) {
+                            return y(d.y0) - y(d.y + d.y0);
+                        })
+                        .attr("width", x.bandwidth())
+                        .style("stroke", "lightgray");
+
+
+                    barGraphSPBars.append("g")
+                        .attr("class", "y-axis-bars")
+                        .attr("transform", "translate(0,0)")
+                        .call(yAxis)
+                        .selectAll(".tick text")
+                        .style("font-size", "12px")
+                        .style("text-anchor", "center")
+                        .attr("font-family", "monaco, Consolas, Lucida Console, monospace");
+
+                    barGraphSPBars.append("g")
+                        .attr("class", "x-axis-bars")
+                        .attr("transform", "translate(0," + barMarginHeight + ")")
+                        .call(xAxis)
+                        .selectAll(".tick text")
+                        .style("font-size", "11px")
+                        .style("text-anchor", "center")
+                        .attr("font-family", "monaco, Consolas, Lucida Console, monospace")
+                        .call(wrap, 40);
+
+                    barGraphSPBars.append("text")
+                        .attr("class", "y-axis-bar-labels")
+                        .attr("text-anchor", "middle")
+                        .attr("y", -30)
+                        .attr("x", (-barHeightSP / 2) + 50)
+                        .attr("dy", "0.25em")
+                        .attr("transform", "rotate(-90)")
+                        .style("font-size", "13px")
+                        .style("fill", "white")
+                        .text("# of Medals");
+
+                    barGraphSPBars.append("text")
+                        .attr("class", "x-axis-bar-labels")
+                        .attr("text-anchor", "middle")
+                        .attr("x", (barWidthSP / 2) - 30)
+                        .attr("y", barHeightSP - 20)
+                        .style("font-size", "13px")
+                        .style("fill", "white")
+                        .text("Events");
+
+                    // Draw Colored Rectangles in the Legend
+                    barGraphSP.append("g")
+                        .attr("class", "legend-title");
+
+                    var legendBarSP = barGraphSP.selectAll()
+                        .data([0, 1, 2, 3])
+                        .enter().append("g")
+                        .attr("class", "legendBarSP")
+                        .attr("transform", function(d, i) {
+                          return "translate(" + i*90 + ",10)";
+                        });
+
+                    // Draw Colored Circles in the Legend
+                    legendBarSP.append("rect")
+                        .attr("width", 10)
+                        .attr("height", 10)
+                        .attr("x", 150)
+                        .attr("y", 0)
+                        .style("fill", function(d,i) {
+                            return color[i]
+                        })
+                        .attr("transform", function(d, i) {
+                            return "translate(-5,0)";
+                        });
+
+                    // Add Corresponding Text in the Legend
+                    legendBarSP.append("text")
+                        .attr("x", 180)
+                        .attr("y", 5)
+                        .attr("dy", ".35em")
+                        .style("text-anchor", "start")
+                        .style("font-size", "13px")
+                        .style("fill", "white")
+                        .text(function(d) {
+                            if (d == 0) {
+                                return "Gold";
+                            } else if (d == 1) {
+                                return "Silver";
+                            } else if (d == 2) {
+                                return "Bronze";
+                            } else {
+                                return "No Medal";
+                            }
+                        });
+
+
+                    //Inspiration from "Wrapping Long Labels" by Mike Bostock: https://bl.ocks.org/mbostock/7555321
+                    function wrap(text, width) {
+                        text.each(function() {
+                            var text = d3.select(this),
+                                words = text.text().split(/\s+/).reverse(),
+                                word,
+                                line = [],
+                                lineNumber = 0,
+                                lineHeight = 1.1, // ems
+                                y = text.attr("y"),
+                                dy = parseFloat(text.attr("dy")),
+                                tspan = text.text(null).append("tspan").attr("x", 0).attr("y", y).attr("dy", dy + "em");
+                            while (word = words.pop()) {
+                                line.push(word);
+                                tspan.text(line.join(" "));
+                                if (tspan.node().getComputedTextLength() > width) {
+                                    line.pop();
+                                    tspan.text(line.join(" "));
+                                    line = [word];
+                                    tspan = text.append("tspan").attr("x", 0).attr("y", y).attr("dy", ++lineNumber * lineHeight + dy + "em").text(word);
+                                }
+                            }
+                        });
+                    }
+                }
+
+            }
+            requestData();
+        </script>
+    </div>
+</body>
+
+</html>
