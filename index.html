@@ -1194,13 +1194,10 @@
                     //Make Event Name Text Shorter
                     if (d.Event.match(/Women's/) != null) {
                         d["eventGender"] = "F";
-                        // d["Event"] = d.Event.split("men's ").pop().trim();
                     } else if (d.Event.match(/Men's/) != null) {
                         d["eventGender"] = "M";
-                        // d["Event"] = d.Event.split("Men's ").pop().trim();
                     } else {
                         d["eventGender"] = "Mixed";
-                        // d["Event"] = "Mixed " + d.Event.split('Mixed ').pop().trim();
                     }
                 });
 
