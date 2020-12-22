@@ -637,9 +637,9 @@
             margin-right: 10px;
         }
 
-        #eventsInfo {
-            height: 125px;
-            width: 350px;
+        .radialInfo {
+            height: 150px;
+            width: 625px;
             background-color: rgb(241, 238, 233);
             color: black;
             display: inline-block;
@@ -649,7 +649,7 @@
             border-radius: 10px;
         }
 
-        #eventsInfo h3 {
+        .radialInfo h3 {
             width: 100px;
             margin-top: -5px;
             margin-bottom: -10px;
@@ -693,17 +693,18 @@
         </div>
 
         <!-- ********************************** -->
-        <!--         Radial Charts VISUALIZATION          -->
+        <!--   Radial Charts VISUALIZATION      -->
         <!-- ********************************** -->
         <div id="radialPanel">
             <h1 class="sectionTitles">How the Olympics Have Changed Since 1896</h1>
-            <!-- Section 1: Scatterplot Filters Panel -->
-            <div id="eventsInfo">
+            <div class="radialInfo">
                 <h3 id="eventsInfo_header">
                     Events
                 </h3>
-                <p>During the first Olympics in 1896, there were 43 events.
-                  By 2016, there were over 306 events!</p>
+                <p>During the first summer Olympics in 1896, there were only 43 events.
+                  However, by 2016, there were over 306 events! In 1924, the Winter Olympics were also
+                created and the number of winter events have risen dramatically.  To view the number of events each
+                year, hover over the charts below.</p>
             </div>
             <div class="radialFlexContainer">
                 <div class="radialFlex">
@@ -728,6 +729,16 @@
                     <svg id="EWradialSVGLegend" height="40" width="200"></svg>
                     <svg id="EWradialSVG" height="400" width="400"></svg>
                 </div>
+            </div>
+            <div class="radialInfo">
+                <h3 id="genderInfo_header">
+                    Gender
+                </h3>
+                <p>Women didn't participate in the Olympics in 1896.
+                  However, participation from women has increased dramatically since
+                  then, and by 2016, there are almost as many women competing in the
+                  Olympics as men! To view the number of male and female althletes each
+                  year, hover over these charts. </p>
             </div>
             <div class="radialFlexContainer">
                 <div class="radialFlex">
@@ -1324,7 +1335,7 @@
                     .attr("alignment-baseline", "middle")
 
                 // Creating the Legend
-                const legES = d3.select("svg#ESradialSVGLegend").attr("style", "outline: thin solid red;")
+                const legES = d3.select("svg#ESradialSVGLegend")
 
                 // Draw Colored Circles in the Legend
                 legES.append("rect")
@@ -1438,7 +1449,6 @@
 
                     // Creating the Legend
                     const legEW = d3.select("svg#EWradialSVGLegend")
-                    .attr("style", "outline: thin solid red;")
 
                     // Draw Colored Circles in the Legend
                     legEW.append("rect")
@@ -1615,7 +1625,6 @@
 
                     // Creating the Legend
                     const legGS = d3.select("svg#GSradialSVGLegend")
-                    .attr("style", "outline: thin solid red;")
 
                     // Draw Colored Circles in the Legend
                     legGS.append("rect")
@@ -1811,7 +1820,6 @@
 
                 // Creating the Legend
                 const legGW = d3.select("svg#GWradialSVGLegend")
-                .attr("style", "outline: thin solid red;")
 
                 // Draw Colored Circles in the Legend
                 legGW.append("rect")
@@ -1848,9 +1856,6 @@
                     .style("font-size", "13px")
                     .style("fill", "white")
                     .text("Female");
-
-
-
 
                 // <!-- ************************************************************************ -->
                 // <!--               ScatterPlot VISUALIZATION IMPLEMENTATION                   -->
