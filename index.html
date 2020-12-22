@@ -104,6 +104,7 @@
             right: 0;
             color: white;
             padding-top: 30px;
+            text-align: center;
         }
         
         #scatterplotPanel {
@@ -635,6 +636,26 @@
             margin-top: 18px;
             margin-right: 10px;
         }
+        
+        #eventsInfo {
+            height: 125px;
+            width: 350px;
+            background-color: rgb(241, 238, 233);
+            color: black;
+            display: inline-block;
+            padding: 20px;
+            margin-top: 50px;
+            margin-bottom: 20px;
+            border-radius: 10px;
+        }
+        
+        #eventsInfo h3 {
+            width: 100px;
+            margin-top: -5px;
+            margin-bottom: -10px;
+            border-bottom: #000 2px solid;
+            display: inline-block;
+        }
     </style>
 </head>
 
@@ -676,6 +697,12 @@
         <div id="radialPanel">
             <h1 class="sectionTitles">How the Olympics Have Changed Since 1896</h1>
             <!-- Section 1: Scatterplot Filters Panel -->
+            <div id="eventsInfo">
+                <h3 id="eventsInfo_header">
+                    Events
+                </h3>
+                <p>During the first Olympics in 1896, there were 43 events. By 2016, there were over 306 events! Some of which were new women specific events.</p>
+            </div>
             <div class="radialFlexContainer">
                 <div class="radialFlex">
                     <div class="radialFlexContainer_text">
