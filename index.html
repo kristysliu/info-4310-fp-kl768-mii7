@@ -656,6 +656,7 @@
             border-bottom: #000 2px solid;
             display: inline-block;
         }
+
     </style>
 </head>
 
@@ -701,7 +702,8 @@
                 <h3 id="eventsInfo_header">
                     Events
                 </h3>
-                <p>During the first Olympics in 1896, there were 43 events. By 2016, there were over 306 events! Some of which were new women specific events.</p>
+                <p>During the first Olympics in 1896, there were 43 events.
+                  By 2016, there were over 306 events!</p>
             </div>
             <div class="radialFlexContainer">
                 <div class="radialFlex">
@@ -712,7 +714,7 @@
                             <p>Number of Events: </p>
                         </div>
                     </div>
-                    <svg id="ESradialSVGLegend" height="80" width="400"></svg>
+                    <svg id="ESradialSVGLegend" height="40" width="200" ></svg>
                     <svg id="ESradialSVG" height="400" width="400"></svg>
                 </div>
                 <div class="radialFlex">
@@ -723,7 +725,7 @@
                             <p>Number of Events: </p>
                         </div>
                     </div>
-                    <svg id="EWradialSVGLegend" height="100" width="400"></svg>
+                    <svg id="EWradialSVGLegend" height="40" width="200"></svg>
                     <svg id="EWradialSVG" height="400" width="400"></svg>
                 </div>
             </div>
@@ -738,7 +740,7 @@
                             <p>Number of Men: </p>
                         </div>
                     </div>
-                    <svg id="GSradialSVGLegend" height="100" width="400"></svg>
+                    <svg id="GSradialSVGLegend" height="40" width="200"></svg>
                     <svg id="GSradialSVG" height="400" width="400"></svg>
                 </div>
                 <div class="radialFlex">
@@ -751,7 +753,7 @@
                             <p>Number of Men: </p>
                         </div>
                     </div>
-                    <svg id="GWradialSVGLegend" height="100" width="400"></svg>
+                    <svg id="GWradialSVGLegend" height="40" width="200"></svg>
                     <svg id="GWradialSVG" height="400" width="400"></svg>
                 </div>
             </div>
@@ -1322,19 +1324,20 @@
                     .attr("alignment-baseline", "middle")
 
                 // Creating the Legend
-                const legES = d3.select("svg#ESradialSVGLegend")
-                .style("fill", "black");
+                const legES = d3.select("svg#ESradialSVGLegend").attr("style", "outline: thin solid red;")
 
                 // Draw Colored Circles in the Legend
                 legES.append("rect")
                     .attr("width", 10)
                     .attr("height", 10)
+                    .attr("x", 30)
+                    .attr("y", 30)
                     .style("fill", "#e0bc7f");
 
                 // Add Corresponding Text in the Legend
                 legES.append("text")
-                    .attr("x", 60)
-                    .attr("y", 50)
+                    .attr("x", 50)
+                    .attr("y", 35)
                     .attr("dy", ".35em")
                     .style("text-anchor", "start")
                     .style("font-size", "13px")
@@ -1432,6 +1435,28 @@
                     .style("font-size", "11px")
                     .style("fill", "white")
                     .attr("alignment-baseline", "middle")
+
+                    // Creating the Legend
+                    const legEW = d3.select("svg#EWradialSVGLegend")
+                    .attr("style", "outline: thin solid red;")
+
+                    // Draw Colored Circles in the Legend
+                    legEW.append("rect")
+                        .attr("width", 10)
+                        .attr("height", 10)
+                        .attr("x", 30)
+                        .attr("y", 30)
+                        .style("fill", "#7fc6e0");
+
+                    // Add Corresponding Text in the Legend
+                    legEW.append("text")
+                        .attr("x", 50)
+                        .attr("y", 35)
+                        .attr("dy", ".35em")
+                        .style("text-anchor", "start")
+                        .style("font-size", "13px")
+                        .style("fill", "white")
+                        .text("# Winter Events");
 
                 // <!-- ************************************************************************ -->
                 // <!--                           RADIAL CHART: SUMMER EVENTS                    -->
@@ -1588,6 +1613,47 @@
                     .attr("alignment-baseline", "middle")
 
 
+                    // Creating the Legend
+                    const legGS = d3.select("svg#GSradialSVGLegend")
+                    .attr("style", "outline: thin solid red;")
+
+                    // Draw Colored Circles in the Legend
+                    legGS.append("rect")
+                        .attr("width", 10)
+                        .attr("height", 10)
+                        .attr("x", 70)
+                        .attr("y", 30)
+                        .style("fill", "rgb(0, 133, 218)");
+
+                    // Add Corresponding Text in the Legend
+                    legGS.append("text")
+                        .attr("x", 90)
+                        .attr("y", 35)
+                        .attr("dy", ".35em")
+                        .style("text-anchor", "start")
+                        .style("font-size", "13px")
+                        .style("fill", "white")
+                        .text("Male");
+                        // Draw Colored Circles in the Legend
+
+                    legGS.append("rect")
+                        .attr("width", 10)
+                        .attr("height", 10)
+                        .attr("x", 70)
+                        .attr("y", 15)
+                        .style("fill", "rgb(219, 115, 255)");
+
+                    // Add Corresponding Text in the Legend
+                    legGS.append("text")
+                        .attr("x", 90)
+                        .attr("y", 20)
+                        .attr("dy", ".35em")
+                        .style("text-anchor", "start")
+                        .style("font-size", "13px")
+                        .style("fill", "white")
+                        .text("Female");
+
+
             // <!-- ************************************************************************ -->
             // <!--                           RADIAL CHART: WINTER EVENTS                    -->
             // <!-- ************************************************************************ -->
@@ -1741,6 +1807,47 @@
                 .style("font-size", "11px")
                 .style("fill", "white")
                 .attr("alignment-baseline", "middle")
+
+
+                // Creating the Legend
+                const legGW = d3.select("svg#GWradialSVGLegend")
+                .attr("style", "outline: thin solid red;")
+
+                // Draw Colored Circles in the Legend
+                legGW.append("rect")
+                    .attr("width", 10)
+                    .attr("height", 10)
+                    .attr("x", 70)
+                    .attr("y", 30)
+                    .style("fill", "rgb(0, 133, 218)");
+
+                // Add Corresponding Text in the Legend
+                legGW.append("text")
+                    .attr("x", 90)
+                    .attr("y", 35)
+                    .attr("dy", ".35em")
+                    .style("text-anchor", "start")
+                    .style("font-size", "13px")
+                    .style("fill", "white")
+                    .text("Male");
+                    // Draw Colored Circles in the Legend
+
+                legGW.append("rect")
+                    .attr("width", 10)
+                    .attr("height", 10)
+                    .attr("x", 70)
+                    .attr("y", 15)
+                    .style("fill", "rgb(219, 115, 255)");
+
+                // Add Corresponding Text in the Legend
+                legGW.append("text")
+                    .attr("x", 90)
+                    .attr("y", 20)
+                    .attr("dy", ".35em")
+                    .style("text-anchor", "start")
+                    .style("font-size", "13px")
+                    .style("fill", "white")
+                    .text("Female");
 
 
 
