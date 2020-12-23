@@ -1,0 +1,90 @@
+[
+  {
+    "Year": 1924,
+    "NumEvents": 17
+  },
+  {
+    "Year": 1928,
+    "NumEvents": 14
+  },
+  {
+    "Year": 1932,
+    "NumEvents": 14
+  },
+  {
+    "Year": 1936,
+    "NumEvents": 17
+  },
+  {
+    "Year": 1948,
+    "NumEvents": 22
+  },
+  {
+    "Year": 1952,
+    "NumEvents": 22
+  },
+  {
+    "Year": 1956,
+    "NumEvents": 24
+  },
+  {
+    "Year": 1960,
+    "NumEvents": 27
+  },
+  {
+    "Year": 1964,
+    "NumEvents": 34
+  },
+  {
+    "Year": 1968,
+    "NumEvents": 35
+  },
+  {
+    "Year": 1972,
+    "NumEvents": 35
+  },
+  {
+    "Year": 1976,
+    "NumEvents": 37
+  },
+  {
+    "Year": 1980,
+    "NumEvents": 38
+  },
+  {
+    "Year": 1984,
+    "NumEvents": 39
+  },
+  {
+    "Year": 1988,
+    "NumEvents": 46
+  },
+  {
+    "Year": 1992,
+    "NumEvents": 57
+  },
+  {
+    "Year": 1994,
+    "NumEvents": 61
+  },
+  {
+    "Year": 1998,
+    "NumEvents": 68
+  },
+  {
+    "Year": 2002,
+    "NumEvents": 78
+  },
+  {
+    "Year": 2006,
+    "NumEvents": 84
+  },
+  {
+    "Year": 2010,
+    "NumEvents": 86
+  },
+  {
+    "Year": 2014,
+    "NumEvents": 98
+  }
+]

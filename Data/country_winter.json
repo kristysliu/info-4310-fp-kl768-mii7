@@ -1,0 +1,90 @@
+[
+  {
+    "Year": 1924,
+    "NumCountries": 19
+  },
+  {
+    "Year": 1928,
+    "NumCountries": 25
+  },
+  {
+    "Year": 1932,
+    "NumCountries": 17
+  },
+  {
+    "Year": 1936,
+    "NumCountries": 28
+  },
+  {
+    "Year": 1948,
+    "NumCountries": 28
+  },
+  {
+    "Year": 1952,
+    "NumCountries": 30
+  },
+  {
+    "Year": 1956,
+    "NumCountries": 32
+  },
+  {
+    "Year": 1960,
+    "NumCountries": 30
+  },
+  {
+    "Year": 1964,
+    "NumCountries": 36
+  },
+  {
+    "Year": 1968,
+    "NumCountries": 37
+  },
+  {
+    "Year": 1972,
+    "NumCountries": 35
+  },
+  {
+    "Year": 1976,
+    "NumCountries": 37
+  },
+  {
+    "Year": 1980,
+    "NumCountries": 37
+  },
+  {
+    "Year": 1984,
+    "NumCountries": 49
+  },
+  {
+    "Year": 1988,
+    "NumCountries": 57
+  },
+  {
+    "Year": 1992,
+    "NumCountries": 64
+  },
+  {
+    "Year": 1994,
+    "NumCountries": 67
+  },
+  {
+    "Year": 1998,
+    "NumCountries": 72
+  },
+  {
+    "Year": 2002,
+    "NumCountries": 77
+  },
+  {
+    "Year": 2006,
+    "NumCountries": 79
+  },
+  {
+    "Year": 2010,
+    "NumCountries": 82
+  },
+  {
+    "Year": 2014,
+    "NumCountries": 89
+  }
+]

@@ -16,8 +16,8 @@
     <script>
         const requestData = async function() {
 
-            var map_data = await d3.csv('athlete_events_filtered.csv', d3.autoType);
-            var ioc_data = await d3.csv('ioc_codes.csv', d3.autoType);
+            var map_data = await d3.csv('Data/athlete_events_filtered.csv', d3.autoType);
+            var ioc_data = await d3.csv('Data/ioc_codes.csv', d3.autoType);
 
             // Create World Dictionary for Map Visualization
             var world_dict = {};
@@ -53,7 +53,7 @@
                 if (!world_dict[d["NOC"]][d["Year"]]["Winter"].hasOwnProperty("Bronze")) {
                     world_dict[d["NOC"]][d["Year"]]["Winter"]["Bronze"] = {};
                 }
-                //Only create list for sport if its within the right season 
+                //Only create list for sport if its within the right season
                 if (!world_dict[d["NOC"]][d["Year"]]["Summer"]["Gold"].hasOwnProperty(d["Sport"])) {
                     if (d["Season"] == "Summer" && d["Medal"] == "Gold") {
                         world_dict[d["NOC"]][d["Year"]]["Summer"]["Gold"][d["Sport"]] = [];
