@@ -749,6 +749,21 @@
           padding-bottom: 75px;
         }
 
+        .textinfo {
+            position: absolute;
+            display: none;
+            background: none repeat scroll 0 0 black;
+            box-shadow: -3px 3px 15px #888888;
+            color: white;
+            padding: 10px;
+            width: 100px;
+            height: 100px;
+            text-align: center;
+            font-family: Helvetica, sans-serif;
+            line-height: 1.8;
+            border-radius: 5%;
+        }
+
     </style>
 </head>
 
@@ -3278,6 +3293,310 @@
                             }
                         });
                     }
+                    // Previous Map Visualization Interactivity - please reference to see work on filtering
+                    // // <!-- ************************************************************************ -->
+                    // // <!--                     MAP VISUALIZATION DATA FILTERING                     -->
+                    // // <!-- ************************************************************************ -->
+                    //
+                    // // Creating default drop down options
+                    // var mapSports = [];
+                    // var summerSports = [];
+                    // var winterSports = [];
+                    // var mapEvents = Object.keys(eventsDataSPDataDict);
+                    //
+                    // medalistProfileData.forEach(d => {
+                    //     if (!mapSports.includes(d['Sport'])) {
+                    //         mapSports.push(d['Sport'])
+                    //     }
+                    //     if (!summerSports.includes(d['Sport']) && d['Season'] == "Summer") {
+                    //         summerSports.push(d['Sport'])
+                    //     }
+                    //     if (!winterSports.includes(d['Sport']) && d['Season'] == "Winter") {
+                    //         winterSports.push(d['Sport'])
+                    //     }
+                    // });
+                    //
+                    // mapSports.push("All Sports")
+                    // mapSports.sort()
+                    // summerSports.push("All Sports")
+                    // summerSports.sort()
+                    // winterSports.push("All Sports")
+                    // winterSports.sort()
+                    // mapEvents.push("All Events")
+                    // mapEvents.sort()
+                    // var lastSelectedMapSport = "All Sports";
+                    // var last_yearSelected = 1;
+                    //
+                    // //Custom function that changes a select element's option
+                    // //inspired by https://thisinterestsme.com/change-select-option-javascript/
+                    // function select(selectId, optionValToSelect) {
+                    //     var selectElement = document.getElementById(selectId);
+                    //     var selectOptions = selectElement.options;
+                    //     for (var opt, j = 0; opt = selectOptions[j]; j++) {
+                    //         if (opt.value == optionValToSelect) {
+                    //             selectElement.selectedIndex = j;
+                    //             break;
+                    //         }
+                    //     }
+                    // }
+                    //
+                    // // Functions to initialize drop down filters
+                    // function OptSportMP(sports) {
+                    //     sports.sort();
+                    //
+                    //     document.getElementById("selectSportMP").innerHTML = "";
+                    //     d3.select("#selectSportMP")
+                    //         .selectAll('myOptions')
+                    //         .data(sports)
+                    //         .enter()
+                    //         .append('option')
+                    //         .text(function(d) {
+                    //             return d;
+                    //         })
+                    //         .attr("value", function(d) {
+                    //             return d;
+                    //         });
+                    //     if (sports.includes(lastSelectedMapSport)) {
+                    //         select('selectSportMP', lastSelectedMapSport);
+                    //     } else {
+                    //         lastSelectedMapSport = "All Sports";
+                    //     }
+                    // }
+                    //
+                    // function OptEventMP(events) {
+                    //     events.sort();
+                    //     if (events.length < mapEvents.length) {
+                    //         events.unshift("Select Event");
+                    //     } else {
+                    //
+                    //     }
+                    //     document.getElementById("selectEventMP").innerHTML = "";
+                    //     d3.select("#selectEventMP")
+                    //         .selectAll('myOptions')
+                    //         .data(events)
+                    //         .enter()
+                    //         .append('option')
+                    //         .text(function(d) {
+                    //             return d;
+                    //         })
+                    //         .attr("value", function(d) {
+                    //             return d;
+                    //         });
+                    // }
+                    //
+                    // //Initialize dropdown filters in the beginning
+                    // OptSportMP(mapSports);
+                    // OptEventMP(mapEvents);
+                    //
+                    // //Data filters
+                    // var seasonMapFilter = d => {
+                    //     return true;
+                    // };
+                    // var sportMapFilter = d => {
+                    //     return true;
+                    // };
+                    // var eventMapFilter = d => {
+                    //     return true;
+                    // };
+                    // var medalsMapFilter = d => {
+                    //     return true;
+                    // };
+                    //
+                    // // var yearMapFilter = d => {
+                    // //     return true;
+                    // // }
+                    //
+                    // // Change Sports options and Filter Data according to Season selection
+                    // d3.selectAll("input[name='seasonMP']").on("change", function() {
+                    //     var checkedBoxes = document.querySelectorAll('input[name=seasonMP]:checked');
+                    //
+                    //     if (checkedBoxes.length == 0 || checkedBoxes.length == 2) {
+                    //         OptSportMP(mapSports);
+                    //         seasonMapFilter = d => {
+                    //             return (d["Total"])
+                    //         };
+                    //     } else if (checkedBoxes.length == 1) {
+                    //         if (checkedBoxes[0].value == "Summer") {
+                    //             OptSportMP(summerSports);
+                    //             seasonMapFilter = d => {
+                    //                 return (d[last_yearSelected]["Summer"]["Total"])
+                    //             };
+                    //         }
+                    //         if (checkedBoxes[0].value == "Winter") {
+                    //             OptSportMP(winterSports);
+                    //             seasonMapFilter = d => {
+                    //                 return (d[last_yearSelected]["Winter"]["Total"])
+                    //             };
+                    //         }
+                    //     }
+                    //     filterMapData(last_yearSelected);
+                    // });
+                    //
+                    // // Change Events options and Filter Data according to Sports selection
+                    // d3.selectAll("select[id='selectSportMP']").on("change", function() {
+                    //
+                    //     var selectedSportMP = document.querySelectorAll("select[id='selectSportMP']")[0].value;
+                    //     lastSelectedMapSport = selectedSportMP;
+                    //     eventsMatch = [];
+                    //
+                    //     medalistProfileData.forEach(d => {
+                    //         d['Events'].forEach(e => {
+                    //             if (!eventsMatch.includes(e) && d['Sport'] == selectedSportMP) {
+                    //                 eventsMatch.push(e)
+                    //             }
+                    //         });
+                    //     });
+                    //
+                    //     if (lastSelectedMapSport == "All Sports") {
+                    //         OptEventMP(mapEvents);
+                    //     } else {
+                    //         OptEventMP(eventsMatch);
+                    //     }
+                    //     // filterMapData(last_yearSelected);
+                    // });
+                    //
+                    // // Filter data according to Medal selections
+                    // d3.selectAll("input[name='selectMedalMP']").on("change", function() {
+                    //     var checkedBoxes = document.querySelectorAll('input[name="selectMedalMP"]:checked');
+                    //     console.log(checkedBoxes)
+                    //         // filterMapData()
+                    // });
+                    //
+                    // /* *******NEW******** */
+                    //
+                    // const textinfo = d3.select("#flexContainerMP_1").append("div").attr("class", "textinfo");
+                    //
+                    // function hover_c(d) {
+                    //     // d3.select(this).attr('stroke-width', '5px');
+                    //     console.log(this);
+                    //     textinfo.style("left", 0 + "px");
+                    //     textinfo.style("top", 0 + "px"); //adapted from http://bl.ocks.org/ndobie/90ae9f1a5c7f88ad4929
+                    //     textinfo.style("display", "inline-block");
+                    //     console.log(d)
+                    //     textinfo.html("<p> <u> County: <strong>" + "Country" + "</strong> </u> <br></p>");
+                    //     // +
+                    //     //     "Winner Lead by: <strong>" + Math.abs(idToCountyPercentLead[d.id]) + "</strong>% <br> Total Votes: <strong>" +
+                    //     //     formatComma(Math.abs(totalvotesC[d.id])) + "</strong> votes <br> Democratic Candidate votes: <strong>" +
+                    //     //     formatComma(D_candidate_votesC[d.id]) + "</strong> votes <br> Republican Candidate votes: <strong>" +
+                    //     //     formatComma(R_candidate_votesC[d.id]) + "</strong> votes  <br> Total Population: <strong>" +
+                    //     //     formatComma(TotalPopC[d.id]) + "</strong> </p>");
+                    // }
+                    //
+                    // var width = 950,
+                    //     height = 550;
+                    //
+                    // var projection = d3.geoMercator()
+                    //     .scale(153)
+                    //     .translate([width / 2, height / 1.5])
+                    //
+                    // var path = d3.geoPath().projection(projection);
+                    //
+                    //
+                    // var map = d3.select("#flexContainerMP_1").append("svg")
+                    //     .attr("width", width)
+                    //     .attr("height", height)
+                    //     .attr("id", "map_svg");
+                    //
+                    // var colorScale = d3.scaleThreshold()
+                    //     .domain([0, 1, 15, 45, 70, 100, 200, 300])
+                    //     .range(d3.schemeBlues[9]);
+                    //
+                    // function colorMapData(year) {
+                    //     map.append("g")
+                    //         .selectAll("path")
+                    //         .data(topo.features)
+                    //         .enter()
+                    //         .append("path")
+                    //         .attr("class", "boundary")
+                    //         .on("mouseover", function(d) {
+                    //             hover_c(d) /* *******NEW******** */
+                    //         })
+                    //         // .on("mouseover", function(d) {
+                    //         //     d3.select(this).attr('stroke-width', '5px');
+                    //         //     textinfo.style("left", width - 70 + "px");
+                    //         //     textinfo.style("top", (height / 2) - 35 + "px"); //adapted from http://bl.ocks.org/ndobie/90ae9f1a5c7f88ad4929
+                    //         //     textinfo.style("display", "inline-block");
+                    //         //     console.log(d)
+                    //         //     textinfo.html("<p class='cs_h'> <u> County: <strong>" + idToCountyName[d.id] + "</strong> </u> <br>" +
+                    //         //         "Winner Lead by: <strong>" + Math.abs(idToCountyPercentLead[d.id]) + "</strong>% <br> Total Votes: <strong>" +
+                    //         //         formatComma(Math.abs(totalvotesC[d.id])) + "</strong> votes <br> Democratic Candidate votes: <strong>" +
+                    //         //         formatComma(D_candidate_votesC[d.id]) + "</strong> votes <br> Republican Candidate votes: <strong>" +
+                    //         //         formatComma(R_candidate_votesC[d.id]) + "</strong> votes  <br> Total Population: <strong>" +
+                    //         //         formatComma(TotalPopC[d.id]) + "</strong> </p>");
+                    //         // })
+                    //         // draw each country
+                    //         .attr("d", path)
+                    //         .attr("fill", function(d) {
+                    //             var total = 0;
+                    //             if (world_dict.hasOwnProperty(d.id)) {
+                    //                 if (world_dict[d.id].hasOwnProperty(year)) {
+                    //                     total = world_dict[d.id][year]["Total"];
+                    //                 }
+                    //             }
+                    //             return colorScale(total)
+                    //         });
+                    // }
+                    //
+                    // // Year inspired by: https://bl.ocks.org/johnwalley/e1d256b81e51da68f7feb632a53c3518
+                    // var dataTime = d3.range(0, 16).map(function(d) {
+                    //     return new Date(1896 + (8 * d), 10, 3);
+                    // });
+                    //
+                    // var sliderTime = d3
+                    //     .sliderBottom()
+                    //     .min(d3.min(dataTime))
+                    //     .max(d3.max(dataTime))
+                    //     .step(1000 * 60 * 60 * 24 * 365.25 * 4)
+                    //     .width(900)
+                    //     .tickFormat(d3.timeFormat('%Y'))
+                    //     .tickValues(dataTime)
+                    //     .default(new Date(2016, 10, 3));
+                    //
+                    // var gTime = d3
+                    //     .select('div#slider-time')
+                    //     .append('svg')
+                    //     .attr('width', 950)
+                    //     .attr('height', 100)
+                    //     .append('g')
+                    //     .attr('transform', 'translate(30,30)');
+                    //
+                    // gTime.call(sliderTime);
+                    //
+                    // // Filter data according to time slider
+                    // sliderTime.on('onchange', val => {
+                    //     yearSelected = val.getFullYear(); //pass as parameter
+                    //     if (yearSelected != last_yearSelected) {
+                    //         filterMapData(yearSelected)
+                    //         console.log(val.getFullYear());
+                    //     }
+                    //     last_yearSelected = yearSelected;
+                    // });
+                    //
+                    // //Initialize slider year and data in the beginning
+                    // filterMapData(2016)
+                    //
+                    // function filterMapData(year) {
+                    //     filteredData = {};
+                    //     colorMapData(year);
+                    //     // Object.entries(world_dict).forEach(([key, value]) => {
+                    //     //     // console.log(value);
+                    //     //     var country = world_dict[key]["Name"];
+                    //
+                    //     //     if (!filteredData.hasOwnProperty(country)) {
+                    //     //         if (world_dict[key].hasOwnProperty(year)) {
+                    //
+                    //     //             if (seasonMapFilter(value[year]["Summer"]) && sportMapFilter(value) && eventMapFilter(value) &&
+                    //     //                 medalsMapFilter(value)) {
+                    //     //                 filteredData[country] = world_dict[key][year]["Total"];
+                    //     //             }
+                    //
+                    //     //             filteredData[country] = world_dict[key][year]["Total"];
+                    //     //         }
+                    //     //     }
+                    //     // });
+                    //     // console.log(filteredData);
+                    //     // return filteredData;
+                    // }
                 }
             }
             requestData();
